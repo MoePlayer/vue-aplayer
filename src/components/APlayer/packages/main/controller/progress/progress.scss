@@ -1,0 +1,40 @@
+.aplayer-bar-wrap {
+  margin: 0 0 0 5px;
+  padding: 4px 0;
+  cursor: pointer !important;
+  flex: 1;
+  .aplayer-bar {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background: #cdcdcd;
+    .aplayer-loaded {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: #aaa;
+      height: 2px;
+      transition: all 0.5s ease;
+    }
+    .aplayer-played {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      height: 2px;
+      .aplayer-thumb {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        margin-top: -4px;
+        margin-right: -10px;
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer !important;
+      }
+    }
+  }
+}

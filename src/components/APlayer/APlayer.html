@@ -1,0 +1,19 @@
+<div class="aplayer aplayer-withlrc aplayer-withlist">
+  <vPicture />
+  <Container>
+    <Info slot="info" />
+    <Lyric slot="lyric" />
+    <Controller slot="controller">
+      <ProgressBar slot="progress" />
+      <TimeBar slot="time" />
+      <Volume slot="volume" />
+      <vButton slot="mode" type="mode" icon="random" />
+      <vButton slot="menu" type="menu" icon="menu" />
+    </Controller>
+  </Container>
+  <List>
+    <Item :index="1" title="あっちゅ～ま青春!" author="七森中☆ごらく部" active />
+    <Item :index="2" title="威风堂堂" author="Hanser" />
+    <Item :index="3" title="电子天使" author="小缘" />
+  </List>
+</div>

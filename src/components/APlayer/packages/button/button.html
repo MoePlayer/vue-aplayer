@@ -1,0 +1,6 @@
+<button type="button" :class="`aplayer-icon aplayer-icon-${type}`">
+  <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="100%" version="1.1" :viewBox="path[0]" width="100%">
+    <use :xlink:href="`#aplayer-${icon}`"></use>
+    <path class="aplayer-fill" :d="path[1]" :id="`aplayer-${icon}`"></path>
+  </svg>
+</button>
