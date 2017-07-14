@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "chai",
+      "mocha",
+      "node",
+      "sinon",
+      "sinon-chai",
+      "vue"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}

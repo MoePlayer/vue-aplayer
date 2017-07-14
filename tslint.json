@@ -1,0 +1,4 @@
+{
+    "extends": "tslint-config-standard",
+    "rules": {}
+}
