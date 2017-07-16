@@ -4,7 +4,7 @@ import WithRender from './index.html?style=./index.scss'
 
 import { Prop } from 'vue-property-decorator'
 
-import APlayer from 'components/APlayer/plugin'
+import APlayer from 'components'
 Vue.use(APlayer)
 
 @WithRender
