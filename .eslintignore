@@ -1,2 +1,5 @@
 build/*.js
 config/*.js
+dist/
+docs/
+APlayer.min.js
