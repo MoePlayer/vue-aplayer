@@ -8,12 +8,56 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
+
+/** build components configuration */
+var path = require('path')
+var merge = require('webpack-merge')
 var webpackConfig = require('./webpack.prod.conf')
+var outputDir = '../static'
+
+webpackConfig.devtool = false
+webpackConfig.entry = {
+  'APlayer': './src/components/index.ts',
+}
+webpackConfig.output = {
+  path: path.resolve(__dirname, outputDir),
+  filename: '[name].min.js',
+  libraryTarget: 'umd'
+}
+webpackConfig.externals = {
+  vue: {
+    root: 'Vue',
+    commonjs: 'vue',
+    commonjs2: 'vue',
+    amd: 'vue'
+  }
+}
+
+const getPlugins = () => webpackConfig.plugins.map(x => x.constructor.name)
+const removePlugins = (pluginName) => {
+  const pluginNames = getPlugins()
+  const plugins = pluginNames.filter(name => name === pluginName)
+  plugins.forEach(item => {
+    const index = getPlugins().indexOf(item)
+    webpackConfig.plugins.splice(index, 1)
+  })
+}
+
+webpackConfig.plugins.forEach((item, index) => {
+  if (item.constructor.name === 'ExtractTextPlugin') {
+    webpackConfig.plugins[index].filename = `${outputDir}/[name].min.css`
+  }
+})
+
+removePlugins('HtmlWebpackPlugin')
+removePlugins('CommonsChunkPlugin')
+removePlugins('Object')
+/** build components configuration */
 
 var spinner = ora('building for production...')
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm(path.join(__dirname, '../dist'), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
