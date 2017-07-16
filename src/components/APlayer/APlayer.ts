@@ -24,3 +24,5 @@ export class APlayer extends Vue {
   }
 
 }
+
+export default APlayer
