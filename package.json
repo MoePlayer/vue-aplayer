@@ -17,6 +17,7 @@
     "fix": "eslint --fix . & tslint --fix ."
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "console.img": "^1.0.7",
     "vue": "^2.3.3",
     "vue-class-component": "^5.0.1",
