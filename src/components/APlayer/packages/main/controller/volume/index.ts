@@ -7,4 +7,9 @@ import { Button as vButton } from '../../../button'
 
 @WithRender
 @Component({ components: { vButton } })
-export class Volume extends Vue { }
+export class Volume extends Vue {
+  @Prop({ type: Number, default: 0.9, required: false })
+  public value: Number
+  @Prop({ type: String, default: '', required: false })
+  public theme: String
+}

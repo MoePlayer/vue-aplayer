@@ -11,7 +11,7 @@ export class Item extends Vue {
   public active: Boolean
   @Prop({ type: Number, required: true })
   public index: Number
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, default: 1 })
   public title: String
   @Prop({ type: String, required: true })
   public author: String

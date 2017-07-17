@@ -6,4 +6,9 @@ import { Prop } from 'vue-property-decorator'
 
 @WithRender
 @Component
-export class Progress extends Vue { }
+export class Progress extends Vue {
+  @Prop({ type: Number, default: 0, required: false })
+  public loaded: Number
+  @Prop({ type: String, default: '', required: false })
+  public theme: String
+}

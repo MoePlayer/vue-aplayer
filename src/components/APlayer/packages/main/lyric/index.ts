@@ -6,4 +6,7 @@ import { Prop } from 'vue-property-decorator'
 
 @WithRender
 @Component
-export class Lyric extends Vue { }
+export class Lyric extends Vue {
+  @Prop({ type: String, required: false })
+  public lrc: String
+}
