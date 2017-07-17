@@ -1,5 +1,5 @@
 interface Music {
-  id: number
+  id?: number
   /** music title */
   title: string
   /** music author */
