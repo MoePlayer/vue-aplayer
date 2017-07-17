@@ -81,7 +81,9 @@ devMiddleware.waitUntilValid(() => {
   _resolve()
 })
 
-var server = app.listen(port)
+var server = app.listen(port, () => {
+  server.keepAliveTimeout = 0
+})
 
 module.exports = {
   ready: readyPromise,
