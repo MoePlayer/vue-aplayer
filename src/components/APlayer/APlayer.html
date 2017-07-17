@@ -1,8 +1,10 @@
 <div class="aplayer aplayer-withlrc aplayer-withlist">
-  <vPicture />
+  <vPicture :url="currentMusic.pic">
+    <vButton type="play" icon="play" />
+  </vPicture>
   <Container>
-    <Info slot="info" />
-    <Lyric slot="lyric" />
+    <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />
+    <Lyric slot="lyric" :lrc="currentMusic.lrc" />
     <Controller slot="controller">
       <ProgressBar slot="progress" />
       <TimeBar slot="time" />
@@ -12,8 +14,9 @@
     </Controller>
   </Container>
   <List>
-    <Item :index="1" title="あっちゅ～ま青春!" author="七森中☆ごらく部" active />
-    <Item :index="2" title="威风堂堂" author="Hanser" />
-    <Item :index="3" title="电子天使" author="小缘" />
+    <Item v-for="(music, index) in music" :index="index + 1" :title="music.title" :author="music.author" active />
+    <!-- <Item :index="1" title="あっちゅ～ま青春!" author="七森中☆ごらく部" active /> -->
+    <!-- <Item :index="2" title="威风堂堂" author="Hanser" /> -->
+    <!-- <Item :index="3" title="电子天使" author="小缘" />  -->
   </List>
 </div>
