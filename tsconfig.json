@@ -4,8 +4,6 @@
     "paths": {
       "*": ["src/*"]
     },
-    "allowJs": true,
-    "declaration": false,
     "sourceMap": true,
     "experimentalDecorators": true,
     "target": "es6",
