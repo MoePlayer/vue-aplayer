@@ -22,7 +22,8 @@
     "vue": "^2.3.3",
     "vue-class-component": "^5.0.1",
     "vue-property-decorator": "^5.1.0",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
