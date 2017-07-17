@@ -1,5 +1,5 @@
 declare namespace APlayer {
-  export let Options: Option
-  export let PlayMode: PlayMode
-  export let Preload: Preload
+  export const Options: Option
+  export const PlayMode: PlayMode
+  export const Preload: Preload
 }
