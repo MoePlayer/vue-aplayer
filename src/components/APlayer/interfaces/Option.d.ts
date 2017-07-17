@@ -18,5 +18,5 @@ interface Option {
   /** max height of play list */
   listmaxheight?: string
   /** music info */
-  music: Music[]
+  music: Music | Array<Music>
 }
