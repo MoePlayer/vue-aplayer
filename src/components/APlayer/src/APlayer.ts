@@ -36,21 +36,21 @@ export default class APlayer extends Vue {
   public theme?: string
   /** play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation` */
   @Prop({ type: String, default: 'circulation', required: false })
-  public mode?: PlayMode
+  public mode?: APlayer.PlayMode
   /** the way to load music, can be 'none' 'metadata' 'auto', default: 'auto' */
   @Prop({ type: String, default: 'auto', required: false })
-  public preload?: Preload
+  public preload?: APlayer.Preload
   /** max height of play list */
   @Prop({ type: String, default: 'auto', required: false })
   public listmaxheight?: string
   /** music info */
   @Prop({ type: Array, default: () => [], required: true })
-  public music: Array<Music>
+  public music: Array<APlayer.Music>
 
   /** native audio instance */
   private audio: HTMLAudioElement = new Audio()
   /** 当前播放的音乐信息 */
-  private currentMusic: Music = { title: '无法加载音频信息', author: '', url: null }
+  private currentMusic: APlayer.Music = { title: '无法加载音频信息', author: '', url: null }
 
   private beforeCreate () {
     console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')

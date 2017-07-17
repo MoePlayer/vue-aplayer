@@ -11,9 +11,9 @@ Vue.use(APlayer)
 @WithRender
 @Component
 export default class IndexPage extends Vue {
-  private music: Array<Music> = []
+  private music: Array<APlayer.Music> = []
   private async created () {
     const { data } = await Axios.get('./static/music/map.json')
-    this.music = data as Array<Music>
+    this.music = data as Array<APlayer.Music>
   }
 }
