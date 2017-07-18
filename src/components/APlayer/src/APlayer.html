@@ -6,7 +6,7 @@
     <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />
     <Lyric slot="lyric" :lrc="currentMusic.lrc" />
     <Controller slot="controller">
-      <ProgressBar slot="progress" :loaded="0.62" :played="0.3" />
+      <ProgressBar slot="progress" :loaded="loaded" :played="played" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
       <Volume slot="volume" />
       <vButton slot="mode" type="mode" icon="random" />
