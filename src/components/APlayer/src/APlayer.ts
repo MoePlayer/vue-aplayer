@@ -129,6 +129,22 @@ export default class APlayer extends Vue {
     this.audio.paused ? this.play() : this.pause()
   }
 
+  /** 设置当前要播放的音乐 */
+  // tslint:disable:unified-signatures
+  public setPlayMusic (index: number): void
+  public setPlayMusic (music: APlayer.Music): void
+  public setPlayMusic (x: number | APlayer.Music): void {
+    let music = x as APlayer.Music
+    let index = x as number
+
+    if (!music) music = this.music[index]
+    this.setMusic(music)
+    this.audio.src = music.url
+    this.audio.preload = this.preload
+    this.audio.autoplay = this.autoplay
+    this.speedChange()
+  }
+
   private beforeCreate (): void {
     console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
   }
@@ -149,12 +165,7 @@ export default class APlayer extends Vue {
   private musicChange (): void {
     if (this.music.length <= 0) return
     if (!this.audio.paused) return
-    const music = this.music[0]
-    this.setMusic(music)
-    this.audio.src = music.url
-    this.audio.preload = this.preload
-    this.audio.autoplay = this.autoplay
-    this.speedChange()
+    this.setPlayMusic(0)
   }
 
   @Watch('theme')
@@ -167,7 +178,7 @@ export default class APlayer extends Vue {
     this.audio.playbackRate = this.speed
   }
 
-  private progressChangeHandler (percent) {
+  private progressChangeHandler (percent): void {
     this.audio.currentTime = this.audio.duration * percent
   }
 
