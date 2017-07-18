@@ -86,7 +86,6 @@ export default class APlayer extends Vue {
   private created () {
     this.musicChange()
     this.themeChange()
-    this.speedChange()
 
     // 注册所有 Media 事件
     // 事件触发时同步 Audio 对象的属性到 Media 对象以更新视图
@@ -104,6 +103,7 @@ export default class APlayer extends Vue {
     this.audio.src = music.url
     this.audio.preload = this.preload
     this.audio.autoplay = this.autoplay
+    this.speedChange()
   }
 
   @Watch('theme')
