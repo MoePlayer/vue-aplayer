@@ -39,7 +39,7 @@ export class Lyric extends Vue {
 
     const reg = /\[(\d+):(\d+)\.(\d+)\](.+)/
     this.LRC = []
-    this.currentLRC.split('\\n').forEach(line => {
+    this.currentLRC.replace(/\\n/, '\n').split('\n').forEach(line => {
       const match = line.match(reg)
       if (!match) return
       if (match.length !== 5) return
