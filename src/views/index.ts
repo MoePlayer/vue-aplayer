@@ -3,17 +3,21 @@ import Component from 'vue-class-component'
 import WithRender from './index.html?style=./index.scss'
 
 import { Prop } from 'vue-property-decorator'
-import Axios from 'axios'
+import { Getter, Action } from 'vuex-class'
 
+import store from 'store'
 import APlayer from 'components'
 Vue.use(APlayer)
 
 @WithRender
-@Component
+@Component({ store })
 export default class IndexPage extends Vue {
-  private music: Array<APlayer.Music> = []
-  private async created () {
-    const { data } = await Axios.get('./static/music/map.json')
-    this.music = data as Array<APlayer.Music>
+  @Getter('list')
+  private music: Array<APlayer.Music>
+  @Action('getMusics')
+  private getMusics: () => void
+
+  private created () {
+    setTimeout(() => this.getMusics(), 1000)
   }
 }

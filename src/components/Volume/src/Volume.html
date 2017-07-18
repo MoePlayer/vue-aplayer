@@ -2,7 +2,7 @@
   <vButton type="volume-down" icon="volume-down" />
   <div class="aplayer-volume-bar-wrap">
     <div class="aplayer-volume-bar">
-      <div class="aplayer-volume" style="height: 80%; background: #ad7a86;"></div>
+      <div class="aplayer-volume" :style="{ height: `${Math.round(value * 100)}%`, background: theme }"></div>
     </div>
   </div>
 </div>

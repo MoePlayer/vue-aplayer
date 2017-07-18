@@ -7,9 +7,9 @@ import { Prop } from 'vue-property-decorator'
 @WithRender
 @Component
 export class Info extends Vue {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: false })
   private title: String
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: false })
   private author: String
 }
 

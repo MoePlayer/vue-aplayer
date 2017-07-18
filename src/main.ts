@@ -28,7 +28,7 @@ new Vue({
         console.log('')
       }, time.timespan())
     }
-    img.src = 'https://avatars3.githubusercontent.com/u/29977599?v=3&s=100'
+    img.src = 'https://avatars5.githubusercontent.com/u/29977599?v=3&s=90'
     console.img(img.src)
   }
 })
