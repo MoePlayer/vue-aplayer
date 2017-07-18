@@ -4,7 +4,7 @@
   </vPicture>
   <Container>
     <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />
-    <Lyric slot="lyric" :lrc="currentMusic.lrc" />
+    <Lyric slot="lyric" :currentTime="media.currentTime" :lrc="currentMusic.lrc" />
     <Controller slot="controller">
       <ProgressBar slot="progress" :loaded="loaded" :played="played" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />

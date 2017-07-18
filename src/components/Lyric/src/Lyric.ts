@@ -6,8 +6,8 @@ import { Prop, Watch } from 'vue-property-decorator'
 import Axios from 'axios'
 
 export interface LRC {
-  time: Number
-  text: String
+  time: number
+  text: string
 }
 
 @WithRender
@@ -16,10 +16,25 @@ export class Lyric extends Vue {
 
   @Prop({ type: String, required: false })
   public lrc: string
+  @Prop({ type: Number, required: false, default: 0 })
+  public currentTime: number
 
   /** 获取解析后的歌词文本 */
   private currentLRC: string = null
   private LRC: Array<LRC> = []
+
+  public get current (): LRC {
+    const match = this.LRC.filter(x => x.time < this.currentTime * 1000)
+    if (match && match.length > 0) return match[match.length - 1]
+    return this.LRC[0]
+  }
+
+  public get scrollTop (): number {
+    const { time } = this.current || { time: 0 }
+    const lrcElements = this.$refs.lrc as Array<HTMLElement> || []
+    const currentElement = lrcElements.find(x => Number.parseInt(x.dataset.time) === time)
+    return (currentElement ? currentElement.offsetTop : 0) * -1
+  }
 
   private created () {
     this.change()
@@ -39,7 +54,7 @@ export class Lyric extends Vue {
 
     const reg = /\[(\d+):(\d+)\.(\d+)\](.+)/
     this.LRC = []
-    this.currentLRC.replace(/\\n/, '\n').split('\n').forEach(line => {
+    this.currentLRC.replace(/\\n/g, '\n').split('\n').forEach(line => {
       const match = line.match(reg)
       if (!match) return
       if (match.length !== 5) return

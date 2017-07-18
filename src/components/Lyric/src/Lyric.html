@@ -1,8 +1,8 @@
 <div class="aplayer-lrc">
-  <div class="aplayer-lrc-contents" style="transform: translateY(0); -webkit-transform: translateY(0);">
+  <div class="aplayer-lrc-contents" :style="`transform: translateY(${scrollTop}px); -webkit-transform: translateY(${scrollTop}px)`">
     <p v-if="LRC.length <= 0">(*ゝω・) 少女祈祷中..</p>
     <template v-else>
-      <p class="aplayer-lrc-current" v-for="lrc in LRC">{{ lrc.text }}</p>
+      <p :class="{ 'aplayer-lrc-current': current.time === lrc.time }" ref="lrc" v-for="lrc in LRC" :data-time="lrc.time">{{ lrc.text }}</p>
     </template>
   </div>
 </div>
