@@ -1,6 +1,8 @@
 <div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc }">
   <vPicture :url="currentMusic.pic">
-    <vButton type="play" icon="play" />
+    <div :class="`aplayer-button aplayer-${status}`" @click="toggle">
+      <vButton :type="status" :icon="status" />
+    </div>
   </vPicture>
   <Container>
     <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />

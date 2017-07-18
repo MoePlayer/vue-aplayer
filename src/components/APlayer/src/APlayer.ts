@@ -21,6 +21,10 @@ import store from 'store'
 import { State } from 'store/state'
 import { SET_MUSIC, SET_THEME, SYNC_MEDIA } from 'store/types'
 
+import VueTouch from 'vue-touch'
+
+Vue.use(VueTouch)
+
 enum ReadyState {
   /** 没有关于音频是否就绪的信息 */
   HAVE_NOTHING = 0,
@@ -91,10 +95,12 @@ export default class APlayer extends Vue {
   /** 同步 Audio 对象属性以更新视图 */
   @Mutation(SYNC_MEDIA)
   private syncMedia: (audio: HTMLAudioElement) => void
+
   /** 已播放的进度比例 */
   public get played (): number {
     return this.media.currentTime / this.media.duration
   }
+
   /** 已缓冲的进度比例 */
   public get loaded (): number {
     if (Number(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA) {
@@ -103,11 +109,31 @@ export default class APlayer extends Vue {
     return 0
   }
 
-  private beforeCreate () {
+  /** 当前播放状态 */
+  public get status (): string {
+    return !this.media.paused ? 'pause' : 'play'
+  }
+
+  /** 开始播放 */
+  public play (): void {
+    this.audio.play()
+  }
+
+  /** 暂停播放 */
+  public pause (): void {
+    this.audio.pause()
+  }
+
+  /** 切换播放状态 */
+  public toggle (): void {
+    this.audio.paused ? this.play() : this.pause()
+  }
+
+  private beforeCreate (): void {
     console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
   }
 
-  private created () {
+  private created (): void {
     this.musicChange()
     this.themeChange()
 
@@ -120,8 +146,9 @@ export default class APlayer extends Vue {
   }
 
   @Watch('music', { deep: true })
-  private musicChange () {
+  private musicChange (): void {
     if (this.music.length <= 0) return
+    if (!this.audio.paused) return
     const music = this.music[0]
     this.setMusic(music)
     this.audio.src = music.url
@@ -131,12 +158,12 @@ export default class APlayer extends Vue {
   }
 
   @Watch('theme')
-  private themeChange () {
+  private themeChange (): void {
     this.setTheme(this.theme)
   }
 
   @Watch('speed')
-  private speedChange () {
+  private speedChange (): void {
     this.audio.playbackRate = this.speed
   }
 
