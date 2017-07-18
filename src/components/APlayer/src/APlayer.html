@@ -1,4 +1,4 @@
-<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc }">
+<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc || showlrc }">
   <vPicture :url="currentMusic.pic">
     <div :class="`aplayer-button aplayer-${status}`" @click="toggle">
       <vButton :type="status" :icon="status" />

@@ -49,8 +49,8 @@ export default class APlayer extends Vue {
   @Prop({ type: Boolean, default: false, required: false })
   public autoplay?: boolean
   /** show lrc, can be 0, 1, 2 */
-  @Prop({ type: Number, default: 0, required: false })
-  public showlrc?: 0 | 1 | 2
+  @Prop({ type: Boolean, default: false, required: false })
+  public showlrc?: boolean
   @Prop({ type: Boolean, default: true, required: false })
   /** pause other players when this player playing */
   public mutex?: boolean
@@ -138,6 +138,7 @@ export default class APlayer extends Vue {
     let index = x as number
 
     if (!music) music = this.music[index]
+    if (music.title === this.currentMusic.title) return
     this.setMusic(music)
     this.audio.src = music.url
     this.audio.preload = this.preload
