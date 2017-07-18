@@ -167,6 +167,10 @@ export default class APlayer extends Vue {
     this.audio.playbackRate = this.speed
   }
 
+  private progressChangeHandler (percent) {
+    this.audio.currentTime = this.audio.duration * percent
+  }
+
 }
 
 export { APlayer, vPicture, vButton, Container, Controller, Info, Lyric, ProgressBar, TimeBar, Volume, List, Item }
