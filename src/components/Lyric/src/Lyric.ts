@@ -15,10 +15,10 @@ export interface LRC {
 export class Lyric extends Vue {
 
   @Prop({ type: String, required: false })
-  public lrc: String
+  public lrc: string
 
   /** 获取解析后的歌词文本 */
-  private currentLRC: String = null
+  private currentLRC: string = null
   private LRC: Array<LRC> = []
 
   private created () {

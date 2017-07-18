@@ -8,5 +8,5 @@ import { Prop } from 'vue-property-decorator'
 @Component
 export class Picture extends Vue {
   @Prop({ type: String, default: 'https://avatars5.githubusercontent.com/u/29977599?v=3&s=90' })
-  public url: String
+  public url: string
 }

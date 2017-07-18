@@ -9,18 +9,12 @@ import svg from './svg'
 @Component
 export class Button extends Vue {
   @Prop({ type: String, default: 'play' })
-  public type: String
+  public type: string
   @Prop({ type: String, default: 'play' })
-  public icon: String
-  private path: Array<String> = svg.play
+  public icon: string
 
-  private created () {
-    this.iconChange()
-  }
-
-  @Watch('icon')
-  private iconChange () {
-    this.path = svg[this.icon.toString()]
+  public get path () {
+    return svg[this.icon]
   }
 }
 

@@ -11,7 +11,7 @@ import { Button as vButton } from 'components/Button'
 @Component({ components: { vButton } })
 export class Volume extends Vue {
   @Prop({ type: Number, default: 0.8, required: false })
-  public value: Number
+  public value: number
   @Getter('theme')
-  public theme: String
+  public theme: string
 }

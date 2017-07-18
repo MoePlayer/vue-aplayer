@@ -9,9 +9,9 @@ import { Getter } from 'vuex-class'
 @Component
 export class Progress extends Vue {
   @Prop({ type: Number, default: 0, required: true })
-  public loaded: Number
+  public loaded: number
   @Prop({ type: Number, default: 0, required: true })
-  public played: Number
+  public played: number
   @Getter('theme')
-  public theme: String
+  public theme: string
 }

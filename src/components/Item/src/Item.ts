@@ -9,16 +9,16 @@ import { Getter } from 'vuex-class'
 @Component
 export class Item extends Vue {
   @Prop({ type: Boolean, required: false, default: false })
-  public active: Boolean
+  public active: boolean
   @Prop({ type: Number, required: true })
-  public index: Number
+  public index: number
   @Prop({ type: String, required: true, default: 1 })
-  public title: String
+  public title: string
   @Prop({ type: String, required: true })
-  public author: String
+  public author: string
 
   @Getter('theme')
-  private theme: String
+  private theme: string
 }
 
 export default Item

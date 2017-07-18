@@ -8,9 +8,9 @@ import { Prop } from 'vue-property-decorator'
 @Component
 export class Info extends Vue {
   @Prop({ type: String, required: false })
-  private title: String
+  private title: string
   @Prop({ type: String, required: false })
-  private author: String
+  private author: string
 }
 
 export default Info
