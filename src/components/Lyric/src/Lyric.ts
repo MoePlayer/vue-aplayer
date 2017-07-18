@@ -48,6 +48,8 @@ export class Lyric extends Vue {
   private async parseLRC () {
     if (!this.lrc) return
     if (this.isURL(this.lrc)) { // 如果歌词是一个URL地址则请求该地址获得歌词文本
+      const sleep = delay => new Promise(resolve => setTimeout(resolve, delay))
+      await sleep(1000)
       const { data } = await Axios.get(this.lrc.toString())
       this.currentLRC = data
     } else this.currentLRC = this.lrc
