@@ -24,8 +24,6 @@ export class Time extends Vue {
     time = time || 0
     const minutes = Math.floor(time / 60)
     const seconds = Math.floor(time % 60)
-    console.log('minutes: ', time / 60)
-    console.log('seconds: ', time % 60)
     return `${this.padStart(minutes.toString(), 2, '0')}:${this.padStart(seconds.toString(), 2, '0')}`
   }
 
