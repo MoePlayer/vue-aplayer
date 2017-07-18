@@ -6,7 +6,7 @@ interface Media {
   /** 返回表示音频已缓冲部分的 TimeRanges 对象。 */
   buffered: TimeRanges
   /** 返回表示音频当前媒体控制器的 MediaController 对象。 */
-  controller
+  controller: any
   /** 设置或返回音频是否应该显示控件（比如播放/暂停等）。 */
   controls: boolean
   /** 设置或返回音频的 CORS 设置。 */
