@@ -4,4 +4,7 @@ export interface State {
   theme: String
   music: APlayer.Music
   list: Array<APlayer.Music>
+  mode: APlayer.PlayMode
+  volume: number
+  speed: number
 }

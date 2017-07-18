@@ -67,6 +67,9 @@ const state: State = {
   },
   music: null,
   list: [],
+  mode: 'circulation',
+  speed: 1,
+  volume: 1,
   theme: '#b7daff'
 }
 
