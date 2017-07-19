@@ -12,10 +12,10 @@
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
       <Volume slot="volume" :value="media.volume" @toggle="toggleVolume" @change="volumeChangeHandler" />
       <vButton slot="mode" type="mode" icon="random" />
-      <vButton slot="menu" type="menu" icon="menu" />
+      <vButton slot="menu" type="menu" icon="menu" @click="collapsed = !collapsed" />
     </Controller>
   </Container>
-  <List>
+  <List :music="music" :maxheight="listmaxheight" :collapsed="collapsed">
     <Item v-for="(music, index) in music"
       :index="index + 1"
       :title="music.title"

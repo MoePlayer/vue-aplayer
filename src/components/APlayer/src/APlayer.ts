@@ -85,6 +85,7 @@ export default class APlayer extends Vue {
   /** 获取当前主题颜色 */
   @Getter('theme')
   private readonly currentTheme: string
+  private collapsed = true
 
   /** 设置当前播放音乐信息 */
   @Mutation(SET_MUSIC)
@@ -148,6 +149,7 @@ export default class APlayer extends Vue {
     this.audio.src = music.url
     this.audio.preload = this.preload
     this.audio.autoplay = this.autoplay
+    this.audio.volume = 0.8
     this.speedChange()
   }
 
