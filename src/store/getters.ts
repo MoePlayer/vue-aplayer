@@ -12,4 +12,4 @@ export const speed = (state: State): number => state.speed
 export const volume = (state: State): number => state.volume
 export const collapsed = (state: State): boolean => state.collapsed
 
-export const getters = { audio, media, music, list, mode, theme, speed, collapsed } as GetterTree<State, any>
+export const getters = { audio, media, music, list, mode, theme, speed, volume, collapsed } as GetterTree<State, any>
