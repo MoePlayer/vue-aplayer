@@ -68,7 +68,7 @@ const state: State = {
   },
   music: null,
   list: [],
-  theme: '#b7daff',
+  theme: '#ad7a86',
   mode: 'circulation',
   collapsed: false
 }
