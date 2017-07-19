@@ -11,5 +11,6 @@ export const theme = (state: State): string => state.theme
 export const speed = (state: State): number => state.media.playbackRate
 export const volume = (state: State): number => state.media.volume
 export const collapsed = (state: State): boolean => state.collapsed
+export const config = (state: State): State => JSON.parse(localStorage.getItem(state.key)) as State
 
-export const getters = { audio, media, music, list, mode, theme, speed, volume, collapsed } as GetterTree<State, any>
+export const getters = { audio, media, music, list, mode, theme, speed, volume, collapsed, config } as GetterTree<State, any>

@@ -9,6 +9,7 @@ import { mutations } from './mutations'
 Vue.use(Vuex)
 
 const state: State = {
+  key: 'APLAYER_VEUX_STATE',
   audio: new Audio(),
   media: {
     audioTracks: null,

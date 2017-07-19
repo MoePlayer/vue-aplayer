@@ -1,4 +1,5 @@
 export interface State {
+  key: string,
   audio: HTMLAudioElement
   media: Media
   music: APlayer.Music
