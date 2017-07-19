@@ -110,8 +110,9 @@ export default class APlayer extends Vue {
   private readonly config: State
 
   /** 设置当前播放音乐信息 */
+  // tslint:disable-next-line:member-ordering
   @Mutation(SET_MUSIC)
-  private setMusic: (music: APlayer.Music) => void
+  public setMusic: (music: APlayer.Music) => void
   /** 设置播放模式 */
   @Mutation(SET_PLAY_MODE)
   private setPlayMode: (mode: APlayer.PlayMode) => void
@@ -205,13 +206,14 @@ export default class APlayer extends Vue {
     this.speedChange()
   }
 
-  /** 尊重原作者 输出版本信息和原 APlayer 地址 */
+  /**
+   * 尊重原作者 输出版本信息和原 APlayer 地址
+   *
+   * The Star And Thank Author License (SATA)
+   * Copyright (c) 2016-2017 DIYgod(i@html.love)
+   * Project Url: https://github.com/DIYgod/APlayer
+   */
   private beforeCreate (): void {
-    /*
-      The Star And Thank Author License (SATA)
-      Copyright (c) 2016-2017 DIYgod(i@html.love)
-      Project Url: https://github.com/DIYgod/APlayer
-    */
     console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
   }
 
