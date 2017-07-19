@@ -19,7 +19,15 @@ import { Item } from 'components/Item'
 
 import store from 'store'
 import { State } from 'store/state'
-import { SET_MUSIC, SET_THEME, SYNC_MEDIA } from 'store/types'
+import {
+  SET_MUSIC,
+  SET_THEME,
+  SET_SPEED,
+  SET_VOLUME,
+  SET_COLLAPSED,
+  SET_PLAY_MODE,
+  SYNC_MEDIA
+} from 'store/types'
 
 import VueTouch from 'vue-touch'
 
@@ -82,17 +90,40 @@ export default class APlayer extends Vue {
   /** 获取当前播放的音乐信息 */
   @Getter('music')
   private readonly currentMusic: APlayer.Music
+  /** 获取播放模式 */
+  @Getter('mode')
+  private readonly playMode: APlayer.PlayMode
   /** 获取当前主题颜色 */
   @Getter('theme')
   private readonly currentTheme: string
-  private collapsed = true
+  /** 获取播放速度 */
+  @Getter('speed')
+  private readonly playRate: number
+  /** 获取播放音量 */
+  @Getter('volume')
+  private readonly volume: number
+  /** 获取播放列表收缩状态 */
+  @Getter('collapsed')
+  private readonly collapsed: boolean
 
   /** 设置当前播放音乐信息 */
   @Mutation(SET_MUSIC)
   private setMusic: (music: APlayer.Music) => void
+  /** 设置播放模式 */
+  @Mutation(SET_PLAY_MODE)
+  private setPlayMode: (mode: APlayer.PlayMode) => void
   /** 设置当前主题 */
   @Mutation(SET_THEME)
   private setTheme: (theme: string) => void
+  /** 设置播放速度 */
+  @Mutation(SET_SPEED)
+  private setSpeed: (speed: number) => void
+  /** 设置播放音量 */
+  @Mutation(SET_VOLUME)
+  private setVolume: (volume: number) => void
+  /** 设置播放列表收缩状态 */
+  @Mutation(SET_COLLAPSED)
+  private setCollapsed: (collapsed: boolean) => void
   /** 同步 Audio 对象属性以更新视图 */
   @Mutation(SYNC_MEDIA)
   private syncMedia: (audio: HTMLAudioElement) => void
