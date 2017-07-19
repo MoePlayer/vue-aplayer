@@ -156,26 +156,36 @@ export default class APlayer extends Vue {
   /** 设置当前要播放的音乐 */
   // tslint:disable:unified-signatures
   public play (): void
-  public play (index: number): void
-  public play (music: APlayer.Music): void
-  public play (x?: number | APlayer.Music): void {
+  public play (index: number): Promise<any>
+  public play (music: APlayer.Music): Promise<any>
+  public play (x?: number | APlayer.Music): Promise<any> {
     if (x === void 0) {
-      this.audio.play()
-      return
+      if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+      else this.audio.play()
+      return void 0
     }
 
     let music = x as APlayer.Music
     let index = x as number
 
-    if (!music) music = this.music[index]
-    if (music.id === this.currentMusic.id) return
+    if (index < 0) {
+      this.setMusic(null)
+      this.audio.src = null
+      return void 0
+    }
+    if (typeof music !== 'object') music = this.music[index]
+    if (music.id === this.currentMusic.id && !this.audio.paused) return void 0
     this.setMusic(music)
-    this.audio.src = music.url
-    this.audio.preload = this.preload
-    this.audio.autoplay = this.autoplay
-    this.audio.volume = this.volume
-    if (this.playMode === 'single') this.audio.loop = true
-    this.speedChange()
+
+    return new Promise(resolve => {
+      this.audio.src = music.url
+      this.audio.preload = this.preload
+      this.audio.autoplay = this.autoplay
+      this.audio.volume = this.volume
+      this.audio.oncanplay = resolve
+      if (this.playMode === 'single') this.audio.loop = true
+      this.speedChange()
+    })
   }
 
   /** 暂停播放 */
@@ -289,17 +299,41 @@ export default class APlayer extends Vue {
   }
 
   /** 进度条发生改变触发的事件，设置新的播放进度 */
-  private progressChangeHandler (percent: number): void {
+  private async progressChangeHandler (percent: number): Promise<void> {
+    if (!this.currentMusic.url) await this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
     this.audio.currentTime = this.audio.duration * percent
   }
 
   /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
   private endedHandler () {
-    switch (this.playMode) {
-      case 'single': this.play(); return // 单曲循环
-      case 'circulation': return // 列表循环
-      case 'order': return // 顺序播放
-      case 'random': return // 随机播放
+    this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+  }
+
+  /**
+   * 根据当前播放模式获取下一曲要播放的音乐索引
+   *
+   * @private
+   * @param {APlayer.PlayMode} mode 当前播放模式
+   * @param {APlayer.Music} music 当前播放音乐
+   * @param {Array<APlayer.Music>} musics 音乐列表
+   * @returns {number} 下一曲要播放的音乐索引
+   * @memberof APlayer
+   */
+  private getPlayIndexByPlayMode (mode: APlayer.PlayMode, music: APlayer.Music, musics: Array<APlayer.Music>): number {
+    const index: number = musics.findIndex(x => x.id === music.id)
+    let next = index < 0 ? 0 : index
+    switch (mode) {
+      default: return next
+      case 'single': return next // 单曲循环
+      case 'circulation':
+        if (++next >= musics.length) next = 0 // 播放完回到第一项
+        return next // 列表循环
+      case 'order':
+        if (++next >= musics.length) next = -1 // 播放完停止
+        return next // 顺序播放
+      case 'random':
+        next = Math.floor(Math.random() * musics.length)
+        return next // 随机播放
     }
   }
 
