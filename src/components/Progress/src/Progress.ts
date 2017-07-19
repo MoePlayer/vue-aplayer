@@ -28,7 +28,7 @@ export class Progress extends Vue {
   @Watch('played')
   playedChange (): void {
     if (this.isPan) return
-    this.currentPlayed = this.played
+    this.currentPlayed = this.played || 0
   }
 
   private created (): void {
