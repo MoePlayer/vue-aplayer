@@ -18,7 +18,6 @@ import { List } from 'components/List'
 import { Item } from 'components/Item'
 
 import store from 'store'
-import { State } from 'store/state'
 import {
   SET_MUSIC,
   SET_THEME,
@@ -129,12 +128,12 @@ export default class APlayer extends Vue {
   private syncMedia: (audio: HTMLAudioElement) => void
 
   /** 已播放的进度比例 */
-  public get played (): number {
+  private get played (): number {
     return this.media.currentTime / this.media.duration
   }
 
   /** 已缓冲的进度比例 */
-  public get loaded (): number {
+  private get loaded (): number {
     if (Number(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA) {
       return this.media.buffered.end(this.media.buffered.length - 1) / this.media.duration
     }
@@ -142,7 +141,7 @@ export default class APlayer extends Vue {
   }
 
   /** 当前播放状态 */
-  public get status (): string {
+  private get status (): string {
     return !this.media.paused ? 'pause' : 'play'
   }
 
