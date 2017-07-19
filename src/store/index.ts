@@ -68,11 +68,13 @@ const state: State = {
   },
   music: null,
   list: [],
-  theme: '#ad7a86',
   mode: 'circulation',
+  theme: '#ad7a86',
+  volume: 1,
   collapsed: false
 }
 
 state.audio.volume = 0.8
+state.volume = state.audio.volume
 
 export default new Vuex.Store({ state, getters, actions, mutations })

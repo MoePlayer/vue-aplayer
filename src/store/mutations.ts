@@ -9,7 +9,8 @@ import {
   SET_COLLAPSED,
   SET_PLAY_MODE,
   SYNC_MEDIA,
-  SAVE_STATE
+  SAVE_STATE,
+  RECORD_VOLUME
 } from './types'
 
 export const mutations = {
@@ -30,5 +31,6 @@ export const mutations = {
       state.media[key] = audio[key]
     })
   },
-  [SAVE_STATE]: (state: State, config: State) => localStorage.setItem(state.key, JSON.stringify(config))
+  [SAVE_STATE]: (state: State, config: State) => localStorage.setItem(state.key, JSON.stringify(config)),
+  [RECORD_VOLUME]: (state: State, volume: number) => state.volume = volume
 } as MutationTree<State>

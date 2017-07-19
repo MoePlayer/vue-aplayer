@@ -27,7 +27,8 @@ import {
   SET_COLLAPSED,
   SET_PLAY_MODE,
   SYNC_MEDIA,
-  SAVE_STATE
+  SAVE_STATE,
+  RECORD_VOLUME
 } from 'store/types'
 
 import VueTouch from 'vue-touch'
@@ -104,6 +105,9 @@ export default class APlayer extends Vue {
   /** 获取播放音量 */
   @Getter('volume')
   private readonly volume: number
+  /** 静音前的音量 */
+  @Getter('historyVolume')
+  private readonly historyVolume: number
   /** 获取播放列表收缩状态 */
   @Getter('collapsed')
   private readonly collapsed: boolean
@@ -134,6 +138,9 @@ export default class APlayer extends Vue {
   /** 保存状态到本地 */
   @Mutation(SAVE_STATE)
   private saveState: (state: State) => void
+  /** 记录静音前的音量 取消静音后恢复原音量 */
+  @Mutation(RECORD_VOLUME)
+  private recordVolume: (volume: number) => void
 
   /** 已播放的进度比例 */
   private get played (): number {
@@ -155,12 +162,7 @@ export default class APlayer extends Vue {
 
   /** 当前播放模式对应文案 */
   private get displayPlayMode (): string {
-    const map = {
-      circulation: '列表循环',
-      single: '单曲循环',
-      random: '随机播放',
-      order: '顺序播放'
-    }
+    const map = { circulation: '列表循环', single: '单曲循环', random: '随机播放', order: '顺序播放' }
     return map[this.playMode]
   }
 
@@ -211,7 +213,8 @@ export default class APlayer extends Vue {
 
   /** 切换静音 */
   public toggleVolume (): void {
-    this.setVolume(this.audio.volume > 0 ? 0 : this.config.media.volume || 1)
+    if (this.audio.volume > 0) this.recordVolume(this.audio.volume)
+    this.setVolume(this.audio.volume > 0 ? 0 : this.historyVolume || 1)
   }
 
   /** 切换播放模式 */
