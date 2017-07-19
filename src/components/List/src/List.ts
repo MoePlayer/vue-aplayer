@@ -24,12 +24,6 @@ export class List extends Vue {
     else this.$nextTick(() => this.height = (this.$refs.list as HTMLElement).offsetHeight + 'px')
   }
 
-  // @Watch('collapsed')
-  // private collapsedChange (): void {
-  //   if (this.collapsed) this.height = '0px'
-  //   else this.height = (this.$refs.list as HTMLElement).offsetHeight + 'px'
-  // }
-
   private mounted (): void {
     this.musicChange()
   }
