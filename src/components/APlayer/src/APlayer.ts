@@ -129,6 +129,11 @@ export default class APlayer extends Vue {
     this.audio.paused ? this.play() : this.pause()
   }
 
+  /** 切换静音 */
+  public toggleVolume (): void {
+    this.audio.volume = this.audio.volume > 0 ? 0 : 1
+  }
+
   /** 设置当前要播放的音乐 */
   // tslint:disable:unified-signatures
   public setPlayMusic (index: number): void
@@ -159,6 +164,7 @@ export default class APlayer extends Vue {
     const mediaEvents = ['abort', 'canplay', 'canplaythrough', 'durationchange', 'emptied', 'ended', 'error', 'loadeddata', 'loadedmetadata', 'loadstart', 'pause', 'play', 'playing', 'progress', 'ratechange', 'readystatechange', 'seeked', 'seeking', 'stalled', 'suspend', 'timeupdate', 'volumechange', 'waiting']
     mediaEvents.forEach(event => {
       this.audio.addEventListener(event, () => this.syncMedia(this.audio))
+      this.$emit(event)
     })
   }
 
@@ -179,8 +185,12 @@ export default class APlayer extends Vue {
     this.audio.playbackRate = this.speed
   }
 
-  private progressChangeHandler (percent): void {
+  private progressChangeHandler (percent: number): void {
     this.audio.currentTime = this.audio.duration * percent
+  }
+
+  private volumeChangeHandler (volume: number): void {
+    this.audio.volume = volume
   }
 
 }

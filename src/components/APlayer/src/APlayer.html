@@ -1,4 +1,4 @@
-<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc || showlrc }">
+<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc && showlrc }">
   <vPicture :url="currentMusic.pic">
     <div :class="`aplayer-button aplayer-${status}`" @click="toggle">
       <vButton :type="status" :icon="status" />
@@ -10,7 +10,7 @@
     <Controller slot="controller">
       <ProgressBar slot="progress" :loaded="loaded" :played="played" @change="progressChangeHandler" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
-      <Volume slot="volume" />
+      <Volume slot="volume" :value="media.volume" @toggle="toggleVolume" @change="volumeChangeHandler" />
       <vButton slot="mode" type="mode" icon="random" />
       <vButton slot="menu" type="menu" icon="menu" />
     </Controller>
