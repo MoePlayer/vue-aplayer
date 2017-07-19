@@ -69,9 +69,9 @@ const state: State = {
   list: [],
   theme: '#b7daff',
   mode: 'circulation',
-  speed: 1,
-  volume: 0.8,
   collapsed: false
 }
+
+state.audio.volume = 0.8
 
 export default new Vuex.Store({ state, getters, actions, mutations })
