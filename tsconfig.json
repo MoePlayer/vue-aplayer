@@ -20,6 +20,10 @@
     ],
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }
