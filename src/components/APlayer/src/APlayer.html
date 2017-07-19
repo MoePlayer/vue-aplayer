@@ -1,7 +1,7 @@
 <div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc && showlrc }">
   <vPicture :url="currentMusic.pic">
     <div :class="`aplayer-button aplayer-${status}`" @click="toggle">
-      <vButton :type="status" :icon="status" />
+      <vButton :type="status" :icon="status" :title="media.paused ? '播放' : '暂停'" />
     </div>
   </vPicture>
   <Container>

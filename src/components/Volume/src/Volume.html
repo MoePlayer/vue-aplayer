@@ -1,6 +1,6 @@
-<div class="aplayer-volume-wrap" :title="value > 0 ? '静音' : '取消静音'">
-  <vButton :type="`volume-${status}`" :icon="`volume-${status}`" @click="$emit('toggle')" />
-  <v-touch @panmove="changeHandler">
+<div class="aplayer-volume-wrap">
+  <vButton :type="`volume-${status}`" :icon="`volume-${status}`" @click="$emit('toggle')" :title="value > 0 ? '静音' : '取消静音'" />
+  <v-touch @panmove="changeHandler" :title="`${Math.round(currentValue * 100)}%`">
     <div class="aplayer-volume-bar-wrap" @click="changeHandler">
       <div class="aplayer-volume-bar" ref="bar">
         <div class="aplayer-volume" :style="{ height: `${currentValue * 100}%`, background: theme }"></div>
