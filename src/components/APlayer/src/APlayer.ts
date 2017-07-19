@@ -47,6 +47,7 @@ enum ReadyState {
   HAVE_ENOUGH_DATA = 4
 }
 
+// tslint:disable:member-ordering
 @WithRender
 @Component({ components: { vPicture, vButton, Container, Controller, Info, Lyric, ProgressBar, TimeBar, Volume, List, Item }, store })
 export default class APlayer extends Vue {
@@ -90,7 +91,7 @@ export default class APlayer extends Vue {
   private readonly media: Media
   /** 获取当前播放的音乐信息 */
   @Getter('music')
-  private readonly currentMusic: APlayer.Music
+  public readonly currentMusic: APlayer.Music
   /** 获取播放模式 */
   @Getter('mode')
   private readonly playMode: APlayer.PlayMode
@@ -110,7 +111,6 @@ export default class APlayer extends Vue {
   private readonly config: State
 
   /** 设置当前播放音乐信息 */
-  // tslint:disable-next-line:member-ordering
   @Mutation(SET_MUSIC)
   public setMusic: (music: APlayer.Music) => void
   /** 设置播放模式 */
@@ -291,5 +291,7 @@ export default class APlayer extends Vue {
   }
 
 }
+
+// tslint:enable:member-ordering
 
 export { APlayer, vPicture, vButton, Container, Controller, Info, Lyric, ProgressBar, TimeBar, Volume, List, Item }
