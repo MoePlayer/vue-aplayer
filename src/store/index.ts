@@ -70,7 +70,7 @@ const state: State = {
   theme: '#b7daff',
   mode: 'circulation',
   speed: 1,
-  volume: 1,
+  volume: 0.8,
   collapsed: false
 }
 
