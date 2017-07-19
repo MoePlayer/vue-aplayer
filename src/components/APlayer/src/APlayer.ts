@@ -195,10 +195,17 @@ export default class APlayer extends Vue {
     this.speedChange()
   }
 
+  /** 尊重原作者 输出版本信息和原 APlayer 地址 */
   private beforeCreate (): void {
+    /*
+      The Star And Thank Author License (SATA)
+      Copyright (c) 2016-2017 DIYgod(i@html.love)
+      Project Url: https://github.com/DIYgod/APlayer
+    */
     console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
   }
 
+  /** 初始化组件信息 */
   private created (): void {
     this.themeChange()
 
@@ -241,14 +248,6 @@ export default class APlayer extends Vue {
     })
   }
 
-  @Watch('music', { deep: true })
-  private musicChange (): void {
-    if (this.music.length <= 0) return
-    if (!this.audio.paused) return
-    if (this.config.music) return
-    this.setPlayMusic(0)
-  }
-
   @Watch('theme')
   private themeChange (): void {
     this.setTheme(this.theme)
@@ -259,6 +258,20 @@ export default class APlayer extends Vue {
     this.setSpeed(this.speed)
   }
 
+  /**
+   * 监听播放列表
+   * 如果是首次初始化列表则
+   * 根据当前播放模式设置要播放的音乐
+   */
+  @Watch('music', { deep: true })
+  private musicChange (): void {
+    if (this.music.length <= 0) return
+    if (!this.audio.paused) return
+    if (this.config.music) return
+    this.setPlayMusic(0)
+  }
+
+  /** 进度条发生改变触发的事件，设置新的播放进度 */
   private progressChangeHandler (percent: number): void {
     this.audio.currentTime = this.audio.duration * percent
   }
