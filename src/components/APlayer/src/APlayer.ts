@@ -18,6 +18,7 @@ import { List } from 'components/List'
 import { Item } from 'components/Item'
 
 import store from 'store'
+import { State } from 'store/state'
 import {
   SET_MUSIC,
   SET_THEME,
@@ -25,7 +26,8 @@ import {
   SET_VOLUME,
   SET_COLLAPSED,
   SET_PLAY_MODE,
-  SYNC_MEDIA
+  SYNC_MEDIA,
+  SAVE_STATE
 } from 'store/types'
 
 import VueTouch from 'vue-touch'
@@ -104,6 +106,8 @@ export default class APlayer extends Vue {
   /** 获取播放列表收缩状态 */
   @Getter('collapsed')
   private readonly collapsed: boolean
+  @Getter('config')
+  private readonly config: State
 
   /** 设置当前播放音乐信息 */
   @Mutation(SET_MUSIC)
@@ -126,6 +130,9 @@ export default class APlayer extends Vue {
   /** 同步 Audio 对象属性以更新视图 */
   @Mutation(SYNC_MEDIA)
   private syncMedia: (audio: HTMLAudioElement) => void
+  /** 保存状态到本地 */
+  @Mutation(SAVE_STATE)
+  private saveState: (state: State) => void
 
   /** 已播放的进度比例 */
   private get played (): number {
@@ -162,7 +169,12 @@ export default class APlayer extends Vue {
 
   /** 切换静音 */
   public toggleVolume (): void {
-    this.audio.volume = this.audio.volume > 0 ? 0 : 1
+    this.setVolume(this.audio.volume > 0 ? 0 : 1)
+  }
+
+  /** 切换播放列表收缩状态 */
+  public toggleCollapsed (): void {
+    this.setCollapsed(!this.collapsed)
   }
 
   /** 设置当前要播放的音乐 */
@@ -179,7 +191,7 @@ export default class APlayer extends Vue {
     this.audio.src = music.url
     this.audio.preload = this.preload
     this.audio.autoplay = this.autoplay
-    this.audio.volume = 0.8
+    this.audio.volume = this.volume
     this.speedChange()
   }
 
@@ -188,8 +200,37 @@ export default class APlayer extends Vue {
   }
 
   private created (): void {
-    this.musicChange()
     this.themeChange()
+
+    // 恢复播放器状态信息
+    const music = this.config.music
+    const media = this.config.media
+    const mode = this.config.mode
+
+    this.setCollapsed(this.config.collapsed) // 恢复播放列表展开状态
+    if (music) this.setPlayMusic(music) // 恢复播放的音频
+    if (mode) this.setPlayMode(mode) // 恢复播放模式
+    if (media) {
+      this.setSpeed(media.playbackRate) // 恢复播放速度
+      this.setVolume(media.volume) // 恢复播放音量
+      // 恢复播放状态
+      if (media.paused) this.pause()
+      // 如果设置了自动播放则恢复播放进度
+      if (this.autoplay) this.audio.currentTime = media.currentTime
+    }
+
+    // 监听 Store
+    // 保存播放器状态信息
+    this.$store.subscribe((mutation, state: State) => {
+      if (mutation.type === SAVE_STATE) return // 防止递归调用
+      const ignore = ['key', 'audio', 'list'] // 忽略保存不必要的项
+      const storage = {}
+      Object.keys(state)
+        .filter(key => ignore.indexOf(key) === -1)
+        .forEach(key => storage[key] = state[key])
+
+      this.saveState(storage as State)
+    })
 
     // 注册所有 Media 事件
     // 事件触发时同步 Audio 对象的属性到 Media 对象以更新视图
@@ -214,15 +255,11 @@ export default class APlayer extends Vue {
 
   @Watch('speed')
   private speedChange (): void {
-    this.audio.playbackRate = this.speed
+    this.setSpeed(this.speed)
   }
 
   private progressChangeHandler (percent: number): void {
     this.audio.currentTime = this.audio.duration * percent
-  }
-
-  private volumeChangeHandler (volume: number): void {
-    this.audio.volume = volume
   }
 
 }

@@ -6,13 +6,13 @@
   </vPicture>
   <Container>
     <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />
-    <Lyric slot="lyric" :currentTime="media.currentTime" :lrc="currentMusic.lrc" />
+    <Lyric slot="lyric" v-if="currentMusic.lrc && showlrc" :currentTime="media.currentTime" :lrc="currentMusic.lrc" />
     <Controller slot="controller">
       <ProgressBar slot="progress" :loaded="loaded" :played="played" @change="progressChangeHandler" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
-      <Volume slot="volume" :value="media.volume" @toggle="toggleVolume" @change="volumeChangeHandler" />
+      <Volume slot="volume" :value="volume" @toggle="toggleVolume" @change="setVolume" />
       <vButton slot="mode" type="mode" icon="random" />
-      <vButton slot="menu" type="menu" icon="menu" @click="collapsed = !collapsed" />
+      <vButton slot="menu" type="menu" icon="menu" @click="toggleCollapsed" />
     </Controller>
   </Container>
   <List :music="music" :maxheight="listmaxheight" :collapsed="collapsed">
