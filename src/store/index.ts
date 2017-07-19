@@ -67,10 +67,11 @@ const state: State = {
   },
   music: null,
   list: [],
+  theme: '#b7daff',
   mode: 'circulation',
   speed: 1,
   volume: 1,
-  theme: '#b7daff'
+  collapsed: false
 }
 
 export default new Vuex.Store({ state, getters, actions, mutations })
