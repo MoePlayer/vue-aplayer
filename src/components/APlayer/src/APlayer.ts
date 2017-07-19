@@ -153,6 +153,17 @@ export default class APlayer extends Vue {
     return !this.media.paused ? 'pause' : 'play'
   }
 
+  /** 当前播放模式对应文案 */
+  private get displayPlayMode (): string {
+    const map = {
+      circulation: '列表循环',
+      single: '单曲循环',
+      random: '随机播放',
+      order: '顺序播放'
+    }
+    return map[this.playMode]
+  }
+
   /** 设置当前要播放的音乐 */
   // tslint:disable:unified-signatures
   public play (): void

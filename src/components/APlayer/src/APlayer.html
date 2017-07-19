@@ -11,8 +11,8 @@
       <ProgressBar slot="progress" :loaded="loaded" :played="played" @change="progressChangeHandler" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
       <Volume slot="volume" :value="volume" @toggle="toggleVolume" @change="setVolume" />
-      <vButton slot="mode" type="mode" :icon="playMode" @click="togglePlayMode" />
-      <vButton slot="menu" type="menu" icon="menu" @click="toggleCollapsed" />
+      <vButton slot="mode" type="mode" :icon="playMode" @click="togglePlayMode" :title="displayPlayMode" />
+      <vButton slot="menu" type="menu" icon="menu" @click="toggleCollapsed" :title="collapsed ? '展开' : '收起'" />
     </Controller>
   </Container>
   <List :music="music" :maxheight="listmaxheight" :collapsed="collapsed">
