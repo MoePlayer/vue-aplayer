@@ -5,7 +5,5 @@ export interface State {
   list: Array<APlayer.Music>
   mode: APlayer.PlayMode
   theme: string
-  speed: number
-  volume: number
   collapsed: boolean
 }

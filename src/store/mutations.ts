@@ -15,8 +15,8 @@ export const mutations = {
   [ADD_MUSICS]: (state: State, musics: Array<APlayer.Music>) => state.list = state.list.concat(musics),
   [SET_MUSIC]: (state: State, music: APlayer.Music) => state.music = music,
   [SET_THEME]: (state: State, theme: string) => state.theme = theme,
-  [SET_SPEED]: (state: State, speed: number) => state.speed = speed,
-  [SET_VOLUME]: (state: State, volume: number) => state.volume = volume,
+  [SET_SPEED]: (state: State, speed: number) => state.audio.playbackRate = speed,
+  [SET_VOLUME]: (state: State, volume: number) => state.audio.volume = volume,
   [SET_COLLAPSED]: (state: State, collapsed: boolean) => state.collapsed = collapsed,
   [SET_PLAY_MODE]: (state: State, mode: APlayer.PlayMode) => state.mode = mode,
   [SYNC_MEDIA]: (state: State, audio: HTMLAudioElement) => {
