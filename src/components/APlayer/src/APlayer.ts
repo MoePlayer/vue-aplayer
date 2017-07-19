@@ -153,9 +153,29 @@ export default class APlayer extends Vue {
     return !this.media.paused ? 'pause' : 'play'
   }
 
-  /** 开始播放 */
-  public play (): void {
-    this.audio.play()
+  /** 设置当前要播放的音乐 */
+  // tslint:disable:unified-signatures
+  public play (): void
+  public play (index: number): void
+  public play (music: APlayer.Music): void
+  public play (x?: number | APlayer.Music): void {
+    if (!x) {
+      this.audio.play()
+      return
+    }
+
+    let music = x as APlayer.Music
+    let index = x as number
+
+    if (!music) music = this.music[index]
+    if (music.title === this.currentMusic.title) return
+    this.setMusic(music)
+    this.audio.src = music.url
+    this.audio.preload = this.preload
+    this.audio.autoplay = this.autoplay
+    this.audio.volume = this.volume
+    if (this.playMode === 'single') this.audio.loop = true
+    this.speedChange()
   }
 
   /** 暂停播放 */
@@ -178,32 +198,13 @@ export default class APlayer extends Vue {
     // play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
     const modes = ['circulation', 'single', 'random', 'order']
     let index = modes.indexOf(this.playMode) + 1
-    if (index >= modes.length - 1) index = 0
+    if (index >= modes.length) index = 0
     this.setPlayMode(modes[index] as APlayer.PlayMode)
   }
 
   /** 切换播放列表收缩状态 */
   public toggleCollapsed (): void {
     this.setCollapsed(!this.collapsed)
-  }
-
-  /** 设置当前要播放的音乐 */
-  // tslint:disable:unified-signatures
-  public setPlayMusic (index: number): void
-  public setPlayMusic (music: APlayer.Music): void
-  public setPlayMusic (x: number | APlayer.Music): void {
-    let music = x as APlayer.Music
-    let index = x as number
-
-    if (!music) music = this.music[index]
-    if (music.title === this.currentMusic.title) return
-    this.setMusic(music)
-    this.audio.src = music.url
-    this.audio.preload = this.preload
-    this.audio.autoplay = this.autoplay
-    this.audio.volume = this.volume
-    if (this.playMode === 'single') this.audio.loop = true
-    this.speedChange()
   }
 
   /**
@@ -228,7 +229,7 @@ export default class APlayer extends Vue {
       const mode = this.config.mode
 
       this.setCollapsed(this.config.collapsed) // 恢复播放列表展开状态
-      if (music) this.setPlayMusic(music) // 恢复播放的音频
+      if (music) this.play(music) // 恢复播放的音频
       if (mode) this.setPlayMode(mode) // 恢复播放模式
       if (media) {
         this.setSpeed(media.playbackRate) // 恢复播放速度
@@ -260,6 +261,8 @@ export default class APlayer extends Vue {
       this.audio.addEventListener(event, () => this.syncMedia(this.audio))
       this.$emit(event)
     })
+
+    this.audio.addEventListener('ended', this.endedHandler)
   }
 
   @Watch('theme')
@@ -282,12 +285,22 @@ export default class APlayer extends Vue {
     if (this.music.length <= 0) return
     if (!this.audio.paused) return
     if (this.config && this.config.music) return
-    this.setPlayMusic(0)
+    this.play(0)
   }
 
   /** 进度条发生改变触发的事件，设置新的播放进度 */
   private progressChangeHandler (percent: number): void {
     this.audio.currentTime = this.audio.duration * percent
+  }
+
+  /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
+  private endedHandler () {
+    switch (this.playMode) {
+      case 'single': this.play(); return // 单曲循环
+      case 'circulation': return // 列表循环
+      case 'order': return // 顺序播放
+      case 'random': return // 随机播放
+    }
   }
 
 }
