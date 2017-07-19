@@ -15,9 +15,9 @@ export interface LRC {
 export class Lyric extends Vue {
 
   @Prop({ type: String, required: false })
-  public lrc: string
+  public readonly lrc: string
   @Prop({ type: Number, required: false, default: 0 })
-  public currentTime: number
+  public readonly currentTime: number
 
   /** 获取解析后的歌词文本 */
   private currentLRC: string = null

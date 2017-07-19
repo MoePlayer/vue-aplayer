@@ -44,47 +44,47 @@ export default class APlayer extends Vue {
 
   /** narrow style */
   @Prop({ type: Boolean, default: false, required: false })
-  public narrow?: boolean
+  public readonly narrow?: boolean
   /** autoplay song(s), not supported by mobile browsers */
   @Prop({ type: Boolean, default: false, required: false })
-  public autoplay?: boolean
+  public readonly autoplay?: boolean
   /** show lrc, can be 0, 1, 2 */
   @Prop({ type: Boolean, default: false, required: false })
-  public showlrc?: boolean
+  public readonly showlrc?: boolean
   @Prop({ type: Boolean, default: true, required: false })
   /** pause other players when this player playing */
-  public mutex?: boolean
+  public readonly mutex?: boolean
   /** theme color, default: #b7daff */
   @Prop({ type: String, default: '#b7daff', required: false })
-  public theme?: string
+  public readonly theme?: string
   /** play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation` */
   @Prop({ type: String, default: 'circulation', required: false })
-  public mode?: APlayer.PlayMode
+  public readonly mode?: APlayer.PlayMode
   /** the way to load music, can be 'none' 'metadata' 'auto', default: 'auto' */
   @Prop({ type: String, default: 'auto', required: false })
-  public preload?: APlayer.Preload
+  public readonly preload?: APlayer.Preload
   /** max height of play list */
   @Prop({ type: String, default: 'auto', required: false })
-  public listmaxheight?: string
+  public readonly listmaxheight?: string
   /** music info */
   @Prop({ type: Array, default: () => [], required: true })
-  public music: Array<APlayer.Music>
+  public readonly music: Array<APlayer.Music>
   /** play speed */
   @Prop({ type: Number, default: 1, required: false })
-  public speed: number
+  public readonly speed: number
 
   /** 获取当前 Audio 对象实例 */
   @Getter('audio')
-  private audio: HTMLAudioElement
+  private readonly audio: HTMLAudioElement
   /** 自定义 Media 类型，用于同步 Audio 对象的属性更新视图 */
   @Getter('media')
-  private media: Media
+  private readonly media: Media
   /** 获取当前播放的音乐信息 */
   @Getter('music')
-  private currentMusic: APlayer.Music
+  private readonly currentMusic: APlayer.Music
   /** 获取当前主题颜色 */
   @Getter('theme')
-  private currentTheme: string
+  private readonly currentTheme: string
 
   /** 设置当前播放音乐信息 */
   @Mutation(SET_MUSIC)

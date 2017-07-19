@@ -9,9 +9,9 @@ import svg from './svg'
 @Component
 export class Button extends Vue {
   @Prop({ type: String, default: 'play' })
-  public type: string
+  public readonly type: string
   @Prop({ type: String, default: 'play' })
-  public icon: string
+  public readonly icon: string
 
   public get path () {
     return svg[this.icon]

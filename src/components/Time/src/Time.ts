@@ -9,9 +9,9 @@ import { Prop } from 'vue-property-decorator'
 export class Time extends Vue {
 
   @Prop({ type: Number, default: 0, required: true })
-  public currentTime: number
+  public readonly currentTime: number
   @Prop({ type: Number, default: 0, required: true })
-  public duration: number
+  public readonly duration: number
 
   get ptime (): string {
     return this.timeSecondsFormat(this.currentTime)

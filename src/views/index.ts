@@ -13,7 +13,7 @@ Vue.use(APlayer)
 @Component({ store })
 export default class IndexPage extends Vue {
   @Getter('list')
-  private music: Array<APlayer.Music>
+  private readonly music: Array<APlayer.Music>
   @Action('getMusics')
   private getMusics: () => void
 
