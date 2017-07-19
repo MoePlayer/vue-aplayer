@@ -245,6 +245,7 @@ export default class APlayer extends Vue {
   private musicChange (): void {
     if (this.music.length <= 0) return
     if (!this.audio.paused) return
+    if (this.config.music) return
     this.setPlayMusic(0)
   }
 
