@@ -208,7 +208,6 @@ export default class APlayer extends Vue {
       this.audio.autoplay = this.autoplay
       this.audio.volume = this.volume
       this.audio.oncanplay = resolve
-      if (this.playMode === 'single') this.audio.loop = true
       this.speedChange()
     })
   }
@@ -357,10 +356,10 @@ export default class APlayer extends Vue {
    */
   private getPlayIndexByPlayMode (mode: APlayer.PlayMode, music: APlayer.Music, musics: Array<APlayer.Music>): number {
     const index: number = musics.findIndex(x => x.id === music.id)
-    let next = index < 0 ? 0 : index
+    let next = index
     switch (mode) {
       default: return next
-      case 'single': return next // 单曲循环
+      case 'single': return next < 0 ? 0 : next // 单曲循环
       case 'circulation':
         if (++next >= musics.length) next = 0 // 播放完回到第一项
         return next // 列表循环
