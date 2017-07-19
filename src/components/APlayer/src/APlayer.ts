@@ -169,7 +169,16 @@ export default class APlayer extends Vue {
 
   /** 切换静音 */
   public toggleVolume (): void {
-    this.setVolume(this.audio.volume > 0 ? 0 : 1)
+    this.setVolume(this.audio.volume > 0 ? 0 : this.config.media.volume || 1)
+  }
+
+  /** 切换播放模式 */
+  public togglePlayMode (): void {
+    // play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    const modes = ['circulation', 'single', 'random', 'order']
+    let index = modes.indexOf(this.playMode) + 1
+    if (index >= modes.length - 1) index = 0
+    this.setPlayMode(modes[index] as APlayer.PlayMode)
   }
 
   /** 切换播放列表收缩状态 */
@@ -192,6 +201,7 @@ export default class APlayer extends Vue {
     this.audio.preload = this.preload
     this.audio.autoplay = this.autoplay
     this.audio.volume = this.volume
+    if (this.playMode === 'single') this.audio.loop = true
     this.speedChange()
   }
 
@@ -210,20 +220,22 @@ export default class APlayer extends Vue {
     this.themeChange()
 
     // 恢复播放器状态信息
-    const music = this.config.music
-    const media = this.config.media
-    const mode = this.config.mode
+    if (this.config) {
+      const music = this.config.music
+      const media = this.config.media
+      const mode = this.config.mode
 
-    this.setCollapsed(this.config.collapsed) // 恢复播放列表展开状态
-    if (music) this.setPlayMusic(music) // 恢复播放的音频
-    if (mode) this.setPlayMode(mode) // 恢复播放模式
-    if (media) {
-      this.setSpeed(media.playbackRate) // 恢复播放速度
-      this.setVolume(media.volume) // 恢复播放音量
-      // 恢复播放状态
-      if (media.paused) this.pause()
-      // 如果设置了自动播放则恢复播放进度
-      if (this.autoplay) this.audio.currentTime = media.currentTime
+      this.setCollapsed(this.config.collapsed) // 恢复播放列表展开状态
+      if (music) this.setPlayMusic(music) // 恢复播放的音频
+      if (mode) this.setPlayMode(mode) // 恢复播放模式
+      if (media) {
+        this.setSpeed(media.playbackRate) // 恢复播放速度
+        this.setVolume(media.volume) // 恢复播放音量
+        // 恢复播放状态
+        if (media.paused) this.pause()
+        // 如果设置了自动播放则恢复播放进度
+        if (this.autoplay) this.audio.currentTime = media.currentTime
+      }
     }
 
     // 监听 Store
@@ -267,7 +279,7 @@ export default class APlayer extends Vue {
   private musicChange (): void {
     if (this.music.length <= 0) return
     if (!this.audio.paused) return
-    if (this.config.music) return
+    if (this.config && this.config.music) return
     this.setPlayMusic(0)
   }
 

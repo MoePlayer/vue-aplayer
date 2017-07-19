@@ -11,7 +11,7 @@
       <ProgressBar slot="progress" :loaded="loaded" :played="played" @change="progressChangeHandler" />
       <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
       <Volume slot="volume" :value="volume" @toggle="toggleVolume" @change="setVolume" />
-      <vButton slot="mode" type="mode" icon="random" />
+      <vButton slot="mode" type="mode" :icon="playMode" @click="togglePlayMode" />
       <vButton slot="menu" type="menu" icon="menu" @click="toggleCollapsed" />
     </Controller>
   </Container>
