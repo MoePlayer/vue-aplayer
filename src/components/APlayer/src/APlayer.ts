@@ -159,7 +159,7 @@ export default class APlayer extends Vue {
   public play (index: number): void
   public play (music: APlayer.Music): void
   public play (x?: number | APlayer.Music): void {
-    if (!x) {
+    if (x === void 0) {
       this.audio.play()
       return
     }
@@ -168,7 +168,7 @@ export default class APlayer extends Vue {
     let index = x as number
 
     if (!music) music = this.music[index]
-    if (music.title === this.currentMusic.title) return
+    if (music.id === this.currentMusic.id) return
     this.setMusic(music)
     this.audio.src = music.url
     this.audio.preload = this.preload

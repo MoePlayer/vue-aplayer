@@ -20,7 +20,7 @@
       :index="index + 1"
       :title="music.title"
       :author="music.author"
-      :active="music.title === currentMusic.title"
-      @click="setPlayMusic(music)" />
+      :active="music.id === currentMusic.id"
+      @click="play(music)" />
   </List>
 </div>
