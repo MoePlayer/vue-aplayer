@@ -62,8 +62,8 @@ export default class APlayer extends Vue {
   /** show lrc, can be 0, 1, 2 */
   @Prop({ type: Boolean, default: false, required: false })
   public readonly showlrc?: boolean
-  @Prop({ type: Boolean, default: true, required: false })
   /** pause other players when this player playing */
+  @Prop({ type: Boolean, default: true, required: false })
   public readonly mutex?: boolean
   /** theme color, default: #b7daff */
   @Prop({ type: String, default: '#b7daff', required: false })
@@ -172,9 +172,21 @@ export default class APlayer extends Vue {
   public play (index: number): Promise<any>
   public play (music: APlayer.Music): Promise<any>
   public play (x?: number | APlayer.Music): Promise<any> {
+    this.mutex && this.postMessage({ action: 'mutex', timespan: new Date().getTime() })
     if (x === void 0) {
+      // tslint:disable:brace-style
       if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
       else this.audio.play()
+      // else {
+      //   // 互斥模式下如果当前播放的音乐和其他标签页播放的音乐是同一曲
+      //   // 则恢复其他标签页的播放进度
+      //   // 如果不是同一曲则重新设置播放的曲目并恢复播放进度
+      //   const identical = this.currentMusic.id === this.config.music.id
+      //   if (!identical) this.play(this.config.music)
+      //   this.audio.currentTime = this.config.media.currentTime
+      //   this.audio.play()
+      // }
+      // tslint:enable:brace-style
       return void 0
     }
 
@@ -287,6 +299,16 @@ export default class APlayer extends Vue {
     })
 
     this.audio.addEventListener('ended', this.endedHandler)
+
+    // 暂停其他实例（多标签页）
+    if (!this.mutex) return
+    const action = 'mutex'
+    const key = this.postMessage({ action, timespan: new Date().getTime() })
+    window.addEventListener('storage', evt => {
+      if (evt.key !== key) return
+      const data = JSON.parse(evt.newValue) as { action: string; timespan: number }
+      if (data && data.action === action) this.pause()
+    })
   }
 
   @Watch('theme')
@@ -349,6 +371,12 @@ export default class APlayer extends Vue {
         next = Math.floor(Math.random() * musics.length)
         return next // 随机播放
     }
+  }
+
+  private postMessage (data: any): string {
+    const key = 'APLAYER_POST_MESSAGE'
+    localStorage.setItem(key, JSON.stringify(data))
+    return key
   }
 
 }
