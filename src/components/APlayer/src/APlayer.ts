@@ -83,6 +83,8 @@ export default class APlayer extends Vue {
   /** play speed */
   @Prop({ type: Number, default: 1, required: false })
   public readonly speed: number
+  @Prop({ type: Boolean, default: false, required: false })
+  public readonly fold?: boolean
 
   /** 获取当前 Audio 对象实例 */
   @Getter('audio')
@@ -318,6 +320,11 @@ export default class APlayer extends Vue {
   @Watch('speed')
   private speedChange (): void {
     this.setSpeed(this.speed)
+  }
+
+  @Watch('fold')
+  private foldChange (): void {
+    this.setCollapsed(this.fold)
   }
 
   /**
