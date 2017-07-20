@@ -168,6 +168,17 @@ export default class APlayer extends Vue {
     return map[this.playMode]
   }
 
+  /** 当前播放的音乐在播放列表中的位置 */
+  private get currentMusicOffsetTop (): number {
+    if (this.music.length <= 0) return 0
+    const list = this.$refs.list as List
+    const items = this.$refs.items as Array<Item> || []
+    const { id } = this.currentMusic
+    const active = items.find(item => item.id === id)
+    if (active) return active.$el.offsetTop - list.$el.offsetTop
+    return 0
+  }
+
   /** 设置当前要播放的音乐 */
   // tslint:disable:unified-signatures
   public play (): void
@@ -295,8 +306,10 @@ export default class APlayer extends Vue {
     // 事件触发时同步 Audio 对象的属性到 Media 对象以更新视图
     const mediaEvents = ['abort', 'canplay', 'canplaythrough', 'durationchange', 'emptied', 'ended', 'error', 'loadeddata', 'loadedmetadata', 'loadstart', 'pause', 'play', 'playing', 'progress', 'ratechange', 'readystatechange', 'seeked', 'seeking', 'stalled', 'suspend', 'timeupdate', 'volumechange', 'waiting']
     mediaEvents.forEach(event => {
-      this.audio.addEventListener(event, () => this.syncMedia(this.audio))
-      this.$emit(event)
+      this.audio.addEventListener(event, evt => {
+        this.syncMedia(this.audio)
+        this.$emit(event, evt)
+      })
     })
 
     this.audio.addEventListener('ended', this.endedHandler)
