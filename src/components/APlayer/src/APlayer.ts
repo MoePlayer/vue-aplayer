@@ -65,8 +65,8 @@ export default class APlayer extends Vue {
   /** pause other players when this player playing */
   @Prop({ type: Boolean, default: true, required: false })
   public readonly mutex?: boolean
-  /** theme color, default: #b7daff */
-  @Prop({ type: String, default: '#b7daff', required: false })
+  /** theme color, default: #ad7a86 */
+  @Prop({ type: String, default: '#ad7a86', required: false })
   public readonly theme?: string
   /** play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation` */
   @Prop({ type: String, default: 'circulation', required: false })
