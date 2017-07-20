@@ -12,12 +12,14 @@ Vue.use(APlayer)
 @WithRender
 @Component({ store })
 export default class IndexPage extends Vue {
+
   @Getter('list')
   private readonly music: Array<APlayer.Music>
   @Action('getMusics')
-  private getMusics: () => void
+  private readonly getMusics: () => void
 
-  private created () {
-    setTimeout(() => this.getMusics(), 1000)
+  private created (): void {
+    this.getMusics()
   }
+
 }
