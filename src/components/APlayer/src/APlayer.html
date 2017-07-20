@@ -1,4 +1,4 @@
-<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': currentMusic.lrc && showlrc, 'aplayer-narrow': narrow }">
+<div class="aplayer aplayer-withlist" :class="{ 'aplayer-withlrc': showlrc, 'aplayer-narrow': narrow }">
   <vPicture :url="currentMusic.pic">
     <div :class="`aplayer-button aplayer-${status}`" @click="toggle">
       <vButton :type="status" :icon="status" :title="media.paused ? '播放' : '暂停'" />
@@ -7,7 +7,7 @@
   <template v-if="!narrow">
     <Container>
       <Info slot="info" :title="currentMusic.title" :author="currentMusic.author" />
-      <Lyric slot="lyric" v-if="currentMusic.lrc && showlrc" :currentTime="media.currentTime" :lrc="currentMusic.lrc" />
+      <Lyric slot="lyric" v-if="showlrc" :currentTime="media.currentTime" :lrc="currentMusic.lrc" />
       <Controller slot="controller">
         <ProgressBar slot="progress" :loaded="loaded" :played="played" @change="progressChangeHandler" />
         <TimeBar slot="time" :currentTime="media.currentTime" :duration="media.duration" />
