@@ -1,6 +1,6 @@
 # 使用
 
-为了降低新手的使用难度这里采用 CDN 的方式引用
+为了降低新手的使用难度本文档采用 CDN 的方式使用
 
 ### 初始化 HTML 结构
 
@@ -20,7 +20,7 @@
     :music="music"
   />
 </div>
-<script src="/path/to/vue.js"></script>
+<script src="//cdn.bootcss.com/vue/2.4.1/vue.min.js"></script>
 <script src="/path/to/vue-aplayer-plugin.js"></script>
 ```
 
@@ -43,8 +43,8 @@ new Vue({
     music: [{
       title: '本色',
       author: '泠鸢yousa',
-      url: 'http://m10.music.126.net/20170720161530/2a23eac0e150339ce9f072648f61f5a9/ymusic/731f/d1d3/6884/0ef39bebf0050d11580b46b72b32e99d.mp3',
-      pic: 'http://p1.music.126.net/fTSpa8Et436YQ7eWTvkL0Q==/17963820974811393.jpg',
+      url: 'https://m10.music.126.net/20170720161530/2a23eac0e150339ce9f072648f61f5a9/ymusic/731f/d1d3/6884/0ef39bebf0050d11580b46b72b32e99d.mp3',
+      pic: 'https://p1.music.126.net/fTSpa8Et436YQ7eWTvkL0Q==/17963820974811393.jpg',
       lrc: '[by:Raidou]\n[by:raidou]\n[ti:本色]\n[ar:泠鸢yousa]\n[re:lrc-maker (https://weirongxu.github.io/lrc-maker/)]\n[ve:0.1.0]\n[length:05:14]\n[00:00.00] 作曲 : HTT\n[00:01.00] 作词 : 左耳以东\n[00:39.97]天生妩媚风流俏模样\n[00:43.72]偏嫁五尺短儿郎\n[00:46.48]谷树皮 三寸丁\n[00:47.98]夜夜空对 枉自结愁肠\n[00:52.73]生就娉婷袅娜好身段\n[00:55.97]若为娼 无妨\n[00:58.72]冠花街 压群芳\n[01:00.98]身无所拘 心无疆\n[01:42.98][03:41.34]娇莺应和啼婉转\n[01:45.48][03:44.02]金莲颤 青葱缠 享合欢\n[01:51.47][03:49.77]盈盈露滴湿牡丹\n[01:57.26][03:55.52]翩翩粉蝶暗偷香\n[02:03.51][04:01.52]倒浇红烛夜行船\n[02:06.76][04:05.27]鱼水同欢赴巫山\n[02:09.76][04:08.02]长睫倦 媚骨软 再贪欢\n[02:15.76][03:25.34][04:15.40][00:35.47][01:26.72]\n[02:39.19]鸿儒白丁正襟议伦常\n[02:42.19]酒阑横卧温柔乡\n[02:44.94]赏郑声 话高唐\n[02:46.94]男儿本色 矫饰冀流芳\n[02:50.69]未将妇德女戒正眼望\n[02:54.44]有缘人 放浪\n[02:57.19]千夫指 又何干？\n[02:59.19]休要辜负 好皮囊\n[03:02.69][01:04.23]斜阳含羞越花窗\n[03:05.69][01:06.98]浮云带怯偷眼望\n[03:08.69][01:09.98]美人微醺衣半敞\n[03:14.19][01:16.23]青丝半绾慵倚床\n[03:17.44][01:18.97]星眸初泛潋滟光\n[03:20.19][01:21.98]檀口轻启吐兰芳\n[03:26.09][01:27.23]金风玉露相逢晚\n[03:31.84][01:33.48]银盘斜偎乌云漫\n[03:37.84][01:39.47]轻拢慢捻挑抹忙\n[04:42.54]帐暖良宵短\n[04:45.79]天色忽已晚\n[04:48.99]忙着罗袜重整装\n[04:53.24]倚门回首 带笑含情央\n'
     }]
   },
@@ -64,7 +64,7 @@ new Vue({
 })
 ```
 
-### 选项
+### Props
 
 | 名称            | 类型         | 默认值             |  必填  | 说明                |
 | :------------ | :--------- | :-------------- | :--: | :---------------- |
@@ -80,7 +80,40 @@ new Vue({
 | listmaxheight | `string`   | `'auto'`        |  ✕   | 播放列表最大高度          |
 | music         | `Array<T>` | `[]`            |  ✓   | 播放列表歌曲            |
 
+**`mode` 可选值：**
+
+* **`circulation`** : 列表循环
+* **`singer`** : 单曲循环
+* **`random`** : 随机播放
+* **`order`** : 顺序播放
+
+**`music` 对象属性：**
+
+* **`id`** : 主键，如果为空则为数组中对应的索引
+* **`title`** : 歌曲名称，必填
+* **`author`** : 歌曲作者，选填
+* **`url`** : 歌曲播放地址，必填
+* **`pic`** : 歌曲图片地址，选填
+* **`lrc`** : LRC 歌词地址或字符串，选填
+
+
+
 ### API
+
+公开了以下属性和方法：
+
+* `ap.play()` // 继续播放
+* `ap.play(index)` // 播放指定索引歌曲
+* `ap.play(music)` // 播放指定歌曲
+* `ap.pause()` // 暂停播放
+* `ap.toggle()` // 切换播放状态（当前暂停则播放，当前播放则暂停）
+* `ap.toggleVolume()` // 切换静音状态
+* `ap.setMusic(music)` // 重设当前播放曲目信息（仅设置信息不切换播放）
+* `ap.currentMusic` // [只读] 获取当前播放的歌曲信息 如果要修改信息请使用 `ap.setMusic(music)`
+* `ap.audio` // [只读] 获取播放器依赖的 `HTMLAudioElement` 对象
+
+**仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**  
+**所以如果您需要往播放列表添加歌曲只需要往 `music` 数组中 `push` 对象即可。**
 
 ### 事件
 
@@ -113,4 +146,71 @@ new Vue({
 | onwaiting          | script | 当媒介已停止播放但打算继续播放时运行脚本                 |
 
 ### 歌词
+
+##### LRC [歌词格式](https://zh.wikipedia.org/wiki/LRC%E6%A0%BC%E5%BC%8F)
+
+```lrc
+[ti:歌词(歌曲)的标题]
+[al:本歌所在的唱片集]
+[ar:演出者-歌手]
+[au:歌词作者-作曲家]
+[by:此LRC文件的创建者]
+[offset:+/- 以毫秒为单位加快或延后歌词的播放]
+ 
+[re:创建此LRC文件的播放器或编辑器]
+[ve:程序的版本]
+
+[mm:ss.ms] 我们这一路走来真的不容易
+[mm:ss.ms][mm:ss:ms] 多少次流着泪说还不如分离
+...
+```
+
+##### LRC 字符串
+
+```js
+{
+  title: '我们（Cover 杨清柠&王乐乐）',
+  author: '锦零／凤九',
+  url: 'path/to/music.mp3',
+  pic: 'https://p4.music.126.net/4zCLh5OcpB8Hb2woMjSs3Q==/109951162978917893.jpg',
+  lrc: '[01:00.01]我们这一路走来真的不容易\n[01:00.06]多少次流着泪说还不如分离'
+}
+```
+
+
+
+##### LRC 文件
+
+```js
+{
+  title: '我们（Cover 杨清柠&王乐乐）',
+  author: '锦零／凤九',
+  url: 'path/to/music.mp3',
+  pic: 'https://p4.music.126.net/4zCLh5OcpB8Hb2woMjSs3Q==/109951162978917893.jpg',
+  lrc: 'path/to/music.lrc'
+}
+```
+
+
+
+##### 异步 API 歌词
+
+```js
+new Vue({
+  el: '#app',
+  data: {
+    music: [{
+      title: '我们（Cover 杨清柠&王乐乐）',
+      author: '锦零／凤九',
+      url: 'path/to/music.mp3',
+      pic: 'https://p4.music.126.net/4zCLh5OcpB8Hb2woMjSs3Q==/109951162978917893.jpg',
+      lrc: null
+    }]
+  },
+  async created () {
+    const { data } = await Axios.get('https://api.quq.cat/lyric?id=491778843')
+    if (data.code === 200) this.music[0].lrc = data.lrc.lyric
+  }
+})
+```
 
