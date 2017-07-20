@@ -43,7 +43,8 @@ export default class IndexPage extends Vue {
   }
 
   private getLyricAsync (): void {
-    this.$nextTick(() => this.getLyric(this.aplayer.currentMusic))
+    setTimeout(() => this.getLyric(this.aplayer.currentMusic), 1000)
+    // this.$nextTick(() => this.getLyric(this.aplayer.currentMusic))
   }
 
 }
