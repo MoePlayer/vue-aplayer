@@ -29,27 +29,38 @@ export class Lyric extends Vue {
     return this.LRC[0]
   }
 
-  public get scrollTop (): number {
+  public get transform (): { transitionDuration?: string, transform: string } {
+    return {
+      transitionDuration: `${this.transitionDuration}ms`,
+      transform: `translate3d(0, ${this.translateY}px, 0)`
+    }
+  }
+
+  public get translateY (): number {
     const { time } = this.current || { time: 0 }
     const lrcElements = this.$refs.lrc as Array<HTMLElement> || []
     const currentElement = lrcElements.find(x => Number.parseInt(x.dataset.time) === time)
     return (currentElement ? currentElement.offsetTop : 0) * -1
   }
 
-  private created () {
+  private get transitionDuration (): number {
+    return this.LRC.length > 1 ? 500 : 0
+  }
+
+  private created (): void {
     this.change()
   }
 
   @Watch('lrc')
-  private change () {
+  private change (): void {
+    this.LRC = []
+    this.currentLRC = null
     this.parseLRC()
   }
 
-  private async parseLRC () {
-    if (!this.lrc) return
+  private async parseLRC (): Promise<void> {
+    if (!this.lrc || this.lrc === 'loading') return
     if (this.isURL(this.lrc)) { // 如果歌词是一个URL地址则请求该地址获得歌词文本
-      const sleep = delay => new Promise(resolve => setTimeout(resolve, delay))
-      await sleep(1000)
       const { data } = await Axios.get(this.lrc.toString())
       this.currentLRC = data
     } else this.currentLRC = this.lrc
@@ -67,12 +78,16 @@ export class Lyric extends Vue {
       const text = match[4]
       this.LRC.push({ time, text })
     })
+
+    // 歌词格式不支持
+    if (this.LRC.length <= 0) this.LRC = [{ time: -1, text: '(・∀・*) 抱歉，该歌词格式不支持' }]
   }
 
-  private isURL (url: String) {
+  private isURL (url: string): boolean {
     const uri = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/
     const path = /.*\/[^\/]+\.[^\.]+$/
-    return uri.test(url.toString()) || path.test(url.toString())
+    const wrap = /(\r\n)|(\\r\\n)|(\n)|(\\n)/
+    return uri.test(url.toString()) || (path.test(url) && !wrap.test(url))
   }
 
 }

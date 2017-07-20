@@ -1,8 +1,9 @@
 <div class="aplayer-lrc">
-  <div class="aplayer-lrc-contents" :style="`transform: translateY(${scrollTop}px); -webkit-transform: translateY(${scrollTop}px)`">
-    <p v-if="LRC.length <= 0">(*ゝω・) 少女祈祷中..</p>
-    <template v-else>
-      <p :class="{ 'aplayer-lrc-current': current.time === lrc.time }" ref="lrc" v-for="lrc in LRC" :data-time="lrc.time">{{ lrc.text }}</p>
+  <div class="aplayer-lrc-contents" :style="transform">
+    <template v-if="lrc">
+      <p v-if="LRC.length <= 0">(*ゝω・) 少女祈祷中..</p>
+      <p v-else :class="{ 'aplayer-lrc-current': current.time === lrc.time }" ref="lrc" v-for="lrc in LRC" :data-time="lrc.time">{{ lrc.text }}</p>
     </template>
+    <p v-else class="aplayer-lrc-current">( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ ) 抱歉，当前歌曲暂无歌词</p>
   </div>
 </div>
