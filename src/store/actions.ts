@@ -21,7 +21,7 @@ async function getMusics ({ commit }: ActionContext<State, any>) {
       author: item.ar.map(x => x.name).join('／'),
       pic: item.al.picUrl,
       url: urls.find(url => url.id === item.id).url,
-      lrc: null
+      lrc: 'loading'
     })
   })
 
@@ -31,9 +31,7 @@ async function getMusics ({ commit }: ActionContext<State, any>) {
 async function getLyricAsync ({ commit }: ActionContext<State, any>, music: APlayer.Music) {
   const { data } = await getLyric(music.id)
   if (!data.success) return
-  if (!data.lrc) return
-  if (!data.lrc.lyric) return
-  music.lrc = data.lrc.lyric
+  music.lrc = data.nolyric ? null : data.lrc.lyric
   commit(SET_MUSIC, music)
 }
 
