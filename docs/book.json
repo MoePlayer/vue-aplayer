@@ -1,0 +1,31 @@
+{
+  "title": "Vue-APlayer-Plugin",
+  "gitbook": ">3.0.0",
+  "plugins": [
+    "disqus",
+    "edit-link",
+    "prism",
+    "theme-vuejs@git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git",
+    "-fontsettings",
+    "-highlight",
+    "github"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/MoeFE/vue-aplayer/tree/dev/docs",
+      "label": "编辑此页面"
+    },
+    "github": {
+      "url": "https://github.com/MoeFE/vue-aplayer"
+    },
+    "disqus": {
+      "shortName": "vue-aplayer"
+    }
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  }
+}
