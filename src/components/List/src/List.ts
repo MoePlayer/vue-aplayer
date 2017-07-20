@@ -8,6 +8,8 @@ import { Prop, Watch } from 'vue-property-decorator'
 @Component
 export class List extends Vue {
 
+  @Prop({ type: Number, required: false, default: 0 })
+  public readonly scrollTop: number
   @Prop({ type: Array, required: true })
   public readonly music: Array<APlayer.Music>
   @Prop({ type: String, required: false, default: 'auto' })
@@ -28,6 +30,12 @@ export class List extends Vue {
       this.height = `${offsetHeight > maxHeight ? maxHeight : offsetHeight}px`
     })
     // tslint:enable:curly
+  }
+
+  @Watch('scrollTop')
+  private scrollTopChange (): void {
+    const container = this.$refs.container as HTMLDivElement
+    container.scrollTop = this.scrollTop
   }
 
   private mounted (): void {

@@ -16,8 +16,10 @@
         <vButton slot="menu" type="menu" icon="menu" @click="toggleCollapsed" :title="collapsed ? '展开' : '收起'" />
       </Controller>
     </Container>
-    <List :music="music" :maxheight="listmaxheight" :collapsed="collapsed">
-      <Item v-for="(music, index) in music"
+    <List ref="list" :scrollTop="currentMusicOffsetTop" :music="music" :maxheight="listmaxheight" :collapsed="collapsed">
+      <Item ref="items" v-for="(music, index) in music"
+        :key="music.id"
+        :id="music.id"
         :index="index + 1"
         :title="music.title"
         :author="music.author"

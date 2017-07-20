@@ -8,6 +8,8 @@ import { Getter } from 'vuex-class'
 @WithRender
 @Component
 export class Item extends Vue {
+  @Prop({ type: Number, required: true })
+  public readonly id: number
   @Prop({ type: Boolean, required: false, default: false })
   public readonly active: boolean
   @Prop({ type: Number, required: true })
