@@ -9,6 +9,7 @@ yarn-error.log*
 test/unit/coverage
 test/e2e
 selenium-debug.log
+_book/
 
 # Editor directories and files
 .vscode
