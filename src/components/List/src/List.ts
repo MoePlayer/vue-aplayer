@@ -20,8 +20,14 @@ export class List extends Vue {
   @Watch('music')
   @Watch('collapsed')
   private musicChange (): void {
+    // tslint:disable:curly
     if (this.collapsed) this.height = '0px'
-    else this.$nextTick(() => this.height = (this.$refs.list as HTMLElement).offsetHeight + 'px')
+    else this.$nextTick(() => {
+      const maxHeight = Number.parseInt(this.maxheight)
+      const offsetHeight = (this.$refs.list as HTMLElement).offsetHeight
+      this.height = `${offsetHeight > maxHeight ? maxHeight : offsetHeight}px`
+    })
+    // tslint:enable:curly
   }
 
   private mounted (): void {
