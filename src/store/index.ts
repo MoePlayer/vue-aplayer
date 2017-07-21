@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import { State } from './state'
 
 import { getters } from './getters'
-import { actions } from './actions'
 import { mutations } from './mutations'
 
 declare namespace window {
@@ -75,7 +74,6 @@ const state: State = {
     volume: 1
   },
   music: null,
-  list: [],
   mode: 'circulation',
   theme: '#ad7a86',
   volume: 1,
@@ -85,4 +83,4 @@ const state: State = {
 state.audio.volume = 0.8
 state.volume = state.audio.volume
 
-export default new Vuex.Store({ state, getters, actions, mutations })
+export default new Vuex.Store<State>({ state, getters, mutations })

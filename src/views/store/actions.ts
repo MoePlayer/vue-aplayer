@@ -1,7 +1,6 @@
 import { ActionTree, ActionContext } from 'vuex'
 import { State } from './state'
 import { ADD_MUSICS, SET_MUSIC } from './types'
-import { Config } from 'utils/config'
 import { getFavorites, getMusicURLs, getLyric } from 'api/NeteaseCloudMusicApi'
 
 async function getMusics ({ commit }: ActionContext<State, any>) {
