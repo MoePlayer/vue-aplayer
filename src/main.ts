@@ -32,3 +32,5 @@ new Vue({
     console.img(img.src)
   }
 })
+
+Vue.config.devtools = true
