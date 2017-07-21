@@ -80,6 +80,7 @@ $aplayer-height-lrc: $aplayer-height+$lrc-height - 6;
   .aplayer-lrc-content {
     display: none;
   }
+  /*
   .aplayer-pic {
     position: relative;
     float: left;
@@ -137,6 +138,8 @@ $aplayer-height-lrc: $aplayer-height+$lrc-height - 6;
       }
     }
   }
+  */
+  /*
   .aplayer-info {
     margin-left: $aplayer-height;
     padding: 14px 7px 0 10px;
@@ -274,6 +277,9 @@ $aplayer-height-lrc: $aplayer-height+$lrc-height - 6;
       }
     }
   }
+  */
+
+  /*
   .aplayer-lrc {
     display: none;
     position: relative;
@@ -332,6 +338,9 @@ $aplayer-height-lrc: $aplayer-height+$lrc-height - 6;
       cursor: default;
     }
   }
+  */
+
+  /*
   .aplayer-list {
     overflow: auto;
     transition: all 0.5s ease;
@@ -410,4 +419,5 @@ $aplayer-height-lrc: $aplayer-height+$lrc-height - 6;
   100% {
     left: -100%
   }
+  */
 }

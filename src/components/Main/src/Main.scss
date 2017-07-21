@@ -4,7 +4,7 @@
   margin-left: $aplayer-height;
   padding: 14px 7px 0 10px;
   height: $aplayer-height;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   .aplayer-music {
     overflow: hidden;
     white-space: nowrap;
