@@ -173,10 +173,10 @@ export default class APlayer extends Vue {
   }
 
   /** 计算当前播放的音乐在播放列表中的位置 */
-  private async setCurrentMusicOffsetTop (index: number): Promise<void> {
+  private async setCurrentMusicOffsetTop (index?: number): Promise<void> {
     await Thread.sleep(0) // 延迟执行，确保 Item 组件渲染完毕
     if (this.music.length <= 0) return
-    if (this.music.length - 1 !== index) return
+    if (index && this.music.length - 1 !== index) return
 
     const list = this.$refs.list as List
     const items = this.$refs.items as Array<Item> || []
@@ -218,6 +218,7 @@ export default class APlayer extends Vue {
       this.audio.volume = this.volume
       this.audio.oncanplay = resolve
       this.speedChange()
+      this.setCurrentMusicOffsetTop()
     })
   }
 
