@@ -187,19 +187,8 @@ export default class APlayer extends Vue {
   public play (x?: number | APlayer.Music): Promise<any> {
     this.mutex && this.postMessage({ action: 'mutex', timespan: new Date().getTime() })
     if (x === void 0) {
-      // tslint:disable:brace-style
       if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
       else this.audio.play()
-      // else {
-      //   // 互斥模式下如果当前播放的音乐和其他标签页播放的音乐是同一曲
-      //   // 则恢复其他标签页的播放进度
-      //   // 如果不是同一曲则重新设置播放的曲目并恢复播放进度
-      //   const identical = this.currentMusic.id === this.config.music.id
-      //   if (!identical) this.play(this.config.music)
-      //   this.audio.currentTime = this.config.media.currentTime
-      //   this.audio.play()
-      // }
-      // tslint:enable:brace-style
       return void 0
     }
 
@@ -360,9 +349,14 @@ export default class APlayer extends Vue {
   }
 
   /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
-  private async endedHandler () {
+  private async endedHandler (): Promise<void> {
     await this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
     this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
+  }
+
+  private async playHandler (music: APlayer.Music): Promise<void> {
+    await this.play(music)
+    this.play() // 点击列表播放时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
   /**
