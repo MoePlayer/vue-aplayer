@@ -31,6 +31,7 @@ import {
   RECORD_VOLUME
 } from 'store/types'
 
+import { Thread } from 'utils/thread'
 import VueTouch from 'vue-touch'
 
 Vue.use(VueTouch)
@@ -144,6 +145,9 @@ export default class APlayer extends Vue {
   @Mutation(RECORD_VOLUME)
   private recordVolume: (volume: number) => void
 
+  /** 当前播放的音乐在播放列表中的位置 */
+  private currentMusicOffsetTop: number = 0
+
   /** 已播放的进度比例 */
   private get played (): number {
     return this.media.currentTime / this.media.duration
@@ -168,15 +172,18 @@ export default class APlayer extends Vue {
     return map[this.playMode]
   }
 
-  /** 当前播放的音乐在播放列表中的位置 */
-  private get currentMusicOffsetTop (): number {
-    if (this.music.length <= 0) return 0
+  /** 计算当前播放的音乐在播放列表中的位置 */
+  private async setCurrentMusicOffsetTop (index: number): Promise<void> {
+    await Thread.sleep(0) // 延迟执行，确保 Item 组件渲染完毕
+    if (this.music.length <= 0) return
+    if (this.music.length - 1 !== index) return
+
     const list = this.$refs.list as List
     const items = this.$refs.items as Array<Item> || []
     const { id } = this.currentMusic
     const active = items.find(item => item.id === id)
-    if (active) return active.$el.offsetTop - list.$el.offsetTop
-    return 0
+    if (active) this.currentMusicOffsetTop = active.$el.offsetTop - list.$el.offsetTop
+    else this.currentMusicOffsetTop = 0
   }
 
   /** 设置当前要播放的音乐 */

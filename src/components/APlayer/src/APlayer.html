@@ -24,7 +24,8 @@
         :title="music.title"
         :author="music.author"
         :active="music.id === currentMusic.id"
-        @click="playHandler(music)" />
+        @click="playHandler(music)"
+        @render="setCurrentMusicOffsetTop(index)" />
     </List>
   </template>
 </div>
