@@ -31,8 +31,13 @@ export class Progress extends Vue {
     this.currentPlayed = this.played || 0
   }
 
-  private created (): void {
+  @Watch('theme')
+  private themeChange (): void {
     this.thumbStyles.borderColor = this.theme
+  }
+
+  private created (): void {
+    this.themeChange()
     this.playedChange()
   }
 
