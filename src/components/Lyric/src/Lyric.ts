@@ -65,22 +65,27 @@ export class Lyric extends Vue {
       this.currentLRC = data
     } else this.currentLRC = this.lrc
 
-    const reg = /\[(\d+):(\d+)\.(\d+)\](.+)/
-    this.LRC = []
-    this.currentLRC.replace(/\\n/g, '\n').split('\n').forEach(line => {
+    const reg = /\[(\d+):(\d+)[.|:](\d+)\](.+)/
+    const regTime = /\[(\d+):(\d+)[.|:](\d+)\]/g
+    const matchAll = line => {
       const match = line.match(reg)
       if (!match) return
       if (match.length !== 5) return
-      const minute = Number.parseInt(match[1])
-      const second = Number.parseInt(match[2])
-      const millisecond = Number.parseInt(match[3])
-      const time = minute * 60 * 1000 + second * 1000 + millisecond
-      const text = match[4]
+      const minutes = Number.parseInt(match[1])
+      const seconds = Number.parseInt(match[2])
+      const milliseconds = Number.parseInt(match[3])
+      const time = minutes * 60 * 1000 + seconds * 1000 + milliseconds
+      const text = (match[4] as string).replace(regTime, '')
       this.LRC.push({ time, text })
-    })
+      matchAll(match[4]) // 递归匹配多个时间标签
+    }
+
+    this.LRC = []
+    this.currentLRC.replace(/\\n/g, '\n').split('\n').forEach(line => matchAll(line))
 
     // 歌词格式不支持
     if (this.LRC.length <= 0) this.LRC = [{ time: -1, text: '(・∀・*) 抱歉，该歌词格式不支持' }]
+    else this.LRC.sort((a, b) => a.time - b.time)
   }
 
   private isURL (url: string): boolean {
