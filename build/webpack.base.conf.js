@@ -61,6 +61,10 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /\.scss$/,
+        loader: 'postcss-loader'
+      },
+      {
         test: /\.html$/,
         loader: 'vue-template-loader',
         exclude: resolve('index.html'),
