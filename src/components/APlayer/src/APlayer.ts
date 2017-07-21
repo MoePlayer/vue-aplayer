@@ -17,7 +17,7 @@ import { Volume } from 'components/Volume'
 import { List } from 'components/List'
 import { Item } from 'components/Item'
 
-import store from 'store'
+import { store } from 'store'
 import { State } from 'store/state'
 import {
   SET_MUSIC,
@@ -330,6 +330,7 @@ export default class APlayer extends Vue {
       })
     })
 
+    this.syncMedia(this.audio)
     this.audio.addEventListener('ended', this.endedHandler)
 
     // 暂停其他实例（多标签页）

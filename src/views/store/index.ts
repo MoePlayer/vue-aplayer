@@ -14,3 +14,4 @@ const state: State = {
 }
 
 export const store = new Vuex.Store<State>({ state, actions, getters, mutations })
+export default store

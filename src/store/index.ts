@@ -83,4 +83,5 @@ const state: State = {
 state.audio.volume = 0.8
 state.volume = state.audio.volume
 
-export default new Vuex.Store<State>({ state, getters, mutations })
+export const store = new Vuex.Store<State>({ state, getters, mutations })
+export default store

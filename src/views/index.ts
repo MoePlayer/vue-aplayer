@@ -6,7 +6,7 @@ import { Prop } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 
 import mock from 'mockjs'
-import store from 'store'
+import { store } from './store'
 import APlayer from 'components'
 import { APlayer as IAPlayer } from 'components'
 Vue.use(APlayer)
