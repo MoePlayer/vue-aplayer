@@ -15,7 +15,6 @@ var merge = require('webpack-merge')
 var webpackConfig = require('./webpack.prod.conf')
 var outputDir = '../dist'
 
-webpackConfig.devtool = false
 webpackConfig.entry = {
   'APlayer': './src/components/index.ts',
 }
@@ -57,7 +56,7 @@ removePlugins('Object')
 var spinner = ora('building for production...')
 spinner.start()
 
-rm(path.join(__dirname, '../dist'), err => {
+rm(path.join(__dirname, outputDir), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
