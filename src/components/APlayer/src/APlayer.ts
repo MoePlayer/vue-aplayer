@@ -286,8 +286,6 @@ export default class APlayer extends Vue {
 
   /** 初始化组件信息 */
   private created (): void {
-    this.themeChange()
-
     // 恢复播放器状态信息
     if (this.config) {
       const music = this.config.music
@@ -331,6 +329,8 @@ export default class APlayer extends Vue {
     })
 
     this.syncMedia(this.audio)
+    this.themeChange()
+    this.musicChange()
     this.audio.addEventListener('ended', this.endedHandler)
 
     // 暂停其他实例（多标签页）
@@ -367,6 +367,9 @@ export default class APlayer extends Vue {
   @Watch('music', { deep: true })
   private musicChange (): void {
     if (this.music.length <= 0) return
+    this.music.forEach((music, index) => {
+      if (!music.id) music.id = index // 如果 music 没有指定 id 则通过索引自动生成
+    })
     if (!this.audio.paused) return
     if (this.config && this.config.music) return
     this.play(0)
