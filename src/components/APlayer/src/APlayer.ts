@@ -33,6 +33,7 @@ import {
 
 import { Thread } from 'utils/thread'
 import VueTouch from 'vue-touch'
+import 'console.img'
 
 Vue.use(VueTouch)
 
@@ -265,7 +266,22 @@ export default class APlayer extends Vue {
    * Project Url: https://github.com/DIYgod/APlayer
    */
   private beforeCreate (): void {
-    console.log('\n %c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+    console.log('\n%c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+    const time = { start: 0, end: 0, timespan: () => time.end - time.start }
+    time.start = Number(new Date())
+    const img = new Image()
+    img.onload = () => { // 确保文字必须在图片输出之后再输出
+      time.end = Number(new Date())
+      setTimeout(() => {
+        const moe = 'color: #fd5557; font-weight: bold'
+        console.log('\n%cMoe %cis justice!!!', moe, 'font-weight: bold')
+        console.log('%cqwq欢迎加入 %c@MoeFE Studio', 'font-weight: bold', moe)
+        console.log('%cGitHub: %chttps://github.com/MoeFE', 'font-weight: bold', 'color: #42b983; font-weight: bold')
+        console.log('')
+      }, time.timespan())
+    }
+    img.src = 'https://avatars5.githubusercontent.com/u/29977599?v=3&s=90'
+    console.img(img.src)
   }
 
   /** 初始化组件信息 */
