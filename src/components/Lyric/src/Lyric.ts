@@ -76,21 +76,27 @@ export class Lyric extends Vue {
 
     const reg = /\[(\d+):(\d+)[.|:](\d+)\](.+)/
     const regTime = /\[(\d+):(\d+)[.|:](\d+)\]/g
-    const matchAll = line => {
-      const match = line.match(reg)
+    const regCompatible = /\[(\d+):(\d+)]()(.+)/
+    const regTimeCompatible = /\[(\d+):(\d+)]/g
+    const regOffset = /\[offset:\s*(-{0,1}\d+)\]/
+    const offsetMatch = this.lrc.match(regOffset)
+    const offset = offsetMatch ? Number.parseInt(offsetMatch[1]) : 0
+    this.LRC = []
+
+    const matchAll = (line: string) => {
+      let match = line.match(reg) || line.match(regCompatible)
       if (!match) return
       if (match.length !== 5) return
-      const minutes = Number.parseInt(match[1])
-      const seconds = Number.parseInt(match[2])
-      const milliseconds = Number.parseInt(match[3])
-      const time = minutes * 60 * 1000 + seconds * 1000 + milliseconds
-      const text = (match[4] as string).replace(regTime, '')
+      const minutes = Number.parseInt(match[1]) || 0
+      const seconds = Number.parseInt(match[2]) || 0
+      const milliseconds = Number.parseInt(match[3]) || 0
+      const time = (minutes * 60 * 1000 + seconds * 1000 + milliseconds) + offset
+      const text = (match[4] as string).replace(regTime, '').replace(regTimeCompatible, '')
       if (!text) return // 优化：不要显示空行
       this.LRC.push({ time, text })
       matchAll(match[4]) // 递归匹配多个时间标签
     }
 
-    this.LRC = []
     this.currentLRC.replace(/\\n/g, '\n').split('\n').forEach(line => matchAll(line))
 
     // 歌词格式不支持
