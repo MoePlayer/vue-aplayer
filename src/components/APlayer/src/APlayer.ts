@@ -282,10 +282,10 @@ export default class APlayer extends Vue {
       if (media) {
         this.setSpeed(media.playbackRate) // 恢复播放速度
         this.setVolume(media.volume) // 恢复播放音量
+        this.audio.currentTime = media.currentTime
         // 恢复播放状态
         if (media.paused) this.pause()
-        // 如果设置了自动播放则恢复播放进度
-        if (this.autoplay) this.audio.currentTime = media.currentTime
+        else this.play()
       }
     }
 
@@ -360,8 +360,9 @@ export default class APlayer extends Vue {
   }
 
   /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
-  private endedHandler () {
-    this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+  private async endedHandler () {
+    await this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+    this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
   /**
