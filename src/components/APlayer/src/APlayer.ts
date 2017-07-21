@@ -245,8 +245,12 @@ export default class APlayer extends Vue {
   }
 
   /** 切换播放模式 */
-  public togglePlayMode (): void {
+  public togglePlayMode (mode?: APlayer.PlayMode): void {
     // play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    if (mode) {
+      this.setPlayMode(mode)
+      return
+    }
     const modes = ['circulation', 'single', 'random', 'order']
     let index = modes.indexOf(this.playMode) + 1
     if (index >= modes.length) index = 0
