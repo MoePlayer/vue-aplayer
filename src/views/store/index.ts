@@ -9,7 +9,8 @@ import { mutations } from './mutations'
 Vue.use(Vuex)
 
 const state: State = {
-  list: []
+  list: [],
+  music: null
 }
 
 export const store = new Vuex.Store<State>({ state, actions, getters, mutations })
