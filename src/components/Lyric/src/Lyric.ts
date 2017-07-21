@@ -45,7 +45,10 @@ export class Lyric extends Vue {
     // 如果 currentElement 是最后一个元素
     // 则返回 currentElement 上一个元素的 offsetTop
     // 去掉末尾的空行 优化歌词面板显示
-    if (isLastElement) return lrcElements[currentIndex - 1].offsetTop * -1
+    if (isLastElement) {
+      const lastElement = lrcElements[currentIndex - 1]
+      return (lastElement ? lastElement.offsetTop : 0) * -1
+    }
     return (currentElement ? currentElement.offsetTop : 0) * -1
   }
 
