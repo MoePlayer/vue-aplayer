@@ -20,6 +20,7 @@ export class List extends Vue {
   private height: string = 'auto'
 
   @Watch('music')
+  @Watch('maxheight')
   @Watch('collapsed')
   private musicChange (): void {
     // tslint:disable:curly
