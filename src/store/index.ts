@@ -6,7 +6,15 @@ import { getters } from './getters'
 import { actions } from './actions'
 import { mutations } from './mutations'
 
-Vue.use(Vuex)
+declare namespace window {
+  export const Vue: any
+}
+
+if (typeof window === 'undefined' || !window.Vue) {
+  // [vuex] already installed. Vue.use(Vuex) should be called only once.
+  // 只有在模块化环境下调用 全局环境下 Vuex 会自动安装
+  Vue.use(Vuex)
+}
 
 const state: State = {
   key: 'APLAYER_VEUX_STATE',
