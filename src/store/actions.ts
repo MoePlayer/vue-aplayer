@@ -31,7 +31,7 @@ async function getMusics ({ commit }: ActionContext<State, any>) {
 async function getLyricAsync ({ commit }: ActionContext<State, any>, music: APlayer.Music) {
   const { data } = await getLyric(music.id)
   if (!data.success) return
-  music.lrc = data.nolyric ? null : data.lrc.lyric
+  music.lrc = data.nolyric || data.uncollected ? null : data.lrc.lyric
   commit(SET_MUSIC, music)
 }
 
