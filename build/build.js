@@ -13,7 +13,7 @@ var config = require('../config')
 var path = require('path')
 var merge = require('webpack-merge')
 var webpackConfig = require('./webpack.prod.conf')
-var outputDir = '../static'
+var outputDir = '../dist'
 
 webpackConfig.devtool = false
 webpackConfig.entry = {
