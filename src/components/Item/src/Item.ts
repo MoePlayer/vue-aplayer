@@ -8,6 +8,7 @@ import { Getter } from 'vuex-class'
 @WithRender
 @Component
 export class Item extends Vue {
+
   @Prop({ type: Number, required: true })
   public readonly id: number
   @Prop({ type: Boolean, required: false, default: false })
@@ -21,6 +22,11 @@ export class Item extends Vue {
 
   @Getter('theme')
   private readonly theme: string
+
+  private mounted (): void {
+    this.$nextTick(() => this.$emit('render'))
+  }
+
 }
 
 export default Item
