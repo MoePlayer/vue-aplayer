@@ -223,6 +223,7 @@ export default class APlayer extends Vue {
       this.audio.autoplay = this.autoplay
       this.audio.volume = this.volume
       this.audio.oncanplay = resolve
+      if (this.autoplay) this.play() // Safari 不支持 autoplay 属性
       this.speedChange()
       this.setCurrentMusicOffsetTop()
     })
@@ -302,7 +303,7 @@ export default class APlayer extends Vue {
       if (media) {
         this.setSpeed(media.playbackRate) // 恢复播放速度
         this.setVolume(media.volume) // 恢复播放音量
-        this.audio.currentTime = media.currentTime
+        setTimeout(() => this.audio.currentTime = media.currentTime, 100) // 恢复播放进度 Safari 下必须延迟 100 ms 才能生效
         // 恢复播放状态
         if (media.paused) this.pause()
         else this.play()
