@@ -19,4 +19,18 @@
     :music="music"
     @play="getLyricAsync"
   />
+  <button @click="aplayer.toggle()">toggle play (current: {{ aplayer ? aplayer.status : '-' }})</button>
+  <button @click="aplayer.toggleVolume()">toggle volume (current: {{ aplayer ? aplayer.volume : 1 }})</button>
+  <button @click="narrow = !narrow">switch narrow (current: {{ narrow }})</button>
+  <button @click="showlrc = !showlrc">switch showlrc (current: {{ showlrc }})</button>
+  <button @click="fold = !fold">switch fold (current: {{ fold }})</button>
+  <button @click="speed = (speed * 1000 + 0.1 * 1000) / 1000">change speed (current: {{ speed }})</button>
+  <button @click="theme = mock.Random.color()">change theme (current: {{ theme }})</button>
+  <button @click="aplayer.togglePlayMode()">change mode (current: {{ mode }})</button>
+  <button @click="listmaxheight = Number.parseInt(listmaxheight) + 33 + 'px'">change listmaxheight (current: {{ listmaxheight }})</button>
+  <button @click="music.splice(0, 1)">delete music (count: {{ music.length }})</button>
+  <button @click="fold = false; music.reverse()">sort music</button>
+  <button @click="setMusic">setMusic (current: {{ aplayer ? aplayer.currentMusic.title : '-' }})</button>
+  <button onclick="location.reload()">refresh page</button>
+  <button onclick="window.open(location.href)">open new page</button>
 </div>
