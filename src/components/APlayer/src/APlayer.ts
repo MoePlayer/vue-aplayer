@@ -148,6 +148,11 @@ export default class APlayer extends Vue {
   /** 当前播放的音乐在播放列表中的位置 */
   private currentMusicOffsetTop: number = 0
 
+  /** 获取当前播放的音乐索引 */
+  public get playIndex (): number {
+    return this.music.findIndex(x => x.id === this.currentMusic.id)
+  }
+
   /** 已播放的进度比例 */
   private get played (): number {
     return this.media.currentTime / this.media.duration
@@ -194,7 +199,7 @@ export default class APlayer extends Vue {
   public play (x?: number | APlayer.Music): Promise<any> {
     this.mutex && this.postMessage({ action: 'mutex', timespan: new Date().getTime() })
     if (x === void 0) {
-      if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+      if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode))
       else this.audio.play()
       return void 0
     }
@@ -352,13 +357,13 @@ export default class APlayer extends Vue {
 
   /** 进度条发生改变触发的事件，设置新的播放进度 */
   private async progressChangeHandler (percent: number): Promise<void> {
-    if (!this.currentMusic.url) await this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+    if (!this.currentMusic.url) await this.play(this.getPlayIndexByPlayMode(this.playMode))
     this.audio.currentTime = this.audio.duration * percent
   }
 
   /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
   private async endedHandler (): Promise<void> {
-    await this.play(this.getPlayIndexByPlayMode(this.playMode, this.currentMusic, this.music))
+    await this.play(this.getPlayIndexByPlayMode(this.playMode))
     this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
@@ -377,20 +382,19 @@ export default class APlayer extends Vue {
    * @returns {number} 下一曲要播放的音乐索引
    * @memberof APlayer
    */
-  private getPlayIndexByPlayMode (mode: APlayer.PlayMode, music: APlayer.Music, musics: Array<APlayer.Music>): number {
-    const index: number = musics.findIndex(x => x.id === music.id)
-    let next = index
+  private getPlayIndexByPlayMode (mode: APlayer.PlayMode): number {
+    let next = this.playIndex
     switch (mode) {
       default: return next
       case 'single': return next < 0 ? 0 : next // 单曲循环
       case 'circulation':
-        if (++next >= musics.length) next = 0 // 播放完回到第一项
+        if (++next >= this.music.length) next = 0 // 播放完回到第一项
         return next // 列表循环
       case 'order':
-        if (++next >= musics.length) next = -1 // 播放完停止
+        if (++next >= this.music.length) next = -1 // 播放完停止
         return next // 顺序播放
       case 'random':
-        next = Math.floor(Math.random() * musics.length)
+        next = Math.floor(Math.random() * this.music.length)
         return next // 随机播放
     }
   }
