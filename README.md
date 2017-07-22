@@ -14,8 +14,8 @@
 
 [Docs](http://aplayer.quq.cat/docs)
 
-Screenshot
-![image](http://i1.buimg.com/549484/71c2a019cbe95ff4.png)
+Screenshot  
+![image](http://i4.piimg.com/549484/3b745f3ef9292633.png)
 
 ## Install
 
