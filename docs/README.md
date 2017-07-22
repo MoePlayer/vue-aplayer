@@ -14,7 +14,7 @@
 
 [Docs](http://aplayer.quq.cat/docs)
 
-Screenshot  
+Screenshot
 ![image](http://i4.piimg.com/549484/3b745f3ef9292633.png)
 
 ## Install
@@ -53,4 +53,4 @@ $ npm run build
 
 ## LICENSE
 
-[The Star And Thank Author License (SATA)](https://github.com/MoeFE/vue-aplayer/blob/dev/LICENSE)
+[The Star And Thank Author License (SATA)](https://github.com/MoeFE/vue-aplayer/blob/master/LICENSE)
