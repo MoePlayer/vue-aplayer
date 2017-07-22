@@ -11,7 +11,7 @@ test/unit/coverage
 test/e2e
 selenium-debug.log
 _book/
-dmeo/
+demo/
 
 # Editor directories and files
 .vscode
