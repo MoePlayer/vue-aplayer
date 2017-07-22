@@ -3,12 +3,12 @@ import { State } from './state'
 import { ADD_MUSICS, SET_MUSIC } from './types'
 import { getFavorites, getMusicURLs, getLyric } from 'api/NeteaseCloudMusicApi'
 
-async function getMusics ({ commit }: ActionContext<State, any>) {
+async function getMusics ({ commit }: ActionContext<State, any>, timestamp?: number) {
   const { data } = await getFavorites()
   if (!data.success) return
 
   const tracks = data.playlist.tracks as Array<any>
-  const response = await getMusicURLs(tracks.map(x => x.id) as Array<number>)
+  const response = await getMusicURLs(tracks.map(x => x.id) as Array<number>, timestamp)
   if (!response.data.success) return
 
   const urls = response.data['data']

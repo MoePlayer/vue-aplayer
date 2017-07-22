@@ -32,13 +32,13 @@ export default class IndexPage extends Vue {
   @Getter('list')
   private readonly music: Array<APlayer.Music>
   @Action('getMusics')
-  private readonly getMusics: () => void
+  private readonly getMusics: (timestamp?: number) => void
   @Action('getLyricAsync')
   private readonly getLyric: (music: APlayer.Music) => void
 
   private async created (): Promise<void> {
     await Thread.sleep(1000)
-    this.getMusics()
+    await this.getMusics()
     // this.music.push({
     //   title: '本色',
     //   author: '泠鸢yousa',
@@ -52,21 +52,33 @@ export default class IndexPage extends Vue {
     this.aplayer = this.$refs.aplayer as IAPlayer
   }
 
-  private async getLyricAsync (): Promise<void> {
+  private async playHandler (): Promise<void> {
     this.showlrc = true
     if (this.aplayer.currentMusic.lrc && this.aplayer.currentMusic.lrc !== 'loading') return
     await Thread.sleep(500)
     this.getLyric(this.aplayer.currentMusic)
   }
 
-  private setMusic (): void {
-    this.aplayer.setMusic({
-      ...this.aplayer.currentMusic,
-      title: '歌曲信息已被修改',
-      author: '喵喵喵',
-      pic: null,
-      lrc: '[01:00]啦啦啦啦啦啦\n[02:00]喵喵喵喵喵喵\n[03:00]呱呱呱呱呱呱'
+  private async errorHandler (): Promise<void> {
+    this.aplayer.pause()
+    if (this.music.length > 0) {
+      await this.getMusics(new Date().getTime())
+      this.aplayer.play(this.aplayer.playIndex)
+      return
+    }
+    this.$watch('music.length', async () => {
+      await this.getMusics(new Date().getTime())
+      this.aplayer.play(this.aplayer.playIndex)
     })
+  }
+
+  private setMusic (): void {
+    const music = this.music[this.aplayer.playIndex]
+    music.title = '歌曲信息已被修改'
+    music.author = '喵喵喵'
+    music.pic = null
+    music.lrc = '[01:00]啦啦啦啦啦啦\n[02:00]喵喵喵喵喵喵\n[03:00]呱呱呱呱呱呱'
+    this.aplayer.setMusic(music)
   }
 
 }

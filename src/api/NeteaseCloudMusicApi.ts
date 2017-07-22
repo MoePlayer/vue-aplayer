@@ -6,12 +6,12 @@ export async function getFavorites () {
   return await request(playlist)
 }
 
-export async function getMusicURL (id: number) {
-  return await request(playurl, { id })
+export async function getMusicURL (id: number, timestamp?: number) {
+  return await request(playurl, { id, timestamp })
 }
 
-export async function getMusicURLs (id: number[]) {
-  return await request(playurl, { id: id.join() })
+export async function getMusicURLs (id: number[], timestamp?: number) {
+  return await request(playurl, { id: id.join(), timestamp })
 }
 
 export async function getLyric (id: number) {
