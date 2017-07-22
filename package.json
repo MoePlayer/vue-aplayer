@@ -3,18 +3,36 @@
   "version": "1.0.0",
   "description": "Wow, such a beautiful HTML5 music player",
   "author": "u3u <quq@quq.cat>",
-  "private": true,
+  "license": "SATA",
+  "private": false,
+  "main": "./dist/APlayer.min.js",
+  "homepage": "https://github.com/MoeFE/vue-aplayer",
+  "repository": {
+    "url": "git+https://github.com/MoeFE/vue-aplayer.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/MoeFE/vue-aplayer/issues"
+  },
+  "keywords": [
+    "vue-aplayer",
+    "vue-aplayer-plugin",
+    "player",
+    "aplayer",
+    "music",
+    "html5",
+    "audio",
+    "media"
+  ],
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "build:doc": "node build/build-doc.js",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
-    "eslint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "tslint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.ts' 'test/unit/**/*.ts' 'test/e2e/*.ts'",
-    "fix": "eslint --fix . & tslint --fix ."
+    "test": "npm run eslint & npm run tslint",
+    "eslint": "eslint src/**/*.js",
+    "tslint": "tslint src/components/*.ts",
+    "fix": "eslint --fix . & tslint --fix src"
   },
   "dependencies": {
     "axios": "^0.16.2",
