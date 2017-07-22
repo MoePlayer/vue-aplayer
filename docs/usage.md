@@ -8,6 +8,7 @@
 <div id="app">
   <!-- 模块化开发下使用 <APlayer /> -->
   <a-player
+    ref="aplayer"
     :narrow="narrow"
     :autoplay="autoplay"
     :showlrc="showlrc"
@@ -19,48 +20,58 @@
     :preload="preload"
     :listmaxheight="listmaxheight"
     :music="music"
+    @play="getLyricAsync"
   ></a-player>
+  <button @click="aplayer.toggle()">toggle play (current: {{ aplayer ? aplayer.status : 'play' }})</button>
+  <button @click="aplayer.toggleVolume()">toggle volume (current: {{ aplayer ? aplayer.volume : 1 }})</button>
+  <button @click="narrow = !narrow">switch narrow (current: {{ narrow }})</button>
+  <button @click="showlrc = !showlrc">switch showlrc (current: {{ showlrc }})</button>
+  <button @click="fold = !fold">switch fold (current: {{ fold }})</button>
+  <button @click="speed = (speed * 1000 + 0.1 * 1000) / 1000">change speed (current: {{ speed }})</button>
+  <button @click="aplayer.togglePlayMode()">change mode (current: {{ aplayer ? aplayer.playMode : mode }})</button>
+  <button @click="listmaxheight = Number.parseInt(listmaxheight) + 33 + 'px'">change listmaxheight (current: {{ listmaxheight }})</button>
+  <button @click="music.splice(0, 1)">delete music (count: {{ music.length }})</button>
+  <button @click="fold = false; music.reverse()">sort music</button>
 </div>
 <script src="//cdn.bootcss.com/vue/2.4.1/vue.min.js"></script>
-<script src="/path/to/vue-aplayer-plugin.js"></script>
+<script src="/path/to/APlayer.min.js"></script>
+<link rel="stylesheet" href="/path/to/APlayer.min.css"></link>
 ```
 
 ### 初始化 Vue 实例
 
 ```js
+/* global Vue */
 new Vue({
   el: '#app',
   data: {
+    aplayer: null,
     narrow: false,
     autoplay: true,
     showlrc: true,
     mutex: true,
     fold: false,
-    speed: 1.35,
-    theme: '#b7daff',
+    speed: 1,
+    theme: '#ad7a86',
     mode: 'circulation',
     preload: 'metadata',
-    listmaxheight: '115px',
+    listmaxheight: '200px',
     music: [{
+      id: 0,
       title: '本色',
       author: '泠鸢yousa',
-      url: 'https://m10.music.126.net/20170720161530/2a23eac0e150339ce9f072648f61f5a9/ymusic/731f/d1d3/6884/0ef39bebf0050d11580b46b72b32e99d.mp3',
+      url: 'http://m10.music.126.net/20170722024929/1b306cf3e37379fb0a4d734eaa97c2f1/ymusic/731f/d1d3/6884/0ef39bebf0050d11580b46b72b32e99d.mp3',
       pic: 'https://p1.music.126.net/fTSpa8Et436YQ7eWTvkL0Q==/17963820974811393.jpg',
-      lrc: '[by:Raidou]\n[by:raidou]\n[ti:本色]\n[ar:泠鸢yousa]\n[re:lrc-maker (https://weirongxu.github.io/lrc-maker/)]\n[ve:0.1.0]\n[length:05:14]\n[00:00.00] 作曲 : HTT\n[00:01.00] 作词 : 左耳以东\n[00:39.97]天生妩媚风流俏模样\n[00:43.72]偏嫁五尺短儿郎\n[00:46.48]谷树皮 三寸丁\n[00:47.98]夜夜空对 枉自结愁肠\n[00:52.73]生就娉婷袅娜好身段\n[00:55.97]若为娼 无妨\n[00:58.72]冠花街 压群芳\n[01:00.98]身无所拘 心无疆\n[01:42.98][03:41.34]娇莺应和啼婉转\n[01:45.48][03:44.02]金莲颤 青葱缠 享合欢\n[01:51.47][03:49.77]盈盈露滴湿牡丹\n[01:57.26][03:55.52]翩翩粉蝶暗偷香\n[02:03.51][04:01.52]倒浇红烛夜行船\n[02:06.76][04:05.27]鱼水同欢赴巫山\n[02:09.76][04:08.02]长睫倦 媚骨软 再贪欢\n[02:15.76][03:25.34][04:15.40][00:35.47][01:26.72]\n[02:39.19]鸿儒白丁正襟议伦常\n[02:42.19]酒阑横卧温柔乡\n[02:44.94]赏郑声 话高唐\n[02:46.94]男儿本色 矫饰冀流芳\n[02:50.69]未将妇德女戒正眼望\n[02:54.44]有缘人 放浪\n[02:57.19]千夫指 又何干？\n[02:59.19]休要辜负 好皮囊\n[03:02.69][01:04.23]斜阳含羞越花窗\n[03:05.69][01:06.98]浮云带怯偷眼望\n[03:08.69][01:09.98]美人微醺衣半敞\n[03:14.19][01:16.23]青丝半绾慵倚床\n[03:17.44][01:18.97]星眸初泛潋滟光\n[03:20.19][01:21.98]檀口轻启吐兰芳\n[03:26.09][01:27.23]金风玉露相逢晚\n[03:31.84][01:33.48]银盘斜偎乌云漫\n[03:37.84][01:39.47]轻拢慢捻挑抹忙\n[04:42.54]帐暖良宵短\n[04:45.79]天色忽已晚\n[04:48.99]忙着罗袜重整装\n[04:53.24]倚门回首 带笑含情央\n'
+      lrc: 'loading'
     }]
   },
-  created () {
-    this.narrow = false
-    this.autoplay = true
-    this.showlrc = true
-    this.mutex = true
-    this.fold = false
-    this.speed = 1.35
-    this.theme = ''
-    this.mode = 'singer'
-    this.preload = 'metadta'
-    this.listmaxheight = '115px'
-    this.music.push()
+  mounted () {
+    this.aplayer = this.$refs.aplayer
+  },
+  methods: {
+    getLyricAsync () {
+      setTimeout(() => this.music[0].lrc = '[by:Raidou]\n[by:raidou]\n[ti:本色]\n[ar:泠鸢yousa]\n[re:lrc-maker (https://weirongxu.github.io/lrc-maker/)]\n[ve:0.1.0]\n[length:05:14]\n[00:00.00] 作曲 : HTT\n[00:01.00] 作词 : 左耳以东\n[00:39.97]天生妩媚风流俏模样\n[00:43.72]偏嫁五尺短儿郎\n[00:46.48]谷树皮 三寸丁\n[00:47.98]夜夜空对 枉自结愁肠\n[00:52.73]生就娉婷袅娜好身段\n[00:55.97]若为娼 无妨\n[00:58.72]冠花街 压群芳\n[01:00.98]身无所拘 心无疆\n[01:42.98][03:41.34]娇莺应和啼婉转\n[01:45.48][03:44.02]金莲颤 青葱缠 享合欢\n[01:51.47][03:49.77]盈盈露滴湿牡丹\n[01:57.26][03:55.52]翩翩粉蝶暗偷香\n[02:03.51][04:01.52]倒浇红烛夜行船\n[02:06.76][04:05.27]鱼水同欢赴巫山\n[02:09.76][04:08.02]长睫倦 媚骨软 再贪欢\n[02:15.76][03:25.34][04:15.40][00:35.47][01:26.72]\n[02:39.19]鸿儒白丁正襟议伦常\n[02:42.19]酒阑横卧温柔乡\n[02:44.94]赏郑声 话高唐\n[02:46.94]男儿本色 矫饰冀流芳\n[02:50.69]未将妇德女戒正眼望\n[02:54.44]有缘人 放浪\n[02:57.19]千夫指 又何干？\n[02:59.19]休要辜负 好皮囊\n[03:02.69][01:04.23]斜阳含羞越花窗\n[03:05.69][01:06.98]浮云带怯偷眼望\n[03:08.69][01:09.98]美人微醺衣半敞\n[03:14.19][01:16.23]青丝半绾慵倚床\n[03:17.44][01:18.97]星眸初泛潋滟光\n[03:20.19][01:21.98]檀口轻启吐兰芳\n[03:26.09][01:27.23]金风玉露相逢晚\n[03:31.84][01:33.48]银盘斜偎乌云漫\n[03:37.84][01:39.47]轻拢慢捻挑抹忙\n[04:42.54]帐暖良宵短\n[04:45.79]天色忽已晚\n[04:48.99]忙着罗袜重整装\n[04:53.24]倚门回首 带笑含情央\n', 2000)
+    }
   }
 })
 ```
@@ -103,17 +114,17 @@ new Vue({
 
 公开了以下属性和方法：
 
-* `ap.play()` // 继续播放
-* `ap.play(index)` // 播放指定索引歌曲
-* `ap.play(music)` // 播放指定歌曲
-* `ap.pause()` // 暂停播放
-* `ap.toggle()` // 切换播放状态（当前暂停则播放，当前播放则暂停）
-* `ap.toggleVolume()` // 切换静音状态
-* `ap.setMusic(music)` // 重设当前播放曲目信息（仅设置信息不切换播放）
-* `ap.currentMusic` // [只读] 获取当前播放的歌曲信息 如果要修改信息请使用 `ap.setMusic(music)`
-* `ap.audio` // [只读] 获取播放器依赖的 `HTMLAudioElement` 对象
+* `this.$refs.aplayer.play()` // 继续播放
+* `this.$refs.aplayer.play(index)` // 播放指定索引歌曲
+* `this.$refs.aplayer.play(music)` // 播放指定歌曲
+* `this.$refs.aplayer.pause()` // 暂停播放
+* `this.$refs.aplayer.toggle()` // 切换播放状态（当前暂停则播放，当前播放则暂停）
+* `this.$refs.aplayer.toggleVolume()` // 切换静音状态
+* `this.$refs.aplayer.setMusic(music)` // 重设当前播放曲目信息（仅设置信息不切换播放）
+* `this.$refs.aplayer.currentMusic` // [只读] 获取当前播放的歌曲信息 如果要修改信息请使用 `ap.setMusic(music)`
+* `this.$refs.aplayer.audio` // [只读] 获取播放器依赖的 `HTMLAudioElement` 对象
 
-**仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**
+**仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**  
 **所以如果您需要往播放列表添加歌曲只需要往 `music` 数组中 `push` 对象即可。**
 
 ### 事件
