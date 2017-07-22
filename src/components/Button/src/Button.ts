@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import WithRender from './Button.html?style=./Button.scss'
 
-import { Prop, Watch } from 'vue-property-decorator'
+import { Prop } from 'vue-property-decorator'
 import svg from './svg'
 
 @WithRender
@@ -11,6 +11,7 @@ export class Button extends Vue {
   @Prop({ type: String, default: 'play' })
   public readonly type: string
   @Prop({ type: String, default: 'play' })
+
   public readonly icon: string
 
   public get path () {

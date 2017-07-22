@@ -5,5 +5,4 @@ import 'App.css'
 
 @WithRender
 @Component
-export default class App extends Vue {
-}
+export default class App extends Vue { }

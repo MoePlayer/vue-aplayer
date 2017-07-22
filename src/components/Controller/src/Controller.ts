@@ -7,5 +7,4 @@ import { Prop } from 'vue-property-decorator'
 @WithRender
 @Component
 export class Controller extends Vue { }
-
 export default Controller
