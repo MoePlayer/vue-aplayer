@@ -6,7 +6,8 @@
 
 ```html
 <div id="app">
-  <APlayer
+  <!-- 模块化开发下使用 <APlayer /> -->
+  <a-player
     :narrow="narrow"
     :autoplay="autoplay"
     :showlrc="showlrc"
@@ -18,7 +19,7 @@
     :preload="preload"
     :listmaxheight="listmaxheight"
     :music="music"
-  />
+  ></a-player>
 </div>
 <script src="//cdn.bootcss.com/vue/2.4.1/vue.min.js"></script>
 <script src="/path/to/vue-aplayer-plugin.js"></script>
