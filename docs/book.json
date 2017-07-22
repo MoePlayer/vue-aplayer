@@ -12,7 +12,7 @@
   ],
   "pluginsConfig": {
     "edit-link": {
-      "base": "https://github.com/MoeFE/vue-aplayer/tree/dev/docs",
+      "base": "https://github.com/MoeFE/vue-aplayer/tree/master/docs",
       "label": "编辑此页面"
     },
     "github": {
