@@ -4,7 +4,7 @@
 [https://unpkg.com/vue-aplayer-plugin](https://unpkg.com/vue-aplayer-plugin@1.0.0)
 [Unpkg.com](https://unpkg.com) 提供了基于 NPM 的 CDN 链接，以上的链接会一直指向 NPM 上发布的最新版本。
 
-您也可以通过 https://unpkg.com/vue-aplayer-plugin@1.0.0 这样的方式指定特定的版本。
+您也可以通过 https://unpkg.com/vue-aplayer-plugin@1.0.0 这样的方式指定特定的版本。  
 您还可以使用饿了么提供的 CDN：https://npm.elemecdn.com/vue-aplayer-plugin@1.0.0/dist/APlayer.min.js
 
 在 Vue 之后引入 vue-aplayer-plugin 会进行自动安装：
