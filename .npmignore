@@ -14,6 +14,7 @@ src/main.ts
 src/typings.d.ts
 static/
 test/
+demo/
 .babelrc
 .editorconfig
 .eslintignore
