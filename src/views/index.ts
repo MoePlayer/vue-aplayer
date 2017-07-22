@@ -8,8 +8,7 @@ import { Thread } from 'utils/thread'
 import { store } from './store'
 
 import mock from 'mockjs'
-import APlayer from 'components'
-import { APlayer as IAPlayer } from 'components'
+import APlayer, { APlayer as IAPlayer } from 'components'
 Vue.use(APlayer)
 
 @WithRender
