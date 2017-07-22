@@ -112,7 +112,7 @@ new Vue({
 * `ap.currentMusic` // [只读] 获取当前播放的歌曲信息 如果要修改信息请使用 `ap.setMusic(music)`
 * `ap.audio` // [只读] 获取播放器依赖的 `HTMLAudioElement` 对象
 
-**仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**  
+**仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**
 **所以如果您需要往播放列表添加歌曲只需要往 `music` 数组中 `push` 对象即可。**
 
 ### 事件
@@ -149,14 +149,14 @@ new Vue({
 
 ##### LRC [歌词格式](https://zh.wikipedia.org/wiki/LRC%E6%A0%BC%E5%BC%8F)
 
-```lrc
+```
 [ti:歌词(歌曲)的标题]
 [al:本歌所在的唱片集]
 [ar:演出者-歌手]
 [au:歌词作者-作曲家]
 [by:此LRC文件的创建者]
 [offset:+/- 以毫秒为单位加快或延后歌词的播放]
- 
+
 [re:创建此LRC文件的播放器或编辑器]
 [ve:程序的版本]
 
