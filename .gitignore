@@ -12,6 +12,7 @@ test/e2e
 selenium-debug.log
 _book/
 static/demo/
+docs/demo/static/demo/
 
 # Editor directories and files
 .vscode
