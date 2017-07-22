@@ -1,10 +1,10 @@
 # Vue-APlayer-Plugin
 
-[![npm](https://img.shields.io/npm/v/vue-aplayer-plugin.svg?style=flat-square)](https://www.npmjs.com/package/vue-aplayer-plugin)
-[![npm](https://img.shields.io/npm/l/vue-aplayer-plugin.svg?style=flat-square)](https://github.com/MoeFE/vue-aplayer/blob/master/LICENSE)
-[![devDependency Status](https://img.shields.io/david/dev/MoeFE/vue-aplayer-plugin.svg?style=flat-square)](https://david-dm.org/MoeFE/vue-aplayer#info=devDependencies)
-[![npm](https://img.shields.io/npm/dt/vue-aplayer-plugin.svg?style=flat-square)](https://www.npmjs.com/package/vue-aplayer-plugin)
-[![Travis](https://img.shields.io/travis/MoeFE/vue-aplayer.svg?style=flat-square)](https://travis-ci.org/MoeFE/vue-aplayer)
+[![npm](https://img.shields.io/npm/v/vue-aplayer-plugin.svg)](https://www.npmjs.com/package/vue-aplayer-plugin)
+[![npm](https://img.shields.io/npm/l/vue-aplayer-plugin.svg)](https://github.com/MoeFE/vue-aplayer/blob/master/LICENSE)
+[![devDependency Status](https://img.shields.io/david/dev/MoeFE/vue-aplayer-plugin.svg)](https://david-dm.org/MoeFE/vue-aplayer#info=devDependencies)
+[![npm](https://img.shields.io/npm/dt/vue-aplayer-plugin.svg)](https://www.npmjs.com/package/vue-aplayer-plugin)
+[![Travis](https://img.shields.io/travis/MoeFE/vue-aplayer.svg)](https://travis-ci.org/MoeFE/vue-aplayer)
 
 > Wow, such a beautiful html5 music player
 
