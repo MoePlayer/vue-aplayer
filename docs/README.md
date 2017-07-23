@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue-aplayer-plugin.svg)](https://www.npmjs.com/package/vue-aplayer-plugin)
 [![npm](https://img.shields.io/npm/l/vue-aplayer-plugin.svg)](https://github.com/MoeFE/vue-aplayer/blob/master/LICENSE)
-[![devDependency Status](https://img.shields.io/david/dev/MoeFE/vue-aplayer-plugin.svg)](https://david-dm.org/MoeFE/vue-aplayer#info=devDependencies)
+[![devDependency Status](https://img.shields.io/david/MoeFE/vue-aplayer.svg)](https://david-dm.org/MoeFE/vue-aplayer#info=devDependencies)
 [![npm](https://img.shields.io/npm/dt/vue-aplayer-plugin.svg)](https://www.npmjs.com/package/vue-aplayer-plugin)
 [![Travis](https://img.shields.io/travis/MoeFE/vue-aplayer.svg)](https://travis-ci.org/MoeFE/vue-aplayer)
 
