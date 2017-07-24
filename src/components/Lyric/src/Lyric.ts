@@ -70,7 +70,7 @@ export class Lyric extends Vue {
   private async parseLRC (): Promise<void> {
     if (!this.lrc || this.lrc === 'loading') return
     if (this.isURL(this.lrc)) { // 如果歌词是一个URL地址则请求该地址获得歌词文本
-      const { data } = await Axios.get(this.lrc.toString())
+      const { data } = await Axios.get(this.lrc)
       this.currentLRC = data
     } else this.currentLRC = this.lrc
 
@@ -108,7 +108,7 @@ export class Lyric extends Vue {
     const uri = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/
     const path = /.*\/[^\/]+\.[^\.]+$/
     const wrap = /(\r\n)|(\\r\\n)|(\n)|(\\n)/
-    return uri.test(url.toString()) || (path.test(url) && !wrap.test(url))
+    return uri.test(url) || (path.test(url) && !wrap.test(url))
   }
 
 }

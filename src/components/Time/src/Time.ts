@@ -13,10 +13,10 @@ export class Time extends Vue {
   @Prop({ type: Number, default: 0, required: true })
   public readonly duration: number
 
-  get ptime (): string {
+  private get ptime (): string {
     return this.timeSecondsFormat(this.currentTime)
   }
-  get dtime (): string {
+  private get dtime (): string {
     return this.timeSecondsFormat(this.duration)
   }
 
