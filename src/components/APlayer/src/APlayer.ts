@@ -198,7 +198,7 @@ export default class APlayer extends Vue {
   public play (index: number): Promise<any>
   public play (music: APlayer.Music): Promise<any>
   public play (x?: number | APlayer.Music): Promise<any> {
-    this.mutex && this.postMessage({ action: 'mutex', timespan: new Date().getTime() })
+    this.mutex && this.postMessage({ action: 'mutex', timestamp: new Date().getTime() })
     if (x === void 0) {
       if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode))
       else this.audio.play()
@@ -273,10 +273,10 @@ export default class APlayer extends Vue {
   private beforeCreate (): void {
     console.log('\n%c APlayer 1.6.1 %c http://aplayer.js.org \n\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
     const time = { start: 0, end: 0, timespan: () => time.end - time.start }
-    time.start = Number(new Date())
+    time.start = new Date().getTime()
     const img = new Image()
     img.onload = () => { // 确保文字必须在图片输出之后再输出
-      time.end = Number(new Date())
+      time.end = new Date().getTime()
       setTimeout(() => {
         const moe = 'color: #fd5557; font-weight: bold'
         console.log('\n%cMoe %cis justice!!!', moe, 'font-weight: bold')
@@ -341,10 +341,10 @@ export default class APlayer extends Vue {
     // 暂停其他实例（多标签页）
     if (!this.mutex) return
     const action = 'mutex'
-    const key = this.postMessage({ action, timespan: new Date().getTime() })
+    const key = this.postMessage({ action, timestamp: new Date().getTime() })
     window.addEventListener('storage', evt => {
       if (evt.key !== key) return
-      const data = JSON.parse(evt.newValue) as { action: string; timespan: number }
+      const data = JSON.parse(evt.newValue) as { action: string; timestamp: number }
       if (data && data.action === action) this.pause()
     })
   }
@@ -362,6 +362,7 @@ export default class APlayer extends Vue {
   @Watch('fold')
   private foldChange (): void {
     this.setCollapsed(this.fold)
+    this.$emit('foldChange', this.fold)
   }
 
   /**
@@ -377,7 +378,9 @@ export default class APlayer extends Vue {
     })
     if (!this.audio.paused) return
     if (this.config && this.config.music) return
-    this.play(0)
+
+    const index = this.getPlayIndexByPlayMode(this.playMode)
+    this.play(index < 0 ? 0 : index)
   }
 
   /** 进度条发生改变触发的事件，设置新的播放进度 */
@@ -392,6 +395,7 @@ export default class APlayer extends Vue {
     this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
+  /** 列表项被单击时触发的函数 */
   private async playHandler (music: APlayer.Music): Promise<void> {
     await this.play(music)
     this.play() // 点击列表播放时忽略 [autoplay = false] 的影响，所以需要再调用一次
@@ -402,8 +406,6 @@ export default class APlayer extends Vue {
    *
    * @private
    * @param {APlayer.PlayMode} mode 当前播放模式
-   * @param {APlayer.Music} music 当前播放音乐
-   * @param {Array<APlayer.Music>} musics 音乐列表
    * @returns {number} 下一曲要播放的音乐索引
    * @memberof APlayer
    */
