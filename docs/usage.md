@@ -106,7 +106,9 @@ new Vue({
 * **`author`** : 歌曲作者，选填
 * **`url`** : 歌曲播放地址，必填
 * **`pic`** : 歌曲图片地址，选填
-* **`lrc`** : LRC 歌词地址或字符串，选填
+* **`lrc`** : LRC 歌词地址或字符串，选填  
+  如果值为 `loading` 则表示该歌词由异步接口获取  
+  在值改变之前歌词面板将显示“加载中”的文案
 
 
 
@@ -120,8 +122,10 @@ new Vue({
 * `this.$refs.aplayer.pause()` // 暂停播放
 * `this.$refs.aplayer.toggle()` // 切换播放状态（当前暂停则播放，当前播放则暂停）
 * `this.$refs.aplayer.toggleVolume()` // 切换静音状态
+* `this.$refs.aplayer.togglePlayMode(mode?)` // 按顺序切换播放模式或切换到指定的播放模式
 * `this.$refs.aplayer.setMusic(music)` // 重设当前播放曲目信息（仅设置信息不切换播放）
-* `this.$refs.aplayer.currentMusic` // [只读] 获取当前播放的歌曲信息 如果要修改信息请使用 `ap.setMusic(music)`
+* `this.$refs.aplayer.currentMusic` // [只读] 获取当前播放的歌曲信息  
+  如果要修改信息请使用 `this.$refs.aplayer.setMusic(music)`
 * `this.$refs.aplayer.audio` // [只读] 获取播放器依赖的 `HTMLAudioElement` 对象
 
 **仅提供最基础和常用的 API ，因为所有 Props 都是 [响应式](https://cn.vuejs.org/v2/guide/reactivity.html) 绑定的。**  
@@ -155,7 +159,8 @@ new Vue({
 | onsuspend          | script | 在媒介数据完全加载之前不论何种原因终止取回媒介数据时运行的脚本      |
 | ontimeupdate       | script | 当播放位置改变时（比如当用户快进到媒介中一个不同的位置时）运行的脚本   |
 | onvolumechange     | script | 每当音量改变时（包括将音量设置为静音）时运行的脚本            |
-| onwaiting          | script | 当媒介已停止播放但打算继续播放时运行脚本                 |
+| onwaiting          | script | 当媒介已停止播放但打算继续播放时运行的脚本                |
+| onfoldChange       | script | 播放列表收起状态发生改变时运行的脚本                   |
 
 ### 歌词
 

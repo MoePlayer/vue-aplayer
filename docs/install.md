@@ -1,7 +1,7 @@
 # 安装
 
 ### 直接下载 / CDN 引用
-[https://unpkg.com/vue-aplayer-plugin](https://unpkg.com/vue-aplayer-plugin@1.0.0)
+[https://unpkg.com/vue-aplayer-plugin](https://unpkg.com/vue-aplayer-plugin@1.0.0)  
 [Unpkg.com](https://unpkg.com) 提供了基于 NPM 的 CDN 链接，以上的链接会一直指向 NPM 上发布的最新版本。
 
 您也可以通过 https://unpkg.com/vue-aplayer-plugin@1.0.0 这样的方式指定特定的版本。  
