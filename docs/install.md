@@ -30,7 +30,7 @@ yarn add vue-aplayer-plugin
 ```js
 import Vue from 'vue'
 import APlayer from 'vue-aplayer-plugin'
-import APlayer from 'vue-aplayer-plugin/dist/APlayer.min.css'
+import 'vue-aplayer-plugin/dist/APlayer.min.css'
 
 Vue.use(APlayer)
 ```
