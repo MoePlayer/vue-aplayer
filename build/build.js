@@ -21,7 +21,8 @@ webpackConfig.entry = {
 webpackConfig.output = {
   path: path.resolve(__dirname, outputDir),
   filename: '[name].min.js',
-  libraryTarget: 'umd'
+  libraryTarget: 'umd',
+  umdNamedDefine: true
 }
 webpackConfig.externals = {
   vue: {
