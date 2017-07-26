@@ -32,10 +32,10 @@ import {
 } from 'store/types'
 
 import { Thread } from 'utils/thread'
-import VueTouch from 'vue-touch'
+import Touch from 'components/Touch'
 import 'console.img'
 
-Vue.use(VueTouch)
+Vue.use(Touch)
 
 enum ReadyState {
   /** 没有关于音频是否就绪的信息 */

@@ -2,9 +2,9 @@
   <div ref="bar" class="aplayer-bar">
     <div class="aplayer-loaded" :style="`width: ${loaded * 100}%`" :title="`已缓冲: ${Math.round(loaded * 100)}%`"></div>
     <div class="aplayer-played" :style="`width: ${currentPlayed * 100}%; background: ${theme}`" :title="`已播放: ${Math.round(played * 100)}%`">
-      <v-touch @panmove="panMoveHandler" @panstart="panStartHandler" @panend="panEndHandler" @pancancel="panEndHandler">
+      <Touch @panmove="panMoveHandler" @panstart="panStartHandler" @panend="panEndHandler" @pancancel="panEndHandler">
         <span class="aplayer-thumb" :style="thumbStyles" @mouseover="mouseOverHandler" @mouseout="mouseOutHandler"></span>
-      </v-touch>
+      </Touch>
     </div>
   </div>
 </div>
