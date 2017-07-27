@@ -1,7 +1,7 @@
 export class Thread {
 
-  public static sleep (delay): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, delay || 0))
+  public static sleep (delay = 0): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, delay))
   }
 
 }
