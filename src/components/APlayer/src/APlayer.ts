@@ -222,8 +222,10 @@ export default class APlayer extends Vue {
       this.audio.preload = this.preload
       this.audio.autoplay = this.autoplay
       this.audio.volume = this.volume
-      this.audio.oncanplay = resolve
-      if (this.autoplay) this.play() // Safari 不支持 autoplay 属性
+      this.audio.oncanplay = () => {
+        if (this.autoplay) this.play() // Safari 不支持 autoplay 属性
+        resolve()
+      }
       this.speedChange()
       this.setCurrentMusicOffsetTop()
     })
