@@ -60,6 +60,7 @@ export default class IndexPage extends Vue {
   }
 
   private async errorHandler (): Promise<void> {
+    if (this.aplayer.playIndex < 0) return
     this.aplayer.pause()
     if (this.music.length > 0) {
       await this.getMusics(new Date().getTime())
