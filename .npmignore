@@ -15,6 +15,7 @@ src/typings.d.ts
 static/
 test/
 demo/
+deploy.sh
 .babelrc
 .editorconfig
 .eslintignore
