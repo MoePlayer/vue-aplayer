@@ -99,7 +99,7 @@ export default class APlayer extends Vue {
   public readonly currentMusic: APlayer.Music
   /** 获取播放模式 */
   @Getter('mode')
-  private readonly playMode: APlayer.PlayMode
+  public readonly playMode: APlayer.PlayMode
   /** 获取当前主题颜色 */
   @Getter('theme')
   private readonly currentTheme: string
@@ -161,7 +161,7 @@ export default class APlayer extends Vue {
 
   /** 已缓冲的进度比例 */
   private get loaded (): number {
-    if (Number(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA) {
+    if (Number.parseInt(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA) {
       return this.media.buffered.end(this.media.buffered.length - 1) / this.media.duration
     }
     return 0
@@ -201,7 +201,7 @@ export default class APlayer extends Vue {
     this.mutex && this.postMessage({ action: 'mutex', timestamp: new Date().getTime() })
     if (x === void 0) {
       if (!this.currentMusic.url) this.play(this.getPlayIndexByPlayMode(this.playMode))
-      else this.audio.play()
+      else if (Number.parseInt(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA) this.audio.play()
       return void 0
     }
 
@@ -210,7 +210,7 @@ export default class APlayer extends Vue {
 
     if (index < 0) {
       this.setMusic(null)
-      this.audio.src = null
+      this.audio.src = '' // 不要赋值为 null ， null 还会发一次请求
       return void 0
     }
     if (typeof music !== 'object') music = this.music[index]
@@ -223,9 +223,10 @@ export default class APlayer extends Vue {
       this.audio.autoplay = this.autoplay
       this.audio.volume = this.volume
       this.audio.oncanplay = () => {
-        if (this.autoplay) this.play() // Safari 不支持 autoplay 属性
-        resolve()
+        const canplay = this.config && this.config.media && this.config.media.paused === false
+        if (this.autoplay && canplay) this.play() // Safari 不支持 autoplay 属性
       }
+      this.audio.onloadeddata = resolve
       this.speedChange()
       this.setCurrentMusicOffsetTop()
     })
@@ -387,14 +388,19 @@ export default class APlayer extends Vue {
 
   /** 进度条发生改变触发的事件，设置新的播放进度 */
   private async progressChangeHandler (percent: number): Promise<void> {
-    if (!this.currentMusic.url) await this.play(this.getPlayIndexByPlayMode(this.playMode))
-    this.audio.currentTime = this.audio.duration * percent
+    // tslint:disable:curly
+    if (!this.currentMusic.url)
+      await this.play(this.getPlayIndexByPlayMode(this.playMode))
+    else if (Number.parseInt(this.media.readyState) >= ReadyState.HAVE_FUTURE_DATA)
+      this.audio.currentTime = this.audio.duration * percent
+    // tslint:enable:curly
   }
 
   /** 音频播放完毕，在此根据当前播放模式处理下一曲逻辑 */
   private async endedHandler (): Promise<void> {
-    await this.play(this.getPlayIndexByPlayMode(this.playMode))
-    this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
+    const index = this.getPlayIndexByPlayMode(this.playMode)
+    await this.play(index)
+    if (index >= 0) this.play() // 下一曲时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
   /** 列表项被单击时触发的函数 */
