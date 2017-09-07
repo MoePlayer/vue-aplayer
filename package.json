@@ -1,7 +1,7 @@
 {
   "name": "vue-aplayer-plugin",
-  "version": "1.1.1",
-  "description": "Wow, such a beautiful HTML5 music player",
+  "version": "1.2.0",
+  "description": "Based on APlayer's Vue2.x plugin",
   "author": "u3u <quq@quq.cat>",
   "license": "SATA",
   "private": false,
