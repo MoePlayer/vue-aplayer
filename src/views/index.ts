@@ -18,6 +18,7 @@ export default class IndexPage extends Vue {
   private aplayer: IAPlayer = null
   private mock = mock
 
+  private remove: boolean = true
   private narrow: boolean = false
   private autoplay: boolean = true
   private showlrc: boolean = false

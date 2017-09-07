@@ -7,6 +7,7 @@
   <h3>With playlist and lyrics</h3>
   <APlayer
     ref="aplayer"
+    :remove="remove"
     :narrow="narrow"
     :autoplay="autoplay"
     :showlrc="showlrc"
@@ -29,6 +30,7 @@
   <button @click="speed = (speed * 1000 + 0.1 * 1000) / 1000">change speed (current: {{ speed }})</button>
   <button @click="theme = mock.Random.color()">change theme (current: {{ theme }})</button>
   <button @click="aplayer.togglePlayMode()">change mode (current: {{ aplayer ? aplayer.playMode : mode }})</button>
+  <button @click="remove = !remove">{{ remove ? 'disable' : 'enable' }} delete</button>
   <button @click="listmaxheight = Number.parseInt(listmaxheight) + 33 + 'px'">change listmaxheight (current: {{ listmaxheight }})</button>
   <button @click="music.splice(0, 1)">delete music (count: {{ music.length }})</button>
   <button @click="fold = false; music.reverse()">sort music</button>
