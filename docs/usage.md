@@ -91,6 +91,7 @@ new Vue({
 | preload       | `type`     | `'auto'`        |  ✕   | 预加载模式             |
 | listmaxheight | `string`   | `'auto'`        |  ✕   | 播放列表最大高度          |
 | music         | `Array<T>` | `[]`            |  ✓   | 播放列表歌曲            |
+| remove        | `boolean`  | `false`         |  ✕   | 是否开启播放列表删除功能      |
 
 **`mode` 可选值：**
 
