@@ -13,7 +13,7 @@ li {
   }
   &:hover {
     background: #efefef;
-    .aplayer-list-right {
+    .aplayer-list-right.has-delete {
       transform: translate3d(0, 0, 0);
     }
     .aplayer-icon-delete {
@@ -47,7 +47,9 @@ li {
   .aplayer-list-right {
     float: right;
     transition: .2s;
-    transform: translate3d(15px, 0, 0)
+    &.has-delete {
+      transform: translate3d(15px, 0, 0);
+    }
   }
   .aplayer-list-author {
     color: #666;

@@ -21,6 +21,8 @@ export class Item extends Vue {
   public readonly title: string
   @Prop({ type: String, required: true })
   public readonly author: string
+  @Prop({ type: Boolean, required: false, default: false })
+  public readonly remove: boolean
 
   @Getter('theme')
   private readonly theme: string

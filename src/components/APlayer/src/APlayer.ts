@@ -85,8 +85,12 @@ export default class APlayer extends Vue {
   /** play speed */
   @Prop({ type: Number, default: 1, required: false })
   public readonly speed: number
+  /** fold playlist */
   @Prop({ type: Boolean, default: false, required: false })
   public readonly fold?: boolean
+  /** enable/disable remove features */
+  @Prop({ type: Boolean, default: false, required: false })
+  public readonly remove?: boolean
 
   /** 获取当前 Audio 对象实例 */
   @Getter('audio')
@@ -411,6 +415,7 @@ export default class APlayer extends Vue {
 
   /** 删除当前歌曲 */
   private async deleteMusic (index: number): Promise<void> {
+    if (!this.remove) return
     const isCurrentMusic = index === this.playIndex
     this.music.splice(index, 1)
     if (isCurrentMusic) { // 如果当前删除的歌曲是当前播放的歌曲则自动切换下一首

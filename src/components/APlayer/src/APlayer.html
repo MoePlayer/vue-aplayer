@@ -24,6 +24,7 @@
         :title="music.title"
         :author="music.author"
         :active="music.id === currentMusic.id"
+        :remove="remove"
         @click="playHandler(music)"
         @render="setCurrentMusicOffsetTop(index)"
         @delete="deleteMusic(index)" />
