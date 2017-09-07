@@ -1,6 +1,11 @@
-<li :class="{ 'aplayer-list-light': active }" @click="$emit('click')">
-  <span class="aplayer-list-cur" :style="`background: ${theme}`"></span>
-  <span class="aplayer-list-index">{{ index }}</span>
-  <span class="aplayer-list-title">{{ title }}</span>
-  <span class="aplayer-list-author">{{ author }}</span>
-</li>
+<transition leave-active-class="aplayer-list-deleting" @after-leave="$emit('delete')">
+  <li v-if="!deleted" :class="{ 'aplayer-list-light': active }" @click="$emit('click')">
+    <span class="aplayer-list-cur" :style="`background: ${theme}`"></span>
+    <span class="aplayer-list-index">{{ index }}</span>
+    <span class="aplayer-list-title">{{ title }}</span>
+    <span class="aplayer-list-right">
+      <span class="aplayer-list-author">{{ author }}</span>
+      <vButton type="delete" icon="delete" @click.prevent.stop.native="deleted = true" />
+    </span>
+  </li>
+</transition>

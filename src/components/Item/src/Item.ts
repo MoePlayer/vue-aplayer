@@ -5,8 +5,10 @@ import WithRender from './Item.html?style=./Item.scss'
 import { Prop } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 
+import { Button as vButton } from 'components/Button'
+
 @WithRender
-@Component
+@Component({ components: { vButton } })
 export class Item extends Vue {
 
   @Prop({ type: Number, required: true })
@@ -22,6 +24,7 @@ export class Item extends Vue {
 
   @Getter('theme')
   private readonly theme: string
+  private deleted: boolean = false
 
   private mounted (): void {
     this.$nextTick(() => this.$emit('render'))
