@@ -25,7 +25,8 @@
         :author="music.author"
         :active="music.id === currentMusic.id"
         @click="playHandler(music)"
-        @render="setCurrentMusicOffsetTop(index)" />
+        @render="setCurrentMusicOffsetTop(index)"
+        @delete="deleteMusic(index)" />
     </List>
   </template>
 </div>

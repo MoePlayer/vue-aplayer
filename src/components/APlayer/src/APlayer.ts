@@ -409,6 +409,16 @@ export default class APlayer extends Vue {
     this.play() // 点击列表播放时忽略 [autoplay = false] 的影响，所以需要再调用一次
   }
 
+  /** 删除当前歌曲 */
+  private async deleteMusic (index: number): Promise<void> {
+    const isCurrentMusic = index === this.playIndex
+    this.music.splice(index, 1)
+    if (isCurrentMusic) { // 如果当前删除的歌曲是当前播放的歌曲则自动切换下一首
+      await this.$nextTick()
+      this.play(index)
+    }
+  }
+
   /**
    * 根据当前播放模式获取下一曲要播放的音乐索引
    *
