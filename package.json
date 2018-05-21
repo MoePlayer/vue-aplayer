@@ -29,6 +29,7 @@
     "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "vue": "^2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
@@ -36,6 +37,7 @@
     "vuex-class": "^0.3.1"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
     "@vue/cli-plugin-babel": "^3.0.0-beta.10",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.10",
     "@vue/cli-plugin-typescript": "^3.0.0-beta.10",
@@ -48,6 +50,7 @@
     "prettier": "^1.12.1",
     "prettier-eslint-cli": "^4.7.1",
     "sass-loader": "^6.0.6",
+    "vue-svg-loader": "^0.5.0",
     "vue-template-compiler": "^2.5.13",
     "vue-tsx-support": "^1.2.1"
   },

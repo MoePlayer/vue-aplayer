@@ -6,6 +6,12 @@ const path = require('path');
 module.exports = {
   css: { extract: false },
   chainWebpack: (config) => {
+    // https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md#replace-existing-base-loader
+    config.module
+      .rule('svg')
+      .use('file-loader')
+      .loader('vue-svg-loader');
+
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
       .set('assets', path.resolve(__dirname, 'src/assets'))
