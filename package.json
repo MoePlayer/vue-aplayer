@@ -1,17 +1,39 @@
 {
   "name": "vue-aplayer",
-  "version": "0.1.0",
-  "private": true,
+  "description": "A beautiful HTML5 music player for Vue.js",
+  "version": "2.0.0",
+  "author": "u3u <qwq@qwq.cat>",
+  "license": "MIT",
+  "homepage": "https://github.com/MoePlayer/vue-aplayer#readme",
+  "repository": {
+    "url": "git+https://github.com/MoePlayer/vue-aplayer.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/MoePlayer/vue-aplayer/issues"
+  },
+  "keywords": [
+    "player",
+    "aplayer",
+    "vue-aplayer",
+    "vue-aplayer-plugin",
+    "music",
+    "html5",
+    "audio",
+    "media"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write"
   },
   "dependencies": {
     "vue": "^2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-class": "^0.3.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.10",
@@ -20,10 +42,14 @@
     "@vue/cli-service": "^3.0.0-beta.10",
     "@vue/eslint-config-airbnb": "^3.0.0-beta.10",
     "@vue/eslint-config-typescript": "^3.0.0-beta.10",
+    "babel-plugin-jsx-v-model": "^2.0.3",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.7.2",
+    "prettier": "^1.12.1",
+    "prettier-eslint-cli": "^4.7.1",
     "sass-loader": "^6.0.6",
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "vue-tsx-support": "^1.2.1"
   },
   "browserslist": [
     "> 1%",
@@ -34,12 +60,12 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "vue-cli-service lint",
       "git add"
     ],
-    "*.vue": [
-      "vue-cli-service lint",
+    "*.{js,jsx,json,ts,tsx,scss,vue,md}": [
+      "prettier-eslint --write",
       "git add"
     ]
   }
