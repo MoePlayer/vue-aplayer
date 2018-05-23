@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   extends: ['plugin:vue/essential', '@vue/airbnb', '@vue/typescript'],
   rules: {
-    strict: ['off'],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/no-extraneous-dependencies': ['off'],
     'function-paren-newline': ['off'],
     'class-methods-use-this': [
