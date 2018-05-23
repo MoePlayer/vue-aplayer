@@ -12,8 +12,11 @@
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
+      "@/*": ["src/*"],
       "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"]
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"],
+      "@moefe/vue-aplayer": ["src/components/index.ts"]
     }
   },
   "include": [

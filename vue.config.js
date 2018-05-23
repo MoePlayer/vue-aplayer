@@ -1,3 +1,4 @@
+/* eslint-disable strict */
 // https://github.com/vuejs/vue-cli/blob/dev/docs/config.md
 // https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
 // https://github.com/vuejs/vue-cli/blob/dev/docs/build-targets.md
@@ -15,6 +16,8 @@ module.exports = {
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
       .set('assets', path.resolve(__dirname, 'src/assets'))
-      .set('components', path.resolve(__dirname, 'src/components'));
+      .set('components', path.resolve(__dirname, 'src/components'))
+      .set('utils', path.resolve(__dirname, 'src/utils'))
+      .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/components/index.ts')); // prettier-ignore
   },
 };
