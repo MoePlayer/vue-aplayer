@@ -1,4 +1,4 @@
-# vue-aplayer
+# vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer)
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
 
