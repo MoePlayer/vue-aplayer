@@ -9,7 +9,7 @@ Now only completed the basic functions of the player, the core functions are bei
 ## Install
 
 ```bash
-yarn global add @moefe/vue-aplayer
+yarn add @moefe/vue-aplayer
 ```
 
 ## Usage
