@@ -1,4 +1,3 @@
 {
-  "presets": ["@vue/app"],
-  "plugins": ["jsx-v-model"]
+  "presets": ["@vue/app"]
 }
