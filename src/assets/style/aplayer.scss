@@ -33,6 +33,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
     }
     .aplayer-list {
       display: block;
+      width: 100%;
     }
     .aplayer-info
       .aplayer-controller
@@ -104,6 +105,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
       padding-right: 18px;
       transition: all 0.3s ease;
       max-width: 400px;
+      width: calc(100% - 18px);
     }
 
     .aplayer-lrc {
