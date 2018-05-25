@@ -1,0 +1,44 @@
+[
+  {
+    "name": "电子天使",
+    "artist": "小缘",
+    "url": "http://p97x7hshf.bkt.clouddn.com/dianzitianshi.mp3",
+    "cover": "/music/cover/dianzitianshi.jpg",
+    "lrc": "/music/lyrics/dianzitianshi.lrc"
+  },
+  {
+    "name": "拜无忧（Cover 萧忆情）",
+    "artist": "暖阳",
+    "url": "http://p97x7hshf.bkt.clouddn.com/baiwuyou.mp3",
+    "cover": "/music/cover/baiwuyou.jpg",
+    "lrc": "/music/lyrics/baiwuyou.lrc"
+  },
+  {
+    "name": "寄明月（Cover SING女团）",
+    "artist": "泠鸢yousa / 三无MarBlue",
+    "url": "http://p97x7hshf.bkt.clouddn.com/jimingyue.mp3",
+    "cover": "/music/cover/jimingyue.jpg",
+    "lrc": "/music/lyrics/jimingyue.lrc"
+  },
+  {
+    "name": "室内系的TrackMaker（Cover nicamoq）",
+    "artist": "Hanser",
+    "url": "http://p97x7hshf.bkt.clouddn.com/trackmaker.mp3",
+    "cover": "/music/cover/trackmaker.jpg",
+    "lrc": "/music/lyrics/trackmaker.lrc"
+  },
+  {
+    "name": "Lemon",
+    "artist": "米津玄師",
+    "url": "http://p97x7hshf.bkt.clouddn.com/lemon.mp3",
+    "cover": "/music/cover/lemon.jpg",
+    "lrc": "/music/lyrics/lemon.lrc"
+  },
+  {
+    "name": "月满西江（Cover 初音ミク）",
+    "artist": "祖娅纳惜",
+    "url": "http://p97x7hshf.bkt.clouddn.com/yuemanxijiang.mp3",
+    "cover": "/music/cover/yuemanxijiang.jpg",
+    "lrc": "/music/lyrics/yuemanxijiang.lrc"
+  }
+]
