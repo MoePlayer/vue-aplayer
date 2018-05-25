@@ -14,11 +14,15 @@ yarn global add @moefe/vue-aplayer
 
 ## Usage
 
-```bash
+```js
 import Vue from 'vue';
 import APlayer from '@moefe/vue-aplayer';
 
-Vue.use(APlayer);
+Vue.use(APlayer, {
+  hls: true, // hls support
+  colorThief: true, // enable self-adapting theme according to cover
+  productionTip: false, // disable console output
+});
 ```
 
 ## Contributing
@@ -31,7 +35,7 @@ Vue.use(APlayer);
 
 ## Author
 
-**vue-aplayer** © [u3u](https://github.com/u3u), Released under the [MIT](./LICENSE) License.
+**vue-aplayer** © [u3u](https://github.com/u3u), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by u3u with help from contributors ([list](https://github.com/u3u/qzone-cli/contributors)).
 
 > [qwq.cat](https://qwq.cat) · GitHub [@u3u](https://github.com/u3u)
