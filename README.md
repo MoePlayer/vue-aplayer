@@ -2,6 +2,10 @@
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
 
+## Status: developing
+
+Now only completed the basic functions of the player, the core functions are being developed, will be completed as soon as possible.
+
 ## Install
 
 ```bash
