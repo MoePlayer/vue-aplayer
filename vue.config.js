@@ -18,6 +18,7 @@ module.exports = {
       .set('assets', path.resolve(__dirname, 'src/assets'))
       .set('components', path.resolve(__dirname, 'src/components'))
       .set('utils', path.resolve(__dirname, 'src/utils'))
+      .set('@moefe/vue-audio', path.resolve(__dirname, 'src/components/utils/audio.ts'))
       .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/components/index.ts')); // prettier-ignore
   },
 };
