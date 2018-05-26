@@ -6,6 +6,8 @@
 
 <p align="center">
   <a href="https://travis-ci.org/MoePlayer/vue-aplayer"><img alt="Build Status" src="https://img.shields.io/travis/MoePlayer/vue-aplayer/dev.svg?style=for-the-badge"></a>
+  <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-mit-blue.svg?style=for-the-badge"></a>
+  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge"></a>
   <a href="#contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-4-orange.svg?style=for-the-badge"></a>
 </p>
 
