@@ -1,14 +1,12 @@
 <p align="center">
-  <img alt="vue-aplayer" src="https://user-images.githubusercontent.com/34600369/40580777-0dee07f0-613e-11e8-9a8b-a6f866db5986.png" width="400" height="98,115">
+  <a href="https://aplayer.netlify.com">
+    <img alt="vue-aplayer" src="https://user-images.githubusercontent.com/34600369/40580777-0dee07f0-613e-11e8-9a8b-a6f866db5986.png" width="500" height="123">
+  </a>
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/MoePlayer/vue-aplayer">
-    <img alt="Build Status" src="https://img.shields.io/travis/MoePlayer/vue-aplayer/dev.svg?style=for-the-badge">
-  </a>
-  <a href="#contributors">
-    <img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-4-orange.svg?style=for-the-badge">
-  </a>
+  <a href="https://travis-ci.org/MoePlayer/vue-aplayer"><img alt="Build Status" src="https://img.shields.io/travis/MoePlayer/vue-aplayer/dev.svg?style=for-the-badge"></a>
+  <a href="#contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-4-orange.svg?style=for-the-badge"></a>
 </p>
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
