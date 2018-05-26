@@ -1,4 +1,4 @@
-# vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer) [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg)](#contributors)
+# vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg)](#contributors)
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
 
@@ -40,8 +40,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/20062482?v=4" width="100px;"/><br /><sub><b>さくら</b></sub>](https://qwq.cat)<br />[💻](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Code") [🐛](https://github.com/MoePlayer/vue-aplayer/issues?q=author%3Au3u "Bug reports") [📖](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/8266075?v=4" width="100px;"/><br /><sub><b>DIYgod</b></sub>](https://diygod.me)<br />[🎨](#design-DIYgod "Design") [🤔](#ideas-DIYgod "Ideas, Planning, & Feedback") |
-| :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/20062482?v=4" width="100px;"/><br /><sub><b>さくら</b></sub>](https://qwq.cat)<br />[💻](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Code") [📖](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Documentation") [💡](#example-u3u "Examples") | [<img src="https://avatars2.githubusercontent.com/u/8266075?v=4" width="100px;"/><br /><sub><b>DIYgod</b></sub>](https://diygod.me)<br />[🎨](#design-DIYgod "Design") [🤔](#ideas-DIYgod "Ideas, Planning, & Feedback") | [<img src="https://avatars3.githubusercontent.com/u/27483702?v=4" width="100px;"/><br /><sub><b>Rex Zeng</b></sub>](https://forkmeongithub.com/)<br />[🐛](https://github.com/MoePlayer/vue-aplayer/issues?q=author%3ARexSkz "Bug reports") |
+| :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
