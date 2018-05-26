@@ -1,7 +1,7 @@
 {
   "projectName": "vue-aplayer",
   "projectOwner": "MoePlayer",
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg)](#contributors)",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=for-the-badge)](#contributors)",
   "commit": false,
   "contributors": [
     {
