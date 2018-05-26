@@ -57,7 +57,7 @@
     "prettier": "^1.12.1",
     "prettier-eslint-check": "^1.0.1",
     "prettier-eslint-cli": "^4.7.1",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.0.1",
     "vue-svg-loader": "^0.5.0",
     "vue-template-compiler": "^2.5.13",
     "vue-tsx-support": "^1.2.1"
