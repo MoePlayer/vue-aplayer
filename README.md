@@ -1,4 +1,4 @@
-# vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer)
+# vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer) [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg)](#contributors)
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
 
@@ -32,6 +32,20 @@ Vue.use(APlayer, {
 3.  Commit your changes: `git commit -am 'Add some feature'`
 4.  Push to the branch: `git push origin my-new-feature`
 5.  Submit a pull request :D
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/20062482?v=4" width="100px;"/><br /><sub><b>さくら</b></sub>](https://qwq.cat)<br />[💻](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Code") [🐛](https://github.com/MoePlayer/vue-aplayer/issues?q=author%3Au3u "Bug reports") [📖](https://github.com/MoePlayer/vue-aplayer/commits?author=u3u "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/8266075?v=4" width="100px;"/><br /><sub><b>DIYgod</b></sub>](https://diygod.me)<br />[🎨](#design-DIYgod "Design") [🤔](#ideas-DIYgod "Ideas, Planning, & Feedback") |
+| :---: | :---: |
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!
 
 ## Author
 
