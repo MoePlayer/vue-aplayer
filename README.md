@@ -59,6 +59,6 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 ## Author
 
 **vue-aplayer** © [u3u](https://github.com/u3u), Released under the [MIT](./LICENSE) License.<br>
-Authored and maintained by u3u with help from contributors ([list](https://github.com/u3u/qzone-cli/contributors)).
+Authored and maintained by u3u with help from contributors ([list](https://github.com/MoePlayer/vue-aplayer/contributors)).
 
 > [qwq.cat](https://qwq.cat) · GitHub [@u3u](https://github.com/u3u)
