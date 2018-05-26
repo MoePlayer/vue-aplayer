@@ -1,3 +1,6 @@
+<img align="center" width="400" height="98,115" src="https://user-images.githubusercontent.com/34600369/40580777-0dee07f0-613e-11e8-9a8b-a6f866db5986.png">  
+  
+
 # vue-aplayer [![Build Status](https://travis-ci.org/MoePlayer/vue-aplayer.svg?branch=dev)](https://travis-ci.org/MoePlayer/vue-aplayer) [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg)](#contributors)
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
