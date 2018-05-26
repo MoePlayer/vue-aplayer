@@ -1,12 +1,13 @@
 language: node_js
 
-node_js: stable
+node_js: 9
 
 install:
   - yarn
 
 script:
   - yarn lint
+  - yarn test:prettier
   - yarn test:types
 
 cache:
