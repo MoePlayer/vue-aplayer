@@ -6,7 +6,7 @@ import './App.scss';
 Vue.use(APlayer, {
   hls: false,
   colorThief: true,
-  productionTip: true,
+  productionTip: process.env.NODE_ENV !== 'development',
 });
 
 const sleep = (delay = 0) =>
@@ -18,11 +18,13 @@ export default class App extends Vue {
     fixed: true,
     lrcType: 3,
     listMaxHeight: '100px',
+    preload: 'none',
     audio: [],
   };
 
   private readonly aplayer1: APlayer.Options = {
     lrcType: 3,
+    preload: 'metadata',
     audio: [],
   };
 
