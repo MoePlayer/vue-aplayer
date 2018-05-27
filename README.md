@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://aplayer.netlify.com">
-    <img alt="vue-aplayer" src="https://user-images.githubusercontent.com/34600369/40580777-0dee07f0-613e-11e8-9a8b-a6f866db5986.png" width="500" height="123">
+    <img alt="vue-aplayer" src="https://user-images.githubusercontent.com/34600369/40580777-0dee07f0-613e-11e8-9a8b-a6f866db5986.png" width="500">
   </a>
 </p>
 
