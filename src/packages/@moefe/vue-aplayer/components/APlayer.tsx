@@ -84,6 +84,7 @@ export default class APlayer extends Vue {
   private get isLoading(): boolean {
     return Boolean(
       this.currentMusic.id &&
+        this.preload !== 'none' &&
         this.media.readyState < ReadyState.HAVE_FUTURE_DATA,
     );
   }

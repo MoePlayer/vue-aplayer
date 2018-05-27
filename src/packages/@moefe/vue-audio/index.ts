@@ -27,7 +27,12 @@ export default class VueAudio extends Vue implements Media {
     console.log(this.audio.src);
     return new Promise((resolve) => {
       this.audio.oncanplay = resolve;
-      if (this.readyState >= ReadyState.HAVE_FUTURE_DATA) resolve();
+      if (
+        this.readyState >= ReadyState.HAVE_FUTURE_DATA ||
+        this.preload === 'none'
+      ) {
+        resolve();
+      }
     });
   }
 
