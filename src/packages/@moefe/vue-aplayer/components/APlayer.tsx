@@ -157,6 +157,7 @@ export default class APlayer extends Vue {
         this.player.src = newMusic.url;
         this.player.preload = this.preload;
         this.player.autoplay = this.autoplay;
+        this.player.onerror = (e: ErrorEvent) => this.showNotice(e.message);
         await this.media.loaded();
         this.player.play(); // TODO: 如果是首次加载需要判断是否自动播放
       }
@@ -332,7 +333,11 @@ export default class APlayer extends Vue {
   // 切换上一曲
   private async handleSkipBack() {
     const index = this.currentIndex - 1;
-    const currentIndex = index < 0 ? this.dataSource.length - 1 : index;
+    const currentIndex = this.amendArrayBoundaryIndex(
+      this.dataSource,
+      index,
+      'prev',
+    );
     this.currentMusic = this.dataSource[currentIndex];
     await this.media.loaded();
     this.player.play();
@@ -341,7 +346,11 @@ export default class APlayer extends Vue {
   // 切换下一曲
   private async handleSkipForward() {
     const index = this.currentIndex + 1;
-    const currentIndex = index > this.dataSource.length - 1 ? 0 : index;
+    const currentIndex = this.amendArrayBoundaryIndex(
+      this.dataSource,
+      index,
+      'next',
+    );
     this.currentMusic = this.dataSource[currentIndex];
     await this.media.loaded();
     this.player.play();
