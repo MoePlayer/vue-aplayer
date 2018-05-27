@@ -24,7 +24,6 @@ export default class VueAudio extends Vue implements Media {
   }
 
   public loaded() {
-    console.log(this.audio.src);
     return new Promise((resolve) => {
       this.audio.oncanplay = resolve;
       if (
