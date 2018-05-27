@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { ReadyState } from 'utils/enum';
 import events from './events';
 
 @Component
@@ -19,6 +20,14 @@ export default class VueAudio extends Vue implements Media {
     Object.keys(this.$data).forEach((key) => {
       if (key === 'audio') return;
       this[key] = (this.audio as any)[key];
+    });
+  }
+
+  public loaded() {
+    console.log(this.audio.src);
+    return new Promise((resolve) => {
+      this.audio.oncanplay = resolve;
+      if (this.readyState >= ReadyState.HAVE_FUTURE_DATA) resolve();
     });
   }
 

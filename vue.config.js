@@ -15,10 +15,11 @@ module.exports = {
 
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
-      .set('assets', path.resolve(__dirname, 'src/assets'))
-      .set('components', path.resolve(__dirname, 'src/components'))
       .set('utils', path.resolve(__dirname, 'src/utils'))
-      .set('@moefe/vue-audio', path.resolve(__dirname, 'src/components/utils/audio.ts'))
-      .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/components/index.ts')); // prettier-ignore
+      .set('@moefe/vue-audio', path.resolve(__dirname, 'src/packages/@moefe/vue-audio/index.ts'))
+      .set('@moefe/vue-aplayer/assets', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/assets'))
+      .set('@moefe/vue-aplayer/components', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/components'))
+      .set('@moefe/vue-aplayer/utils', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/utils'))
+      .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/index.ts')); // prettier-ignore
   },
 };

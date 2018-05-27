@@ -1,26 +1,14 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-nested-ternary */
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
 import VueAudio from '@moefe/vue-audio';
+import { ReadyState } from 'utils/enum';
 import Player from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import '../assets/style/aplayer.scss';
-
-export enum ReadyState {
-  /** 没有关于音频是否就绪的信息 */
-  HAVE_NOTHING = 0,
-  /** 关于音频就绪的元数据 */
-  HAVE_METADATA = 1,
-  /** 关于当前播放位置的数据是可用的，但没有足够的数据来播放下一帧/毫秒 */
-  HAVE_CURRENT_DATA = 2,
-  /** 当前及至少下一帧的数据是可用的 */
-  HAVE_FUTURE_DATA = 3,
-  /** 可用数据足以开始播放 */
-  HAVE_ENOUGH_DATA = 4,
-}
 
 @Component
 export default class APlayer extends Vue {
@@ -160,14 +148,19 @@ export default class APlayer extends Vue {
     newMusic: APlayer.Audio,
     oldMusic?: APlayer.Audio,
   ) {
-    if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
-      this.player.src = this.currentMusic.url;
-      this.player.preload = this.preload;
-      this.player.autoplay = this.autoplay;
+    if (newMusic.cover) {
+      this.currentTheme = await this.getThemeColorFromCover(newMusic.cover);
     }
-    this.currentTheme = await this.getThemeColorFromCover(
-      this.currentMusic.cover,
-    );
+    if (newMusic.url) {
+      this.currentPlayed = 0;
+      if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
+        this.player.src = newMusic.url;
+        this.player.preload = this.preload;
+        this.player.autoplay = this.autoplay;
+        await this.media.loaded();
+        this.player.play(); // TODO: 如果是首次加载需要判断是否自动播放
+      }
+    }
   }
 
   @Watch('currentVolume')
@@ -179,6 +172,19 @@ export default class APlayer extends Vue {
   private handleChangeCurrentTime() {
     if (!this.isDraggingProgressBar) {
       this.currentPlayed = this.media.currentTime / this.media.duration;
+    }
+  }
+
+  @Watch('media.ended')
+  private handleChangeEnded() {
+    switch (this.loop) {
+      default:
+      case 'all':
+        break;
+      case 'one':
+        break;
+      case 'none':
+        break;
     }
   }
 
@@ -290,25 +296,54 @@ export default class APlayer extends Vue {
     });
   }
 
+  private getPlayIndexByMode(type: 'skipBack' | 'skipForward'): number {
+    const index = this.currentIndex;
+    const { length } = this.dataSource;
+    switch (this.loop) {
+      default:
+      case 'all':
+      case 'one':
+        return type === 'skipForward' ? index + 1 : index - 1;
+      case 'none':
+        break;
+    }
+    return -1;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private amendArrayBoundaryIndex(
+    arr: any[],
+    index: number,
+    direction: 'prev' | 'next' = 'next',
+  ): number {
+    return direction === 'next'
+      ? index > arr.length - 1
+        ? 0
+        : index
+      : index < 0
+        ? arr.length - 1
+        : index;
+  }
+
   // #endregion
 
   // #region 事件处理
 
   // 切换上一曲
-  private handleSkipBack() {
+  private async handleSkipBack() {
     const index = this.currentIndex - 1;
     const currentIndex = index < 0 ? this.dataSource.length - 1 : index;
     this.currentMusic = this.dataSource[currentIndex];
-    // TODO: You should wait for the audio file to load before playing
+    await this.media.loaded();
     this.player.play();
   }
 
   // 切换下一曲
-  private handleSkipForward() {
+  private async handleSkipForward() {
     const index = this.currentIndex + 1;
     const currentIndex = index > this.dataSource.length - 1 ? 0 : index;
     this.currentMusic = this.dataSource[currentIndex];
-    // TODO: You should wait for the audio file to load before playing
+    await this.media.loaded();
     this.player.play();
   }
 
@@ -325,14 +360,12 @@ export default class APlayer extends Vue {
 
   // 处理切换循环模式
   private handleToggleLoopMode() {
-    /* eslint-disable no-nested-ternary */
     this.currentLoop =
       this.currentLoop === 'all'
         ? 'one'
         : this.currentLoop === 'one'
           ? 'none'
           : 'all';
-    /* eslint-enable no-nested-ternary */
   }
 
   // 处理切换播放/暂停事件
@@ -351,15 +384,15 @@ export default class APlayer extends Vue {
   }
 
   // 处理进度条改变事件
-  private handleChangeProgress(
+  private async handleChangeProgress(
     e: MouseEvent | PointerEventInput,
     percent: number,
   ) {
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type === 'panmove';
     if (e.type === 'click' || e.type === 'panend') {
+      await this.media.loaded();
       this.player.currentTime = percent * this.media.duration;
-      // TODO: You should wait for the audio file to load before playing
       this.player.play();
     }
   }

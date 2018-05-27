@@ -1,3 +1,4 @@
 /dist
 /utils/lib/color-thief
 package.json
+tsconfig.json

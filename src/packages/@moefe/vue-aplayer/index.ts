@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import 'console.img';
 import { VueConstructor } from 'vue';
-import APlayer from './APlayer';
+import APlayer from './components/APlayer';
 
 interface Options {
   hls?: boolean;
@@ -26,7 +26,7 @@ export default async function install(
   }
 
   if (options.colorThief) {
-    const ColorThief = await import('utils/lib/color-thief').then(module => module.default); // prettier-ignore
+    const ColorThief = await import('./utils/lib/color-thief').then(module => module.default); // prettier-ignore
     Object.assign(APlayer.prototype, { colorThief: new ColorThief() });
   }
 
