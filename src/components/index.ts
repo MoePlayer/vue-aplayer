@@ -9,7 +9,14 @@ interface Options {
   productionTip?: boolean;
 }
 
-export default async function install(Vue: VueConstructor, options: Options) {
+export default async function install(
+  Vue: VueConstructor,
+  options: Options = {
+    hls: false,
+    colorThief: false,
+    productionTip: true,
+  },
+) {
   Vue.component('APlayer', APlayer);
 
   if (options.hls) {
