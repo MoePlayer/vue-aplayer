@@ -21,9 +21,13 @@ export default class Cover extends Vue {
     };
   }
 
+  private handleClick(e: MouseEvent) {
+    this.$emit('click', e);
+  }
+
   render() {
     return (
-      <div class="aplayer-pic" style={this.style}>
+      <div class="aplayer-pic" style={this.style} onClick={this.handleClick}>
         {this.$slots.default}
       </div>
     );

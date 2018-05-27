@@ -77,11 +77,8 @@ export default class Player extends Vue {
 
     return (
       <div class="aplayer-body">
-        <Cover>
-          <div
-            class={`aplayer-button aplayer-${playIcon}`}
-            onClick={this.handleTogglePlay}
-          >
+        <Cover onClick={this.handleTogglePlay}>
+          <div class={`aplayer-button aplayer-${playIcon}`}>
             <Icon type={playIcon} />
           </div>
         </Cover>
