@@ -748,6 +748,16 @@
   version "0.8.1"
   resolved "http://registry.npm.taobao.org/@types/hls.js/download/@types/hls.js-0.8.1.tgz#1e2d00dfd98b0d9130b11b492579f54d00712d9c"
 
+"@types/lodash.shuffle@^4.2.3":
+  version "4.2.3"
+  resolved "https://registry.npmjs.org/@types/lodash.shuffle/-/lodash.shuffle-4.2.3.tgz#f2355c37d1ab4a43c9db402751c1aee6fed96ae2"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.109"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.109.tgz#b1c4442239730bf35cabaf493c772b18c045886d"
+
 "@types/node@*":
   version "10.1.2"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
@@ -4757,6 +4767,10 @@ lodash.merge@^4.6.0:
 lodash.mergewith@^4.6.0:
   version "4.6.1"
   resolved "http://registry.npm.taobao.org/lodash.mergewith/download/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
+
+lodash.shuffle@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/lodash.shuffle/-/lodash.shuffle-4.2.0.tgz#145b5053cf875f6f5c2a33f48b6e9948c6ec7b4b"
 
 lodash.startswith@^4.2.1:
   version "4.2.1"
