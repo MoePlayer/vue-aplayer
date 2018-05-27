@@ -179,6 +179,7 @@ export default class APlayer extends Vue {
 
   @Watch('media.ended')
   private handleChangeEnded() {
+    this.currentPlayed = 0;
     switch (this.loop) {
       default:
       case 'all':
