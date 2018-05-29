@@ -787,9 +787,9 @@
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
 
-"@vue/cli-plugin-typescript@^3.0.0-beta.11":
-  version "3.0.0-beta.11"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-typescript/download/@vue/cli-plugin-typescript-3.0.0-beta.11.tgz#661b718fcb3cf4f0d0a8ece70affc3630a17cacc"
+"@vue/cli-plugin-typescript@^3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0-beta.12.tgz#83726c666e7e8ed1f9014cace6c8767b60be3ae0"
   dependencies:
     "@types/node" "^9.3.0"
     fork-ts-checker-webpack-plugin "^0.4.1"
