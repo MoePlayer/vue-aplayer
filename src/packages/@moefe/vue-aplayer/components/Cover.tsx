@@ -10,6 +10,7 @@ export default class Cover extends Vue {
     currentMusic: APlayer.Audio;
   };
 
+  // prettier-ignore
   private readonly defaultCover = 'https://avatars2.githubusercontent.com/u/20062482?s=270';
 
   private get style() {

@@ -7,7 +7,7 @@ install:
 
 script:
   - yarn lint
-  - yarn test:prettier
+  - yarn lint:prettier
   - yarn test:types
 
 cache:
