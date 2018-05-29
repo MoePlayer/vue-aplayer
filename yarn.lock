@@ -778,9 +778,9 @@
     "@vue/babel-preset-app" "^3.0.0-beta.11"
     babel-loader "^8.0.0-0"
 
-"@vue/cli-plugin-eslint@^3.0.0-beta.11":
-  version "3.0.0-beta.11"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-3.0.0-beta.11.tgz#09c6715b29ed81256ac65e09511b4439acecc646"
+"@vue/cli-plugin-eslint@^3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-beta.12.tgz#d7067d34468045e8704c8070dde2e14290eda9e7"
   dependencies:
     babel-eslint "^8.2.3"
     eslint "^4.19.1"
