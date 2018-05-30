@@ -786,9 +786,9 @@
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-transform-vue-jsx "^4.0.1"
 
-"@vue/cli-overlay@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.0.0-beta.12.tgz#944a99c3829f3dbc5520e3134176cb34db3f88af"
+"@vue/cli-overlay@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-3.0.0-beta.14.tgz#75d606eb4a577a9254259e59353a43672811e16f"
 
 "@vue/cli-plugin-babel@^3.0.0-beta.12":
   version "3.0.0-beta.12"
@@ -818,12 +818,12 @@
     tslint "^5.10.0"
     typescript "^2.8.3"
 
-"@vue/cli-service@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-service/-/cli-service-3.0.0-beta.12.tgz#1e4deb7fb49fdd6f748eee6129a34482570f1ffc"
+"@vue/cli-service@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-3.0.0-beta.14.tgz#a764032d78db11144a09c1ca6fe6bc05d73f24b6"
   dependencies:
-    "@vue/cli-overlay" "^3.0.0-beta.12"
-    "@vue/cli-shared-utils" "^3.0.0-beta.12"
+    "@vue/cli-overlay" "^3.0.0-beta.14"
+    "@vue/cli-shared-utils" "^3.0.0-beta.14"
     "@vue/preload-webpack-plugin" "^1.0.0"
     "@vue/web-component-wrapper" "^1.2.0"
     acorn "^5.5.3"
@@ -832,6 +832,7 @@
     cache-loader "^1.2.2"
     case-sensitive-paths-webpack-plugin "^2.1.2"
     chalk "^2.4.1"
+    clipboardy "^1.2.3"
     cliui "^4.1.0"
     copy-webpack-plugin "^4.5.1"
     css-loader "^0.28.11"
@@ -841,6 +842,7 @@
     fs-extra "^6.0.1"
     get-value "^3.0.1"
     globby "^8.0.1"
+    hash-sum "^1.0.2"
     html-webpack-plugin "^3.2.0"
     launch-editor-middleware "^2.2.1"
     lodash.defaultsdeep "^4.6.0"
@@ -868,14 +870,13 @@
     webpack-merge "^4.1.2"
     yorkie "^1.0.3"
 
-"@vue/cli-shared-utils@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-beta.12.tgz#9d4bfe3e622d09ceab860573116b3a8acd5151c9"
+"@vue/cli-shared-utils@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-beta.14.tgz#25e089f972da57d21f022c7319be07c3535522a0"
   dependencies:
     chalk "^2.3.0"
     cmd-shim "^2.0.2"
     execa "^0.10.0"
-    hash-sum "^1.0.2"
     joi "^12.0.0"
     node-ipc "^9.1.1"
     opn "^5.2.0"
@@ -1198,6 +1199,10 @@ app-root-path@^2.0.1:
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npmjs.org/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
+
+arch@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/arch/-/arch-2.1.0.tgz#3613aa46149064b3c1f0607919bf1d4786e82889"
 
 are-we-there-yet@~1.1.2:
   version "1.1.5"
@@ -1954,6 +1959,13 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
+clipboardy@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/clipboardy/-/clipboardy-1.2.3.tgz#0526361bf78724c1f20be248d428e365433c07ef"
+  dependencies:
+    arch "^2.1.0"
+    execa "^0.8.0"
+
 cliui@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/cliui/-/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"
@@ -2550,8 +2562,9 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-"definitelytyped-header-parser@github:Microsoft/definitelytyped-header-parser#production":
+definitelytyped-header-parser@Microsoft/definitelytyped-header-parser#production:
   version "0.0.0"
+  uid f152526f82f51d2baf91a99a397b449342b52db1
   resolved "https://codeload.github.com/Microsoft/definitelytyped-header-parser/tar.gz/f152526f82f51d2baf91a99a397b449342b52db1"
   dependencies:
     "@types/parsimmon" "^1.3.0"
