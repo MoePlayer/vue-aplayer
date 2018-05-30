@@ -430,7 +430,8 @@ export default class APlayer extends Vue {
 
   // 处理播放曲目改变事件
   private handleChangePlaylist(music: APlayer.Audio) {
-    this.currentMusic = music;
+    if (music.id === this.currentMusic.id) this.handleTogglePlay();
+    else this.currentMusic = music;
   }
   // #endregion
 
