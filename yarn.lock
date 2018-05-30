@@ -773,9 +773,9 @@
   version "1.6.2"
   resolved "https://registry.npmjs.org/@types/parsimmon/-/parsimmon-1.6.2.tgz#2ecb8424e06fd8db78b6f697b635064dfa355441"
 
-"@vue/babel-preset-app@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.0.0-beta.12.tgz#be386c536c59a0cbc771495fc6ac6ee4ea806e8c"
+"@vue/babel-preset-app@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-3.0.0-beta.14.tgz#eeacf141d4f6c9f260379ef3a38876945827929f"
   dependencies:
     "@babel/plugin-syntax-jsx" "7.0.0-beta.47"
     "@babel/plugin-transform-runtime" "7.0.0-beta.47"
@@ -790,12 +790,12 @@
   version "3.0.0-beta.12"
   resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.0.0-beta.12.tgz#944a99c3829f3dbc5520e3134176cb34db3f88af"
 
-"@vue/cli-plugin-babel@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-beta.12.tgz#220fd36ed2bbdcc5ebd0de867d7482396293dbb9"
+"@vue/cli-plugin-babel@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-beta.14.tgz#ffac169f45c71eec1235bf9c08454f20845c08d5"
   dependencies:
     "@babel/core" "7.0.0-beta.47"
-    "@vue/babel-preset-app" "^3.0.0-beta.12"
+    "@vue/babel-preset-app" "^3.0.0-beta.14"
     babel-loader "^8.0.0-0"
 
 "@vue/cli-plugin-eslint@^3.0.0-beta.12":
@@ -2550,8 +2550,9 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-"definitelytyped-header-parser@github:Microsoft/definitelytyped-header-parser#production":
+definitelytyped-header-parser@Microsoft/definitelytyped-header-parser#production:
   version "0.0.0"
+  uid f152526f82f51d2baf91a99a397b449342b52db1
   resolved "https://codeload.github.com/Microsoft/definitelytyped-header-parser/tar.gz/f152526f82f51d2baf91a99a397b449342b52db1"
   dependencies:
     "@types/parsimmon" "^1.3.0"
