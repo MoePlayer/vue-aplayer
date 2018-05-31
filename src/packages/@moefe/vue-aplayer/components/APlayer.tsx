@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+/* eslint-disable no-underscore-dangle */
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
@@ -66,6 +67,14 @@ export default class APlayer extends Vue {
     return this;
   }
 
+  private get settings() {
+    return JSON.parse(localStorage.getItem(this.storageName) || 'null');
+  }
+
+  private get currentSettings() {
+    return this.settings[this._uid];
+  }
+
   // 当前播放模式对应的播放列表
   private get currentList() {
     return this.currentOrder === 'list' ? this.orderList : this.randomList;
@@ -100,6 +109,7 @@ export default class APlayer extends Vue {
     );
   }
 
+  private _uid!: number;
   private colorThief: any; // 颜色小偷，来自插件注入
   private canPlay = this.preload === 'none'; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条
@@ -179,6 +189,7 @@ export default class APlayer extends Vue {
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
         this.player.src = newMusic.url;
         this.player.preload = this.preload;
+        this.player.volume = this.currentVolume;
         this.player.autoplay = !this.isMobile && this.autoplay;
         this.player.onerror = (e: ErrorEvent) => this.showNotice(e.message);
         await this.media.loaded();
@@ -200,6 +211,25 @@ export default class APlayer extends Vue {
     if (!this.isDraggingProgressBar) {
       this.currentPlayed = this.media.currentTime / this.media.duration;
     }
+  }
+
+  @Watch('media.$data', { deep: true })
+  private handleChangeMedia() {
+    const settings = {
+      src: this.media.src,
+      currentTime: this.media.currentTime,
+      volume: this.media.volume,
+      loop: this.currentLoop,
+      order: this.currentOrder,
+      music: this.currentMusic,
+    };
+    localStorage.setItem(
+      this.storageName,
+      JSON.stringify({
+        ...this.settings,
+        [this._uid]: settings,
+      }),
+    );
   }
 
   @Watch('media.ended')
