@@ -807,9 +807,9 @@
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
 
-"@vue/cli-plugin-typescript@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0-beta.12.tgz#83726c666e7e8ed1f9014cace6c8767b60be3ae0"
+"@vue/cli-plugin-typescript@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0-beta.14.tgz#0e8b1635ddf7f6b656c76c655e45bb08bdb87011"
   dependencies:
     "@types/node" "^9.3.0"
     fork-ts-checker-webpack-plugin "^0.4.1"
@@ -2550,8 +2550,9 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-"definitelytyped-header-parser@github:Microsoft/definitelytyped-header-parser#production":
+definitelytyped-header-parser@Microsoft/definitelytyped-header-parser#production:
   version "0.0.0"
+  uid f152526f82f51d2baf91a99a397b449342b52db1
   resolved "https://codeload.github.com/Microsoft/definitelytyped-header-parser/tar.gz/f152526f82f51d2baf91a99a397b449342b52db1"
   dependencies:
     "@types/parsimmon" "^1.3.0"
