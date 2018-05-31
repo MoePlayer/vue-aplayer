@@ -798,10 +798,11 @@
     "@vue/babel-preset-app" "^3.0.0-beta.12"
     babel-loader "^8.0.0-0"
 
-"@vue/cli-plugin-eslint@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-beta.12.tgz#d7067d34468045e8704c8070dde2e14290eda9e7"
+"@vue/cli-plugin-eslint@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-beta.15.tgz#857d2f0f539f9853484d78a5104ad06077ab4dc9"
   dependencies:
+    "@vue/cli-shared-utils" "^3.0.0-beta.15"
     babel-eslint "^8.2.3"
     eslint "^4.19.1"
     eslint-loader "^2.0.0"
@@ -876,6 +877,21 @@
     cmd-shim "^2.0.2"
     execa "^0.10.0"
     hash-sum "^1.0.2"
+    joi "^12.0.0"
+    node-ipc "^9.1.1"
+    opn "^5.2.0"
+    ora "^1.3.0"
+    request "^2.83.0"
+    request-promise-native "^1.0.5"
+    string.prototype.padstart "^3.0.0"
+
+"@vue/cli-shared-utils@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-beta.15.tgz#13916eb464b140a018b52479f559d09723db667c"
+  dependencies:
+    chalk "^2.3.0"
+    cmd-shim "^2.0.2"
+    execa "^0.10.0"
     joi "^12.0.0"
     node-ipc "^9.1.1"
     opn "^5.2.0"
