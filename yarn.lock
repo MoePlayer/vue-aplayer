@@ -898,9 +898,9 @@
     source-map "^0.5.6"
     vue-template-es2015-compiler "^1.6.0"
 
-"@vue/eslint-config-airbnb@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/eslint-config-airbnb/-/eslint-config-airbnb-3.0.0-beta.12.tgz#e2c497f3fbc552d0f014eadb1111e09c9c819d6e"
+"@vue/eslint-config-airbnb@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/eslint-config-airbnb/-/eslint-config-airbnb-3.0.0-beta.15.tgz#f4a1b1855be046c74483304e61a6a87618a53305"
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
     eslint-import-resolver-webpack "^0.9.0"
