@@ -773,9 +773,9 @@
   version "1.6.2"
   resolved "https://registry.npmjs.org/@types/parsimmon/-/parsimmon-1.6.2.tgz#2ecb8424e06fd8db78b6f697b635064dfa355441"
 
-"@vue/babel-preset-app@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.0.0-beta.12.tgz#be386c536c59a0cbc771495fc6ac6ee4ea806e8c"
+"@vue/babel-preset-app@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-3.0.0-beta.15.tgz#8ea954f7ca3d10d1986ed767d9682cc8b5ffea4e"
   dependencies:
     "@babel/plugin-syntax-jsx" "7.0.0-beta.47"
     "@babel/plugin-transform-runtime" "7.0.0-beta.47"
@@ -790,12 +790,12 @@
   version "3.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-3.0.0-beta.15.tgz#e4b477bcbeaede138ce191e27d2222fac09078ed"
 
-"@vue/cli-plugin-babel@^3.0.0-beta.12":
-  version "3.0.0-beta.12"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-beta.12.tgz#220fd36ed2bbdcc5ebd0de867d7482396293dbb9"
+"@vue/cli-plugin-babel@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-beta.15.tgz#95becf4a1b4ff6e1f1ac865bcf6e354d0f48924e"
   dependencies:
     "@babel/core" "7.0.0-beta.47"
-    "@vue/babel-preset-app" "^3.0.0-beta.12"
+    "@vue/babel-preset-app" "^3.0.0-beta.15"
     babel-loader "^8.0.0-0"
 
 "@vue/cli-plugin-eslint@^3.0.0-beta.15":
