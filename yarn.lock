@@ -1135,9 +1135,9 @@ ajv@^6.1.0:
     json-schema-traverse "^0.3.0"
     uri-js "^4.2.1"
 
-all-contributors-cli@^4.11.1:
-  version "4.11.1"
-  resolved "https://registry.npmjs.org/all-contributors-cli/-/all-contributors-cli-4.11.1.tgz#8e4d28a69bb60006b72d53758177a0c7b8a20f19"
+all-contributors-cli@^4.11.2:
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-4.11.2.tgz#b8bf1e1d08181be76ca4ebeb7869d3fdfbcf5557"
   dependencies:
     async "^2.0.0-rc.1"
     chalk "^2.3.0"
