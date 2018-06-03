@@ -18,7 +18,7 @@ export default class APlayer extends Vue {
   @Prop({ type: Boolean, required: false, default: false })
   private readonly fixed!: boolean;
 
-  @Prop({ type: Boolean, required: false, default: false })
+  @Prop({ type: Boolean, required: false, default: null })
   private readonly mini!: boolean;
 
   @Prop({ type: Boolean, required: false, default: false })
@@ -113,7 +113,7 @@ export default class APlayer extends Vue {
   private colorThief: any; // 颜色小偷，来自插件注入
   private canPlay = this.preload === 'none'; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条
-  private isMini = this.fixed || this.mini; // 是否是迷你模式
+  private isMini = this.mini !== null ? this.mini : this.fixed; // 是否是迷你模式
   private listVisible = !this.listFolded; // 播放列表是否可见
   private get listScrollTop(): number {
     return this.currentListIndex * 33;
@@ -190,7 +190,7 @@ export default class APlayer extends Vue {
         this.player.src = newMusic.url;
         this.player.preload = this.preload;
         this.player.volume = this.currentVolume;
-        this.player.autoplay = !this.isMobile && this.autoplay;
+        this.player.currentTime = 0;
         this.player.onerror = (e: ErrorEvent) => this.showNotice(e.message);
         await this.media.loaded();
       }
