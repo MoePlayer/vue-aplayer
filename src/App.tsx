@@ -18,13 +18,13 @@ export default class App extends Vue {
     fixed: true,
     lrcType: 3,
     listMaxHeight: '100px',
-    preload: 'none',
+    preload: 'auto',
     audio: [],
   };
 
   private readonly aplayer1: APlayer.Options = {
     lrcType: 3,
-    preload: 'metadata',
+    preload: 'auto',
     audio: [],
   };
 
