@@ -25,13 +25,23 @@ export default class VueAudio extends Vue implements Media {
 
   public loaded() {
     return new Promise((resolve) => {
-      this.audio.oncanplay = resolve;
-      if (
-        this.readyState >= ReadyState.HAVE_FUTURE_DATA ||
-        this.preload === 'none'
-      ) {
-        resolve();
-      }
+      const timerId = setInterval(() => {
+        if (this.readyState >= ReadyState.HAVE_FUTURE_DATA) {
+          resolve();
+          clearInterval(timerId);
+        }
+      }, 100);
+    });
+  }
+
+  public srcLoaded() {
+    return new Promise((resolve) => {
+      const timerId = setInterval(() => {
+        if (this.src) {
+          resolve();
+          clearInterval(timerId);
+        }
+      }, 100);
     });
   }
 
