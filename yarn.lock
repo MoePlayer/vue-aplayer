@@ -783,6 +783,10 @@
   version "1.6.2"
   resolved "https://registry.npmjs.org/@types/parsimmon/-/parsimmon-1.6.2.tgz#2ecb8424e06fd8db78b6f697b635064dfa355441"
 
+"@types/storejs@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@types/storejs/-/storejs-2.0.2.tgz#e1f6ab3a7e933ee10dd0614eeb522ab95fae8046"
+
 "@vue/babel-preset-app@^3.0.0-beta.15":
   version "3.0.0-beta.15"
   resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.0.0-beta.15.tgz#8ea954f7ca3d10d1986ed767d9682cc8b5ffea4e"
@@ -2576,7 +2580,7 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-"definitelytyped-header-parser@github:Microsoft/definitelytyped-header-parser#production":
+definitelytyped-header-parser@Microsoft/definitelytyped-header-parser#production:
   version "0.0.0"
   resolved "https://codeload.github.com/Microsoft/definitelytyped-header-parser/tar.gz/f152526f82f51d2baf91a99a397b449342b52db1"
   dependencies:
@@ -7486,6 +7490,10 @@ stdout-stream@^1.4.0:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+
+store@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.npmjs.org/store/-/store-2.0.12.tgz#8c534e2a0b831f72b75fc5f1119857c44ef5d593"
 
 stream-browserify@^2.0.1:
   version "2.0.1"

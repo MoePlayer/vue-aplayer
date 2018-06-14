@@ -17,6 +17,7 @@ module.exports = {
     config.resolve.alias
       .set('utils', path.resolve(__dirname, 'src/utils'))
       .set('@moefe/vue-audio', path.resolve(__dirname, 'src/packages/@moefe/vue-audio/index.ts'))
+      .set('@moefe/vue-storage', path.resolve(__dirname, 'src/packages/@moefe/vue-storage/index.ts'))
       .set('@moefe/vue-aplayer/assets', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/assets'))
       .set('@moefe/vue-aplayer/components', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/components'))
       .set('@moefe/vue-aplayer/utils', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/utils'))
