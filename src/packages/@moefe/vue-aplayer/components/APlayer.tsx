@@ -5,12 +5,19 @@ import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
 import shuffle from 'lodash.shuffle';
+import Store from 'store';
+import StorePluginObserve from 'store/plugins/observe';
 import VueAudio from '@moefe/vue-audio';
+import VueStorage from '@moefe/vue-storage';
 import { ReadyState } from 'utils/enum';
 import Player from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import '../assets/style/aplayer.scss';
+
+Store.addPlugin(StorePluginObserve);
+
+const instances: APlayer[] = [];
 
 @Component
 export default class APlayer extends Vue {
@@ -68,10 +75,10 @@ export default class APlayer extends Vue {
   }
 
   private get settings() {
-    return JSON.parse(localStorage.getItem(this.storageName) || 'null');
+    return this.store.storage;
   }
 
-  private get currentSettings() {
+  private get currentSettings(): APlayer.Settings {
     return this.settings[this._uid];
   }
 
@@ -111,8 +118,9 @@ export default class APlayer extends Vue {
 
   private _uid!: number;
   private colorThief: any; // 颜色小偷，来自插件注入
-  private canPlay = this.preload === 'none'; // 当 currentMusic 改变时是否允许播放
-  private isDraggingProgressBar = false; // 是否正在拖动进度条
+  private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
+  private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
+  private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
   private isMini = this.mini !== null ? this.mini : this.fixed; // 是否是迷你模式
   private listVisible = !this.listFolded; // 播放列表是否可见
   private get listScrollTop(): number {
@@ -121,6 +129,7 @@ export default class APlayer extends Vue {
   private lyricVisible = true; // 控制迷你模式下的歌词是否可见
   private media = new VueAudio(); // 响应式媒体对象
   private player = this.media.audio; // 核心音频对象
+  private store = new VueStorage(); // 响应式 localStorage
 
   // 当前播放的音乐
   private currentMusic: APlayer.Audio = this.currentList[0] || {
@@ -160,19 +169,21 @@ export default class APlayer extends Vue {
   private currentLoop = this.loop; // 当前循环模式
   private currentOrder = this.order; // 当前顺序模式
   private currentTheme = this.currentMusic.theme || this.theme; // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
-  private notice = { text: '', time: 2000, opacity: 0.8 }; // 通知信息
+  private notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
 
   // #region 监听属性
   @Watch('currentList', { deep: true })
   private handleChangeDataSource() {
     if (
       this.currentMusic.id !== undefined &&
-      Number.isNaN(this.currentMusic.id) &&
-      this.currentList.length > 0
+      Number.isNaN(this.currentMusic.id)
     ) {
-      [this.currentMusic] = this.currentList;
-    } else {
-      this.currentMusic = this.currentList[this.currentIndex];
+      if (this.currentList.length > 0) {
+        [this.currentMusic] = this.currentList;
+      } else {
+        const music = this.currentList[this.currentIndex];
+        if (music) this.currentMusic = music;
+      }
     }
   }
 
@@ -186,17 +197,15 @@ export default class APlayer extends Vue {
     }
     if (newMusic.url) {
       this.currentPlayed = 0;
+      this.handleChangeSettings();
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
         this.player.src = newMusic.url;
         this.player.preload = this.preload;
         this.player.volume = this.currentVolume;
         this.player.currentTime = 0;
         this.player.onerror = (e: ErrorEvent) => this.showNotice(e.message);
-        await this.media.loaded();
       }
-      if ((!this.isMobile && this.autoplay) || this.canPlay) {
-        this.player.play();
-      }
+      if (this.canPlay) this.play();
       this.canPlay = true;
     }
   }
@@ -208,52 +217,59 @@ export default class APlayer extends Vue {
 
   @Watch('media.currentTime')
   private handleChangeCurrentTime() {
-    if (!this.isDraggingProgressBar) {
+    if (!this.isDraggingProgressBar && !this.isAwaitChangeProgressBar) {
       this.currentPlayed = this.media.currentTime / this.media.duration;
     }
   }
 
   @Watch('media.$data', { deep: true })
-  private handleChangeMedia() {
-    const settings = {
-      src: this.media.src,
+  @Watch('isMini')
+  @Watch('lyricVisible')
+  @Watch('currentLoop')
+  @Watch('currentOrder')
+  private handleChangeSettings() {
+    const settings: APlayer.Settings = {
       currentTime: this.media.currentTime,
+      duration: this.media.duration,
+      paused: this.media.paused,
+      mini: this.isMini,
+      lrc: this.lyricVisible,
       volume: this.media.volume,
       loop: this.currentLoop,
       order: this.currentOrder,
       music: this.currentMusic,
     };
-    localStorage.setItem(
-      this.storageName,
-      JSON.stringify({
-        ...this.settings,
-        [this._uid]: settings,
-      }),
-    );
+
+    if (settings.volume <= 0) {
+      settings.volume = this.currentSettings.volume;
+    }
+
+    Store.set(this.storageName, {
+      ...this.settings,
+      [this._uid]: settings,
+    });
   }
 
   @Watch('media.ended')
   private handleChangeEnded() {
     if (!this.media.ended) return;
     this.currentPlayed = 0;
-    /* eslint-disable no-case-declarations */
     switch (this.currentLoop) {
       default:
       case 'all':
         this.handleSkipForward();
         break;
       case 'one':
-        this.player.play();
+        this.play();
         break;
       case 'none':
         if (this.currentIndex === this.currentList.length - 1) {
           [this.currentMusic] = this.currentList;
-          this.player.pause();
+          this.pause();
           this.canPlay = false;
         } else this.handleSkipForward();
         break;
     }
-    /* eslint-enable no-case-declarations */
   }
 
   @Watch('mini')
@@ -264,64 +280,79 @@ export default class APlayer extends Vue {
 
   // #region 公开 API
 
-  // eslint-disable-next-line class-methods-use-this
-  public play() {
-    // TODO: play audio
+  public async play() {
+    try {
+      if (this.mutex) this.pauseOtherInstances();
+      await this.player.play();
+    } catch (e) {
+      if (!this.isMini) this.showNotice(e.message);
+    }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public pause() {
-    // TODO: pause audio
+    this.player.pause();
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  public seek() {
-    // TODO: seek to specified time, the unit of time is second
+  private async seeking(percent: number, paused: boolean = true) {
+    try {
+      this.isAwaitChangeProgressBar = true;
+      if (this.preload === 'none') {
+        if (!this.player.src) await this.media.srcLoaded();
+        const oldPaused = this.player.paused;
+        await this.play(); // preload 为 none 的情况下必须先 play
+        if (paused && oldPaused) this.pause();
+      }
+      await this.media.loaded();
+      this.player.currentTime = percent * this.media.duration;
+      if (paused === false) this.play();
+    } catch (e) {
+      this.showNotice(e.message);
+    } finally {
+      this.isAwaitChangeProgressBar = false;
+    }
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  public async seek(time: number) {
+    this.seeking(time / this.media.duration);
+  }
+
   public toggle() {
-    // TODO: toggle between play and pause
+    if (this.media.paused) this.play();
+    else this.pause();
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public skipBack() {
-    // TODO: skip to previous audio
+    const playIndex = this.getPlayIndexByMode('skipBack');
+    this.currentMusic = { ...this.currentList[playIndex] };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public skipForward() {
-    // TODO: skip to next audio
+    const playIndex = this.getPlayIndexByMode('skipForward');
+    this.currentMusic = { ...this.currentList[playIndex] };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public showLrc() {
-    // TODO: show lrc
+    this.lyricVisible = true;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public hideLrc() {
-    // TODO: hide lrc
+    this.lyricVisible = false;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public toggleLrc() {
-    // TODO: toggle lrc between show and hide
+    this.lyricVisible = !this.lyricVisible;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public showList() {
-    // TODO: show list
+    this.listVisible = true;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public hideList() {
-    // TODO: hide list
+    this.listVisible = false;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public toggleList() {
-    // TODO: toggle list between show and hide
+    this.listVisible = !this.listVisible;
   }
 
   public showNotice(
@@ -332,7 +363,7 @@ export default class APlayer extends Vue {
     return new Promise((resolve) => {
       this.notice = { text, time, opacity };
       setTimeout(() => {
-        this.notice.text = '';
+        this.notice.opacity = 0;
         resolve();
       }, time);
     });
@@ -346,21 +377,27 @@ export default class APlayer extends Vue {
   private async getThemeColorFromCover(
     url: string,
     cache: boolean = true,
+    timeout: number = 3000,
   ): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      if (!this.colorThief) {
-        resolve(this.currentMusic.theme || this.theme);
-        return;
-      }
-      const img = new Image();
-      img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
-      img.crossOrigin = '';
-      img.onload = () => {
-        const [r, g, b] = this.colorThief.getColor(img);
-        const theme = `rgb(${r}, ${g}, ${b})`;
-        resolve(theme || this.currentMusic.theme || this.theme);
-      };
-      img.onerror = reject;
+      const startTime = new Date().getTime();
+      const timerId = setInterval(() => {
+        if (!this.colorThief && new Date().getTime() - startTime > timeout) {
+          resolve(this.currentMusic.theme || this.theme);
+          clearInterval(timerId);
+          return;
+        }
+        const img = new Image();
+        img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
+        img.crossOrigin = '';
+        img.onload = () => {
+          const [r, g, b] = this.colorThief.getColor(img);
+          const theme = `rgb(${r}, ${g}, ${b})`;
+          resolve(theme || this.currentMusic.theme || this.theme);
+        };
+        img.onerror = reject;
+        clearInterval(timerId);
+      }, 100);
     });
   }
 
@@ -387,26 +424,29 @@ export default class APlayer extends Vue {
         : index;
   }
 
+  private pauseOtherInstances() {
+    instances
+      .filter(x => x._uid !== this._uid)
+      .forEach(inst => inst.pause());
+  }
+
   // #endregion
 
   // #region 事件处理
 
   // 切换上一曲
   private async handleSkipBack() {
-    const playIndex = this.getPlayIndexByMode('skipBack');
-    this.currentMusic = { ...this.currentList[playIndex] };
+    this.skipBack();
   }
 
   // 切换下一曲
   private async handleSkipForward() {
-    const playIndex = this.getPlayIndexByMode('skipForward');
-    this.currentMusic = { ...this.currentList[playIndex] };
+    this.skipForward();
   }
 
   // 切换播放
   private handleTogglePlay() {
-    if (this.media.paused) this.player.play();
-    else this.player.pause();
+    this.toggle();
   }
 
   // 处理切换顺序模式
@@ -426,12 +466,12 @@ export default class APlayer extends Vue {
 
   // 处理切换播放/暂停事件
   private handleTogglePlaylist() {
-    this.listVisible = !this.listVisible;
+    this.toggleList();
   }
 
   // 处理切换歌词显隐事件
   private handleToggleLyric() {
-    this.lyricVisible = !this.lyricVisible;
+    this.toggleLrc();
   }
 
   // 处理声音改变事件
@@ -447,9 +487,7 @@ export default class APlayer extends Vue {
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type === 'panmove';
     if (e.type === 'click' || e.type === 'panend') {
-      await this.media.loaded();
-      this.player.currentTime = percent * this.media.duration;
-      this.player.play();
+      this.seeking(percent); // preload 为 none 的情况下无法获取到 duration
     }
   }
 
@@ -464,6 +502,36 @@ export default class APlayer extends Vue {
     else this.currentMusic = music;
   }
   // #endregion
+
+  async created() {
+    // 恢复播放器设置
+    this.store.key = this.storageName;
+    if (this.currentSettings) {
+      const {
+        mini,
+        lrc,
+        volume,
+        loop,
+        order,
+        music,
+        currentTime,
+        duration,
+        paused,
+      } = this.currentSettings;
+      this.isMini = mini;
+      this.lyricVisible = lrc;
+      this.currentVolume = volume;
+      this.currentLoop = loop;
+      this.currentOrder = order;
+      if (music) {
+        this.currentMusic = music;
+        if (duration) {
+          this.seeking(currentTime / duration, paused);
+        }
+      }
+    }
+    instances.push(this);
+  }
 
   render() {
     const {
@@ -485,7 +553,7 @@ export default class APlayer extends Vue {
         class={classNames({
           aplayer: true,
           'aplayer-withlist': orderList.length > 0,
-          'aplayer-withlrc': !fixed && lrcType !== 0,
+          'aplayer-withlrc': !fixed && (lrcType !== 0 && lyricVisible),
           'aplayer-narrow': isMini,
           'aplayer-fixed': fixed,
           'aplayer-mobile': isMobile,
