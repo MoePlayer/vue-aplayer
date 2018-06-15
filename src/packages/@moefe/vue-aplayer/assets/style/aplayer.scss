@@ -92,6 +92,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
       margin-bottom: 65px;
       border: 1px solid #eee;
       border-bottom: none;
+      box-sizing: border-box;
     }
 
     .aplayer-body {
