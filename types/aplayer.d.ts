@@ -39,4 +39,16 @@ declare namespace APlayer {
     listMaxHeight?: string;
     storageName?: string;
   }
+
+  export interface Settings {
+    currentTime: number;
+    duration: number;
+    paused: boolean;
+    mini: boolean;
+    lrc: boolean;
+    volume: number;
+    loop: LoopMode;
+    order: OrderMode;
+    music: Audio | null;
+  }
 }
