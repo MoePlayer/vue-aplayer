@@ -16,6 +16,7 @@ export default class Controller extends Vue {
     currentPlayed: number;
     currentLoop: APlayer.LoopMode;
     currentOrder: APlayer.OrderMode;
+    currentSettings: APlayer.Settings;
   };
 
   @Inject() private handleSkipBack!: () => void;
@@ -53,8 +54,8 @@ export default class Controller extends Vue {
   }
 
   private handleToggleVolume() {
-    // TODO: 恢复音量时应读取 localStorage 中记录的 volume
-    this.handleChangeVolume(this.aplayer.currentVolume > 0 ? 0 : 0.7);
+    const { currentVolume, currentSettings } = this.aplayer;
+    this.handleChangeVolume(currentVolume > 0 ? 0 : currentSettings.volume);
   }
 
   private handleClickVolumeBar(e: MouseEvent) {
