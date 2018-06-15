@@ -16,11 +16,12 @@ module.exports = {
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
       .set('utils', path.resolve(__dirname, 'src/utils'))
-      .set('@moefe/vue-audio', path.resolve(__dirname, 'src/packages/@moefe/vue-audio/index.ts'))
-      .set('@moefe/vue-storage', path.resolve(__dirname, 'src/packages/@moefe/vue-storage/index.ts'))
+      .set('@moefe/vue-audio', path.resolve(__dirname, 'src/packages/@moefe/vue-audio'))
+      .set('@moefe/vue-storage', path.resolve(__dirname, 'src/packages/@moefe/vue-storage'))
+      .set('@moefe/vue-touch', path.resolve(__dirname, 'src/packages/@moefe/vue-touch'))
       .set('@moefe/vue-aplayer/assets', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/assets'))
       .set('@moefe/vue-aplayer/components', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/components'))
       .set('@moefe/vue-aplayer/utils', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/utils'))
-      .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer/index.ts')); // prettier-ignore
+      .set('@moefe/vue-aplayer', path.resolve(__dirname, 'src/packages/@moefe/vue-aplayer')); // prettier-ignore
   },
 };

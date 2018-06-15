@@ -16,9 +16,11 @@
       "utils/*": ["src/utils/*"],
       "@moefe/vue-audio/*": ["src/packages/@moefe/vue-audio/*"],
       "@moefe/vue-storage/*": ["src/packages/@moefe/vue-storage/*"],
+      "@moefe/vue-touch/*": ["src/packages/@moefe/vue-touch/*"],
       "@moefe/vue-aplayer/*": ["src/packages/@moefe/vue-aplayer/*"],
       "@moefe/vue-audio": ["src/packages/@moefe/vue-audio/index.ts"],
       "@moefe/vue-storage": ["src/packages/@moefe/vue-storage/index.ts"],
+      "@moefe/vue-touch": ["src/packages/@moefe/vue-touch/index.tsx"],
       "@moefe/vue-aplayer": ["src/packages/@moefe/vue-aplayer/index.ts"],
     }
   },

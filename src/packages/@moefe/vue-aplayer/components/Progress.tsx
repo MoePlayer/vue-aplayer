@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Comopnent from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
+import Touch, { PointerEventInput } from '@moefe/vue-touch';
 import Icon from './Icon';
-import Touch from './Touch';
 
 @Comopnent
 export default class Progress extends Vue {
@@ -36,7 +36,12 @@ export default class Progress extends Vue {
     const { currentTheme, currentLoaded, currentPlayed } = this.aplayer;
 
     return (
-      <div class="aplayer-bar-wrap" onClick={this.handleChange}>
+      <Touch
+        class="aplayer-bar-wrap"
+        nativeOnClick={this.handleChange}
+        onPanMove={this.handleChange}
+        onPanEnd={this.handleChange}
+      >
         <div ref="progressBar" class="aplayer-bar">
           <div
             class="aplayer-loaded"
@@ -51,21 +56,19 @@ export default class Progress extends Vue {
               backgroundColor: currentTheme,
             }}
           >
-            <Touch onPanMove={this.handleChange} onPanEnd={this.handleChange}>
-              <span
-                class="aplayer-thumb"
-                style={{
-                  backgroundColor: currentTheme,
-                }}
-              >
-                <span class="aplayer-loading-icon">
-                  <Icon type="loading" />
-                </span>
+            <span
+              class="aplayer-thumb"
+              style={{
+                backgroundColor: currentTheme,
+              }}
+            >
+              <span class="aplayer-loading-icon">
+                <Icon type="loading" />
               </span>
-            </Touch>
+            </span>
           </div>
         </div>
-      </div>
+      </Touch>
     );
   }
 }
