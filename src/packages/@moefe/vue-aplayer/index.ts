@@ -26,9 +26,8 @@ export default async function install(Vue: VueConstructor, options: Options) {
   }
 
   if (options.hls) {
-    console.log("import('hls.js')");
-    // const hls = await import('hls.js').then(module => module.default);
-    // console.log(hls.version);
+    const Hls = await import('hls.js').then(module => module.default);
+    Object.assign(APlayer.prototype, { Hls });
   }
 
   if (opts.colorThief) {

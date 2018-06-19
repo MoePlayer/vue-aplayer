@@ -9,6 +9,7 @@ import Store from 'store';
 import StorePluginObserve from 'store/plugins/observe';
 import VueAudio from '@moefe/vue-audio';
 import VueStorage from '@moefe/vue-storage';
+import { eventLoop } from 'utils/index';
 import { ReadyState } from 'utils/enum';
 import Player from './Player';
 import PlayList from './PlayList';
@@ -107,6 +108,7 @@ export default class APlayer extends Vue {
     return /mobile/i.test(window.navigator.userAgent);
   }
 
+  // 是否是 arrow 模式
   private get isArrow(): boolean {
     const container = this.$refs.container as HTMLDivElement;
     return container && container.offsetWidth <= 300;
@@ -121,9 +123,11 @@ export default class APlayer extends Vue {
     );
   }
 
-  private _uid!: number;
-  private defaultCover!: string;
-  private colorThief!: any; // 颜色小偷，来自插件注入
+  private readonly _uid!: number;
+  private readonly defaultCover!: string; // 默认封面，来自插件注入
+  private readonly colorThief: any; // 颜色小偷，来自插件注入
+  private readonly Hls: any; // Hls，来自插件注入
+  private hls: any; // hls 实例
   private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
@@ -205,7 +209,8 @@ export default class APlayer extends Vue {
       this.currentPlayed = 0;
       this.handleChangeSettings();
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
-        this.player.src = newMusic.url;
+        const src = await this.getAudioUrl(newMusic);
+        if (src) this.player.src = src;
         this.player.playbackRate = newMusic.speed || 1;
         this.player.preload = this.preload;
         this.player.volume = this.currentVolume;
@@ -386,14 +391,9 @@ export default class APlayer extends Vue {
     cache: boolean = true,
     timeout: number = 3000,
   ): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const startTime = new Date().getTime();
-      const timerId = setInterval(() => {
-        if (!this.colorThief || new Date().getTime() - startTime > timeout) {
-          resolve(this.currentMusic.theme || this.theme);
-          clearInterval(timerId);
-          return;
-        }
+    return new Promise<string>(async (resolve, reject) => {
+      try {
+        await eventLoop(() => this.colorThief, timeout);
         const img = new Image();
         img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
         img.crossOrigin = '';
@@ -403,8 +403,55 @@ export default class APlayer extends Vue {
           resolve(theme || this.currentMusic.theme || this.theme);
         };
         img.onerror = reject;
-        clearInterval(timerId);
-      }, 100);
+      } catch (e) {
+        resolve(this.currentMusic.theme || this.theme);
+      }
+    });
+  }
+
+  private getAudioUrl(
+    music: APlayer.Audio,
+    timeout: number = 5000,
+  ): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
+      let { type } = music;
+      if (type && this.customAudioType && this.customAudioType[type]) {
+        if (typeof this.customAudioType[type] === 'function') {
+          this.customAudioType[type](this.player, music, this);
+        } else {
+          console.error(`Illegal customType: ${type}`);
+        }
+      } else {
+        if (!type || type === 'auto') {
+          type = /m3u8(#|\?|$)/i.test(music.url) ? 'hls' : 'normal';
+        }
+        if (type === 'hls') {
+          if (this.hls) {
+            this.hls.destroy();
+            this.hls = null;
+          }
+          try {
+            await eventLoop(() => this.Hls, timeout);
+            if (this.Hls.isSupported()) {
+              this.hls = new this.Hls();
+              this.hls.loadSource(music.url);
+              this.hls.attachMedia(this.player);
+              resolve();
+            } else if (
+              this.player.canPlayType('application/x-mpegURL') ||
+              this.player.canPlayType('application/vnd.apple.mpegURL')
+            ) {
+              resolve(music.url);
+            } else {
+              reject(new Error('HLS is not supported.'));
+            }
+          } catch (e) {
+            reject(new Error('HLS is not supported.'));
+          }
+        } else {
+          resolve(music.url);
+        }
+      }
     });
   }
 

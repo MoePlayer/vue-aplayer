@@ -2,7 +2,7 @@ declare namespace APlayer {
   export type LoopMode = 'all' | 'one' | 'none';
   export type OrderMode = 'list' | 'random';
   export type Preload = 'none' | 'metadata' | 'auto';
-  export type AudioType = 'auto' | 'hls';
+  export type AudioType = 'auto' | 'hls' | 'normal';
 
   export enum LrcType {
     file = 3,
