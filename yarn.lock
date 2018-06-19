@@ -798,15 +798,16 @@
     "@vue/babel-preset-app" "^3.0.0-beta.15"
     babel-loader "^8.0.0-0"
 
-"@vue/cli-plugin-eslint@^3.0.0-beta.15":
-  version "3.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-beta.15.tgz#857d2f0f539f9853484d78a5104ad06077ab4dc9"
+"@vue/cli-plugin-eslint@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-rc.3.tgz#9248d44f7d44ab8523346ff75486e26a20d51e94"
   dependencies:
-    "@vue/cli-shared-utils" "^3.0.0-beta.15"
+    "@vue/cli-shared-utils" "^3.0.0-rc.3"
     babel-eslint "^8.2.3"
     eslint "^4.19.1"
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
+    launch-editor "^2.2.1"
 
 "@vue/cli-plugin-typescript@^3.0.0-beta.15":
   version "3.0.0-beta.15"
@@ -879,6 +880,20 @@
   dependencies:
     chalk "^2.3.0"
     cmd-shim "^2.0.2"
+    execa "^0.10.0"
+    joi "^12.0.0"
+    node-ipc "^9.1.1"
+    opn "^5.2.0"
+    ora "^1.3.0"
+    request "^2.83.0"
+    request-promise-native "^1.0.5"
+    string.prototype.padstart "^3.0.0"
+
+"@vue/cli-shared-utils@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-rc.3.tgz#5fa73945ad82fc8b6e1e88bd171225c8388a8801"
+  dependencies:
+    chalk "^2.3.0"
     execa "^0.10.0"
     joi "^12.0.0"
     node-ipc "^9.1.1"
