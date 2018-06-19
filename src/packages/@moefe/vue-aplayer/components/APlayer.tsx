@@ -201,6 +201,7 @@ export default class APlayer extends Vue {
       this.handleChangeSettings();
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
         this.player.src = newMusic.url;
+        this.player.playbackRate = newMusic.speed || 1;
         this.player.preload = this.preload;
         this.player.volume = this.currentVolume;
         this.player.currentTime = 0;

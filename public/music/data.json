@@ -25,7 +25,8 @@
     "artist": "Hanser",
     "url": "http://p97x7hshf.bkt.clouddn.com/trackmaker.mp3",
     "cover": "/music/cover/trackmaker.jpg",
-    "lrc": "/music/lyrics/trackmaker.lrc"
+    "lrc": "/music/lyrics/trackmaker.lrc",
+    "speed": 1.2
   },
   {
     "name": "Lemon",

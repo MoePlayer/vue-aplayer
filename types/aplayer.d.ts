@@ -20,6 +20,7 @@ declare namespace APlayer {
     lrc: string;
     theme: string;
     type?: AudioType;
+    speed?: number;
   }
 
   export interface Options {
