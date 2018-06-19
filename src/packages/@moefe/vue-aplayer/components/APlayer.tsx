@@ -382,7 +382,7 @@ export default class APlayer extends Vue {
     return new Promise<string>((resolve, reject) => {
       const startTime = new Date().getTime();
       const timerId = setInterval(() => {
-        if (!this.colorThief && new Date().getTime() - startTime > timeout) {
+        if (!this.colorThief || new Date().getTime() - startTime > timeout) {
           resolve(this.currentMusic.theme || this.theme);
           clearInterval(timerId);
           return;
