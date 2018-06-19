@@ -786,9 +786,9 @@
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-transform-vue-jsx "^4.0.1"
 
-"@vue/cli-overlay@^3.0.0-beta.15":
-  version "3.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-3.0.0-beta.15.tgz#e4b477bcbeaede138ce191e27d2222fac09078ed"
+"@vue/cli-overlay@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-3.0.0-rc.3.tgz#4ebb2236bd48a30b08e8b02e34331fd8a91c5437"
 
 "@vue/cli-plugin-babel@^3.0.0-beta.15":
   version "3.0.0-beta.15"
@@ -820,12 +820,12 @@
     tslint "^5.10.0"
     typescript "^2.8.3"
 
-"@vue/cli-service@^3.0.0-beta.15":
-  version "3.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-3.0.0-beta.15.tgz#5779ab045414ac7b0ba6b88725bc65a483a7975d"
+"@vue/cli-service@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-3.0.0-rc.3.tgz#8ffd2c707745c0cff5918ee56a6edb3d948f697c"
   dependencies:
-    "@vue/cli-overlay" "^3.0.0-beta.15"
-    "@vue/cli-shared-utils" "^3.0.0-beta.15"
+    "@vue/cli-overlay" "^3.0.0-rc.3"
+    "@vue/cli-shared-utils" "^3.0.0-rc.3"
     "@vue/preload-webpack-plugin" "^1.0.0"
     "@vue/web-component-wrapper" "^1.2.0"
     acorn "^5.5.3"
@@ -868,6 +868,7 @@
     vue-loader "^15.2.0"
     vue-template-compiler "^2.5.16"
     webpack "^4.8.2"
+    webpack-bundle-analyzer "^2.13.1"
     webpack-chain "^4.8.0"
     webpack-dev-server "^3.1.4"
     webpack-merge "^4.1.2"
@@ -879,6 +880,20 @@
   dependencies:
     chalk "^2.3.0"
     cmd-shim "^2.0.2"
+    execa "^0.10.0"
+    joi "^12.0.0"
+    node-ipc "^9.1.1"
+    opn "^5.2.0"
+    ora "^1.3.0"
+    request "^2.83.0"
+    request-promise-native "^1.0.5"
+    string.prototype.padstart "^3.0.0"
+
+"@vue/cli-shared-utils@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-rc.3.tgz#5fa73945ad82fc8b6e1e88bd171225c8388a8801"
+  dependencies:
+    chalk "^2.3.0"
     execa "^0.10.0"
     joi "^12.0.0"
     node-ipc "^9.1.1"
@@ -1494,6 +1509,14 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bfj-node4@^5.2.0:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/bfj-node4/-/bfj-node4-5.3.1.tgz#e23d8b27057f1d0214fc561142ad9db998f26830"
+  dependencies:
+    bluebird "^3.5.1"
+    check-types "^7.3.0"
+    tryer "^1.0.0"
+
 big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.npmjs.org/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
@@ -1850,6 +1873,10 @@ chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.npmjs.org/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
 
+check-types@^7.3.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/check-types/-/check-types-7.4.0.tgz#0378ec1b9616ec71f774931a3c6516fad8c152f4"
+
 chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
@@ -2074,7 +2101,7 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.15.x, commander@^2.12.1, commander@^2.14.1, commander@^2.9.0, commander@~2.15.0:
+commander@2.15.x, commander@^2.12.1, commander@^2.13.0, commander@^2.14.1, commander@^2.9.0, commander@~2.15.0:
   version "2.15.1"
   resolved "https://registry.npmjs.org/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
 
@@ -2750,6 +2777,10 @@ dtslint@^0.3.0:
     tslint "^5.9.1"
     typescript next
 
+duplexer@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.0"
   resolved "https://registry.npmjs.org/duplexify/-/duplexify-3.6.0.tgz#592903f5d80b38d037220541264d69a198fb3410"
@@ -2772,6 +2803,10 @@ ecc-jsbn@~0.1.1:
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
+
+ejs@^2.5.7:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.47:
   version "1.3.48"
@@ -3352,6 +3387,10 @@ filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
+filesize@^3.5.11:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
+
 fill-range@^2.1.0:
   version "2.2.4"
   resolved "https://registry.npmjs.org/fill-range/-/fill-range-2.2.4.tgz#eb1e773abb056dcd8df2bfdf6af59b8b3a936565"
@@ -3782,6 +3821,13 @@ globule@^1.0.0:
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
+
+gzip-size@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-4.1.0.tgz#8ae096257eabe7d69c45be2b67c448124ffb517c"
+  dependencies:
+    duplexer "^0.1.1"
+    pify "^3.0.0"
 
 hammerjs@^2.0.8:
   version "2.0.8"
@@ -5817,6 +5863,10 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+opener@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
+
 opn@^5.1.0, opn@^5.2.0:
   version "5.3.0"
   resolved "https://registry.npmjs.org/opn/-/opn-5.3.0.tgz#64871565c863875f052cfdf53d3e3cb5adb53b1c"
@@ -7827,6 +7877,10 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
+tryer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.0.tgz#027b69fa823225e551cace3ef03b11f6ab37c1d7"
+
 ts-loader@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/ts-loader/-/ts-loader-4.3.0.tgz#4e3ba172783d1256d3a23bdfadde011a795fae9e"
@@ -8241,6 +8295,23 @@ wcwidth@^1.0.1:
 webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
+
+webpack-bundle-analyzer@^2.13.1:
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.13.1.tgz#07d2176c6e86c3cdce4c23e56fae2a7b6b4ad526"
+  dependencies:
+    acorn "^5.3.0"
+    bfj-node4 "^5.2.0"
+    chalk "^2.3.0"
+    commander "^2.13.0"
+    ejs "^2.5.7"
+    express "^4.16.2"
+    filesize "^3.5.11"
+    gzip-size "^4.1.0"
+    lodash "^4.17.4"
+    mkdirp "^0.5.1"
+    opener "^1.4.3"
+    ws "^4.0.0"
 
 webpack-chain@^4.8.0:
   version "4.8.0"
