@@ -27,7 +27,7 @@ export default class App extends Vue {
           }}
           lrcType={2}
           listFolded={false}
-          listMaxHeight="250px"
+          listMaxHeight={250}
           storageName="aplayer-setting"
         />
       </div>
