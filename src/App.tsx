@@ -32,6 +32,12 @@ export default class App extends Vue {
     const data: Array<APlayer.Audio> = await fetch('/music/data.json').then(
       res => res.json(),
     );
+    const isSafari = /apple/i.test(navigator.vendor);
+    if (isSafari) {
+      for (let i = 0; i < data.length; i++) {
+        data[i].speed = 1;
+      }
+    }
     await sleep(1500);
     this.aplayer1.audio = data.splice(0, 3);
     await sleep(1500);
