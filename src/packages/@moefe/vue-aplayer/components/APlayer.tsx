@@ -62,8 +62,8 @@ export default class APlayer extends Vue {
   @Prop({ type: Boolean, required: false, default: false })
   private readonly listFolded!: boolean;
 
-  @Prop({ type: String, required: false, default: '250px' })
-  private readonly listMaxHeight!: string;
+  @Prop({ type: Number, required: false, default: 250 })
+  private readonly listMaxHeight!: number;
 
   @Prop({ type: String, required: false, default: 'aplayer-setting' })
   private readonly storageName!: string;
@@ -132,7 +132,7 @@ export default class APlayer extends Vue {
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
   private isMini = this.mini !== null ? this.mini : this.fixed; // 是否是迷你模式
-  private listVisible = !this.listFolded; // 播放列表是否可见
+  private listVisible = this.listFolded; // 播放列表是否可见
   private get listScrollTop(): number {
     return this.currentListIndex * 33;
   }
@@ -608,7 +608,7 @@ export default class APlayer extends Vue {
         ref="container"
         class={classNames({
           aplayer: true,
-          'aplayer-withlist': orderList.length > 0,
+          'aplayer-withlist': orderList.length > 1,
           'aplayer-withlrc': !fixed && (lrcType !== 0 && lyricVisible),
           'aplayer-narrow': isMini,
           'aplayer-fixed': fixed,

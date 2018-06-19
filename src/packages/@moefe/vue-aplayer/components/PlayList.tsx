@@ -18,27 +18,27 @@ export default class PlayList extends Vue {
   private readonly scrollTop!: number;
 
   @Inject()
-  private readonly aplayer!: { currentTheme: string; listMaxHeight: string };
+  private readonly aplayer!: { currentTheme: string; listMaxHeight: number };
+
+  private get listHeight(): number {
+    const { visible, dataSource } = this;
+    return !visible
+      ? Math.min(dataSource.length * 33, this.aplayer.listMaxHeight)
+      : 0;
+  }
 
   @Watch('scrollTop')
   private handleChangeScrollTop() {
-    const list = this.$refs.list as HTMLDivElement;
+    const list = this.$refs.list as HTMLOListElement;
     list.scrollTop = this.scrollTop;
   }
 
   render() {
-    const { visible, dataSource, currentMusic } = this;
-    const { currentTheme, listMaxHeight } = this.aplayer;
+    const { listHeight, dataSource, currentMusic } = this;
+    const { currentTheme } = this.aplayer;
 
     return (
-      <ol
-        ref="list"
-        class={classNames({
-          'aplayer-list': true,
-          'aplayer-list-hide': !visible,
-        })}
-        style={{ maxHeight: listMaxHeight }}
-      >
+      <ol ref="list" class="aplayer-list" style={{ height: `${listHeight}px` }}>
         {dataSource.map((item, index) => (
           <li
             key={item.id}

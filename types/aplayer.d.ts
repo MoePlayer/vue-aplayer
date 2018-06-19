@@ -37,7 +37,7 @@ declare namespace APlayer {
     mutex?: boolean;
     lrcType?: number;
     listFolded?: boolean;
-    listMaxHeight?: string;
+    listMaxHeight?: number;
     storageName?: string;
   }
 

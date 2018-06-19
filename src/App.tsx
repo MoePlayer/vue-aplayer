@@ -15,7 +15,7 @@ export default class App extends Vue {
   private readonly aplayer0: APlayer.Options = {
     fixed: true,
     lrcType: 3,
-    listMaxHeight: '100px',
+    listMaxHeight: 100,
     preload: 'auto',
     audio: [],
   };
