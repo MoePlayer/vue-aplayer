@@ -31,35 +31,34 @@ export default class PlayList extends Vue {
     const { currentTheme, listMaxHeight } = this.aplayer;
 
     return (
-      <div
+      <ol
+        ref="list"
         class={classNames({
           'aplayer-list': true,
           'aplayer-list-hide': !visible,
         })}
         style={{ maxHeight: listMaxHeight }}
       >
-        <ol ref="list" style={{ maxHeight: listMaxHeight }}>
-          {dataSource.map((item, index) => (
-            <li
-              key={item.id}
-              class={classNames({
-                'aplayer-list-light': item.id === currentMusic.id,
-              })}
-              onClick={() => this.$emit('change', item)}
-            >
-              <span
-                class="aplayer-list-cur"
-                style={{
-                  backgroundColor: currentTheme,
-                }}
-              />
-              <span class="aplayer-list-index">{index + 1}</span>{' '}
-              <span class="aplayer-list-title">{item.name}</span>
-              <span class="aplayer-list-author">{item.artist}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
+        {dataSource.map((item, index) => (
+          <li
+            key={item.id}
+            class={classNames({
+              'aplayer-list-light': item.id === currentMusic.id,
+            })}
+            onClick={() => this.$emit('change', item)}
+          >
+            <span
+              class="aplayer-list-cur"
+              style={{
+                backgroundColor: currentTheme,
+              }}
+            />
+            <span class="aplayer-list-index">{index + 1}</span>{' '}
+            <span class="aplayer-list-title">{item.name}</span>
+            <span class="aplayer-list-author">{item.artist}</span>
+          </li>
+        ))}
+      </ol>
     );
   }
 }
