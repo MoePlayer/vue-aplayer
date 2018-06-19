@@ -117,7 +117,8 @@ export default class APlayer extends Vue {
   }
 
   private _uid!: number;
-  private colorThief: any; // 颜色小偷，来自插件注入
+  private defaultCover!: string;
+  private colorThief!: any; // 颜色小偷，来自插件注入
   private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
