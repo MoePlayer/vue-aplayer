@@ -2,6 +2,7 @@
   "extends": "dtslint/dtslint.json",
   "rules": {
     "strict-export-declare-modifiers": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "no-relative-import-in-test": false
   }
 }
