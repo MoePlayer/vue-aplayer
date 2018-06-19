@@ -27,8 +27,9 @@ export default class PlayList extends Vue {
       : 0;
   }
 
-  @Watch('scrollTop')
-  private handleChangeScrollTop() {
+  @Watch('scrollTop', { immediate: true })
+  private async handleChangeScrollTop() {
+    await this.$nextTick();
     const list = this.$refs.list as HTMLOListElement;
     list.scrollTop = this.scrollTop;
   }
