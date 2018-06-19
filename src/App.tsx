@@ -1,16 +1,14 @@
 import Vue from 'vue';
 import Comopnent from 'vue-class-component';
 import APlayer from '@moefe/vue-aplayer';
+import { sleep } from 'utils/index';
 import './App.scss';
 
 Vue.use(APlayer, {
-  hls: false,
+  hls: true,
   colorThief: true,
   productionTip: process.env.NODE_ENV !== 'development',
 });
-
-const sleep = (delay = 0) =>
-  new Promise(resolve => setTimeout(resolve, delay));
 
 @Comopnent
 export default class App extends Vue {
@@ -39,7 +37,7 @@ export default class App extends Vue {
       }
     }
     await sleep(1500);
-    this.aplayer1.audio = data.splice(0, 3);
+    this.aplayer1.audio = data.splice(0, 4);
     await sleep(1500);
     this.aplayer0.audio = data;
   }
