@@ -773,9 +773,9 @@
   version "2.0.2"
   resolved "https://registry.npmjs.org/@types/storejs/-/storejs-2.0.2.tgz#e1f6ab3a7e933ee10dd0614eeb522ab95fae8046"
 
-"@vue/babel-preset-app@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.0.0-rc.2.tgz#2843a47fc1e515425b05e597d1f0226977ef0cc5"
+"@vue/babel-preset-app@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.0.0-rc.3.tgz#e4f5f884448489b1b4651c986548639f3bec823f"
   dependencies:
     "@babel/plugin-syntax-jsx" "7.0.0-beta.47"
     "@babel/plugin-transform-runtime" "7.0.0-beta.47"
@@ -786,47 +786,47 @@
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-transform-vue-jsx "^4.0.1"
 
-"@vue/cli-overlay@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.0.0-rc.2.tgz#6ed6938bff3b45e01ecfae01a2f8b7debccdd387"
+"@vue/cli-overlay@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.0.0-rc.3.tgz#4ebb2236bd48a30b08e8b02e34331fd8a91c5437"
 
-"@vue/cli-plugin-babel@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-rc.2.tgz#caea015d3951d9f8d0582779076f2a895489fc7c"
+"@vue/cli-plugin-babel@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.0-rc.3.tgz#7da19b25e67b6d752b27d34a6b209928fcf9a3a6"
   dependencies:
     "@babel/core" "7.0.0-beta.47"
-    "@vue/babel-preset-app" "^3.0.0-rc.2"
+    "@vue/babel-preset-app" "^3.0.0-rc.3"
     babel-loader "^8.0.0-0"
 
-"@vue/cli-plugin-eslint@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-rc.2.tgz#e44ae313f2d5cbd414bb6c595e172eef3316449b"
+"@vue/cli-plugin-eslint@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.0.0-rc.3.tgz#9248d44f7d44ab8523346ff75486e26a20d51e94"
   dependencies:
-    "@vue/cli-shared-utils" "^3.0.0-rc.2"
+    "@vue/cli-shared-utils" "^3.0.0-rc.3"
     babel-eslint "^8.2.3"
     eslint "^4.19.1"
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
     launch-editor "^2.2.1"
 
-"@vue/cli-plugin-typescript@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0-rc.2.tgz#27a0a87336afa9c92fd21e213622ec745c06d68a"
+"@vue/cli-plugin-typescript@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0-rc.3.tgz#09877621a394fbd26ba3b30cec4def5b6d9709a3"
   dependencies:
     "@types/node" "^9.3.0"
-    "@vue/cli-shared-utils" "^3.0.0-rc.2"
+    "@vue/cli-shared-utils" "^3.0.0-rc.3"
     fork-ts-checker-webpack-plugin "^0.4.1"
     globby "^8.0.1"
     ts-loader "^4.3.1"
     tslint "^5.10.0"
     typescript "~2.9.0"
 
-"@vue/cli-service@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-service/-/cli-service-3.0.0-rc.2.tgz#8220ba047ce62f3112bdd5614478b8bc4f052b3f"
+"@vue/cli-service@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-service/-/cli-service-3.0.0-rc.3.tgz#8ffd2c707745c0cff5918ee56a6edb3d948f697c"
   dependencies:
-    "@vue/cli-overlay" "^3.0.0-rc.2"
-    "@vue/cli-shared-utils" "^3.0.0-rc.2"
+    "@vue/cli-overlay" "^3.0.0-rc.3"
+    "@vue/cli-shared-utils" "^3.0.0-rc.3"
     "@vue/preload-webpack-plugin" "^1.0.0"
     "@vue/web-component-wrapper" "^1.2.0"
     acorn "^5.5.3"
@@ -875,9 +875,9 @@
     webpack-merge "^4.1.2"
     yorkie "^1.0.3"
 
-"@vue/cli-shared-utils@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-rc.2.tgz#8b4d61754a7a078e616a6028e4b8e7e04964536f"
+"@vue/cli-shared-utils@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-rc.3.tgz#5fa73945ad82fc8b6e1e88bd171225c8388a8801"
   dependencies:
     chalk "^2.3.0"
     execa "^0.10.0"
@@ -903,17 +903,17 @@
     source-map "^0.5.6"
     vue-template-es2015-compiler "^1.6.0"
 
-"@vue/eslint-config-airbnb@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/eslint-config-airbnb/-/eslint-config-airbnb-3.0.0-rc.2.tgz#1f29ecea8bb68289791d3f25fdf24c829f8432d8"
+"@vue/eslint-config-airbnb@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/eslint-config-airbnb/-/eslint-config-airbnb-3.0.0-rc.3.tgz#6b7245ec78cfaa64602b5b706027654f3ca49398"
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
     eslint-import-resolver-webpack "^0.9.0"
     eslint-plugin-import "^2.11.0"
 
-"@vue/eslint-config-typescript@^3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.npmjs.org/@vue/eslint-config-typescript/-/eslint-config-typescript-3.0.0-rc.2.tgz#4532faf7d1e5cde9cc42c2f9d14685e6c6b3631c"
+"@vue/eslint-config-typescript@^3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.npmjs.org/@vue/eslint-config-typescript/-/eslint-config-typescript-3.0.0-rc.3.tgz#95aad546737711c754049f2d2fb978483bdc8f5b"
   dependencies:
     eslint-plugin-typescript "^0.12.0"
     typescript-eslint-parser "^16.0.0"
@@ -3848,9 +3848,9 @@ he@1.1.x, he@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-hls.js@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.npmjs.org/hls.js/-/hls.js-0.10.0.tgz#9123ef74d493bfcecf57ebed9b2e57fb02cc8443"
+hls.js@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.npmjs.org/hls.js/-/hls.js-0.10.1.tgz#2675245be1ba83aa023b11b5f5432af62be63330"
   dependencies:
     string.prototype.endswith "^0.2.0"
     url-toolkit "^2.1.2"
