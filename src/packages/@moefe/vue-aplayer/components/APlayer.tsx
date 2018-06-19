@@ -107,6 +107,11 @@ export default class APlayer extends Vue {
     return /mobile/i.test(window.navigator.userAgent);
   }
 
+  private get isArrow(): boolean {
+    const container = this.$refs.container as HTMLDivElement;
+    return container && container.offsetWidth <= 300;
+  }
+
   // 是否正在缓冲
   private get isLoading(): boolean {
     return Boolean(
@@ -542,6 +547,7 @@ export default class APlayer extends Vue {
       lrcType,
       isMini,
       isMobile,
+      isArrow,
       isLoading,
       notice,
       listVisible,
@@ -552,6 +558,7 @@ export default class APlayer extends Vue {
 
     return (
       <div
+        ref="container"
         class={classNames({
           aplayer: true,
           'aplayer-withlist': orderList.length > 0,
@@ -559,7 +566,7 @@ export default class APlayer extends Vue {
           'aplayer-narrow': isMini,
           'aplayer-fixed': fixed,
           'aplayer-mobile': isMobile,
-          'aplayer-arrow': fixed,
+          'aplayer-arrow': isArrow,
           'aplayer-loading': isLoading,
         })}
       >
