@@ -3,6 +3,8 @@ import Component from 'vue-class-component';
 import { ReadyState } from 'utils/enum';
 import events from './events';
 
+export { events };
+
 @Component
 export default class VueAudio extends Vue implements Media {
   [index: string]: any;

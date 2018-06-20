@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import shuffle from 'lodash.shuffle';
 import Store from 'store';
 import StorePluginObserve from 'store/plugins/observe';
-import VueAudio from '@moefe/vue-audio';
+import VueAudio, { events } from '@moefe/vue-audio';
 import VueStorage from '@moefe/vue-storage';
 import { ReadyState } from 'utils/enum';
 import Player from './Player';
@@ -216,6 +216,7 @@ export default class APlayer extends Vue {
       this.currentPlayed = 0;
       this.handleChangeSettings();
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
+        this.$emit('listSwitch', newMusic);
         const src = await this.getAudioUrl(newMusic);
         if (src) this.player.src = src;
         this.player.playbackRate = newMusic.speed || 1;
@@ -229,9 +230,15 @@ export default class APlayer extends Vue {
     }
   }
 
+  @Watch('volume')
+  private handleChangeVolume(volume: number) {
+    this.currentVolume = volume;
+  }
+
   @Watch('currentVolume')
   private handleChangeCurrentVolume() {
     this.player.volume = this.currentVolume;
+    this.$emit('update:volume', this.currentVolume);
   }
 
   @Watch('media.currentTime')
@@ -242,10 +249,6 @@ export default class APlayer extends Vue {
   }
 
   @Watch('media.$data', { deep: true })
-  @Watch('isMini')
-  @Watch('lyricVisible')
-  @Watch('currentLoop')
-  @Watch('currentOrder')
   private handleChangeSettings() {
     const settings: APlayer.Settings = {
       currentTime: this.media.currentTime,
@@ -294,6 +297,46 @@ export default class APlayer extends Vue {
   @Watch('mini')
   private handleChangeMini() {
     this.isMini = this.mini;
+  }
+
+  @Watch('isMini')
+  private handleChangeCurrentMini() {
+    this.$emit('update:mini', this.isMini);
+    this.handleChangeSettings();
+  }
+
+  @Watch('loop')
+  private handleChangeLoop() {
+    this.currentLoop = this.loop;
+  }
+
+  @Watch('currentLoop')
+  private handleChangeCurrentLoop() {
+    this.$emit('update:loop', this.currentLoop);
+    this.handleChangeSettings();
+  }
+
+  @Watch('order')
+  private handleChangeOrder() {
+    this.currentOrder = this.order;
+  }
+
+  @Watch('currentOrder')
+  private handleChangeCurrentOrder() {
+    this.$emit('update:order', this.currentOrder);
+    this.handleChangeSettings();
+  }
+
+  @Watch('listVisible')
+  private handleChangeListVisible() {
+    this.$emit(this.listVisible ? 'listShow' : 'listHide');
+    this.$emit('update:listFolded', this.listVisible);
+  }
+
+  @Watch('lyricVisible')
+  private handleChangeLyricVisible() {
+    this.$emit(this.lyricVisible ? 'lrcShow' : 'lrcHide');
+    this.handleChangeSettings();
   }
   // #endregion
 
@@ -381,8 +424,10 @@ export default class APlayer extends Vue {
   ): Promise<void> {
     return new Promise((resolve) => {
       this.notice = { text, time, opacity };
+      this.$emit('noticeShow');
       setTimeout(() => {
         this.notice.opacity = 0;
+        this.$emit('noticeHide');
         resolve();
       }, time);
     });
@@ -538,11 +583,6 @@ export default class APlayer extends Vue {
     this.toggleLrc();
   }
 
-  // 处理声音改变事件
-  private handleChangeVolume(volume: number) {
-    this.currentVolume = volume;
-  }
-
   // 处理进度条改变事件
   private async handleChangeProgress(
     e: MouseEvent | PointerEventInput,
@@ -594,6 +634,9 @@ export default class APlayer extends Vue {
         }
       }
     }
+    events.forEach((event) => {
+      this.player.addEventListener(event, e => this.$emit(event, e));
+    });
     instances.push(this);
   }
 

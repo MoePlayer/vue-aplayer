@@ -88,6 +88,7 @@ export default class Lyric extends Vue {
           resolve(currentMusic.lrc);
           break;
         default:
+          reject(new Error(`Illegal lrcType: ${lrcType}`));
           break;
       }
     });
