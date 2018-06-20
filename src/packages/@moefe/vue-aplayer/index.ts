@@ -1,14 +1,7 @@
 /* eslint-disable no-console */
 import 'console.img';
 import { VueConstructor } from 'vue';
-import APlayer from './components/APlayer';
-
-interface Options {
-  hls?: boolean;
-  colorThief?: boolean;
-  productionTip?: boolean;
-  defaultCover?: string;
-}
+import APlayer, { Options } from './components/APlayer';
 
 export default async function install(Vue: VueConstructor, options: Options) {
   const defaultOptions: Options = {
@@ -17,23 +10,10 @@ export default async function install(Vue: VueConstructor, options: Options) {
     productionTip: true,
     defaultCover: 'https://avatars2.githubusercontent.com/u/20062482?s=270',
   };
-  const opts = Object.assign({}, defaultOptions, options);
+  const opts = { ...defaultOptions, ...options };
+  Object.assign(APlayer.prototype, { options: opts });
 
   Vue.component('APlayer', APlayer);
-
-  if (opts.defaultCover) {
-    Object.assign(APlayer.prototype, { defaultCover: opts.defaultCover });
-  }
-
-  if (options.hls) {
-    const Hls = await import('hls.js').then(module => module.default);
-    Object.assign(APlayer.prototype, { Hls });
-  }
-
-  if (opts.colorThief) {
-    const ColorThief = await import('./utils/lib/color-thief').then(module => module.default); // prettier-ignore
-    Object.assign(APlayer.prototype, { colorThief: new ColorThief() });
-  }
 
   if (opts.productionTip) {
     const avatar = 'https://avatars2.githubusercontent.com/u/20062482?s=270';

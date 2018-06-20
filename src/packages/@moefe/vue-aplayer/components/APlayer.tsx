@@ -9,7 +9,6 @@ import Store from 'store';
 import StorePluginObserve from 'store/plugins/observe';
 import VueAudio from '@moefe/vue-audio';
 import VueStorage from '@moefe/vue-storage';
-import { eventLoop } from 'utils/index';
 import { ReadyState } from 'utils/enum';
 import Player from './Player';
 import PlayList from './PlayList';
@@ -18,7 +17,16 @@ import '../assets/style/aplayer.scss';
 
 Store.addPlugin(StorePluginObserve);
 
+let ColorThief;
+let Hls;
 const instances: APlayer[] = [];
+
+export interface Options {
+  hls?: boolean;
+  colorThief?: boolean;
+  productionTip?: boolean;
+  defaultCover?: string;
+}
 
 @Component
 export default class APlayer extends Vue {
@@ -124,10 +132,9 @@ export default class APlayer extends Vue {
   }
 
   private readonly _uid!: number;
-  private readonly defaultCover!: string; // 默认封面，来自插件注入
-  private readonly colorThief: any; // 颜色小偷，来自插件注入
-  private readonly Hls: any; // Hls，来自插件注入
-  private hls: any; // hls 实例
+  private readonly options!: Options;
+  private colorThief: any;
+  private hls: any;
   private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
@@ -389,30 +396,33 @@ export default class APlayer extends Vue {
   private async getThemeColorFromCover(
     url: string,
     cache: boolean = true,
-    timeout: number = 3000,
   ): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       try {
-        await eventLoop(() => this.colorThief, timeout);
-        const img = new Image();
-        img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
-        img.crossOrigin = '';
-        img.onload = () => {
-          const [r, g, b] = this.colorThief.getColor(img);
-          const theme = `rgb(${r}, ${g}, ${b})`;
-          resolve(theme || this.currentMusic.theme || this.theme);
-        };
-        img.onerror = reject;
+        if (this.options.colorThief) {
+          if (!this.colorThief) {
+            ColorThief = await import('../utils/lib/color-thief').then(
+              module => module.default,
+            );
+            this.colorThief = new ColorThief();
+          }
+          const img = new Image();
+          img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
+          img.crossOrigin = '';
+          img.onload = () => {
+            const [r, g, b] = this.colorThief.getColor(img);
+            const theme = `rgb(${r}, ${g}, ${b})`;
+            resolve(theme || this.currentMusic.theme || this.theme);
+          };
+          img.onerror = reject;
+        } else resolve(this.currentMusic.theme || this.theme);
       } catch (e) {
         resolve(this.currentMusic.theme || this.theme);
       }
     });
   }
 
-  private getAudioUrl(
-    music: APlayer.Audio,
-    timeout: number = 5000,
-  ): Promise<string> {
+  private getAudioUrl(music: APlayer.Audio): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       let { type } = music;
       if (type && this.customAudioType && this.customAudioType[type]) {
@@ -425,15 +435,15 @@ export default class APlayer extends Vue {
         if (!type || type === 'auto') {
           type = /m3u8(#|\?|$)/i.test(music.url) ? 'hls' : 'normal';
         }
-        if (type === 'hls') {
-          if (this.hls) {
-            this.hls.destroy();
-            this.hls = null;
-          }
+        if (type === 'hls' && this.options.hls) {
           try {
-            await eventLoop(() => this.Hls, timeout);
-            if (this.Hls.isSupported()) {
-              this.hls = new this.Hls();
+            if (this.hls) {
+              this.hls.destroy();
+              this.hls = null;
+            }
+            Hls = await import('hls.js').then(module => module.default);
+            if (Hls.isSupported()) {
+              this.hls = new Hls();
               this.hls.loadSource(music.url);
               this.hls.attachMedia(this.player);
               resolve();

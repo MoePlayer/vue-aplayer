@@ -6,14 +6,14 @@ import { Inject } from 'vue-property-decorator';
 export default class Cover extends Vue {
   @Inject()
   private readonly aplayer!: {
-    defaultCover: string;
+    options: any;
     currentTheme: string;
     currentMusic: APlayer.Audio;
   };
 
   private get style() {
-    const { defaultCover, currentTheme, currentMusic } = this.aplayer;
-    const cover = currentMusic.cover || defaultCover;
+    const { options, currentTheme, currentMusic } = this.aplayer;
+    const cover = currentMusic.cover || options.defaultCover;
     return {
       backgroundImage: cover && `url("${cover}")`,
       backgroundColor: currentTheme,
