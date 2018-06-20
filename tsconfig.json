@@ -13,11 +13,15 @@
     "types": ["node"],
     "paths": {
       "@/*": ["src/*"],
-      "assets/*": ["src/assets/*"],
-      "components/*": ["src/components/*"],
       "utils/*": ["src/utils/*"],
-      "@moefe/vue-audio": ["src/components/utils/audio.ts"],
-      "@moefe/vue-aplayer": ["src/components/index.ts"]
+      "@moefe/vue-audio/*": ["src/packages/@moefe/vue-audio/*"],
+      "@moefe/vue-storage/*": ["src/packages/@moefe/vue-storage/*"],
+      "@moefe/vue-touch/*": ["src/packages/@moefe/vue-touch/*"],
+      "@moefe/vue-aplayer/*": ["src/packages/@moefe/vue-aplayer/*"],
+      "@moefe/vue-audio": ["src/packages/@moefe/vue-audio/index.ts"],
+      "@moefe/vue-storage": ["src/packages/@moefe/vue-storage/index.ts"],
+      "@moefe/vue-touch": ["src/packages/@moefe/vue-touch/index.tsx"],
+      "@moefe/vue-aplayer": ["src/packages/@moefe/vue-aplayer/index.ts"],
     }
   },
   "include": [
@@ -27,6 +31,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "types/**/*.ts",
+    "node_modules/@types/",
     "node_modules/vue-tsx-support/enable-check.d.ts",
     "node_modules/vue-tsx-support/options/allow-unknown-props.d.ts"
   ]

@@ -4,6 +4,12 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'import/extensions': ['off'],
+    'import/no-unresolved': ['off'],
+    'import/no-duplicates': ['off'],
+    'import/no-named-as-default': ['off'],
+    'import/no-named-as-default-member': ['off'],
     'import/no-extraneous-dependencies': ['off'],
     'function-paren-newline': ['off'],
     'class-methods-use-this': [

@@ -2,7 +2,7 @@ declare namespace APlayer {
   export type LoopMode = 'all' | 'one' | 'none';
   export type OrderMode = 'list' | 'random';
   export type Preload = 'none' | 'metadata' | 'auto';
-  export type AudioType = 'auto' | 'hls';
+  export type AudioType = 'auto' | 'hls' | 'normal';
 
   export enum LrcType {
     file = 3,
@@ -20,6 +20,7 @@ declare namespace APlayer {
     lrc: string;
     theme: string;
     type?: AudioType;
+    speed?: number;
   }
 
   export interface Options {
@@ -36,7 +37,19 @@ declare namespace APlayer {
     mutex?: boolean;
     lrcType?: number;
     listFolded?: boolean;
-    listMaxHeight?: string;
+    listMaxHeight?: number;
     storageName?: string;
+  }
+
+  export interface Settings {
+    currentTime: number;
+    duration: number;
+    paused: boolean;
+    mini: boolean;
+    lrc: boolean;
+    volume: number;
+    loop: LoopMode;
+    order: OrderMode;
+    music: Audio | null;
   }
 }

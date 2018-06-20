@@ -6,24 +6,27 @@ import { Inject } from 'vue-property-decorator';
 export default class Cover extends Vue {
   @Inject()
   private readonly aplayer!: {
+    options: any;
     currentTheme: string;
     currentMusic: APlayer.Audio;
   };
 
-  private readonly defaultCover = 'https://avatars2.githubusercontent.com/u/20062482?s=270';
-
   private get style() {
-    const { defaultCover } = this;
-    const { currentTheme, currentMusic } = this.aplayer;
+    const { options, currentTheme, currentMusic } = this.aplayer;
+    const cover = currentMusic.cover || options.defaultCover;
     return {
-      backgroundImage: `url("${currentMusic.cover || defaultCover}")`,
+      backgroundImage: cover && `url("${cover}")`,
       backgroundColor: currentTheme,
     };
   }
 
+  private handleClick(e: MouseEvent) {
+    this.$emit('click', e);
+  }
+
   render() {
     return (
-      <div class="aplayer-pic" style={this.style}>
+      <div class="aplayer-pic" style={this.style} onClick={this.handleClick}>
         {this.$slots.default}
       </div>
     );

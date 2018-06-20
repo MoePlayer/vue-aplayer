@@ -1,28 +1,29 @@
 import Vue from 'vue';
 import Comopnent from 'vue-class-component';
 import APlayer from '@moefe/vue-aplayer';
+import { sleep } from 'utils/index';
 import './App.scss';
 
 Vue.use(APlayer, {
-  hls: false,
+  hls: true,
   colorThief: true,
-  productionTip: true,
+  productionTip: process.env.NODE_ENV !== 'development',
 });
-
-const sleep = (delay = 0) =>
-  new Promise(resolve => setTimeout(resolve, delay));
 
 @Comopnent
 export default class App extends Vue {
   private readonly aplayer0: APlayer.Options = {
     fixed: true,
     lrcType: 3,
-    listMaxHeight: '100px',
+    listMaxHeight: 100,
+    preload: 'auto',
     audio: [],
   };
 
   private readonly aplayer1: APlayer.Options = {
     lrcType: 3,
+    listMaxHeight: 98,
+    preload: 'auto',
     audio: [],
   };
 
@@ -30,8 +31,14 @@ export default class App extends Vue {
     const data: Array<APlayer.Audio> = await fetch('/music/data.json').then(
       res => res.json(),
     );
+    const isSafari = /apple/i.test(navigator.vendor);
+    if (isSafari) {
+      for (let i = 0; i < data.length; i++) {
+        data[i].speed = 1;
+      }
+    }
     await sleep(1500);
-    this.aplayer1.audio = data.splice(0, 3);
+    this.aplayer1.audio = data.splice(0, 4);
     await sleep(1500);
     this.aplayer0.audio = data;
   }

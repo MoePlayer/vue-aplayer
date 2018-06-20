@@ -1,3 +1,4 @@
 /dist
-/utils/lib/color-thief
+/src/packages/@moefe/vue-aplayer/utils/lib/color-thief
 package.json
+tsconfig.json

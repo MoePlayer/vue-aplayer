@@ -7,6 +7,13 @@
     "lrc": "/music/lyrics/dianzitianshi.lrc"
   },
   {
+    "name": "快乐崇拜.m3u8",
+    "artist": "Hanser",
+    "url": "http://p97x7hshf.bkt.clouddn.com/hls/worship.m3u8",
+    "cover": "/music/cover/trackmaker.jpg",
+    "lrc": "/music/lyrics/worship.lrc"
+  },
+  {
     "name": "拜无忧（Cover 萧忆情）",
     "artist": "暖阳",
     "url": "http://p97x7hshf.bkt.clouddn.com/baiwuyou.mp3",
@@ -25,7 +32,8 @@
     "artist": "Hanser",
     "url": "http://p97x7hshf.bkt.clouddn.com/trackmaker.mp3",
     "cover": "/music/cover/trackmaker.jpg",
-    "lrc": "/music/lyrics/trackmaker.lrc"
+    "lrc": "/music/lyrics/trackmaker.lrc",
+    "speed": 1.2
   },
   {
     "name": "Lemon",

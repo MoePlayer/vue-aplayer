@@ -1,18 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Hammer from 'hammerjs';
-
-const events = [
-  'pan',
-  'panStart',
-  'panMove',
-  'panEnd',
-  'panCancel',
-  'panLeft',
-  'panRight',
-  'panUp',
-  'panDown',
-];
+import events from './events';
 
 @Component
 export default class Touch extends Vue {

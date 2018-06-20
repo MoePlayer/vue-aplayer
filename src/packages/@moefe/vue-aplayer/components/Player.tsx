@@ -16,10 +16,6 @@ export default class Player extends Vue {
     return this.aplayer.media.paused ? 'play' : 'pause';
   }
 
-  private get noticeOpacity(): number {
-    return this.notice.text ? this.notice.opacity : 0;
-  }
-
   @Provide()
   private handleTogglePlay() {
     this.$emit('togglePlay');
@@ -73,15 +69,12 @@ export default class Player extends Vue {
   }
 
   render() {
-    const { playIcon, noticeOpacity, notice } = this;
+    const { playIcon, notice } = this;
 
     return (
       <div class="aplayer-body">
-        <Cover>
-          <div
-            class={`aplayer-button aplayer-${playIcon}`}
-            onClick={this.handleTogglePlay}
-          >
+        <Cover onClick={this.handleTogglePlay}>
+          <div class={`aplayer-button aplayer-${playIcon}`}>
             <Icon type={playIcon} />
           </div>
         </Cover>
@@ -98,7 +91,7 @@ export default class Player extends Vue {
             onChangeProgress={this.handleChangeProgress}
           />
         </Main>
-        <div class="aplayer-notice" style={{ opacity: noticeOpacity }}>
+        <div class="aplayer-notice" style={{ opacity: notice.opacity }}>
           {notice.text}
         </div>
         <div class="aplayer-miniswitcher" onClick={this.handleMiniSwitcher}>
