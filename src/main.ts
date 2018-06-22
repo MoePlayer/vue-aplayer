@@ -1,4 +1,3 @@
-import './hack'; // eslint-disable-next-line
 import Vue from 'vue';
 import App from './App';
 
