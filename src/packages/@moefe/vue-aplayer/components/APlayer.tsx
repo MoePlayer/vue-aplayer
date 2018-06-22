@@ -127,6 +127,7 @@ export default class APlayer extends Vue {
     return Boolean(
       this.currentMusic.id &&
         this.preload !== 'none' &&
+        !this.media.paused &&
         this.media.readyState < ReadyState.HAVE_FUTURE_DATA,
     );
   }
