@@ -743,9 +743,9 @@
   version "2.0.35"
   resolved "https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.35.tgz#7b7c950c7d54593e23bffc8d2b4feba9866a7277"
 
-"@types/hls.js@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.npmjs.org/@types/hls.js/-/hls.js-0.8.1.tgz#1e2d00dfd98b0d9130b11b492579f54d00712d9c"
+"@types/hls.js@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@types/hls.js/-/hls.js-0.10.0.tgz#f5543d2e03ea0c70c08ddf21831ba34465cdbb61"
 
 "@types/lodash.shuffle@^4.2.3":
   version "4.2.3"
