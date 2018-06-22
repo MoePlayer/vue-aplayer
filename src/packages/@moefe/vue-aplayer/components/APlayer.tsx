@@ -175,10 +175,10 @@ export default class APlayer extends Vue {
   // 当前已缓冲比例
   private get currentLoaded(): number {
     if (this.media.readyState < ReadyState.HAVE_FUTURE_DATA) return 0;
-    return (
-      this.media.buffered.end(this.media.buffered.length - 1) /
-      this.media.duration
-    );
+    const { length } = this.media.buffered;
+    return length > 0
+      ? this.media.buffered.end(length - 1) / this.media.duration
+      : 1;
   }
 
   private currentPlayed = 0; // 当前已播放比例
