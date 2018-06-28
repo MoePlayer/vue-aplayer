@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.4",
     "@types/hammerjs": "^2.0.35",
-    "@types/hls.js": "^0.10.0",
+    "@types/hls.js": "^0.10.1",
     "@types/lodash.shuffle": "^4.2.3",
     "@types/storejs": "^2.0.2",
     "@vue/cli-plugin-babel": "^3.0.0-rc.3",
