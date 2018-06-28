@@ -40,7 +40,7 @@
     "store": "^2.0.12",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
-    "vue-property-decorator": "^6.1.0"
+    "vue-property-decorator": "^7.0.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.4",
