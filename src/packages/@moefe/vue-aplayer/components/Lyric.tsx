@@ -77,15 +77,18 @@ export default class Lyric extends Vue {
         return;
       }
       switch (lrcType) {
+        case 0:
+          resolve('');
+          break;
+        case 1:
+          resolve(currentMusic.lrc);
+          break;
         case 3:
           resolve(
             currentMusic.lrc
               ? fetch(currentMusic.lrc).then(res => res.text())
               : '',
           );
-          break;
-        case 1:
-          resolve(currentMusic.lrc);
           break;
         default:
           reject(new Error(`Illegal lrcType: ${lrcType}`));
