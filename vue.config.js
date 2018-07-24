@@ -1,13 +1,16 @@
 /* eslint-disable strict */
-// https://github.com/vuejs/vue-cli/blob/dev/docs/config.md
-// https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-// https://github.com/vuejs/vue-cli/blob/dev/docs/build-targets.md
+// https://cli.vuejs.org/config/
+// https://cli.vuejs.org/guide/build-targets.html
 const path = require('path');
 
 module.exports = {
   css: { extract: false },
   chainWebpack: (config) => {
-    // https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md#replace-existing-base-loader
+    // https://github.com/mozilla-neutrino/webpack-chain#config-output-shorthand-methods
+    config.output
+      .libraryExport('default'); // prettier-ignore
+
+    // https://cli.vuejs.org/guide/webpack.html#replacing-loaders-of-a-rule
     config.module
       .rule('svg')
       .use('file-loader')
