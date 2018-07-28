@@ -218,9 +218,12 @@ export default class APlayer extends Vue.Component<APlayer.Options> {
     }
     if (newMusic.url) {
       this.currentPlayed = 0;
-      this.handleChangeSettings();
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
-        this.$emit('listSwitch', newMusic);
+        if (oldMusic) {
+          // 首次初始化时不要触发事件
+          this.handleChangeSettings();
+          this.$emit('listSwitch', newMusic);
+        }
         const src = await this.getAudioUrl(newMusic);
         if (src) this.player.src = src;
         this.player.playbackRate = newMusic.speed || 1;
@@ -260,7 +263,7 @@ export default class APlayer extends Vue.Component<APlayer.Options> {
       paused: this.media.paused,
       mini: this.isMini,
       lrc: this.lyricVisible,
-      volume: this.media.volume,
+      volume: this.currentVolume,
       loop: this.currentLoop,
       order: this.currentOrder,
       music: this.currentMusic,
