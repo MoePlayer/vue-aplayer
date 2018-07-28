@@ -20,7 +20,7 @@ export default async function install(Vue: VueConstructor, options: Options) {
     setTimeout(async () => {
       await console.img(avatar, 80, 80);
       console.log('%c@u3u', 'font-weight: bold;');
-      console.log('享受血賺的時刻 管它三年哪裡過');
+      console.log('(<ゝω·) 可愛くなりたい');
       console.log('🚀 Based on APlayer: https://aplayer.js.org');
       console.log('💗 Follow me on Github: https://github.com/u3u');
       console.log('🎉 Powered by: https://github.com/u3u/console.img');
