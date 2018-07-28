@@ -1,15 +1,30 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Provide, Inject } from 'vue-property-decorator';
 import Cover from './Cover';
 import Icon from './Icon';
 import Main from './Main';
-import Controller from './Controller';
+import Controller, { ControllerEvents } from './Controller';
 import Button from './Button';
 
+export interface Notice {
+  text: string;
+  time: number;
+  opacity: number;
+}
+
+export interface PlayerProps {
+  notice?: Notice;
+}
+
 @Component
-export default class Player extends Vue {
-  @Prop() notice!: any;
+export default class Player extends Vue.Component<
+  PlayerProps,
+  ControllerEvents
+> {
+  @Prop({ type: Object, required: true })
+  notice!: Notice;
+
   @Inject() aplayer!: { media: Media };
 
   private get playIcon(): string {
@@ -57,11 +72,11 @@ export default class Player extends Vue {
   }
 
   @Provide()
-  private handleChangeProgress(
-    e: MouseEvent | PointerEventInput,
-    percent: number,
-  ) {
-    this.$emit('changeProgress', e, percent);
+  private handleChangeProgress(payload: {
+    e: MouseEvent | PointerEventInput;
+    percent: number;
+  }) {
+    this.$emit('changeProgress', payload);
   }
 
   private handleMiniSwitcher() {

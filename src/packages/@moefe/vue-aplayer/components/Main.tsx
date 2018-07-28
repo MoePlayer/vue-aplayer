@@ -1,11 +1,11 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 import Lyric from './Lyric';
 import Controller from './Controller';
 
 @Component
-export default class Main extends Vue {
+export default class Main extends Vue.Component<{}> {
   @Inject()
   private readonly aplayer!: { fixed: boolean; currentMusic: APlayer.Audio };
 

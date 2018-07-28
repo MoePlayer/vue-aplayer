@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 import Touch, { PointerEventInput } from '@moefe/vue-touch';
@@ -6,8 +6,28 @@ import Icon from './Icon';
 import Button from './Button';
 import Progress from './Progress';
 
+export interface ControllerEvents {
+  onTogglePlay: void;
+  onSkipBack: void;
+  onSkipForward: void;
+  onToggleOrderMode: void;
+  onToggleLoopMode: void;
+  onTogglePlaylist: void;
+  onToggleLyric: void;
+  onChangeVolume: number;
+  onChangeProgress: {
+    e: MouseEvent | PointerEventInput;
+    percent: number;
+  };
+  onMiniSwitcher: void;
+}
+
 @Component
-export default class Controller extends Vue {
+export default class Controller extends Vue.Component<{}, ControllerEvents> {
+  public readonly $refs!: {
+    volumeBar: HTMLElement;
+  };
+
   @Inject()
   private readonly aplayer!: {
     media: Media;
@@ -63,7 +83,7 @@ export default class Controller extends Vue {
   }
 
   private handlePanMove(e: MouseEvent | PointerEventInput) {
-    const target = this.$refs.volumeBar as HTMLElement;
+    const target = this.$refs.volumeBar;
     const targetTop = target.getBoundingClientRect().bottom;
     if (targetTop <= 0) return; // 音量控制面板已隐藏
     const clientY =
@@ -121,7 +141,7 @@ export default class Controller extends Vue {
             />
             <Touch
               class="aplayer-volume-bar-wrap"
-              nativeOnClick={this.handleClickVolumeBar}
+              onClick={this.handleClickVolumeBar}
               onPanMove={this.handlePanMove}
             >
               <div

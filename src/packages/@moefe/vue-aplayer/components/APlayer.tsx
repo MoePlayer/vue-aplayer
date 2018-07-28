@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ import StorePluginObserve from 'store/plugins/observe';
 import VueAudio, { events } from '@moefe/vue-audio';
 import VueStorage from '@moefe/vue-storage';
 import { ReadyState } from 'utils/enum';
-import Player from './Player';
+import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import '../assets/style/aplayer.scss';
@@ -29,7 +29,11 @@ export interface Options {
 }
 
 @Component
-export default class APlayer extends Vue {
+export default class APlayer extends Vue.Component<APlayer.Options> {
+  public readonly $refs!: {
+    container: HTMLDivElement;
+  };
+
   // #region [只读] 播放器选项
   @Prop({ type: Boolean, required: false, default: false })
   private readonly fixed!: boolean;
@@ -118,7 +122,7 @@ export default class APlayer extends Vue {
 
   // 是否是 arrow 模式
   private get isArrow(): boolean {
-    const container = this.$refs.container as HTMLDivElement;
+    const { container } = this.$refs;
     return container && container.offsetWidth <= 300;
   }
 
@@ -184,7 +188,7 @@ export default class APlayer extends Vue {
   private currentLoop = this.loop; // 当前循环模式
   private currentOrder = this.order; // 当前顺序模式
   private currentTheme = this.currentMusic.theme || this.theme; // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
-  private notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
+  private notice: Notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
 
   // #region 监听属性
   @Watch('currentList', { deep: true })
@@ -366,7 +370,7 @@ export default class APlayer extends Vue {
       }
       await this.media.loaded();
       this.player.currentTime = percent * this.media.duration;
-      if (paused === false) this.play();
+      if (!paused) this.play();
     } catch (e) {
       this.showNotice(e.message);
     } finally {
@@ -446,9 +450,11 @@ export default class APlayer extends Vue {
       try {
         if (this.options.colorThief) {
           if (!this.colorThief) {
-            ColorThief = await import('../utils/lib/color-thief').then(
-              module => module.default,
-            );
+            // prettier-ignore
+            ColorThief = await import(
+              /* webpackChunkName: "color-thief" */
+              /* webpackMode: "lazy" */
+              '../utils/lib/color-thief').then(module => module.default);
             this.colorThief = new ColorThief();
           }
           const img = new Image();
@@ -474,6 +480,7 @@ export default class APlayer extends Vue {
         if (typeof this.customAudioType[type] === 'function') {
           this.customAudioType[type](this.player, music, this);
         } else {
+          // eslint-disable-next-line no-console
           console.error(`Illegal customType: ${type}`);
         }
       } else {
@@ -486,7 +493,11 @@ export default class APlayer extends Vue {
               this.hls.destroy();
               this.hls = null;
             }
-            Hls = await import('hls.js').then(module => module.default);
+            // prettier-ignore
+            Hls = await import(
+              /* webpackChunkName: "hls" */
+              /* webpackMode: "lazy" */
+              'hls.js').then(module => module.default);
             if (Hls.isSupported()) {
               this.hls = new Hls();
               this.hls.loadSource(music.url);
@@ -584,10 +595,11 @@ export default class APlayer extends Vue {
   }
 
   // 处理进度条改变事件
-  private async handleChangeProgress(
-    e: MouseEvent | PointerEventInput,
-    percent: number,
-  ) {
+  private async handleChangeProgress(payload: {
+    e: MouseEvent | PointerEventInput;
+    percent: number;
+  }) {
+    const { e, percent } = payload;
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type === 'panmove';
     if (e.type === 'click' || e.type === 'panend') {

@@ -1,9 +1,13 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 
+export interface CoverEvents {
+  onClick?: MouseEvent;
+}
+
 @Component
-export default class Cover extends Vue {
+export default class Cover extends Vue.Component<{}, CoverEvents> {
   @Inject()
   private readonly aplayer!: {
     options: any;

@@ -1,11 +1,15 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Comopnent from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 import Touch, { PointerEventInput } from '@moefe/vue-touch';
 import Icon from './Icon';
 
 @Comopnent
-export default class Progress extends Vue {
+export default class Progress extends Vue.Component<{}> {
+  public $refs!: {
+    progressBar: HTMLElement;
+  };
+
   @Inject()
   private readonly aplayer!: {
     currentTheme: string;
@@ -15,12 +19,11 @@ export default class Progress extends Vue {
 
   @Inject()
   private readonly handleChangeProgress!: (
-    e: MouseEvent | PointerEventInput,
-    percent: number
+    payload: { e: MouseEvent | PointerEventInput; percent: number }
   ) => void;
 
   private handleChange(e: MouseEvent | PointerEventInput) {
-    const target = this.$refs.progressBar as HTMLElement;
+    const target = this.$refs.progressBar;
     const targetLeft = target.getBoundingClientRect().left;
     const clientX = e.type.startsWith('pan')
       ? (e as PointerEventInput).center.x
@@ -29,7 +32,7 @@ export default class Progress extends Vue {
     let percent = offsetLeft / target.offsetWidth;
     if (percent > 1) percent = 1;
     else if (percent < 0) percent = 0;
-    this.handleChangeProgress(e, percent);
+    this.handleChangeProgress({ e, percent });
   }
 
   render() {
@@ -38,7 +41,7 @@ export default class Progress extends Vue {
     return (
       <Touch
         class="aplayer-bar-wrap"
-        nativeOnClick={this.handleChange}
+        onClick={this.handleChange}
         onPanMove={this.handleChange}
         onPanEnd={this.handleChange}
       >

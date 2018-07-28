@@ -1,10 +1,28 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Inject, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
 
+export interface PlayListProps {
+  visible?: boolean;
+  currentMusic: APlayer.Audio;
+  dataSource: APlayer.Audio[];
+  scrollTop: number;
+}
+
+export interface PlayListEvents {
+  onChange: APlayer.Audio;
+}
+
 @Component
-export default class PlayList extends Vue {
+export default class PlayList extends Vue.Component<
+  PlayListProps,
+  PlayListEvents
+> {
+  public readonly $refs!: {
+    list: HTMLOListElement;
+  };
+
   @Prop({ type: Boolean, required: false, default: true })
   private readonly visible?: boolean;
 
@@ -30,8 +48,7 @@ export default class PlayList extends Vue {
   @Watch('scrollTop', { immediate: true })
   private async handleChangeScrollTop() {
     await this.$nextTick();
-    const list = this.$refs.list as HTMLOListElement;
-    list.scrollTop = this.scrollTop;
+    this.$refs.list.scrollTop = this.scrollTop;
   }
 
   render() {

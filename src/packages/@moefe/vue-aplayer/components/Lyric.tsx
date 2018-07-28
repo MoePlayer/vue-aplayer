@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Inject, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
@@ -8,8 +8,12 @@ interface LRC {
   text: string;
 }
 
+export interface LyricProps {
+  visible?: boolean;
+}
+
 @Component
-export default class Lyric extends Vue {
+export default class Lyric extends Vue.Component<LyricProps> {
   @Prop({ type: Boolean, required: false, default: true })
   private readonly visible?: boolean;
 
@@ -145,9 +149,7 @@ export default class Lyric extends Vue {
   }
 
   render() {
-    const {
-      visible, style, lrc, parsed, current, noLyric,
-    } = this;
+    const { visible, style, lrc, parsed, current, noLyric } = this;
 
     return (
       <div
