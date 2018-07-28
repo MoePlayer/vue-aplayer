@@ -29,6 +29,36 @@ export default class App extends Vue {
           listFolded={false}
           listMaxHeight={250}
           storageName="aplayer-setting"
+          onAbort={() => {}}
+          onCanplay={() => {}}
+          onCanplaythrough={() => {}}
+          onDurationchange={() => {}}
+          onEmptied={() => {}}
+          onEnded={() => {}}
+          onError={() => {}}
+          onLoadeddata={() => {}}
+          onLoadedmetadata={() => {}}
+          onLoadstart={() => {}}
+          onPause={() => {}}
+          onPlay={() => {}}
+          onPlaying={() => {}}
+          onProgress={() => {}}
+          onRatechange={() => {}}
+          onReadystatechange={() => {}}
+          onSeeked={() => {}}
+          onSeeking={() => {}}
+          onStalled={() => {}}
+          onSuspend={() => {}}
+          onTimeupdate={() => {}}
+          onVolumechange={() => {}}
+          onWaiting={() => {}}
+          onListSwitch={() => {}}
+          onListShow={() => {}}
+          onListHide={() => {}}
+          onNoticeShow={() => {}}
+          onNoticeHide={() => {}}
+          onLrcShow={() => {}}
+          onLrcHide={() => {}}
         />
       </div>
     );
