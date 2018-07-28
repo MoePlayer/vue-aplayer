@@ -17,8 +17,8 @@ declare namespace APlayer {
     artist: string;
     url: string;
     cover: string;
-    lrc: string;
-    theme: string;
+    lrc?: string;
+    theme?: string;
     type?: AudioType;
     speed?: number;
   }
