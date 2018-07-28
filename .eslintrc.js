@@ -2,6 +2,10 @@ module.exports = {
   root: true,
   extends: ['plugin:vue/essential', '@vue/airbnb', '@vue/typescript'],
   rules: {
+    // https://github.com/vuejs/vue-cli/issues/1672
+    indent: 'off',
+    'space-infix-ops': 'off',
+    'object-curly-newline': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
