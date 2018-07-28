@@ -6,6 +6,15 @@ const path = require('path');
 module.exports = {
   css: { extract: false },
   chainWebpack: (config) => {
+    if (process.env.NODE_ENV !== 'production') {
+      config.module
+        .rule('tsx')
+        .test(/\.tsx$/)
+        .use('vue-jsx-hot-loader')
+        .before('babel-loader')
+        .loader('vue-jsx-hot-loader');
+    }
+
     // https://github.com/mozilla-neutrino/webpack-chain#config-output-shorthand-methods
     config.output
       .libraryExport('default'); // prettier-ignore
