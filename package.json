@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build --target lib --name VueAPlayer src/packages/@moefe/vue-aplayer/index.ts",
+    "build": "vue-cli-service build --report --target lib --name VueAPlayer src/packages/@moefe/vue-aplayer/index.ts",
     "build:example": "vue-cli-service build --dest example",
     "lint": "vue-cli-service lint",
     "lint:prettier": "prettier-eslint-check \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
