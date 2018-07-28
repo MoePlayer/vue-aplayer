@@ -705,7 +705,7 @@ export default class APlayer extends Vue.Component<APlayer.Options> {
           dataSource={orderList}
           onChange={this.handleChangePlaylist}
         />
-        {fixed ? <Lyric visible={lyricVisible} /> : null}
+        {fixed && lrcType !== 0 ? <Lyric visible={lyricVisible} /> : null}
       </div>
     );
   }
