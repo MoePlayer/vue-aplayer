@@ -1,10 +1,16 @@
 {
-  "name": "vue-aplayer",
+  "name": "@moefe/vue-aplayer",
   "description": "A beautiful HTML5 music player for Vue.js",
   "version": "2.0.0-beta.1",
   "author": "u3u <qwq@qwq.cat>",
   "license": "MIT",
   "homepage": "https://github.com/MoePlayer/vue-aplayer#readme",
+  "main": "dist/VueAPlayer.umd.min.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "repository": {
     "url": "git+https://github.com/MoePlayer/vue-aplayer.git",
     "type": "git"
@@ -22,6 +28,7 @@
     "media"
   ],
   "scripts": {
+    "prepublish": "npm run build",
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build --report --target lib --name VueAPlayer packages/@moefe/vue-aplayer/index.ts",
     "build:example": "vue-cli-service build --dest demo",
