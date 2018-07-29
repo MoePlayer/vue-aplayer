@@ -1,13 +1,45 @@
 import Vue from 'vue';
 import Comopnent from 'vue-class-component';
-import APlayer from './'; // eslint-disable-line
+import APlayerPlugin, { APlayer } from './'; // eslint-disable-line
+
+Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
+  hls: true,
+  colorThief: true,
+  productionTip: true,
+  defaultCover: '',
+});
 
 @Comopnent
 export default class App extends Vue {
+  readonly $refs!: {
+    aplayer: APlayer;
+  };
+
+  async created() {
+    const { aplayer } = this.$refs;
+    console.log(aplayer.$refs.container);
+    await aplayer.play();
+    aplayer.toggle();
+    aplayer.pause();
+    aplayer.seek(0);
+    aplayer.skipBack();
+    aplayer.skipForward();
+    aplayer.showLrc();
+    aplayer.hideList();
+    aplayer.toggleLrc();
+    aplayer.showList();
+    aplayer.hideList();
+    aplayer.toggleList();
+    aplayer.showNotice('');
+    aplayer.showNotice('', 1e3);
+    aplayer.showNotice('', 1e3, 0.8);
+  }
+
   render() {
     return (
       <div id="app">
         <APlayer
+          ref="aplayer"
           mutex
           fixed
           mini
