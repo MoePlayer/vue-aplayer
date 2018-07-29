@@ -30,7 +30,7 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
 
   @Inject()
   private readonly aplayer!: {
-    media: Media;
+    media: APlayer.Media;
     currentTheme: string;
     currentVolume: number;
     currentPlayed: number;

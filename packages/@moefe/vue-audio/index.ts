@@ -18,7 +18,7 @@ export enum ReadyState {
 }
 
 @Component
-export default class VueAudio extends Vue implements Media {
+export default class VueAudio extends Vue implements APlayer.Media {
   [index: string]: any;
 
   constructor() {

@@ -20,51 +20,10 @@ let ColorThief;
 let Hls;
 const instances: APlayer[] = [];
 
-export interface Options {
-  hls?: boolean;
-  colorThief?: boolean;
-  productionTip?: boolean;
-  defaultCover?: string;
-}
-
-export interface APlayerEvents {
-  onAbort: Event;
-  onCanplay: Event;
-  onCanplaythrough: Event;
-  onDurationchange: Event;
-  onEmptied: Event;
-  onEnded: Event;
-  onError: Event;
-  onLoadeddata: Event;
-  onLoadedmetadata: Event;
-  onLoadstart: Event;
-  onPause: Event;
-  onPlay: Event;
-  onPlaying: Event;
-  onProgress: Event;
-  onRatechange: Event;
-  onReadystatechange: Event;
-  onSeeked: Event;
-  onSeeking: Event;
-  onStalled: Event;
-  onSuspend: Event;
-  onTimeupdate: Event;
-  onVolumechange: Event;
-  onWaiting: Event;
-
-  onListSwitch: APlayer.Audio; // eslint-disable-line
-  onListShow: void;
-  onListHide: void;
-  onNoticeShow: void;
-  onNoticeHide: void;
-  onLrcShow: void;
-  onLrcHide: void;
-}
-
 @Component
 export default class APlayer extends Vue.Component<
   APlayer.Options,
-  APlayerEvents
+  APlayer.Events
 > {
   public readonly $refs!: {
     container: HTMLDivElement;
@@ -170,7 +129,7 @@ export default class APlayer extends Vue.Component<
   }
 
   private readonly _uid!: number;
-  private readonly options!: Options;
+  private readonly options!: APlayer.InstallOptions;
   private colorThief: any;
   private hls: any;
   private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放

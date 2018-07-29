@@ -1,10 +1,15 @@
 /* eslint-disable no-console */
 import 'console.img';
-import { VueConstructor } from 'vue';
-import APlayer, { Options } from './components/APlayer';
+import _Vue from 'vue';
+import APlayer from './components/APlayer';
 
-export default async function install(Vue: VueConstructor, options: Options) {
-  const defaultOptions: Options = {
+export { APlayer };
+
+export default async function install(
+  Vue: typeof _Vue,
+  options?: APlayer.InstallOptions,
+) {
+  const defaultOptions: APlayer.InstallOptions = {
     hls: false,
     colorThief: false,
     productionTip: true,

@@ -25,7 +25,7 @@ export default class Player extends Vue.Component<
   @Prop({ type: Object, required: true })
   notice!: Notice;
 
-  @Inject() aplayer!: { media: Media };
+  @Inject() aplayer!: { media: APlayer.Media };
 
   private get playIcon(): string {
     return this.aplayer.media.paused ? 'play' : 'pause';

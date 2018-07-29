@@ -19,7 +19,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
 
   @Inject()
   private readonly aplayer!: {
-    media: Media;
+    media: APlayer.Media;
     lrcType: APlayer.LrcType;
     currentMusic: APlayer.Audio;
     currentPlayed: number;
