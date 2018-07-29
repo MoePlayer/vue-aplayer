@@ -7,9 +7,8 @@ import classNames from 'classnames';
 import shuffle from 'lodash.shuffle';
 import Store from 'store';
 import StorePluginObserve from 'store/plugins/observe';
-import VueAudio, { events } from '@moefe/vue-audio';
+import VueAudio, { ReadyState, events } from '@moefe/vue-audio';
 import VueStorage from '@moefe/vue-storage';
-import { ReadyState } from 'utils/enum';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
@@ -494,7 +493,7 @@ export default class APlayer extends Vue.Component<
             ColorThief = await import(
               /* webpackChunkName: "color-thief" */
               /* webpackMode: "lazy" */
-              '../utils/lib/color-thief').then(module => module.default);
+              '@moefe/color-thief').then(module => module.default);
             this.colorThief = new ColorThief();
           }
           const img = new Image();

@@ -9,6 +9,11 @@
     "typescript",
     "typescriptreact"
   ],
+  "files.exclude": {
+    "demo": true,
+    "dist": true,
+    "logo": true
+  },
   "prettier.eslintIntegration": true,
   "tslint.autoFixOnSave": true,
   "tslint.enable": true

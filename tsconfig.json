@@ -12,16 +12,15 @@
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "@/*": ["src/*"],
-      "utils/*": ["src/utils/*"],
-      "@moefe/vue-audio/*": ["src/packages/@moefe/vue-audio/*"],
-      "@moefe/vue-storage/*": ["src/packages/@moefe/vue-storage/*"],
-      "@moefe/vue-touch/*": ["src/packages/@moefe/vue-touch/*"],
-      "@moefe/vue-aplayer/*": ["src/packages/@moefe/vue-aplayer/*"],
-      "@moefe/vue-audio": ["src/packages/@moefe/vue-audio/index.ts"],
-      "@moefe/vue-storage": ["src/packages/@moefe/vue-storage/index.ts"],
-      "@moefe/vue-touch": ["src/packages/@moefe/vue-touch/index.tsx"],
-      "@moefe/vue-aplayer": ["src/packages/@moefe/vue-aplayer/index.ts"],
+      "@moefe/vue-audio/*": ["packages/@moefe/vue-audio/*"],
+      "@moefe/vue-storage/*": ["packages/@moefe/vue-storage/*"],
+      "@moefe/vue-touch/*": ["packages/@moefe/vue-touch/*"],
+      "@moefe/vue-aplayer/*": ["packages/@moefe/vue-aplayer/*"],
+      "@moefe/color-thief": ["packages/@moefe/color-thief/index.d.ts"],
+      "@moefe/vue-audio": ["packages/@moefe/vue-audio/index.ts"],
+      "@moefe/vue-storage": ["packages/@moefe/vue-storage/index.ts"],
+      "@moefe/vue-touch": ["packages/@moefe/vue-touch/index.tsx"],
+      "@moefe/vue-aplayer": ["packages/@moefe/vue-aplayer/index.ts"],
     }
   },
   "include": [
@@ -31,6 +30,10 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "types/**/*.ts",
+    "example/**/*.ts",
+    "example/**/*.tsx",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
     "node_modules/@types/",
     "node_modules/vue-tsx-support/enable-check.d.ts"
   ]
