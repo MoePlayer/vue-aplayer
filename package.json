@@ -57,7 +57,7 @@
     "@types/lodash.shuffle": "^4.2.4",
     "@types/storejs": "^2.0.3",
     "@vue/cli-plugin-babel": "^3.0.0-rc.8",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.8",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
     "@vue/cli-plugin-typescript": "^3.0.0-rc.8",
     "@vue/cli-service": "^3.0.0-rc.8",
     "@vue/eslint-config-airbnb": "^3.0.0-rc.8",
