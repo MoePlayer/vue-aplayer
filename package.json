@@ -5,7 +5,9 @@
   "author": "u3u <qwq@qwq.cat>",
   "license": "MIT",
   "homepage": "https://github.com/MoePlayer/vue-aplayer#readme",
-  "main": "dist/VueAPlayer.umd.min.js",
+  "main": "dist/VueAPlayer.common.js",
+  "unpkg": "dist/VueAPlayer.umd.min.js",
+  "jsdelivr": "dist/VueAPlayer.umd.min.js",
   "types": "types/index.d.ts",
   "files": [
     "dist",
