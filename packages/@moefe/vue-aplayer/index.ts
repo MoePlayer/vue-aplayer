@@ -18,6 +18,7 @@ export default async function install(
   const opts = { ...defaultOptions, ...options };
   Object.assign(APlayer.prototype, { options: opts });
 
+  Vue.component('aplayer', APlayer);
   Vue.component('APlayer', APlayer);
 
   if (opts.productionTip) {
