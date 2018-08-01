@@ -20,7 +20,7 @@
       "@moefe/vue-audio": ["packages/@moefe/vue-audio/index.ts"],
       "@moefe/vue-storage": ["packages/@moefe/vue-storage/index.ts"],
       "@moefe/vue-touch": ["packages/@moefe/vue-touch/index.tsx"],
-      "@moefe/vue-aplayer": ["packages/@moefe/vue-aplayer/index.ts"],
+      "@moefe/vue-aplayer": ["packages/@moefe/vue-aplayer/index.ts"]
     }
   },
   "include": [
