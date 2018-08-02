@@ -41,13 +41,11 @@
     "contributors": "all-contributors"
   },
   "dependencies": {
-    "balloon-css": "^0.5.0",
     "classnames": "^2.2.6",
     "console.img": "^2.1.3",
     "hammerjs": "^2.0.8",
     "hls.js": "^0.10.1",
     "lodash.shuffle": "^4.2.0",
-    "store": "^2.0.12",
     "vue": "^2.5.16",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0"
@@ -57,7 +55,6 @@
     "@types/hammerjs": "^2.0.35",
     "@types/hls.js": "^0.10.1",
     "@types/lodash.shuffle": "^4.2.4",
-    "@types/storejs": "^2.0.3",
     "@vue/cli-plugin-babel": "^3.0.0-rc.8",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.8",
     "@vue/cli-plugin-typescript": "^3.0.0-rc.8",

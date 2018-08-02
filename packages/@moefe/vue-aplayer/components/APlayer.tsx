@@ -5,20 +5,17 @@ import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
 import shuffle from 'lodash.shuffle';
-import Store from 'store';
-import StorePluginObserve from 'store/plugins/observe';
-import VueAudio, { ReadyState, events } from '@moefe/vue-audio';
-import VueStorage from '@moefe/vue-storage';
+import Audio, { ReadyState, events } from '@moefe/vue-audio';
+import Store from '@moefe/vue-store';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import '../assets/style/aplayer.scss';
 
-Store.addPlugin(StorePluginObserve);
-
 let ColorThief;
 let Hls;
 const instances: APlayer[] = [];
+const store = new Store();
 
 @Component
 export default class APlayer extends Vue.Component<
@@ -83,7 +80,7 @@ export default class APlayer extends Vue.Component<
   }
 
   private get settings() {
-    return this.store.storage;
+    return this.store.store;
   }
 
   private get currentSettings(): APlayer.Settings {
@@ -141,9 +138,9 @@ export default class APlayer extends Vue.Component<
     return this.currentListIndex * 33;
   }
   private lyricVisible = true; // 控制迷你模式下的歌词是否可见
-  private media = new VueAudio(); // 响应式媒体对象
+  private media = new Audio(); // 响应式媒体对象
   private player = this.media.audio; // 核心音频对象
-  private store = new VueStorage(); // 响应式 localStorage
+  private store = store;
 
   // 当前播放的音乐
   private currentMusic: APlayer.Audio = this.currentList[0] || {
@@ -277,7 +274,7 @@ export default class APlayer extends Vue.Component<
       settings.volume = this.currentSettings.volume;
     }
 
-    Store.set(this.storageName, {
+    this.store.set(this.storageName, {
       ...this.settings,
       [instances.indexOf(this)]: settings,
     });
