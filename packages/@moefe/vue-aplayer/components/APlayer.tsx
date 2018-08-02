@@ -87,7 +87,7 @@ export default class APlayer extends Vue.Component<
   }
 
   private get currentSettings(): APlayer.Settings {
-    return this.settings[this._uid];
+    return this.settings[instances.indexOf(this)];
   }
 
   // 当前播放模式对应的播放列表
@@ -629,7 +629,7 @@ export default class APlayer extends Vue.Component<
   // #endregion
 
   async created() {
-    // 恢复播放器设置
+    instances.push(this);
     this.store.key = this.storageName;
     if (this.currentSettings) {
       const {
