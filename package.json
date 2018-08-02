@@ -1,7 +1,7 @@
 {
   "name": "@moefe/vue-aplayer",
   "description": "A beautiful HTML5 music player for Vue.js",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-alpha.1",
   "author": "u3u <qwq@qwq.cat>",
   "license": "MIT",
   "homepage": "https://github.com/MoePlayer/vue-aplayer#readme",
