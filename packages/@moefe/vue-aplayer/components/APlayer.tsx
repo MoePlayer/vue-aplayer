@@ -97,12 +97,12 @@ export default class APlayer extends Vue.Component<
 
   // 顺序播放列表，数据源，自动生成 ID 作为播放列表项的 key
   private get orderList() {
-    return (Array.isArray(this.audio) ? this.audio : [this.audio]).map(
-      (item, index) => ({
+    return (Array.isArray(this.audio) ? this.audio : [this.audio])
+      .filter(x => x)
+      .map((item, index) => ({
         id: index + 1,
         ...item,
-      }),
-    );
+      }));
   }
 
   // 根据顺序播放列表生成随机播放列表
