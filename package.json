@@ -46,7 +46,7 @@
     "hls.js": "^0.10.1",
     "lodash.shuffle": "^4.2.0",
     "store": "^2.0.12",
-    "vue": "^2.5.16",
+    "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0"
   },
