@@ -34,6 +34,8 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build --report --target lib --name VueAPlayer packages/@moefe/vue-aplayer/index.ts",
     "build:example": "vue-cli-service build --dest demo",
+    "docs:dev": "vuepress dev docs --debug --port 3000",
+    "docs:build": "vuepress build docs",
     "lint": "vue-cli-service lint",
     "lint:prettier": "prettier-eslint-check \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
     "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write",
@@ -73,7 +75,8 @@
     "vue-jsx-hot-loader": "^1.4.0",
     "vue-svg-loader": "^0.5.0",
     "vue-template-compiler": "^2.5.16",
-    "vue-tsx-support": "^2.0.1"
+    "vue-tsx-support": "^2.0.1",
+    "vuepress": "^0.13.0"
   },
   "browserslist": [
     "> 1%",
