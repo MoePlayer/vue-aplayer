@@ -659,7 +659,6 @@ export default class APlayer extends Vue.Component<
     events.forEach((event) => {
       this.player.addEventListener(event, e => this.$emit(event, e));
     });
-    instances.push(this);
   }
 
   render() {
