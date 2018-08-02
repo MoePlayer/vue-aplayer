@@ -4,12 +4,12 @@ import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
-import shuffle from 'lodash.shuffle';
 import Audio, { ReadyState, events } from '@moefe/vue-audio';
 import Store from '@moefe/vue-store';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
+import { shuffle } from '../utils';
 import '../assets/style/aplayer.scss';
 
 let ColorThief;
@@ -104,7 +104,7 @@ export default class APlayer extends Vue.Component<
 
   // 根据顺序播放列表生成随机播放列表
   private get randomList() {
-    return shuffle(this.orderList);
+    return shuffle([...this.orderList]);
   }
 
   // eslint-disable-next-line class-methods-use-this

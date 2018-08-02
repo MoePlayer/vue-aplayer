@@ -47,7 +47,6 @@
     "console.img": "^2.1.3",
     "hammerjs": "^2.0.8",
     "hls.js": "^0.10.1",
-    "lodash.shuffle": "^4.2.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0"
@@ -56,7 +55,6 @@
     "@types/classnames": "^2.2.6",
     "@types/hammerjs": "^2.0.35",
     "@types/hls.js": "^0.10.1",
-    "@types/lodash.shuffle": "^4.2.4",
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
     "@vue/cli-plugin-typescript": "^3.0.0-rc.10",
