@@ -187,7 +187,18 @@ export default class APlayer extends Vue.Component<
 
   // #region 监听属性
   @Watch('currentList', { deep: true })
-  private handleChangeDataSource() {
+  private handleChangeDataSource(
+    newList: APlayer.Audio[],
+    oldList?: APlayer.Audio[],
+  ) {
+    const newLength = newList.length;
+    const oldLength = oldList ? oldList.length : 0;
+    if (newLength !== oldLength) {
+      if (newLength <= 0) this.$emit('listClear');
+      else if (newLength > oldLength) this.$emit('listAdd');
+      else this.$emit('listRemove');
+    }
+
     if (
       this.currentMusic.id !== undefined &&
       Number.isNaN(this.currentMusic.id)

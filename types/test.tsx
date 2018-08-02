@@ -87,6 +87,9 @@ export default class App extends Vue {
           onListSwitch={() => {}}
           onListShow={() => {}}
           onListHide={() => {}}
+          onListAdd={() => {}}
+          onListRemove={() => {}}
+          onListClear={() => {}}
           onNoticeShow={() => {}}
           onNoticeHide={() => {}}
           onLrcShow={() => {}}

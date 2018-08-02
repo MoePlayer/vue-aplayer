@@ -76,6 +76,9 @@ declare namespace APlayer {
     onListSwitch: Audio; // eslint-disable-line
     onListShow: void;
     onListHide: void;
+    onListAdd: void;
+    onListRemove: void;
+    onListClear: void;
     onNoticeShow: void;
     onNoticeHide: void;
     onLrcShow: void;
