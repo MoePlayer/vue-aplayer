@@ -270,7 +270,7 @@ export default class APlayer extends Vue.Component<
 
     Store.set(this.storageName, {
       ...this.settings,
-      [this._uid]: settings,
+      [instances.indexOf(this)]: settings,
     });
   }
 
