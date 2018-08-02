@@ -17,14 +17,7 @@ module.exports = {
     contentBase: 'example/public',
   },
   chainWebpack: (config) => {
-    if (process.env.NODE_ENV !== 'production') {
-      config.module
-        .rule('tsx')
-        .test(/\.tsx$/)
-        .use('vue-jsx-hot-loader')
-        .before('babel-loader')
-        .loader('vue-jsx-hot-loader');
-    } else {
+    if (process.env.NODE_ENV === 'production') {
       // https://github.com/vuejs/vue-cli/blob/5a8abe029e0c9a16f575983f76d51c569145b0b0/packages/%40vue/cli-service-global/lib/globalConfigPlugin.js#L128-L131
       // https://github.com/vuejs/vue-cli/blob/5a8abe029e0c9a16f575983f76d51c569145b0b0/packages/%40vue/cli-service/lib/commands/build/resolveAppConfig.js#L6-L12
       // https://github.com/vuejs/vue-cli/blob/5a8abe029e0c9a16f575983f76d51c569145b0b0/packages/%40vue/cli-service/lib/config/app.js#L211-L221
