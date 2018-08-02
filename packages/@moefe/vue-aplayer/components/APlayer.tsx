@@ -203,12 +203,10 @@ export default class APlayer extends Vue.Component<
       this.currentMusic.id !== undefined &&
       Number.isNaN(this.currentMusic.id)
     ) {
-      if (this.currentList.length > 0) {
-        [this.currentMusic] = this.currentList;
-      } else {
-        const music = this.currentList[this.currentIndex];
-        if (music) this.currentMusic = music;
-      }
+      [this.currentMusic] = this.currentList;
+    } else {
+      const music = this.currentList[this.currentIndex];
+      if (music) Object.assign(this.currentMusic, music);
     }
   }
 
@@ -398,12 +396,12 @@ export default class APlayer extends Vue.Component<
 
   public skipBack() {
     const playIndex = this.getPlayIndexByMode('skipBack');
-    this.currentMusic = { ...this.currentList[playIndex] };
+    this.currentMusic = this.currentList[playIndex];
   }
 
   public skipForward() {
     const playIndex = this.getPlayIndexByMode('skipForward');
-    this.currentMusic = { ...this.currentList[playIndex] };
+    this.currentMusic = this.currentList[playIndex];
   }
 
   public showLrc() {
