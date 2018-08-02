@@ -26,7 +26,7 @@ export default class Progress extends Vue.Component<{}> {
   private handleChange(e: MouseEvent | TouchEvent) {
     const target = this.$refs.progressBar;
     const targetLeft = target.getBoundingClientRect().left;
-    const clientX = e.type.startsWith('mouse')
+    const clientX = !e.type.startsWith('touch')
       ? (e as MouseEvent).clientX
       : (e as TouchEvent).changedTouches[0].clientX;
     const offsetLeft = clientX - targetLeft;

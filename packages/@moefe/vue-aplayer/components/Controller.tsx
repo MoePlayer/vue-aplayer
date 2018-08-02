@@ -91,7 +91,7 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
     const target = this.$refs.volumeBar;
     const targetTop = target.getBoundingClientRect().bottom;
     if (targetTop <= 0) return; // 音量控制面板已隐藏
-    const clientY = e.type.startsWith('mouse')
+    const clientY = !e.type.startsWith('touch')
       ? (e as MouseEvent).clientY
       : (e as TouchEvent).changedTouches[0].clientY;
     const offsetTop = Math.round(targetTop - clientY);
