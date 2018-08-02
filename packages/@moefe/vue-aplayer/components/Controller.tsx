@@ -39,14 +39,22 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
     currentSettings: APlayer.Settings;
   };
 
-  @Inject() private handleSkipBack!: () => void;
-  @Inject() private handleSkipForward!: () => void;
-  @Inject() private handleTogglePlay!: () => void;
-  @Inject() private handleToggleOrderMode!: () => void;
-  @Inject() private handleToggleLoopMode!: () => void;
-  @Inject() private handleTogglePlaylist!: () => void;
-  @Inject() private handleToggleLyric!: () => void;
-  @Inject() private handleChangeVolume!: (volume: number) => void;
+  @Inject()
+  private handleSkipBack!: () => void;
+  @Inject()
+  private handleSkipForward!: () => void;
+  @Inject()
+  private handleTogglePlay!: () => void;
+  @Inject()
+  private handleToggleOrderMode!: () => void;
+  @Inject()
+  private handleToggleLoopMode!: () => void;
+  @Inject()
+  private handleTogglePlaylist!: () => void;
+  @Inject()
+  private handleToggleLyric!: () => void;
+  @Inject()
+  private handleChangeVolume!: (volume: number) => void;
 
   private get playIcon(): string {
     return this.aplayer.media.paused ? 'play' : 'pause';
