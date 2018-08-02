@@ -190,6 +190,8 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
   }
 
   &.aplayer-mobile {
+    .aplayer-icon-order,
+    .aplayer-icon-loop,
     .aplayer-icon-volume-up,
     .aplayer-icon-volume-down {
       display: none;
