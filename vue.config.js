@@ -51,7 +51,7 @@ module.exports = {
 
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
-      .set('@moefe/color-thief', path.resolve(__dirname, 'packages/@moefe/color-thief'))
+      .set('color-thief', path.resolve(__dirname, 'packages/color-thief'))
       .set('@moefe/vue-audio', path.resolve(__dirname, 'packages/@moefe/vue-audio'))
       .set('@moefe/vue-store', path.resolve(__dirname, 'packages/@moefe/vue-store'))
       .set('@moefe/vue-touch', path.resolve(__dirname, 'packages/@moefe/vue-touch'))

@@ -458,7 +458,7 @@ export default class APlayer extends Vue.Component<
             ColorThief = await import(
               /* webpackChunkName: "color-thief" */
               /* webpackMode: "lazy" */
-              '@moefe/color-thief').then(module => module.default);
+              'color-thief').then(module => module.default);
             this.colorThief = new ColorThief();
           }
           const img = new Image();
