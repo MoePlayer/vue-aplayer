@@ -492,6 +492,7 @@ export default class APlayer extends Vue.Component<
           // eslint-disable-next-line no-console
           console.error(`Illegal customType: ${type}`);
         }
+        resolve();
       } else {
         if (!type || type === 'auto') {
           type = /m3u8(#|\?|$)/i.test(music.url) ? 'hls' : 'normal';
