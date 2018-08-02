@@ -73,7 +73,7 @@
     "typescript": "^2.9.2",
     "vue-jsx-hot-loader": "^1.4.0",
     "vue-svg-loader": "^0.5.0",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.5.17",
     "vue-tsx-support": "^2.0.1"
   },
   "browserslist": [
