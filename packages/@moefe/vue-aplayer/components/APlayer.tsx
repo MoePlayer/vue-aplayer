@@ -600,14 +600,13 @@ export default class APlayer extends Vue.Component<
   }
 
   // 处理进度条改变事件
-  private async handleChangeProgress(payload: {
-    e: MouseEvent | PointerEventInput;
-    percent: number;
-  }) {
-    const { e, percent } = payload;
+  private async handleChangeProgress(
+    e: MouseEvent | TouchEvent,
+    percent: number,
+  ) {
     this.currentPlayed = percent;
-    this.isDraggingProgressBar = e.type === 'panmove';
-    if (e.type === 'click' || e.type === 'panend') {
+    this.isDraggingProgressBar = e.type.includes('move');
+    if (e.type === 'click' || ['touchend', 'mouseup'].includes(e.type)) {
       this.seeking(percent); // preload 为 none 的情况下无法获取到 duration
     }
   }

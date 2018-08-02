@@ -1,7 +1,7 @@
 import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
-import Touch, { PointerEventInput } from '@moefe/vue-touch';
+import Touch from '@moefe/vue-touch';
 import Icon from './Icon';
 import Button from './Button';
 import Progress from './Progress';
@@ -15,10 +15,7 @@ export interface ControllerEvents {
   onTogglePlaylist: void;
   onToggleLyric: void;
   onChangeVolume: number;
-  onChangeProgress: {
-    e: MouseEvent | PointerEventInput;
-    percent: number;
-  };
+  onChangeProgress: (e: MouseEvent | TouchEvent, percent: number) => void;
   onMiniSwitcher: void;
 }
 
@@ -90,18 +87,17 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
     this.handlePanMove(e);
   }
 
-  private handlePanMove(e: MouseEvent | PointerEventInput) {
+  private handlePanMove(e: MouseEvent | TouchEvent) {
     const target = this.$refs.volumeBar;
     const targetTop = target.getBoundingClientRect().bottom;
     if (targetTop <= 0) return; // 音量控制面板已隐藏
-    const clientY =
-      e.type === 'panmove'
-        ? (e as PointerEventInput).center.y
-        : (e as MouseEvent).clientY;
+    const clientY = e.type.startsWith('mouse')
+      ? (e as MouseEvent).clientY
+      : (e as TouchEvent).changedTouches[0].clientY;
     const offsetTop = Math.round(targetTop - clientY);
     let volume = offsetTop / target.offsetHeight;
-    if (volume > 1) volume = 1;
-    if (volume < 0) volume = 0;
+    volume = Math.min(volume, 1);
+    volume = Math.max(volume, 0);
     this.handleChangeVolume(volume);
   }
 
@@ -149,6 +145,7 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
             />
             <Touch
               class="aplayer-volume-bar-wrap"
+              panMoveClass="aplayer-volume-bar-wrap-active"
               onClick={this.handleClickVolumeBar}
               onPanMove={this.handlePanMove}
             >

@@ -1,7 +1,7 @@
 import * as Vue from 'vue-tsx-support';
 import Comopnent from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
-import Touch, { PointerEventInput } from '@moefe/vue-touch';
+import Touch from '@moefe/vue-touch';
 import Icon from './Icon';
 
 @Comopnent
@@ -19,20 +19,21 @@ export default class Progress extends Vue.Component<{}> {
 
   @Inject()
   private readonly handleChangeProgress!: (
-    payload: { e: MouseEvent | PointerEventInput; percent: number }
+    e: MouseEvent | TouchEvent,
+    percent: number
   ) => void;
 
-  private handleChange(e: MouseEvent | PointerEventInput) {
+  private handleChange(e: MouseEvent | TouchEvent) {
     const target = this.$refs.progressBar;
     const targetLeft = target.getBoundingClientRect().left;
-    const clientX = e.type.startsWith('pan')
-      ? (e as PointerEventInput).center.x
-      : (e as MouseEvent).clientX;
+    const clientX = e.type.startsWith('mouse')
+      ? (e as MouseEvent).clientX
+      : (e as TouchEvent).changedTouches[0].clientX;
     const offsetLeft = clientX - targetLeft;
     let percent = offsetLeft / target.offsetWidth;
-    if (percent > 1) percent = 1;
-    else if (percent < 0) percent = 0;
-    this.handleChangeProgress({ e, percent });
+    percent = Math.min(percent, 1);
+    percent = Math.max(percent, 0);
+    this.handleChangeProgress(e, percent);
   }
 
   render() {

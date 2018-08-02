@@ -73,11 +73,8 @@ export default class Player extends Vue.Component<
   }
 
   @Provide()
-  private handleChangeProgress(payload: {
-    e: MouseEvent | PointerEventInput;
-    percent: number;
-  }) {
-    this.$emit('changeProgress', payload);
+  private handleChangeProgress(e: MouseEvent | TouchEvent, percent: number) {
+    this.$emit('changeProgress', e, percent);
   }
 
   private handleMiniSwitcher() {

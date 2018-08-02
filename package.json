@@ -45,7 +45,6 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "console.img": "^2.1.3",
-    "hammerjs": "^2.0.8",
     "hls.js": "^0.10.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
@@ -53,7 +52,6 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
-    "@types/hammerjs": "^2.0.35",
     "@types/hls.js": "^0.10.1",
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",

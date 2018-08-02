@@ -763,10 +763,6 @@
   version "2.2.6"
   resolved "https://registry.npmjs.org/@types/classnames/-/classnames-2.2.6.tgz#dbe8a666156d556ed018e15a4c65f08937c3f628"
 
-"@types/hammerjs@^2.0.35":
-  version "2.0.35"
-  resolved "https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.35.tgz#7b7c950c7d54593e23bffc8d2b4feba9866a7277"
-
 "@types/hls.js@^0.10.1":
   version "0.10.1"
   resolved "https://registry.npmjs.org/@types/hls.js/-/hls.js-0.10.1.tgz#24ecc333aa6d24f2fd6278bd86985088beb5d34a"
@@ -4145,10 +4141,6 @@ gzip-size@^4.1.0:
   dependencies:
     duplexer "^0.1.1"
     pify "^3.0.0"
-
-hammerjs@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.npmjs.org/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.5:
   version "1.2.5"
