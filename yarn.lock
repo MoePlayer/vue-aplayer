@@ -1195,9 +1195,9 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-all-contributors-cli@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.npmjs.org/all-contributors-cli/-/all-contributors-cli-5.3.0.tgz#ce648246968bb06c5ae8038ad0e8d24fb176b07c"
+all-contributors-cli@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-5.4.0.tgz#a2870d83920d5f16bece0045649f9ebbf7315909"
   dependencies:
     async "^2.0.0-rc.1"
     chalk "^2.3.0"
