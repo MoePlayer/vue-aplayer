@@ -10,6 +10,7 @@ import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import { shuffle } from '../utils';
+import pkg from '../../../../package.json';
 import '../assets/style/aplayer.scss';
 
 let ColorThief;
@@ -22,6 +23,8 @@ export default class APlayer extends Vue.Component<
   APlayer.Options,
   APlayer.Events
 > {
+  public static version: string = pkg.version;
+
   public readonly $refs!: {
     container: HTMLDivElement;
   };
