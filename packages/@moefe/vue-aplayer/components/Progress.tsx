@@ -42,7 +42,6 @@ export default class Progress extends Vue.Component<{}> {
     return (
       <Touch
         class="aplayer-bar-wrap"
-        onClick={this.handleChange}
         onPanMove={this.handleChange}
         onPanEnd={this.handleChange}
       >

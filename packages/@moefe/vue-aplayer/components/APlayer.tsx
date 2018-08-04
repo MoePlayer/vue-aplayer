@@ -609,7 +609,7 @@ export default class APlayer extends Vue.Component<
   ) {
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type.includes('move');
-    if (e.type === 'click' || ['touchend', 'mouseup'].includes(e.type)) {
+    if (['touchend', 'mouseup'].includes(e.type)) {
       this.seeking(percent); // preload 为 none 的情况下无法获取到 duration
     }
   }

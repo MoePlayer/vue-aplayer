@@ -7,7 +7,6 @@ export interface TouchProps {
 }
 
 export interface TouchEvents {
-  onClick: MouseEvent;
   onPanStart: MouseEvent | TouchEvent;
   onPanMove: MouseEvent | TouchEvent;
   onPanEnd: MouseEvent | TouchEvent;
@@ -42,10 +41,6 @@ export default class Touch extends Vue.Component<TouchProps, TouchEvents> {
     return this.isMobile ? 'touchend' : 'mouseup';
   }
 
-  private handleClick(e: Event) {
-    this.$emit('click', e);
-  }
-
   private thumbMove(e: MouseEvent | TouchEvent) {
     this.isDragMove = true;
     this.$emit('panMove', e);
@@ -76,7 +71,6 @@ export default class Touch extends Vue.Component<TouchProps, TouchEvents> {
           webkitUserDrag: 'none',
           webkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
         }}
-        onClick={this.handleClick}
       >
         {this.$slots.default}
       </div>

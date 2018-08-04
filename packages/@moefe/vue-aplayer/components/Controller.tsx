@@ -146,7 +146,6 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
             <Touch
               class="aplayer-volume-bar-wrap"
               panMoveClass="aplayer-volume-bar-wrap-active"
-              onClick={this.handleClickVolumeBar}
               onPanMove={this.handlePanMove}
             >
               <div
