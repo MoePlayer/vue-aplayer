@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "console.img": "^2.1.3",
+    "console.img": "^2.2.0",
     "hls.js": "^0.10.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
@@ -59,7 +59,7 @@
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-airbnb": "^3.0.0-rc.10",
     "@vue/eslint-config-typescript": "^3.0.0-rc.10",
-    "all-contributors-cli": "^5.3.0",
+    "all-contributors-cli": "^5.4.0",
     "dtslint": "^0.3.0",
     "lint-staged": "^7.2.0",
     "node-sass": "^4.9.2",
