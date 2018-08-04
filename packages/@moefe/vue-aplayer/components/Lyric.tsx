@@ -144,6 +144,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
   @Watch('aplayer.currentMusic.lrc', { immediate: true })
   private async handleChange() {
     this.isLoading = true;
+    this.lrc = '';
     this.lrc = await this.getLyricFromCurrentMusic();
     this.isLoading = false;
   }
