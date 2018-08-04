@@ -5,8 +5,6 @@ import { sleep } from './utils';
 import './App.scss';
 
 Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
-  hls: true,
-  colorThief: true,
   productionTip: process.env.NODE_ENV !== 'development',
 });
 

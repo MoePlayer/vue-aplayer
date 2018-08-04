@@ -10,8 +10,6 @@ export default async function install(
   options?: APlayer.InstallOptions,
 ) {
   const defaultOptions: APlayer.InstallOptions = {
-    hls: false,
-    colorThief: false,
     productionTip: true,
     defaultCover: 'https://avatars2.githubusercontent.com/u/20062482?s=270',
   };

@@ -39,10 +39,6 @@ module.exports = {
       .clear()
       .add('./example/main.ts');
 
-    // https://github.com/mozilla-neutrino/webpack-chain#config-output-shorthand-methods
-    config.output
-      .libraryExport('default'); // prettier-ignore
-
     // https://cli.vuejs.org/guide/webpack.html#replacing-loaders-of-a-rule
     config.module
       .rule('svg')
@@ -51,7 +47,6 @@ module.exports = {
 
     // https://github.com/mozilla-neutrino/webpack-chain#config-resolve-alias
     config.resolve.alias
-      .set('color-thief', path.resolve(__dirname, 'packages/color-thief'))
       .set('@moefe/vue-audio', path.resolve(__dirname, 'packages/@moefe/vue-audio'))
       .set('@moefe/vue-store', path.resolve(__dirname, 'packages/@moefe/vue-store'))
       .set('@moefe/vue-touch', path.resolve(__dirname, 'packages/@moefe/vue-touch'))

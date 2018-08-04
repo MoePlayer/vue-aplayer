@@ -12,11 +12,6 @@
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "color-thief": ["packages/color-thief/index.d.ts"],
-      "@moefe/vue-audio/*": ["packages/@moefe/vue-audio/*"],
-      "@moefe/vue-store/*": ["packages/@moefe/vue-store/*"],
-      "@moefe/vue-touch/*": ["packages/@moefe/vue-touch/*"],
-      "@moefe/vue-aplayer/*": ["packages/@moefe/vue-aplayer/*"],
       "@moefe/vue-audio": ["packages/@moefe/vue-audio/index.ts"],
       "@moefe/vue-store": ["packages/@moefe/vue-store/index.ts"],
       "@moefe/vue-touch": ["packages/@moefe/vue-touch/index.tsx"],
@@ -24,11 +19,6 @@
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
     "types/**/*.ts",
     "example/**/*.ts",
     "example/**/*.tsx",

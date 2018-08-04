@@ -1,7 +1,5 @@
 declare namespace APlayer {
   export interface InstallOptions {
-    hls?: boolean;
-    colorThief?: boolean;
     productionTip?: boolean;
     defaultCover?: string;
   }

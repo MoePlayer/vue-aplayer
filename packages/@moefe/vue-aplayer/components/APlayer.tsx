@@ -13,8 +13,10 @@ import { shuffle } from '../utils';
 import pkg from '../../../../package.json';
 import '../assets/style/aplayer.scss';
 
-let ColorThief;
-let Hls;
+declare global {
+  const Hls: any;
+}
+
 const instances: APlayer[] = [];
 const store = new Store();
 
@@ -130,8 +132,6 @@ export default class APlayer extends Vue.Component<
 
   private readonly _uid!: number;
   private readonly options!: APlayer.InstallOptions;
-  private colorThief: any;
-  private hls: any;
   private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
@@ -455,25 +455,15 @@ export default class APlayer extends Vue.Component<
   ): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       try {
-        if (this.options.colorThief) {
-          if (!this.colorThief) {
-            // prettier-ignore
-            ColorThief = await import(
-              /* webpackChunkName: "color-thief" */
-              /* webpackMode: "lazy" */
-              'color-thief').then(module => module.default);
-            this.colorThief = new ColorThief();
-          }
-          const img = new Image();
-          img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
-          img.crossOrigin = '';
-          img.onload = () => {
-            const [r, g, b] = this.colorThief.getColor(img);
-            const theme = `rgb(${r}, ${g}, ${b})`;
-            resolve(theme || this.currentMusic.theme || this.theme);
-          };
-          img.onerror = reject;
-        } else resolve(this.currentMusic.theme || this.theme);
+        const img = new Image();
+        img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
+        img.crossOrigin = '';
+        img.onload = () => {
+          const [r, g, b] = new ColorThief().getColor(img);
+          const theme = `rgb(${r}, ${g}, ${b})`;
+          resolve(theme || this.currentMusic.theme || this.theme);
+        };
+        img.onerror = reject;
       } catch (e) {
         resolve(this.currentMusic.theme || this.theme);
       }
@@ -495,21 +485,12 @@ export default class APlayer extends Vue.Component<
         if (!type || type === 'auto') {
           type = /m3u8(#|\?|$)/i.test(music.url) ? 'hls' : 'normal';
         }
-        if (type === 'hls' && this.options.hls) {
+        if (type === 'hls') {
           try {
-            if (this.hls) {
-              this.hls.destroy();
-              this.hls = null;
-            }
-            // prettier-ignore
-            Hls = await import(
-              /* webpackChunkName: "hls" */
-              /* webpackMode: "lazy" */
-              'hls.js').then(module => module.default);
             if (Hls.isSupported()) {
-              this.hls = new Hls();
-              this.hls.loadSource(music.url);
-              this.hls.attachMedia(this.player);
+              const hls = new Hls();
+              hls.loadSource(music.url);
+              hls.attachMedia(this.player as HTMLVideoElement);
               resolve();
             } else if (
               this.player.canPlayType('application/x-mpegURL') ||

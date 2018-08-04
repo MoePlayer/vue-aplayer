@@ -45,7 +45,6 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "console.img": "^2.2.0",
-    "hls.js": "^0.10.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0"
