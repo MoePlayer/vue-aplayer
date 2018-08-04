@@ -511,26 +511,9 @@ export default class APlayer extends Vue.Component<
   }
 
   private getPlayIndexByMode(type: 'skipBack' | 'skipForward'): number {
+    const { length } = this.currentList;
     const index = this.currentIndex;
-    const isSkipBack = type === 'skipBack';
-    const playIndex = isSkipBack ? index - 1 : index + 1;
-    const direction = isSkipBack ? 'prev' : 'next';
-    return this.amendArrayBoundaryIndex(this.currentList, playIndex, direction);
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  private amendArrayBoundaryIndex(
-    arr: any[],
-    index: number,
-    direction: 'prev' | 'next' = 'next',
-  ): number {
-    return direction === 'next'
-      ? index > arr.length - 1
-        ? 0
-        : index
-      : index < 0
-        ? arr.length - 1
-        : index;
+    return (type === 'skipBack' ? length + (index - 1) : index + 1) % length;
   }
 
   private pauseOtherInstances() {
