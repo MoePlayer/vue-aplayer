@@ -397,7 +397,7 @@ export default class APlayer extends Vue.Component<
   }
 
   public async seek(time: number) {
-    this.seeking(time / this.media.duration);
+    this.seeking(time / this.media.duration, this.media.paused);
   }
 
   public toggle() {
@@ -585,7 +585,7 @@ export default class APlayer extends Vue.Component<
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type.includes('move');
     if (['touchend', 'mouseup'].includes(e.type)) {
-      this.seeking(percent); // preload 为 none 的情况下无法获取到 duration
+      this.seeking(percent, this.media.paused); // preload 为 none 的情况下无法获取到 duration
     }
   }
 
