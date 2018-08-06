@@ -396,7 +396,7 @@ export default class APlayer extends Vue.Component<
     }
   }
 
-  public async seek(time: number) {
+  public seek(time: number) {
     this.seeking(time / this.media.duration, this.media.paused);
   }
 
@@ -460,11 +460,11 @@ export default class APlayer extends Vue.Component<
   // #region 私有 API
 
   // 从封面中获取主题颜色
-  private async getThemeColorFromCover(
+  private getThemeColorFromCover(
     url: string,
     cache: boolean = true,
   ): Promise<string> {
-    return new Promise<string>(async (resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       try {
         const sym = url.includes('?') ? '&' : '?';
         this.img.src = cache ? url : `${url}${sym}_=${new Date().getTime()}`;
@@ -482,7 +482,7 @@ export default class APlayer extends Vue.Component<
   }
 
   private getAudioUrl(music: APlayer.Audio): Promise<string> {
-    return new Promise<string>(async (resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       let { type } = music;
       if (type && this.customAudioType && this.customAudioType[type]) {
         if (typeof this.customAudioType[type] === 'function') {
@@ -538,12 +538,12 @@ export default class APlayer extends Vue.Component<
   // #region 事件处理
 
   // 切换上一曲
-  private async handleSkipBack() {
+  private handleSkipBack() {
     this.skipBack();
   }
 
   // 切换下一曲
-  private async handleSkipForward() {
+  private handleSkipForward() {
     this.skipForward();
   }
 
@@ -578,10 +578,7 @@ export default class APlayer extends Vue.Component<
   }
 
   // 处理进度条改变事件
-  private async handleChangeProgress(
-    e: MouseEvent | TouchEvent,
-    percent: number,
-  ) {
+  private handleChangeProgress(e: MouseEvent | TouchEvent, percent: number) {
     this.currentPlayed = percent;
     this.isDraggingProgressBar = e.type.includes('move');
     if (['touchend', 'mouseup'].includes(e.type)) {

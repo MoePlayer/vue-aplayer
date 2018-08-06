@@ -5,7 +5,7 @@ import APlayer from './components/APlayer';
 
 export { APlayer };
 
-export default async function install(
+export default function install(
   Vue: typeof _Vue,
   options?: APlayer.InstallOptions,
 ) {
