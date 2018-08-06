@@ -25,7 +25,7 @@ export default class APlayer extends Vue.Component<
   APlayer.Options,
   APlayer.Events
 > {
-  public static version: string = pkg.version;
+  public static readonly version: string = pkg.version;
 
   public readonly $refs!: {
     container: HTMLDivElement;
