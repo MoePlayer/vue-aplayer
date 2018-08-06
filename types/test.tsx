@@ -17,6 +17,7 @@ export default class App extends Vue {
     const { aplayer } = this.$refs;
     console.log(aplayer.$refs.container);
     console.log(aplayer.currentIndex);
+    console.log(aplayer.currentSettings);
     await aplayer.play();
     aplayer.toggle();
     aplayer.pause();

@@ -88,7 +88,7 @@ export default class APlayer extends Vue.Component<
     return this.store.store;
   }
 
-  private get currentSettings(): APlayer.Settings {
+  public get currentSettings(): APlayer.Settings {
     return this.settings[instances.indexOf(this)];
   }
 
