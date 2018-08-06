@@ -11,7 +11,7 @@ export default class Progress extends Vue.Component<{}> {
   };
 
   @Inject()
-  private readonly aplayer!: {
+  private readonly aplayer!: APlayer.Options & {
     currentTheme: string;
     currentLoaded: number;
     currentPlayed: number;

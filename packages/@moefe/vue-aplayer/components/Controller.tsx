@@ -26,9 +26,8 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
   };
 
   @Inject()
-  private readonly aplayer!: {
+  private readonly aplayer!: APlayer.Options & {
     media: APlayer.Media;
-    lrcType: number;
     currentTheme: string;
     currentVolume: number;
     currentPlayed: number;

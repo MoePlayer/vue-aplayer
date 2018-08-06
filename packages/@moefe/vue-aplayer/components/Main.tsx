@@ -7,7 +7,9 @@ import Controller from './Controller';
 @Component
 export default class Main extends Vue.Component<{}> {
   @Inject()
-  private readonly aplayer!: { fixed: boolean; currentMusic: APlayer.Audio };
+  private readonly aplayer!: APlayer.Options & {
+    currentMusic: APlayer.Audio;
+  };
 
   private get music() {
     const { currentMusic } = this.aplayer;

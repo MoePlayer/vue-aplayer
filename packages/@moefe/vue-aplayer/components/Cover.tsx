@@ -9,8 +9,8 @@ export interface CoverEvents {
 @Component
 export default class Cover extends Vue.Component<{}, CoverEvents> {
   @Inject()
-  private readonly aplayer!: {
-    options: any;
+  private readonly aplayer!: APlayer.Options & {
+    options: APlayer.InstallOptions;
     currentTheme: string;
     currentMusic: APlayer.Audio;
   };

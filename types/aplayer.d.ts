@@ -40,7 +40,7 @@ declare namespace APlayer {
     audio: Audio | Audio[];
     customAudioType?: any;
     mutex?: boolean;
-    lrcType?: number;
+    lrcType?: APlayer.LrcType;
     listFolded?: boolean;
     listMaxHeight?: number;
     storageName?: string;

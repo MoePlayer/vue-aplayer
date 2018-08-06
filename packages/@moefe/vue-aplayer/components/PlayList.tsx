@@ -36,12 +36,14 @@ export default class PlayList extends Vue.Component<
   private readonly scrollTop!: number;
 
   @Inject()
-  private readonly aplayer!: { currentTheme: string; listMaxHeight: number };
+  private readonly aplayer!: APlayer.Options & {
+    currentTheme: string;
+  };
 
   private get listHeight(): number {
     const { visible, dataSource } = this;
     return !visible
-      ? Math.min(dataSource.length * 33, this.aplayer.listMaxHeight)
+      ? Math.min(dataSource.length * 33, Number(this.aplayer.listMaxHeight))
       : 0;
   }
 
