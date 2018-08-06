@@ -215,11 +215,13 @@ export default class APlayer extends Vue.Component<
     newMusic: APlayer.Audio,
     oldMusic?: APlayer.Audio,
   ) {
-    if (newMusic.cover) {
+    const cover = newMusic.cover || this.options.defaultCover;
+    if (cover) {
       setTimeout(async () => {
-        this.currentTheme = await this.getThemeColorFromCover(newMusic.cover);
+        this.currentTheme = await this.getThemeColorFromCover(cover);
       });
     }
+
     if (newMusic.url) {
       this.currentPlayed = 0;
       if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
