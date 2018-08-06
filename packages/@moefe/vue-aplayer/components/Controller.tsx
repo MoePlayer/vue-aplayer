@@ -28,6 +28,7 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
   @Inject()
   private readonly aplayer!: {
     media: APlayer.Media;
+    lrcType: number;
     currentTheme: string;
     currentVolume: number;
     currentPlayed: number;
@@ -112,6 +113,7 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
     const { ptime, dtime, volumeIcon } = this;
     const {
       media,
+      lrcType,
       currentTheme,
       currentVolume,
       currentOrder,
@@ -181,7 +183,9 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
             onClick={this.handleToggleLoopMode}
           />{' '}
           <Button type="menu" icon="menu" onClick={this.handleTogglePlaylist} />
-          <Button type="lrc" icon="lrc" onClick={this.handleToggleLyric} />
+          {lrcType !== 0 ? (
+            <Button type="lrc" icon="lrc" onClick={this.handleToggleLyric} />
+          ) : null}
         </div>
       </div>
     );
