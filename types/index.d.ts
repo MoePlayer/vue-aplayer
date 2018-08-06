@@ -3,7 +3,7 @@ import _Vue from 'vue';
 import * as Vue from 'vue-tsx-support';
 
 export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
-  static version: string;
+  static readonly version: string;
 
   readonly $refs: {
     container: HTMLDivElement;

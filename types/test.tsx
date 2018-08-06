@@ -3,8 +3,8 @@ import Comopnent from 'vue-class-component';
 import APlayerPlugin, { APlayer } from './'; // eslint-disable-line
 
 Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
-  productionTip: true,
   defaultCover: '',
+  productionTip: true,
 });
 
 @Comopnent

@@ -1,7 +1,7 @@
 declare namespace APlayer {
   export interface InstallOptions {
-    productionTip?: boolean;
     defaultCover?: string;
+    productionTip?: boolean;
   }
 
   export type LoopMode = 'all' | 'one' | 'none';
@@ -71,7 +71,7 @@ declare namespace APlayer {
     onVolumechange: Event;
     onWaiting: Event;
 
-    onListSwitch: Audio; // eslint-disable-line
+    onListSwitch: Audio;
     onListShow: void;
     onListHide: void;
     onListAdd: void;
