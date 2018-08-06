@@ -141,6 +141,7 @@ export default class APlayer extends Vue.Component<
     return this.currentListIndex * 33;
   }
   private lyricVisible = true; // 控制迷你模式下的歌词是否可见
+  private img = new Image();
   private media = new Audio(); // 响应式媒体对象
   private player = this.media.audio; // 核心音频对象
   private store = store;
@@ -465,16 +466,15 @@ export default class APlayer extends Vue.Component<
   ): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       try {
-        const img = new Image();
         const sym = url.includes('?') ? '&' : '?';
-        img.src = cache ? url : `${url}${sym}_=${new Date().getTime()}`;
-        img.crossOrigin = '';
-        img.onload = () => {
-          const [r, g, b] = new ColorThief().getColor(img);
+        this.img.src = cache ? url : `${url}${sym}_=${new Date().getTime()}`;
+        this.img.crossOrigin = '';
+        this.img.onload = () => {
+          const [r, g, b] = new ColorThief().getColor(this.img);
           const theme = `rgb(${r}, ${g}, ${b})`;
           resolve(theme || this.currentMusic.theme || this.theme);
         };
-        img.onerror = reject;
+        this.img.onerror = reject;
       } catch (e) {
         resolve(this.currentMusic.theme || this.theme);
       }
