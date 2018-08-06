@@ -38,18 +38,25 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
 
   @Inject()
   private handleSkipBack!: () => void;
+
   @Inject()
   private handleSkipForward!: () => void;
+
   @Inject()
   private handleTogglePlay!: () => void;
+
   @Inject()
   private handleToggleOrderMode!: () => void;
+
   @Inject()
   private handleToggleLoopMode!: () => void;
+
   @Inject()
   private handleTogglePlaylist!: () => void;
+
   @Inject()
   private handleToggleLyric!: () => void;
+
   @Inject()
   private handleChangeVolume!: (volume: number) => void;
 
