@@ -447,11 +447,13 @@ export default class APlayer extends Vue.Component<
     return new Promise((resolve) => {
       this.notice = { text, time, opacity };
       this.$emit('noticeShow');
-      setTimeout(() => {
-        this.notice.opacity = 0;
-        this.$emit('noticeHide');
-        resolve();
-      }, time);
+      if (time > 0) {
+        setTimeout(() => {
+          this.notice.opacity = 0;
+          this.$emit('noticeHide');
+          resolve();
+        }, time);
+      }
     });
   }
 
