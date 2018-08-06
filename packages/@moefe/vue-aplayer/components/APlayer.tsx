@@ -466,7 +466,8 @@ export default class APlayer extends Vue.Component<
     return new Promise<string>(async (resolve, reject) => {
       try {
         const img = new Image();
-        img.src = cache ? url : `${url}?_=${new Date().getTime()}`;
+        const sym = url.includes('?') ? '&' : '?';
+        img.src = cache ? url : `${url}${sym}_=${new Date().getTime()}`;
         img.crossOrigin = '';
         img.onload = () => {
           const [r, g, b] = new ColorThief().getColor(img);
