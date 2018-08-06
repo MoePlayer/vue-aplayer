@@ -9,7 +9,7 @@ import Store from '@moefe/vue-store';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
-import { shuffle } from '../utils';
+import { shuffle, isUrl } from '../utils';
 import pkg from '../../../../package.json';
 import '../assets/style/aplayer.scss';
 
@@ -218,7 +218,10 @@ export default class APlayer extends Vue.Component<
     const cover = newMusic.cover || this.options.defaultCover;
     if (cover) {
       setTimeout(async () => {
-        this.currentTheme = await this.getThemeColorFromCover(cover);
+        this.currentTheme = await this.getThemeColorFromCover(
+          cover,
+          !isUrl(cover),
+        );
       });
     }
 

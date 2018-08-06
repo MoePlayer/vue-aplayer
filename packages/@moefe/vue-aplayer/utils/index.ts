@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable import/prefer-default-export */
 
 export function shuffle(arr: any[]) {
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -9,4 +8,8 @@ export function shuffle(arr: any[]) {
     arr[i] = itemAtIndex;
   }
   return arr;
+}
+
+export function isUrl(url: string) {
+  return /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/.test(url);
 }
