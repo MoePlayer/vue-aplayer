@@ -381,7 +381,8 @@ export default class APlayer extends Vue.Component<
       }
       await this.media.loaded();
       this.player.currentTime = percent * this.media.duration;
-      if (!paused) this.play();
+      if (paused) this.pause();
+      else this.play();
     } catch (e) {
       this.showNotice(e.message);
     } finally {
