@@ -162,6 +162,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
           {parsed.length > 0 ? (
             parsed.map((item, index) => (
               <p
+                key={item.time}
                 class={classNames({
                   'aplayer-lrc-current': current.time === item.time,
                 })}
