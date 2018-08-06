@@ -81,11 +81,12 @@ declare namespace APlayer {
     onNoticeHide: void;
     onLrcShow: void;
     onLrcHide: void;
+    onDestroy: void;
   }
 
   export interface Settings {
     currentTime: number;
-    duration: number;
+    duration: number | null;
     paused: boolean;
     mini: boolean;
     lrc: boolean;

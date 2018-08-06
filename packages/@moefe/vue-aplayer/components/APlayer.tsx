@@ -626,6 +626,32 @@ export default class APlayer extends Vue.Component<
     });
   }
 
+  beforeDestroy() {
+    const instanceIndex = instances.indexOf(this);
+    instances.splice(instanceIndex, 1);
+    this.store.set(
+      this.settings.map((item, index) => {
+        if (index === instanceIndex) {
+          return {
+            currentTime: 0,
+            duration: null,
+            paused: this.autoplay,
+            mini: this.mini,
+            lrc: true,
+            volume: this.volume,
+            loop: this.loop,
+            order: this.order,
+            music: null,
+          };
+        }
+        return item;
+      }),
+    );
+    this.pause();
+    this.$emit('destroy');
+    this.$el.remove();
+  }
+
   render() {
     const {
       orderList,

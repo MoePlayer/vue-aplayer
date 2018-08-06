@@ -92,6 +92,7 @@ export default class App extends Vue {
           onNoticeHide={() => {}}
           onLrcShow={() => {}}
           onLrcHide={() => {}}
+          onDestroy={() => {}}
         />
       </div>
     );
