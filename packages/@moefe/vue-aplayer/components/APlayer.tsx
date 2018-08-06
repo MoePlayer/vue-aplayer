@@ -84,7 +84,7 @@ export default class APlayer extends Vue.Component<
     return this;
   }
 
-  private get settings() {
+  private get settings(): APlayer.Settings[] {
     return this.store.store;
   }
 
@@ -153,7 +153,7 @@ export default class APlayer extends Vue.Component<
   };
 
   // 当前播放的音乐索引
-  private get currentIndex(): number {
+  public get currentIndex(): number {
     return this.currentOrder === 'list'
       ? this.currentListIndex
       : this.currentRandomIndex;
@@ -277,10 +277,14 @@ export default class APlayer extends Vue.Component<
       settings.volume = this.currentSettings.volume;
     }
 
-    this.store.set(this.storageName, {
-      ...this.settings,
-      [instances.indexOf(this)]: settings,
-    });
+    const instanceIndex = instances.indexOf(this);
+    this.store.set(
+      this.settings[instanceIndex]
+        ? this.settings.map(
+            (item, index) => (index === instanceIndex ? settings : item),
+          )
+        : [...this.settings, settings],
+    );
   }
 
   @Watch('media.ended')
@@ -488,7 +492,7 @@ export default class APlayer extends Vue.Component<
         if (type === 'hls') {
           try {
             if (Hls.isSupported()) {
-              const hls = new Hls();
+              const hls: Hls = new Hls();
               hls.loadSource(music.url);
               hls.attachMedia(this.player as HTMLVideoElement);
               resolve();
