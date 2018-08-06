@@ -42,6 +42,9 @@
     "test:types": "dtslint types",
     "contributors": "all-contributors"
   },
+  "peerDependencies": {
+    "vue": "^2.2.0"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "console.img": "^2.2.0",
