@@ -48,9 +48,12 @@ export default class PlayList extends Vue.Component<
   }
 
   @Watch('scrollTop', { immediate: true })
+  @Watch('visible')
   private async handleChangeScrollTop() {
     await this.$nextTick();
-    this.$refs.list.scrollTop = this.scrollTop;
+    if (this.visible) {
+      this.$refs.list.scrollTop = this.scrollTop;
+    }
   }
 
   render() {
