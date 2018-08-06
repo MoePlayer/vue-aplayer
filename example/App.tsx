@@ -4,6 +4,13 @@ import APlayerPlugin, { APlayer } from '@moefe/vue-aplayer';
 import { sleep } from './utils';
 import './App.scss';
 
+// hotfix
+if (
+  !Array.isArray(JSON.parse(localStorage.getItem('aplayer-setting') || '[]'))
+) {
+  localStorage.clear();
+}
+
 Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
   productionTip: process.env.NODE_ENV !== 'development',
 });
