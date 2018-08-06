@@ -9,6 +9,8 @@ export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
     container: HTMLDivElement;
   };
 
+  readonly currentIndex: number;
+
   play(): Promise<void>;
   pause(): void;
   toggle(): void;
