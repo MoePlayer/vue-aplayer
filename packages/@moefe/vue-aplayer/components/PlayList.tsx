@@ -42,7 +42,7 @@ export default class PlayList extends Vue.Component<
 
   private get listHeight(): number {
     const { visible, dataSource } = this;
-    return !visible
+    return visible
       ? Math.min(dataSource.length * 33, Number(this.aplayer.listMaxHeight))
       : 0;
   }
