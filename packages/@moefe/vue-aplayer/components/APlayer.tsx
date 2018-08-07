@@ -285,7 +285,7 @@ export default class APlayer extends Vue.Component<
 
     const instanceIndex = instances.indexOf(this);
     this.store.set(
-      this.settings[instanceIndex]
+      this.settings[instanceIndex] !== undefined
         ? this.settings.map(
             (item, index) => (index === instanceIndex ? settings : item),
           )
@@ -636,22 +636,9 @@ export default class APlayer extends Vue.Component<
     const instanceIndex = instances.indexOf(this);
     instances.splice(instanceIndex, 1);
     this.store.set(
-      this.settings.map((item, index) => {
-        if (index === instanceIndex) {
-          return {
-            currentTime: 0,
-            duration: null,
-            paused: this.autoplay,
-            mini: this.mini,
-            lrc: true,
-            volume: this.volume,
-            loop: this.loop,
-            order: this.order,
-            music: null,
-          };
-        }
-        return item;
-      }),
+      this.settings.map(
+        (item, index) => (index === instanceIndex ? null : item),
+      ),
     );
     this.pause();
     this.$emit('destroy');
