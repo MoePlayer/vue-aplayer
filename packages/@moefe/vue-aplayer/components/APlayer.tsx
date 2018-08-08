@@ -147,10 +147,11 @@ export default class APlayer extends Vue.Component<
   private store = store;
 
   // 当前播放的音乐
-  private currentMusic: APlayer.Audio = this.currentList[0] || {
+  private currentMusic: APlayer.Audio = {
     id: NaN,
     name: '未加载音频',
     artist: '(ಗ ‸ ಗ )',
+    url: '',
   };
 
   // 当前播放的音乐索引
@@ -187,27 +188,31 @@ export default class APlayer extends Vue.Component<
   private notice: Notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
 
   // #region 监听属性
-  @Watch('currentList', { deep: true })
+  @Watch('currentList', { immediate: true, deep: true })
   private handleChangeDataSource(
     newList: APlayer.Audio[],
     oldList?: APlayer.Audio[],
   ) {
-    const newLength = newList.length;
-    const oldLength = oldList ? oldList.length : 0;
-    if (newLength !== oldLength) {
-      if (newLength <= 0) this.$emit('listClear');
-      else if (newLength > oldLength) this.$emit('listAdd');
-      else this.$emit('listRemove');
+    if (oldList) {
+      const newLength = newList.length;
+      const oldLength = oldList.length;
+      if (newLength !== oldLength) {
+        if (newLength <= 0) this.$emit('listClear');
+        else if (newLength > oldLength) this.$emit('listAdd');
+        else this.$emit('listRemove');
+      }
     }
 
-    if (
-      this.currentMusic.id !== undefined &&
-      Number.isNaN(this.currentMusic.id)
-    ) {
-      [this.currentMusic] = this.currentList;
-    } else {
-      const music = this.currentList[this.currentIndex];
-      if (music) Object.assign(this.currentMusic, music);
+    if (this.currentList.length > 0) {
+      if (
+        this.currentMusic.id !== undefined &&
+        Number.isNaN(this.currentMusic.id)
+      ) {
+        [this.currentMusic] = this.currentList;
+      } else {
+        const music = this.currentList[this.currentIndex];
+        Object.assign(this.currentMusic, music);
+      }
     }
   }
 
