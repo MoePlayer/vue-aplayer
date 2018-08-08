@@ -98,7 +98,7 @@ export default class APlayer extends Vue.Component<
   }
 
   // 顺序播放列表，数据源，自动生成 ID 作为播放列表项的 key
-  private get orderList() {
+  private get orderList(): APlayer.Audio[] {
     return (Array.isArray(this.audio) ? this.audio : [this.audio])
       .filter(x => x)
       .map((item, index) => ({
@@ -108,7 +108,7 @@ export default class APlayer extends Vue.Component<
   }
 
   // 根据顺序播放列表生成随机播放列表
-  private get randomList() {
+  private get randomList(): APlayer.Audio[] {
     return shuffle([...this.orderList]);
   }
 
@@ -188,6 +188,7 @@ export default class APlayer extends Vue.Component<
   private notice: Notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
 
   // #region 监听属性
+
   @Watch('currentList', { immediate: true, deep: true })
   private handleChangeDataSource(
     newList: APlayer.Audio[],
@@ -216,7 +217,7 @@ export default class APlayer extends Vue.Component<
     }
   }
 
-  @Watch('currentMusic', { immediate: true })
+  @Watch('currentMusic', { immediate: true, deep: true })
   private async handleChangeCurrentMusic(
     newMusic: APlayer.Audio,
     oldMusic?: APlayer.Audio,
@@ -232,8 +233,11 @@ export default class APlayer extends Vue.Component<
     }
 
     if (newMusic.url) {
-      this.currentPlayed = 0;
-      if ((oldMusic !== undefined && oldMusic.url) !== newMusic.url) {
+      if (
+        (oldMusic !== undefined && oldMusic.url) !== newMusic.url ||
+        this.player.src !== newMusic.url
+      ) {
+        this.currentPlayed = 0;
         if (oldMusic) {
           // 首次初始化时不要触发事件
           this.handleChangeSettings();
@@ -364,6 +368,7 @@ export default class APlayer extends Vue.Component<
     this.$emit(this.lyricVisible ? 'lrcShow' : 'lrcHide');
     this.handleChangeSettings();
   }
+
   // #endregion
 
   // #region 公开 API
