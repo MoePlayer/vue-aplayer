@@ -21,7 +21,7 @@ declare namespace APlayer {
     name: string; // eslint-disable-line no-restricted-globals
     artist: string;
     url: string;
-    cover: string;
+    cover?: string;
     lrc?: string;
     theme?: string;
     type?: AudioType;
