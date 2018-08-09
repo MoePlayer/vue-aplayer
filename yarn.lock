@@ -2312,10 +2312,6 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-console.img@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/console.img/-/console.img-2.2.0.tgz#cd275e27461f386fe6d56c27bb8a1e3dd8108d6e"
-
 consolidate@^0.15.1:
   version "0.15.1"
   resolved "https://registry.npmjs.org/consolidate/-/consolidate-0.15.1.tgz#21ab043235c71a07d45d9aad98593b0dba56bab7"
@@ -3973,6 +3969,10 @@ getpass@^0.1.1:
   resolved "https://registry.npmjs.org/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
+
+git-revision-webpack-plugin@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/git-revision-webpack-plugin/-/git-revision-webpack-plugin-3.0.3.tgz#f909949d7851d1039ed530518f73f5d46594e66f"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -8879,6 +8879,10 @@ typescript-eslint-parser@^18.0.0:
 typescript@^2.5.1:
   version "2.9.2"
   resolved "https://registry.npmjs.org/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
+
+typescript@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
 
 typescript@next:
   version "3.1.0-dev.20180802"

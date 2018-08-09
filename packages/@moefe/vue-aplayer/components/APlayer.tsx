@@ -10,7 +10,6 @@ import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
 import { shuffle, isUrl } from '../utils';
-import pkg from '../../../../package.json';
 import '../assets/style/aplayer.scss';
 
 declare global {
@@ -25,7 +24,7 @@ export default class APlayer extends Vue.Component<
   APlayer.Options,
   APlayer.Events
 > {
-  public static readonly version: string = pkg.version;
+  public static readonly version: string = APLAYER_VERSION;
 
   public readonly $refs!: {
     container: HTMLDivElement;

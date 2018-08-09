@@ -1,7 +1,9 @@
 /* eslint-disable strict */
+/* eslint-disable global-require */
 // https://cli.vuejs.org/config/
 // https://cli.vuejs.org/guide/build-targets.html
 const path = require('path');
+const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))();
 
 module.exports = {
   css: { extract: false },
@@ -22,7 +24,6 @@ module.exports = {
       // https://github.com/vuejs/vue-cli/blob/5a8abe029e0c9a16f575983f76d51c569145b0b0/packages/%40vue/cli-service/lib/commands/build/resolveAppConfig.js#L6-L12
       // https://github.com/vuejs/vue-cli/blob/5a8abe029e0c9a16f575983f76d51c569145b0b0/packages/%40vue/cli-service/lib/config/app.js#L211-L221
       // https://github.com/vuejs/vue-cli/issues/1550#issuecomment-401786406
-      // eslint-disable-next-line global-require
       config.plugin('copy').use(require('copy-webpack-plugin'), [
         [
           {
@@ -38,6 +39,14 @@ module.exports = {
       .entry('app')
       .clear()
       .add('./example/main.ts');
+
+    config.plugin('define').tap((args) => {
+      Object.assign(args[0], {
+        APLAYER_VERSION: JSON.stringify(require('./package.json').version),
+        GIT_HASH: JSON.stringify(gitRevisionPlugin.version()),
+      });
+      return args;
+    });
 
     // https://cli.vuejs.org/guide/webpack.html#replacing-loaders-of-a-rule
     config.module

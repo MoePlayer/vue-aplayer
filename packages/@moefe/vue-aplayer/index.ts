@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import 'console.img';
 import _Vue from 'vue';
 import APlayer from './components/APlayer';
 
@@ -20,14 +19,12 @@ export default function install(
   Vue.component('APlayer', APlayer);
 
   if (opts.productionTip) {
-    const avatar = 'https://avatars2.githubusercontent.com/u/20062482?s=270';
-    setTimeout(async () => {
-      await console.img(avatar, 80, 80);
-      console.log('%c@u3u', 'font-weight: bold;');
-      console.log('(<ゝω·) 可愛くなりたい');
-      console.log('🚀 Based on APlayer: https://aplayer.js.org');
-      console.log('💗 Follow me on Github: https://github.com/u3u');
-      console.log('🎉 Powered by: https://github.com/u3u/console.img');
-    }, 233);
+    // eslint-disable-next-line no-console
+    console.log(
+      `%c vue-aplayer %c v${APLAYER_VERSION} ${GIT_HASH} %c`,
+      'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+      'background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+      'background:transparent',
+    );
   }
 }
