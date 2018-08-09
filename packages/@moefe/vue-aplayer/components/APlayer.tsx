@@ -117,12 +117,6 @@ export default class APlayer extends Vue.Component<
     return /mobile/i.test(window.navigator.userAgent);
   }
 
-  // 是否是 arrow 模式
-  private get isArrow(): boolean {
-    const { container } = this.$refs;
-    return container && container.offsetWidth <= 300;
-  }
-
   // 是否正在缓冲
   private get isLoading(): boolean {
     return (
@@ -132,10 +126,11 @@ export default class APlayer extends Vue.Component<
 
   private readonly _uid!: number;
   private readonly options!: APlayer.InstallOptions;
-  private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
   private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
   private isMini = this.mini !== null ? this.mini : this.fixed; // 是否是迷你模式
+  private isArrow = false; // 是否是 arrow 模式
+  private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
   private listVisible = !this.listFolded; // 播放列表是否可见
   private get listScrollTop(): number {
     return this.currentListIndex * 33;
@@ -640,6 +635,11 @@ export default class APlayer extends Vue.Component<
     events.forEach((event) => {
       this.player.addEventListener(event, e => this.$emit(event, e));
     });
+  }
+
+  mounted() {
+    const { container } = this.$refs;
+    this.isArrow = container && container.offsetWidth <= 300;
   }
 
   beforeDestroy() {

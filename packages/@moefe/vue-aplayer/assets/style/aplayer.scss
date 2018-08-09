@@ -33,6 +33,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
     }
     .aplayer-list {
       display: block;
+      width: 100%; // don't remove this property
     }
     .aplayer-info
       .aplayer-controller
@@ -190,8 +191,6 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
   }
 
   &.aplayer-mobile {
-    .aplayer-icon-order,
-    .aplayer-icon-loop,
     .aplayer-icon-volume-up,
     .aplayer-icon-volume-down {
       display: none;
