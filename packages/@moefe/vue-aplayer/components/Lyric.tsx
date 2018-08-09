@@ -140,12 +140,16 @@ export default class Lyric extends Vue.Component<LyricProps> {
     return parsed;
   }
 
+  @Watch('aplayer.lrcType', { immediate: true })
   @Watch('aplayer.currentMusic.lrc', { immediate: true })
   private async handleChange() {
-    this.isLoading = true;
-    this.lrc = '';
-    this.lrc = await this.getLyricFromCurrentMusic();
-    this.isLoading = false;
+    try {
+      this.isLoading = true;
+      this.lrc = '';
+      this.lrc = await this.getLyricFromCurrentMusic();
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   render() {
