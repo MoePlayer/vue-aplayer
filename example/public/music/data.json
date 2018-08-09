@@ -3,35 +3,35 @@
     "name": "电子天使",
     "artist": "小缘",
     "url": "http://p97x7hshf.bkt.clouddn.com/dianzitianshi.mp3",
-    "cover": "/music/cover/dianzitianshi.jpg",
+    "cover": "http://p1.music.126.net/Yc-sy7c2hJf67FgeDDy1mw==/17798894230804547.jpg?param=300y300",
     "lrc": "/music/lyrics/dianzitianshi.lrc"
   },
   {
     "name": "快乐崇拜.m3u8",
     "artist": "Hanser",
     "url": "http://p97x7hshf.bkt.clouddn.com/hls/worship.m3u8",
-    "cover": "/music/cover/trackmaker.jpg",
+    "cover": "http://p1.music.126.net/9GAbSb_hlXPu66HWInJOww==/109951162846052486.jpg?param=300y300",
     "lrc": "/music/lyrics/worship.lrc"
   },
   {
     "name": "拜无忧（Cover 萧忆情）",
     "artist": "暖阳",
     "url": "http://p97x7hshf.bkt.clouddn.com/baiwuyou.mp3",
-    "cover": "/music/cover/baiwuyou.jpg",
+    "cover": "http://p1.music.126.net/n-nZwB5n2Moy_3-q4_OoZQ==/109951163005049598.jpg?param=300y300",
     "lrc": "/music/lyrics/baiwuyou.lrc"
   },
   {
     "name": "寄明月（Cover SING女团）",
     "artist": "泠鸢yousa / 三无MarBlue",
     "url": "http://p97x7hshf.bkt.clouddn.com/jimingyue.mp3",
-    "cover": "/music/cover/jimingyue.jpg",
+    "cover": "http://p1.music.126.net/CO8OUd37dVKbZ_mNP2Vk-Q==/109951163213266349.jpg?param=300y300",
     "lrc": "/music/lyrics/jimingyue.lrc"
   },
   {
     "name": "室内系的TrackMaker（Cover nicamoq）",
     "artist": "Hanser",
     "url": "http://p97x7hshf.bkt.clouddn.com/trackmaker.mp3",
-    "cover": "/music/cover/trackmaker.jpg",
+    "cover": "http://p1.music.126.net/9GAbSb_hlXPu66HWInJOww==/109951162846052486.jpg?param=300y300",
     "lrc": "/music/lyrics/trackmaker.lrc",
     "speed": 1.2
   },
@@ -39,14 +39,14 @@
     "name": "Lemon",
     "artist": "米津玄師",
     "url": "http://p97x7hshf.bkt.clouddn.com/lemon.mp3",
-    "cover": "/music/cover/lemon.jpg",
+    "cover": "http://p1.music.126.net/r0TgUXBEEmMG48KSsEa_mg==/109951163143657970.jpg?param=300y300",
     "lrc": "/music/lyrics/lemon.lrc"
   },
   {
     "name": "月满西江（Cover 初音ミク）",
     "artist": "祖娅纳惜",
     "url": "http://p97x7hshf.bkt.clouddn.com/yuemanxijiang.mp3",
-    "cover": "/music/cover/yuemanxijiang.jpg",
+    "cover": "http://p2.music.126.net/-faF0w7K-5ihuWi0nh1gKA==/18576248953079499.jpg?param=300y300",
     "lrc": "/music/lyrics/yuemanxijiang.lrc"
   }
 ]
