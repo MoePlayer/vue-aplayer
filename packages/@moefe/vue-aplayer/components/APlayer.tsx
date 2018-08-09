@@ -156,12 +156,16 @@ export default class APlayer extends Vue.Component<
   }
 
   private get currentListIndex(): number {
-    return this.orderList.findIndex(item => item.id === this.currentMusic.id);
+    const { id, url } = this.currentMusic;
+    return this.orderList.findIndex(
+      item => item.id === id || item.url === url,
+    );
   }
 
   private get currentRandomIndex() {
+    const { id, url } = this.currentMusic;
     return this.randomList.findIndex(
-      item => item.id === this.currentMusic.id,
+      item => item.id === id || item.url === url,
     );
   }
 
@@ -194,11 +198,21 @@ export default class APlayer extends Vue.Component<
       if (newLength !== oldLength) {
         if (newLength <= 0) this.$emit('listClear');
         else if (newLength > oldLength) this.$emit('listAdd');
-        else this.$emit('listRemove');
+        else {
+          if (this.currentIndex < 0) {
+            const { id, url } = this.currentMusic;
+            const oldIndex = oldList.findIndex(
+              item => item.id === id || item.url === url,
+            );
+            Object.assign(this.currentMusic, oldList[oldIndex - 1]);
+          }
+          this.$emit('listRemove');
+        }
       }
     }
 
     if (this.currentList.length > 0) {
+      this.canPlay = !this.player.paused;
       if (
         this.currentMusic.id !== undefined &&
         Number.isNaN(this.currentMusic.id)
