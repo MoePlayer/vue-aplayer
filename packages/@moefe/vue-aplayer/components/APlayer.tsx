@@ -206,13 +206,13 @@ export default class APlayer extends Vue.Component<
             );
             Object.assign(this.currentMusic, oldList[oldIndex - 1]);
           }
+          this.canPlay = !this.player.paused;
           this.$emit('listRemove');
         }
       }
     }
 
     if (this.currentList.length > 0) {
-      this.canPlay = !this.player.paused;
       if (
         this.currentMusic.id !== undefined &&
         Number.isNaN(this.currentMusic.id)
