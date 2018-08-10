@@ -48,6 +48,7 @@ export default class PlayList extends Vue.Component<
   }
 
   @Watch('scrollTop', { immediate: true })
+  @Watch('dataSource', { immediate: true, deep: true })
   @Watch('visible')
   private async handleChangeScrollTop() {
     await this.$nextTick();
