@@ -337,10 +337,15 @@ export default class APlayer extends Vue.Component<
     this.isMini = this.mini;
   }
 
-  @Watch('isMini')
-  private handleChangeCurrentMini() {
-    this.$emit('update:mini', this.isMini);
-    this.handleChangeSettings();
+  @Watch('isMini', { immediate: true })
+  private async handleChangeCurrentMini(newVal: boolean, oldVal?: boolean) {
+    await this.$nextTick();
+    const { container } = this.$refs;
+    this.isArrow = container && container.offsetWidth <= 300;
+    if (oldVal !== undefined) {
+      this.$emit('update:mini', this.isMini);
+      this.handleChangeSettings();
+    }
   }
 
   @Watch('loop')
@@ -648,11 +653,6 @@ export default class APlayer extends Vue.Component<
     events.forEach((event) => {
       this.player.addEventListener(event, e => this.$emit(event, e));
     });
-  }
-
-  mounted() {
-    const { container } = this.$refs;
-    this.isArrow = container && container.offsetWidth <= 300;
   }
 
   beforeDestroy() {
