@@ -290,6 +290,7 @@ export default class APlayer extends Vue.Component<
       paused: this.media.paused,
       mini: this.isMini,
       lrc: this.lyricVisible,
+      list: this.listVisible,
       volume: this.currentVolume,
       loop: this.currentLoop,
       order: this.currentOrder,
@@ -374,6 +375,7 @@ export default class APlayer extends Vue.Component<
   private handleChangeListVisible() {
     this.$emit(this.listVisible ? 'listShow' : 'listHide');
     this.$emit('update:listFolded', this.listVisible);
+    this.handleChangeSettings();
   }
 
   @Watch('lyricVisible')
@@ -630,6 +632,7 @@ export default class APlayer extends Vue.Component<
       const {
         mini,
         lrc,
+        list,
         volume,
         loop,
         order,
@@ -640,6 +643,7 @@ export default class APlayer extends Vue.Component<
       } = this.currentSettings;
       this.isMini = mini;
       this.lyricVisible = lrc;
+      this.listVisible = list;
       this.currentVolume = volume;
       this.currentLoop = loop;
       this.currentOrder = order;

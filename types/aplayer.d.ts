@@ -90,6 +90,7 @@ declare namespace APlayer {
     paused: boolean;
     mini: boolean;
     lrc: boolean;
+    list: boolean;
     volume: number;
     loop: LoopMode;
     order: OrderMode;
