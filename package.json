@@ -30,12 +30,14 @@
     "media"
   ],
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build --report --target lib --name VueAPlayer packages/@moefe/vue-aplayer/index.ts",
     "build:example": "vue-cli-service build --dest demo",
-    "docs:dev": "vuepress dev docs --debug --port 3000",
-    "docs:build": "vuepress build docs",
+    "docs:link": "yarn link && yarn link \"@moefe/vue-aplayer\"",
+    "docs:dev": "yarn docs:link && vuepress dev docs --debug --port 3000",
+    "docs:build": "yarn docs:prebuild && vuepress build docs",
+    "docs:prebuild": "yarn build && yarn docs:link",
     "lint": "vue-cli-service lint",
     "lint:prettier": "prettier-eslint-check \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
     "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write",
