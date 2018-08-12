@@ -1,6 +1,8 @@
 # 迷你模式
 
-<aplayer-mini />
+<client-only>
+  <aplayer-mini />
+</client-only>
 
 📝 example.vue
 

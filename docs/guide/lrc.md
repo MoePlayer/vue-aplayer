@@ -22,7 +22,9 @@
 
 ## LRC 文件
 
-<aplayer-lrc lrc="http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc" :lrcType="3" />
+<client-only>
+  <aplayer-lrc lrc="http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc" :lrcType="3" />
+</client-only>
 
 📝 example.vue
 
@@ -59,7 +61,9 @@ export default {
 
 ## LRC 字符串
 
-<aplayer-lrc lrc="[00:00.00] 我们一起学猫叫\n[99:99.99] 一起喵喵喵喵喵" :lrcType="1" />
+<client-only>
+  <aplayer-lrc lrc="[00:00.00] 我们一起学猫叫\n[99:99.99] 一起喵喵喵喵喵" :lrcType="1" />
+</client-only>
 
 📝 example.vue
 
@@ -93,7 +97,9 @@ export default {
 
 ## 禁用歌词
 
-<aplayer-lrc :lrcType="0" />
+<client-only>
+  <aplayer-lrc :lrcType="0" />
+</client-only>
 
 📝 example.vue
 
