@@ -1,9 +1,15 @@
 import Vue from 'vue';
-import App from './App';
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
 
+// hotfix
+if (localStorage.getItem('GIT_HASH') !== GIT_HASH) {
+  localStorage.clear();
+  localStorage.setItem('GIT_HASH', GIT_HASH);
+}
+
 new Vue({
-  render: h => h(App),
+  // eslint-disable-next-line global-require
+  render: h => h(require('./App').default),
 }).$mount('#app');
