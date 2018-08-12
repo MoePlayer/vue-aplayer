@@ -19,3 +19,39 @@
     }
   }
 }
+
+.content:not(.custom) {
+  > h2 {
+    + {
+      .button {
+        margin-top: 1rem;
+      }
+
+      .aplayer {
+        margin-top: calc(1rem + 5px);
+      }
+    }
+  }
+}
+
+.button {
+  display: block;
+  padding: 0 14px;
+  outline: none;
+  border: 2px solid #42b983;
+  border-radius: 17px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  height: 32px;
+  color: #42b983;
+  background: transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: 0.3s;
+
+  &:hover {
+    color: #fff;
+    background: #42b983;
+  }
+}
