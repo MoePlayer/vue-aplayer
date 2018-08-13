@@ -13,9 +13,9 @@
 
 > This is the branch for `@moefe/vue-aplayer` 2.0.
 
-## Status: developing
+## Status: Beta
 
-Now only completed the basic functions of the player, the core functions are being developed, will be completed as soon as possible.
+Most of the planned features are in place but there may still be bugs.
 
 ## Documentation
 
