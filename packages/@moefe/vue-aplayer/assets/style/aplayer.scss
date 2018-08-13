@@ -392,6 +392,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
             top: 0;
             bottom: 0;
             height: 2px;
+            transition: background-color 0.3s ease;
 
             .aplayer-thumb {
               position: absolute;
@@ -665,6 +666,7 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
         position: absolute;
         left: 0;
         top: 5px;
+        transition: background-color 0.3s ease;
         cursor: pointer;
       }
       .aplayer-list-index {
