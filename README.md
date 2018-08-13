@@ -34,8 +34,7 @@ import Vue from 'vue';
 import APlayer from '@moefe/vue-aplayer';
 
 Vue.use(APlayer, {
-  hls: true, // hls support
-  colorThief: true, // enable self-adapting theme according to cover
+  defaultCover: 'https://github.com/u3u.png', // set the default cover
   productionTip: false, // disable console output
 });
 ```
