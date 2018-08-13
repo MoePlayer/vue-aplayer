@@ -625,7 +625,7 @@ export default class APlayer extends Vue.Component<
   }
   // #endregion
 
-  async created() {
+  beforeMount() {
     instances.push(this);
     this.store.key = this.storageName;
     if (this.currentSettings) {
