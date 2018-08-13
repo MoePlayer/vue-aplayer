@@ -62,7 +62,7 @@ export default class App extends Vue {
               GitHub
             </a>
             {/* eslint-disable-next-line no-script-url */}
-            <a class="landing-button" href="/docs">
+            <a class="landing-button" href="/docs/">
               Docs
             </a>
           </div>
