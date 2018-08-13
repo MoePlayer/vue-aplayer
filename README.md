@@ -39,6 +39,11 @@ Vue.use(APlayer, {
 });
 ```
 
+## Related Projects
+
+- [APlayer](https://github.com/MoePlayer/APlayer): Original project, thanks [@DIYgod](https://github.com/DIYgod)
+- [Vue-Aplayer](https://github.com/SevenOutman/vue-aplayer): Another Vue implementation of APlayer by [@SevenOutman](https://github.com/SevenOutman)
+
 ## Contributing
 
 1.  Fork it!
