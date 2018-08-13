@@ -1,8 +1,6 @@
 # HLS 支持
 
-<client-only>
-  <aplayer-hls />
-</client-only>
+<aplayer-hls />
 
 📝 example.vue
 

@@ -1,8 +1,6 @@
 # 吸底模式
 
-<client-only>
-  <aplayer-fixed />
-</client-only>
+<aplayer-fixed />
 
 📝 example.vue
 
