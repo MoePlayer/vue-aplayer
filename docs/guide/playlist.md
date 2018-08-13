@@ -1,8 +1,6 @@
 # 播放列表
 
-<client-only>
-  <aplayer-playlist />
-</client-only>
+<aplayer-playlist />
 
 📝 example.vue
 
