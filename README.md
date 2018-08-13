@@ -17,6 +17,10 @@
 
 Now only completed the basic functions of the player, the core functions are being developed, will be completed as soon as possible.
 
+## Documentation
+
+Docs are available at [aplayer.netlify.com/docs](http://aplayer.netlify.com/docs)
+
 ## Install
 
 ```bash
