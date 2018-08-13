@@ -8,12 +8,7 @@ module.exports = {
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['script', { src: 'https://cdn.bootcss.com/fetch/2.0.4/fetch.min.js' }],
     ['script', { src: 'https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js' }],
-    [
-      'script',
-      {
-        src: 'https://cdn.jsdelivr.net/npm/colorthief/dist/color-thief.min.js',
-      },
-    ],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/colorthief/dist/color-thief.min.js' }], // prettier-ignore
   ],
   dest: 'demo/docs',
   serviceWorker: true,

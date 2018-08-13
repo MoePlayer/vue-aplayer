@@ -4,11 +4,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import APlayer from '@moefe/vue-aplayer'
-
-Vue.use(APlayer)
-
 export default {
   props: {
     lrc: String,
