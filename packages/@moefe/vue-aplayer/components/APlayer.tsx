@@ -436,12 +436,12 @@ export default class APlayer extends Vue.Component<
 
   public skipBack() {
     const playIndex = this.getPlayIndexByMode('skipBack');
-    this.currentMusic = this.currentList[playIndex];
+    this.currentMusic = { ...this.currentList[playIndex] };
   }
 
   public skipForward() {
     const playIndex = this.getPlayIndexByMode('skipForward');
-    this.currentMusic = this.currentList[playIndex];
+    this.currentMusic = { ...this.currentList[playIndex] };
   }
 
   public showLrc() {
