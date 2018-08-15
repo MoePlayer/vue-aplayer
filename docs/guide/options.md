@@ -228,6 +228,25 @@ declare namespace APlayer {
 这里与 [APlayer](https://github.com/MoePlayer/APlayer) 有所不同，在 `localStorage` 中保存的是对象数组  
 不同的实例之间互不影响，一般情况下你不需要修改此项。
 
+```ts
+declare namespace APlayer {
+  export type LoopMode = 'all' | 'one' | 'none';
+  export type OrderMode = 'list' | 'random';
+  export interface Settings {
+    currentTime: number; // 当前音频的播放时间
+    duration: number | null; // 当前音频的长度
+    paused: boolean; // 当前播放器是否暂停
+    mini: boolean; // 是否是 mini 模式
+    lrc: boolean; // 当前歌词
+    list: boolean; // 当前列表是否展开
+    volume: number; // 当前播放器音量
+    loop: LoopMode; // 当前循环模式
+    order: OrderMode; // 当前顺序模式
+    music: Audio | null; // 当前播放的音频对象
+  }
+}
+```
+
 ```js
 // 你可以使用实例的 `currentSettings` 属性获取当前实例的播放器设置
 console.log(this.$refs.aplayer.currentSettings);
