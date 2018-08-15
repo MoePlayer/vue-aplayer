@@ -33,6 +33,9 @@ module.exports = {
           },
         ],
       ]);
+    } else {
+      // https://github.com/vuejs/vue-cli/issues/1132
+      config.output.filename('[name].[hash].js').end();
     }
 
     config
