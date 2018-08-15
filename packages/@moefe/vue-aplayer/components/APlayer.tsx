@@ -9,7 +9,7 @@ import Store from '@moefe/vue-store';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
-import { shuffle, isUrl } from '../utils';
+import { shuffle, HttpRequest } from '../utils';
 import '../assets/style/aplayer.scss';
 
 declare global {
@@ -135,7 +135,8 @@ export default class APlayer extends Vue.Component<
     return this.currentListIndex * 33;
   }
   private lyricVisible = true; // 控制迷你模式下的歌词是否可见
-  private img = new Image();
+  private img = new Image(); // 封面图片对象
+  private xhr = new HttpRequest(); // 封面下载对象
   private media = new Audio(); // 响应式媒体对象
   private player = this.media.audio; // 核心音频对象
   private store = store;
@@ -236,10 +237,11 @@ export default class APlayer extends Vue.Component<
       const cover = newMusic.cover || this.options.defaultCover;
       if (cover) {
         setTimeout(async () => {
-          this.currentTheme = await this.getThemeColorFromCover(
-            cover,
-            !isUrl(cover),
-          );
+          try {
+            this.currentTheme = await this.getThemeColorFromCover(cover);
+          } catch (e) {
+            this.currentTheme = newMusic.theme || this.theme;
+          }
         });
       }
     }
@@ -491,21 +493,27 @@ export default class APlayer extends Vue.Component<
   // #region 私有 API
 
   // 从封面中获取主题颜色
-  private getThemeColorFromCover(
-    url: string,
-    cache: boolean = true,
-  ): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
+  private getThemeColorFromCover(url: string): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
       try {
-        const sym = url.includes('?') ? '&' : '?';
-        this.img.src = cache ? url : `${url}${sym}_=${new Date().getTime()}`;
-        this.img.crossOrigin = '';
-        this.img.onload = () => {
-          const [r, g, b] = new ColorThief().getColor(this.img);
-          const theme = `rgb(${r}, ${g}, ${b})`;
-          resolve(theme || this.currentMusic.theme || this.theme);
-        };
-        this.img.onerror = reject;
+        if (typeof ColorThief !== 'undefined') {
+          const image = await this.xhr.download<Blob>(url, 'blob');
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.img.src = reader.result as string;
+            this.img.crossOrigin = '';
+            this.img.onload = () => {
+              const [r, g, b] = new ColorThief().getColor(this.img);
+              const theme = `rgb(${r}, ${g}, ${b})`;
+              resolve(theme || this.currentMusic.theme || this.theme);
+            };
+            this.img.onabort = reject;
+            this.img.onerror = reject;
+          };
+          reader.onabort = reject;
+          reader.onerror = reject;
+          reader.readAsDataURL(image);
+        } else resolve(this.currentMusic.theme || this.theme);
       } catch (e) {
         resolve(this.currentMusic.theme || this.theme);
       }

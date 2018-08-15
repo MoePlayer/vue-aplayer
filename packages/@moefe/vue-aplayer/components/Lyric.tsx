@@ -2,6 +2,7 @@ import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Inject, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
+import { HttpRequest } from '../utils';
 
 interface LRC {
   time: number;
@@ -25,6 +26,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
   };
 
   private lrc = '';
+  private xhr = new HttpRequest();
   private isLoading = false;
 
   private get noLyric(): string {
@@ -75,10 +77,6 @@ export default class Lyric extends Vue.Component<LyricProps> {
   private getLyricFromCurrentMusic() {
     return new Promise<string>((resolve, reject) => {
       const { lrcType, currentMusic } = this.aplayer;
-      if (currentMusic.id !== undefined && Number.isNaN(currentMusic.id)) {
-        resolve('');
-        return;
-      }
       switch (lrcType) {
         case 0:
           resolve('');
@@ -87,11 +85,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
           resolve(currentMusic.lrc);
           break;
         case 3:
-          resolve(
-            currentMusic.lrc
-              ? fetch(currentMusic.lrc).then(res => res.text())
-              : '',
-          );
+          resolve(currentMusic.lrc ? this.xhr.download(currentMusic.lrc) : '');
           break;
         default:
           reject(new Error(`Illegal lrcType: ${lrcType}`));

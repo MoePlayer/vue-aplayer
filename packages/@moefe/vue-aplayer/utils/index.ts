@@ -10,6 +10,26 @@ export function shuffle(arr: any[]) {
   return arr;
 }
 
-export function isUrl(url: string) {
-  return /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/.test(url);
+export class HttpRequest {
+  private xhr = new XMLHttpRequest();
+
+  public download<T>(
+    url: string,
+    responseType: XMLHttpRequestResponseType = '',
+  ) {
+    return new Promise<T>((resolve, reject) => {
+      this.xhr.open('get', url);
+      this.xhr.responseType = responseType;
+      this.xhr.onload = () => {
+        const { status } = this.xhr;
+        if ((status >= 200 && status < 300) || status === 304) {
+          resolve(this.xhr.response);
+        }
+      };
+      this.xhr.onabort = reject;
+      this.xhr.onerror = reject;
+      this.xhr.ontimeout = reject;
+      this.xhr.send();
+    });
+  }
 }
