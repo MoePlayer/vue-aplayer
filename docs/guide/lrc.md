@@ -100,7 +100,7 @@ export default {
 ```vue
 <template>
   <!-- 指定 lrcType 为 0，表示禁用歌词 -->
-  <aplayer audio=":audio" :lrcType="lrcType" />
+  <aplayer audio=":audio" :lrcType="0" />
 </template>
 
 <script>

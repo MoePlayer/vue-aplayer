@@ -5,8 +5,7 @@ export default ({
   siteData, // 站点元数据
 }) => {
   if (typeof window !== 'undefined') {
-    const { default: APlayer } = require('@moefe/vue-aplayer');
     localStorage.setItem('aplayer-setting', '[]');
-    Vue.use(APlayer);
+    Vue.use(require('@moefe/vue-aplayer').default);
   }
 };
