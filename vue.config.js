@@ -9,14 +9,14 @@ module.exports = {
   css: { extract: false },
   pages: {
     app: {
-      entry: 'example/main.ts',
-      template: 'example/public/index.html',
+      entry: path.resolve(__dirname, 'example/main.ts'),
+      template: path.resolve(__dirname, 'example/public/index.html'),
       filename: 'index.html',
     },
   },
   devServer: {
     // https://webpack.docschina.org/configuration/dev-server/#devserver-contentbase
-    contentBase: 'example/public',
+    contentBase: path.resolve(__dirname, 'example/public'),
   },
   chainWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {
