@@ -9139,16 +9139,16 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-svg-loader@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/vue-svg-loader/-/vue-svg-loader-0.5.0.tgz#6804c7b3a27b6b5ae12562ea4808ed99a3b5f760"
+vue-svg-loader@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/vue-svg-loader/-/vue-svg-loader-0.7.0.tgz#d430d3e4c288259cdea218655060bf6654574fe7"
   dependencies:
     loader-utils "^1.1.0"
     svgo "^1.0.4"
-    vue-template-compiler "^2.5.13"
+    vue-template-compiler "^2.5.17"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-template-compiler@^2.5.13, vue-template-compiler@^2.5.16, vue-template-compiler@^2.5.17:
+vue-template-compiler@^2.5.16, vue-template-compiler@^2.5.17:
   version "2.5.17"
   resolved "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.5.17.tgz#52a4a078c327deb937482a509ae85c06f346c3cb"
   dependencies:
