@@ -826,11 +826,11 @@
     eslint-plugin-vue "^4.5.0"
 
 "@vue/cli-plugin-typescript@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.0.tgz#fcda971939a8dd9426135a11852eeeb6d54ff576"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.0.1.tgz#c1fa2d57911de0ebbab8731228a288d3361e2005"
   dependencies:
     "@types/node" "^10.5.2"
-    "@vue/cli-shared-utils" "^3.0.0"
+    "@vue/cli-shared-utils" "^3.0.1"
     fork-ts-checker-webpack-plugin "^0.4.4"
     globby "^8.0.1"
     ts-loader "^4.4.2"
