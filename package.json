@@ -72,7 +72,7 @@
     "typescript": "^3.0.1",
     "vue-class-component": "^6.2.0",
     "vue-property-decorator": "^7.0.0",
-    "vue-svg-loader": "^0.7.0",
+    "vue-svg-loader": "^0.8.0",
     "vue-template-compiler": "^2.5.17",
     "vue-tsx-support": "^2.1.1",
     "vuepress": "^0.14.2"
