@@ -29,6 +29,8 @@ yarn add @moefe/vue-aplayer
 
 ## Usage
 
+[![Edit vue-aplayer](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/xrylkkp27w)
+
 ```js
 import Vue from 'vue';
 import APlayer from '@moefe/vue-aplayer';
