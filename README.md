@@ -29,7 +29,7 @@ yarn add @moefe/vue-aplayer
 
 ## Usage
 
-[![Edit vue-aplayer](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/xrylkkp27w)
+[![Edit vue-aplayer](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/xrylkkp27w?fontsize=12&module=%2Fsrc%2FApp.vue)
 
 ```js
 import Vue from 'vue';
