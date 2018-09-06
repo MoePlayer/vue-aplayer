@@ -9123,9 +9123,9 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-svg-loader@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/vue-svg-loader/-/vue-svg-loader-0.8.0.tgz#3c94b5df73231755bd2d3bade33735682ef87f71"
+vue-svg-loader@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/vue-svg-loader/-/vue-svg-loader-0.9.0.tgz#87256d2cb38eba429f33f13663905ffc744a3bb2"
   dependencies:
     loader-utils "^1.1.0"
     svgo "^1.0.4"
