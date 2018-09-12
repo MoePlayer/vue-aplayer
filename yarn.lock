@@ -808,8 +808,8 @@
   resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.0.0.tgz#580340afde2cf155b71c67907f27a69b906416b6"
 
 "@vue/cli-plugin-babel@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.1.tgz#a1691caf610d42800314ceb9e727a7668bfa3e7f"
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-3.0.3.tgz#967ef902553c1c6152ef6330cb05816a730dfdb5"
   dependencies:
     "@babel/core" "7.0.0-beta.47"
     "@vue/babel-preset-app" "^3.0.1"
