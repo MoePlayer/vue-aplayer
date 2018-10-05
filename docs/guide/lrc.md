@@ -66,7 +66,7 @@ export default {
 ```vue
 <template>
   <!-- 指定 lrcType 为 1，表示 audio.lrc 的值是 lrc 字符串 -->
-  <aplayer audio=":audio" :lrcType="1" />
+  <aplayer :audio="audio" :lrcType="1" />
 </template>
 
 <script>
@@ -100,7 +100,7 @@ export default {
 ```vue
 <template>
   <!-- 指定 lrcType 为 0，表示禁用歌词 -->
-  <aplayer audio=":audio" :lrcType="0" />
+  <aplayer :audio="audio" :lrcType="0" />
 </template>
 
 <script>
