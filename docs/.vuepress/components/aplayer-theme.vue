@@ -1,6 +1,8 @@
 <template>
   <aplayer v-if="showPlayer" :audio="audio" :lrcType="3" />
-  <button v-else class="button" @click="showPlayer = true">点击加载播放器</button>
+  <button v-else class="button" @click="showPlayer = true;">
+    点击加载播放器
+  </button>
 </template>
 
 <script>
@@ -34,12 +36,12 @@ export default {
           theme: this.randomColor(),
         },
       ],
-    }
+    };
   },
   methods: {
     randomColor() {
-      return `#${((Math.random() * 0xffffff) << 0).toString(16)}`
+      return `#${((Math.random() * 0xffffff) << 0).toString(16)}`;
     },
   },
-}
+};
 </script>

@@ -1,6 +1,8 @@
 <template>
   <aplayer v-if="showPlayer" :audio="audio" :lrcType="lrcType" />
-  <button v-else class="button" @click="showPlayer = true">点击加载播放器</button>
+  <button v-else class="button" @click="showPlayer = true;">
+    点击加载播放器
+  </button>
 </template>
 
 <script>
@@ -10,7 +12,7 @@ export default {
     lrcType: Number,
   },
   data() {
-    const { lrc } = this
+    const { lrc } = this;
     return {
       showPlayer: false,
       audio: {
@@ -20,7 +22,7 @@ export default {
         cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300', // prettier-ignore
         lrc, // http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc
       },
-    }
+    };
   },
-}
+};
 </script>

@@ -4,6 +4,7 @@ import Component from 'vue-class-component';
 @Component
 export default class VueStore extends Vue {
   public key: string = 'aplayer-setting';
+
   public store: any[] = this.get(this.key);
 
   // eslint-disable-next-line class-methods-use-this

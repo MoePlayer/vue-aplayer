@@ -79,6 +79,7 @@ Vue.use(APlayer, {
 📝 app.vue
 
 ```vue
+<!-- prettier-ignore -->
 <template>
   <div id="app">
     <aplayer :audio="audio" :lrcType="3" />

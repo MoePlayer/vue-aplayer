@@ -124,21 +124,46 @@ export default class APlayer extends Vue.Component<
   }
 
   private readonly _uid!: number;
+
   private readonly options!: APlayer.InstallOptions;
-  private isDraggingProgressBar = false; // 是否正在拖动进度条（防止抖动）
-  private isAwaitChangeProgressBar = false; // 是否正在等待进度条更新（防止抖动）
-  private isMini = this.mini !== null ? this.mini : this.fixed; // 是否是迷你模式
-  private isArrow = false; // 是否是 arrow 模式
-  private canPlay = !this.isMobile && this.autoplay; // 当 currentMusic 改变时是否允许播放
-  private listVisible = !this.listFolded; // 播放列表是否可见
+
+  private isDraggingProgressBar = false;
+
+  // 是否正在拖动进度条（防止抖动）
+  private isAwaitChangeProgressBar = false;
+
+  // 是否正在等待进度条更新（防止抖动）
+  private isMini = this.mini !== null ? this.mini : this.fixed;
+
+  // 是否是迷你模式
+  private isArrow = false;
+
+  // 是否是 arrow 模式
+  private canPlay = !this.isMobile && this.autoplay;
+
+  // 当 currentMusic 改变时是否允许播放
+  private listVisible = !this.listFolded;
+
+  // 播放列表是否可见
   private get listScrollTop(): number {
     return this.currentListIndex * 33;
   }
-  private lyricVisible = true; // 控制迷你模式下的歌词是否可见
-  private img = new Image(); // 封面图片对象
-  private xhr = new HttpRequest(); // 封面下载对象
-  private media = new Audio(); // 响应式媒体对象
-  private player = this.media.audio; // 核心音频对象
+
+  private lyricVisible = true;
+
+  // 控制迷你模式下的歌词是否可见
+  private img = new Image();
+
+  // 封面图片对象
+  private xhr = new HttpRequest();
+
+  // 封面下载对象
+  private media = new Audio();
+
+  // 响应式媒体对象
+  private player = this.media.audio;
+
+  // 核心音频对象
   private store = store;
 
   // 当前播放的音乐
@@ -179,11 +204,21 @@ export default class APlayer extends Vue.Component<
       : 1;
   }
 
-  private currentPlayed = 0; // 当前已播放比例
-  private currentVolume = this.volume; // 当前音量
-  private currentLoop = this.loop; // 当前循环模式
-  private currentOrder = this.order; // 当前顺序模式
-  private currentTheme = this.currentMusic.theme || this.theme; // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
+  private currentPlayed = 0;
+
+  // 当前已播放比例
+  private currentVolume = this.volume;
+
+  // 当前音量
+  private currentLoop = this.loop;
+
+  // 当前循环模式
+  private currentOrder = this.order;
+
+  // 当前顺序模式
+  private currentTheme = this.currentMusic.theme || this.theme;
+
+  // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
   private notice: Notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
 
   // #region 监听属性
@@ -215,8 +250,8 @@ export default class APlayer extends Vue.Component<
 
     if (this.currentList.length > 0) {
       if (
-        this.currentMusic.id !== undefined &&
-        Number.isNaN(this.currentMusic.id)
+        this.currentMusic.id !== undefined
+        && Number.isNaN(this.currentMusic.id)
       ) {
         [this.currentMusic] = this.currentList;
       } else {
@@ -248,8 +283,8 @@ export default class APlayer extends Vue.Component<
 
     if (newMusic.url) {
       if (
-        (oldMusic !== undefined && oldMusic.url) !== newMusic.url ||
-        this.player.src !== newMusic.url
+        (oldMusic !== undefined && oldMusic.url) !== newMusic.url
+        || this.player.src !== newMusic.url
       ) {
         this.currentPlayed = 0;
         if (oldMusic) {
@@ -263,7 +298,10 @@ export default class APlayer extends Vue.Component<
         this.player.preload = this.preload;
         this.player.volume = this.currentVolume;
         this.player.currentTime = 0;
-        this.player.onerror = (e: ErrorEvent) => this.showNotice(e.message);
+        this.player.onerror = (e: Event | string) => {
+          console.log(e);
+          // this.showNotice(e.message);
+        };
       }
       if (this.canPlay) this.play();
       this.canPlay = true;
@@ -309,9 +347,8 @@ export default class APlayer extends Vue.Component<
 
     const instanceIndex = instances.indexOf(this);
     this.store.set(
-      this.settings[instanceIndex] !== undefined
-        ? this.settings.map(
-            (item, index) => (index === instanceIndex ? settings : item),
+      this.settings[instanceIndex] !== undefined // eslint-disable-next-line max-len
+        ? this.settings.map((item, index) => (index === instanceIndex ? settings : item),
           )
         : [...this.settings, settings],
     );
@@ -543,8 +580,8 @@ export default class APlayer extends Vue.Component<
               hls.attachMedia(this.player as HTMLVideoElement);
               resolve();
             } else if (
-              this.player.canPlayType('application/x-mpegURL') ||
-              this.player.canPlayType('application/vnd.apple.mpegURL')
+              this.player.canPlayType('application/x-mpegURL')
+              || this.player.canPlayType('application/vnd.apple.mpegURL')
             ) {
               resolve(music.url);
             } else {
@@ -598,12 +635,11 @@ export default class APlayer extends Vue.Component<
 
   // 处理切换循环模式
   private handleToggleLoopMode() {
-    this.currentLoop =
-      this.currentLoop === 'all'
+    this.currentLoop = this.currentLoop === 'all'
         ? 'one'
         : this.currentLoop === 'one'
-          ? 'none'
-          : 'all';
+        ? 'none'
+        : 'all';
   }
 
   // 处理切换播放/暂停事件
@@ -675,8 +711,8 @@ export default class APlayer extends Vue.Component<
     const instanceIndex = instances.indexOf(this);
     instances.splice(instanceIndex, 1);
     this.store.set(
-      this.settings.map(
-        (item, index) => (index === instanceIndex ? null : item),
+      // eslint-disable-next-line max-len
+      this.settings.map((item, index) => (index === instanceIndex ? null : item),
       ),
     );
     this.pause();

@@ -10,6 +10,7 @@ declare module '*.json' {
 
 declare class ColorThief {
   getColor(sourceImage: HTMLImageElement, quality?: number): number[];
+
   getPalette(
     sourceImage: HTMLImageElement,
     colorCount?: number,

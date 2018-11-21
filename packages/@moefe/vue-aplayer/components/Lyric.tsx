@@ -26,7 +26,9 @@ export default class Lyric extends Vue.Component<LyricProps> {
   };
 
   private lrc = '';
+
   private xhr = new HttpRequest();
+
   private isLoading = false;
 
   private get noLyric(): string {
@@ -35,10 +37,10 @@ export default class Lyric extends Vue.Component<LyricProps> {
     return currentMusic.id !== undefined && Number.isNaN(currentMusic.id)
       ? '(ಗ ‸ ಗ ) 未加载音频'
       : this.isLoading
-        ? '(*ゝω・) 少女祈祷中..'
-        : this.lrc
-          ? '(・∀・*) 抱歉，该歌词格式不支持'
-          : '(,,•́ . •̀,,) 抱歉，当前歌曲暂无歌词';
+      ? '(*ゝω・) 少女祈祷中..'
+      : this.lrc
+      ? '(・∀・*) 抱歉，该歌词格式不支持'
+      : '(,,•́ . •̀,,) 抱歉，当前歌曲暂无歌词';
     /* eslint-enable no-nested-ternary */
   }
 

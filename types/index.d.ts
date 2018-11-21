@@ -10,20 +10,33 @@ export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
   };
 
   readonly currentIndex: number;
+
   readonly currentSettings: APlayer.Settings;
 
   play(): Promise<void>;
+
   pause(): void;
+
   toggle(): void;
+
   seek(time: number): void;
+
   skipBack(): void;
+
   skipForward(): void;
+
   showLrc(): void;
+
   hideLrc(): void;
+
   toggleLrc(): void;
+
   showList(): void;
+
   hideList(): void;
+
   toggleList(): void;
+
   showNotice(text: string, time?: number, opacity?: number): void;
 }
 

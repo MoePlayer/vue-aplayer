@@ -1,6 +1,8 @@
 <template>
   <aplayer v-if="showPlayer" :audio="audio" :lrcType="3" fixed />
-  <button v-else class="button" @click="showPlayer = true">点击加载播放器</button>
+  <button v-else class="button" @click="showPlayer = true;">
+    点击加载播放器
+  </button>
 </template>
 
 <script>
@@ -31,7 +33,7 @@ export default {
           lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
