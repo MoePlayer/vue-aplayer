@@ -23,10 +23,10 @@ export default class Player extends Vue.Component<
   ControllerEvents
 > {
   @Prop({ type: Object, required: true })
-  notice!: Notice;
+  private readonly notice!: Notice;
 
   @Inject()
-  aplayer!: { media: APlayer.Media };
+  private readonly aplayer!: { media: APlayer.Media };
 
   private get playIcon(): string {
     return this.aplayer.media.paused ? 'play' : 'pause';

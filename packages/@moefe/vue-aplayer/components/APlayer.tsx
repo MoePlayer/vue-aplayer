@@ -127,43 +127,44 @@ export default class APlayer extends Vue.Component<
 
   private readonly options!: APlayer.InstallOptions;
 
+  // 是否正在拖动进度条（防止抖动）
   private isDraggingProgressBar = false;
 
-  // 是否正在拖动进度条（防止抖动）
+  // 是否正在等待进度条更新（防止抖动）
   private isAwaitChangeProgressBar = false;
 
-  // 是否正在等待进度条更新（防止抖动）
+  // 是否是迷你模式
   private isMini = this.mini !== null ? this.mini : this.fixed;
 
-  // 是否是迷你模式
+  // 是否是 arrow 模式
   private isArrow = false;
 
-  // 是否是 arrow 模式
+  // 当 currentMusic 改变时是否允许播放
   private canPlay = !this.isMobile && this.autoplay;
 
-  // 当 currentMusic 改变时是否允许播放
+  // 播放列表是否可见
   private listVisible = !this.listFolded;
 
-  // 播放列表是否可见
   private get listScrollTop(): number {
     return this.currentListIndex * 33;
   }
 
+  // 控制迷你模式下的歌词是否可见
   private lyricVisible = true;
 
-  // 控制迷你模式下的歌词是否可见
+  // 封面图片对象
   private img = new Image();
 
-  // 封面图片对象
+  // 封面下载对象
   private xhr = new HttpRequest();
 
-  // 封面下载对象
+  // 响应式媒体对象
   private media = new Audio();
 
-  // 响应式媒体对象
+  // 核心音频对象
   private player = this.media.audio;
 
-  // 核心音频对象
+  // 播放器设置存储对象
   private store = store;
 
   // 当前播放的音乐
@@ -204,22 +205,23 @@ export default class APlayer extends Vue.Component<
       : 1;
   }
 
+  // 当前已播放比例
   private currentPlayed = 0;
 
-  // 当前已播放比例
+  // 当前音量
   private currentVolume = this.volume;
 
-  // 当前音量
+  // 当前循环模式
   private currentLoop = this.loop;
 
-  // 当前循环模式
+  // 当前顺序模式
   private currentOrder = this.order;
 
-  // 当前顺序模式
+  // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
   private currentTheme = this.currentMusic.theme || this.theme;
 
-  // 当前主题，通过封面自适应主题 > 当前播放的音乐指定的主题 > 主题选项
-  private notice: Notice = { text: '', time: 2000, opacity: 0 }; // 通知信息
+  // 通知对象
+  private notice: Notice = { text: '', time: 2000, opacity: 0 };
 
   // #region 监听属性
 
@@ -299,8 +301,7 @@ export default class APlayer extends Vue.Component<
         this.player.volume = this.currentVolume;
         this.player.currentTime = 0;
         this.player.onerror = (e: Event | string) => {
-          console.log(e);
-          // this.showNotice(e.message);
+          this.showNotice(e.toString());
         };
       }
       if (this.canPlay) this.play();
@@ -453,10 +454,10 @@ export default class APlayer extends Vue.Component<
         await this.play(); // preload 为 none 的情况下必须先 play
         if (paused && oldPaused) this.pause();
       }
+      if (paused) this.pause();
       await this.media.loaded();
       this.player.currentTime = percent * this.media.duration;
-      if (paused) this.pause();
-      else this.play();
+      if (!paused) this.play();
     } catch (e) {
       this.showNotice(e.message);
     } finally {
