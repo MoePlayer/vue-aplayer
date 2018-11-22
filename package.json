@@ -38,7 +38,7 @@
     "docs:dev": "yarn docs:link && vuepress dev docs --debug --port 3000",
     "docs:build": "yarn docs:prebuild && vuepress build docs",
     "docs:prebuild": "yarn build && yarn docs:link",
-    "lint": "yarn unlink \"@moefe/vue-aplayer\" && vue-cli-service lint packages",
+    "lint": "vue-cli-service lint packages",
     "lint:prettier": "prettier-eslint-check \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
     "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write",
     "test:types": "dtslint types",
