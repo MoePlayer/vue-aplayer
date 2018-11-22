@@ -118,9 +118,7 @@ export default class APlayer extends Vue.Component<
 
   // 是否正在缓冲
   private get isLoading(): boolean {
-    return (
-      !this.media.paused && this.media.readyState < ReadyState.HAVE_FUTURE_DATA
-    );
+    return this.currentPlayed >= this.currentLoaded;
   }
 
   private readonly _uid!: number;
@@ -323,7 +321,7 @@ export default class APlayer extends Vue.Component<
   @Watch('media.currentTime')
   private handleChangeCurrentTime() {
     if (!this.isDraggingProgressBar && !this.isAwaitChangeProgressBar) {
-      this.currentPlayed = this.media.currentTime / this.media.duration;
+      this.currentPlayed = this.media.currentTime / this.media.duration || 0;
     }
   }
 
