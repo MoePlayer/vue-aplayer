@@ -2,7 +2,6 @@ import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 import Lyric from './Lyric';
-import Controller from './Controller';
 
 @Component
 export default class Main extends Vue.Component<{}> {
