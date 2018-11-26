@@ -22,7 +22,7 @@
 
 ## LRC 文件
 
-<aplayer-lrc lrc="http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc" :lrcType="3" />
+<aplayer-lrc lrc="https://cdn.moefe.org/music/lrc/kiss.lrc" :lrcType="3" />
 
 📝 example.vue
 
@@ -45,11 +45,11 @@ export default {
   data() {
     return {
       audio: {
-        name: 'Mermaid girl (Extended RRver.)',
-        artist: '森永真由美',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mermaidgirl.mp3',
-        cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300', // prettier-ignore
-        lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc',
+        name: '啵唧',
+        artist: 'Hanser',
+        url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+        cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
+        lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
       },
     };
   },
@@ -79,10 +79,10 @@ export default {
   data() {
     return {
       audio: {
-        name: 'Mermaid girl (Extended RRver.)',
-        artist: '森永真由美',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mermaidgirl.mp3',
-        cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300', // prettier-ignore
+        name: '啵唧',
+        artist: 'Hanser',
+        url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+        cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
         lrc: '[00:00.00] 我们一起学猫叫\n[99:99.99] 一起喵喵喵喵喵',
       },
     };
@@ -113,10 +113,10 @@ export default {
   data() {
     return {
       audio: {
-        name: 'Mermaid girl (Extended RRver.)',
-        artist: '森永真由美',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mermaidgirl.mp3',
-        cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300' // prettier-ignore
+        name: '啵唧',
+        artist: 'Hanser',
+        url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+        cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300' // prettier-ignore
       },
     };
   },

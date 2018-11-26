@@ -16,11 +16,11 @@ export default {
     return {
       showPlayer: false,
       audio: {
-        name: 'Mermaid girl (Extended RRver.)',
-        artist: '森永真由美',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mermaidgirl.mp3',
-        cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300', // prettier-ignore
-        lrc, // http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc
+        name: '啵唧',
+        artist: 'Hanser',
+        url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+        cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
+        lrc, // 'https://cdn.moefe.org/music/lrc/kiss.lrc',
       },
     };
   },

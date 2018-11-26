@@ -12,27 +12,27 @@ export default {
       showPlayer: false,
       audio: [
         {
-          name: 'I Really Like You 西班牙语版（Cover Carly Rae Jepsen）',
-          artist: '熊子',
-          url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mucho.mp3',
-          cover: 'http://p1.music.126.net/UhbkP71d9KTMsdNczCf2wA==/109951162986700564.jpg?param=300y300', // prettier-ignore
-          lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/mucho.lrc',
+          name: '东西（Cover：林俊呈）',
+          artist: '纳豆',
+          url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+          cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+          lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
           theme: this.randomColor(),
         },
         {
-          name: 'Mermaid girl (Extended RRver.)',
-          artist: '森永真由美',
-          url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mermaidgirl.mp3',
-          cover: 'http://p1.music.126.net/xXxBuZksld5HtovQxI1D0A==/3227066630258578.jpg?param=300y300', // prettier-ignore
-          lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/mermaidgirl.lrc',
+          name: '响喜乱舞（Cover：MARiA）',
+          artist: '泠鸢yousa',
+          url: 'https://cdn.moefe.org/music/mp3/kyoukiranbu.mp3',
+          cover: 'https://p1.music.126.net/AUGVPQ_rVrngDH9ocQrn3Q==/109951163613037822.jpg?param=300y300', // prettier-ignore
+          lrc: 'https://cdn.moefe.org/music/lrc/kyoukiranbu.lrc',
           theme: this.randomColor(),
         },
         {
-          name: 'ヒビカセ',
-          artist: 'れをる',
-          url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-          cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300', // prettier-ignore
-          lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
+          name: '啵唧',
+          artist: 'Hanser',
+          url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+          cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
+          lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
           theme: this.randomColor(),
         },
       ],

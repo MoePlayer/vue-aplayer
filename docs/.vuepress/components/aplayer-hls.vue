@@ -16,11 +16,11 @@ export default {
     return {
       showPlayer: false,
       audio: {
-        name: '太陽と向日葵.m3u8',
-        artist: 'FLOWER',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/hls/sunandsunflower.m3u8',
-        cover: 'http://p1.music.126.net/CoM8s2FD5q1OgG4LSSDZuw==/5945059371390886.jpg?param=300y300', // prettier-ignore
-        lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/sunandsunflower.lrc',
+        name: 'Let It Go.m3u8',
+        artist: 'Idina Menzel',
+        url: 'https://cdn.moefe.org/music/hls/frozen.m3u8',
+        cover: 'https://p1.music.126.net/n72JJkPg2-ENxhB-DsZ2AA==/109951163115400390.jpg?param=300y300', // prettier-ignore
+        lrc: 'https://cdn.moefe.org/music/lrc/frozen.lrc',
         type: 'customHls',
       },
       customAudioType: {

@@ -11,10 +11,10 @@ export default {
     return {
       showPlayer: false,
       audio: {
-        name: 'ヒビカセ',
-        artist: 'れをる',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-        cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300' // prettier-ignore
+        name: 'The Party We Have Never Seen',
+        artist: 'Nana Takahashi',
+        url: 'https://cdn.moefe.org/music/mp3/thepartywehaveneverseen.mp3',
+        cover: 'https://p1.music.126.net/IwclpJu4gaqhSZrKunEFWg==/3297435379408525.jpg?param=300y300' // prettier-ignore
       },
     };
   },

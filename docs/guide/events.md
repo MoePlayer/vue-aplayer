@@ -79,10 +79,11 @@ export default {
   data() {
     return {
       audio: {
-        name: 'I Really Like You 西班牙语版（Cover Carly Rae Jepsen）',
-        artist: '熊子',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mucho.mp3',
-        cover: 'http://p1.music.126.net/UhbkP71d9KTMsdNczCf2wA==/109951162986700564.jpg?param=300y300' // prettier-ignore
+        name: '东西（Cover：林俊呈）',
+        artist: '纳豆',
+        url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+        cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+        lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
       },
     };
   },
@@ -158,10 +159,11 @@ export default {
   data() {
     return {
       audio: {
-        name: 'I Really Like You 西班牙语版（Cover Carly Rae Jepsen）',
-        artist: '熊子',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/mucho.mp3',
-        cover: 'http://p1.music.126.net/UhbkP71d9KTMsdNczCf2wA==/109951162986700564.jpg?param=300y300' // prettier-ignore
+        name: '东西（Cover：林俊呈）',
+        artist: '纳豆',
+        url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+        cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+        lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
       },
       volume: 0.7,
       mini: false,

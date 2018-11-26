@@ -91,11 +91,11 @@ export default {
   data() {
     return {
       audio: {
-        name: 'ヒビカセ',
-        artist: 'れをる',
-        url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-        cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300', // prettier-ignore
-        lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
+        name: '东西（Cover：林俊呈）',
+        artist: '纳豆',
+        url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+        cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+        lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
       },
     };
   },
