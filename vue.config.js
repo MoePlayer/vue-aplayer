@@ -46,7 +46,7 @@ module.exports = {
     config.plugin('define').tap((args) => {
       Object.assign(args[0], {
         APLAYER_VERSION: JSON.stringify(require('./package.json').version),
-        GIT_HASH: JSON.stringify(gitRevisionPlugin.version()),
+        GIT_HASH: JSON.stringify(gitRevisionPlugin.commithash().substr(0, 7)),
       });
       return args;
     });
