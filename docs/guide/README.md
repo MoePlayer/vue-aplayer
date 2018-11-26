@@ -108,7 +108,7 @@ export default {
 这种方式是官方推荐的，也是大家熟知的使用最多、上手最快的。但是开发体验不是很友好。  
 虽然官方提供了 [Vetur](https://github.com/vuejs/vetur) 扩展来强化开发体验，但依然无法做到以下几点：
 
-1.  目前 Prettier 还不支持格式化模版部分[（正在进行中）](https://github.com/prettier/prettier/pull/4753)
+1.  ~~目前 Prettier 还不支持格式化模版部分[（正在进行中）](https://github.com/prettier/prettier/pull/4753)~~
 2.  模版部分没有强大的智能感知功能
 3.  对 TypeScript 不友好
 4.  无法批量传递 `props`
