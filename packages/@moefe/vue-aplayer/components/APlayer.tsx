@@ -124,8 +124,6 @@ export default class APlayer extends Vue.Component<
     return preload === 'none' ? !paused && loading : loading;
   }
 
-  private readonly _uid!: number;
-
   private readonly options!: APlayer.InstallOptions;
 
   // 是否正在拖动进度条（防止抖动）
@@ -606,9 +604,7 @@ export default class APlayer extends Vue.Component<
   }
 
   private pauseOtherInstances() {
-    instances
-      .filter(x => x._uid !== this._uid)
-      .forEach(inst => inst.pause());
+    instances.filter(inst => inst !== this).forEach(inst => inst.pause());
   }
 
   // #endregion
@@ -676,7 +672,9 @@ export default class APlayer extends Vue.Component<
   // #endregion
 
   beforeMount() {
-    instances.push(this);
+    const emptyIndex = instances.findIndex(x => !x);
+    if (emptyIndex > -1) instances[emptyIndex] = this;
+    else instances.push(this);
     this.store.key = this.storageName;
     if (this.currentSettings) {
       const {
@@ -711,7 +709,7 @@ export default class APlayer extends Vue.Component<
 
   beforeDestroy() {
     const instanceIndex = instances.indexOf(this);
-    instances.splice(instanceIndex, 1);
+    delete instances[instanceIndex];
     this.store.set(
       // eslint-disable-next-line max-len
       this.settings.map((item, index) => (index === instanceIndex ? null : item),
