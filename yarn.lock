@@ -480,9 +480,9 @@
     "@babel/helper-plugin-utils" "7.0.0-beta.47"
     "@babel/plugin-syntax-decorators" "7.0.0-beta.47"
 
-"@babel/plugin-proposal-decorators@^7.0.0":
+"@babel/plugin-proposal-decorators@^7.1.0":
   version "7.1.6"
-  resolved "https://registry.npmjs.org/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.1.6.tgz#460c31edbd01953efe45d491583b3ec31661d689"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.1.6.tgz#460c31edbd01953efe45d491583b3ec31661d689"
   integrity sha512-U42f8KhUbtlhUDyV/wK4Rq/wWh8vWyttYABckG/v0vVnMPvayOewZC/83CbVdmyP+UhEqI368FEQ7hHMfhBpQA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
@@ -1471,13 +1471,13 @@
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-transform-vue-jsx "^4.0.1"
 
-"@vue/babel-preset-app@^3.1.0":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.1.1.tgz#1bb6395c5ddc84bc8e993ace47151b0d95d382a7"
-  integrity sha512-YLswSHTCgmYjxm0ZJYK6+HfjdiTen2WmxQ8BWkeE+ZI7kOJlEkEMM7+RLmEvEKY8Z0lQharBkjNJdRfWt8D4SQ==
+"@vue/babel-preset-app@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-3.2.0.tgz#a443acdbd34f66d7645db271d9ac58fbe4fe870d"
+  integrity sha512-yDPMhdeOnQ49EOsOnHXJZQ4aR+g+TZVkImUjRBN90MKv9V1C9HXxhU73Je6pWUQaJ0yugMr5jl058ns6Mx6mNA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
-    "@babel/plugin-proposal-decorators" "^7.0.0"
+    "@babel/plugin-proposal-decorators" "^7.1.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/plugin-syntax-jsx" "^7.0.0"
     "@babel/plugin-transform-runtime" "^7.0.0"
@@ -1494,12 +1494,12 @@
   integrity sha512-id6FtCzfbYQ812vRP9AA5qelmQTfhYvYmU+AGm+eZmSbdk8eZqbUtiraFPa5JsqnPN8twUvpPLmvqmPHoK+VEw==
 
 "@vue/cli-plugin-babel@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.1.1.tgz#443441456ea1141b3a8070255034342dd47809e0"
-  integrity sha512-Wvaoru+9lYz+jAr2nqQrP8mX/0tq3doU4pJC41Ggtq3kUtTnnTf4MBl4SffN1qpW5eW6zFidQ0HjiAp1sfSmyg==
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-3.2.0.tgz#5548e052f07512156942f50dcf18948ad29be7ec"
+  integrity sha512-HRhwsUIZ9DZYH+cVS8O0Qfk2W43vKpl5/JcvCS8YWWmRjwZjjHtRDifnfQuLC3Q0cUMTcv4bv8vnPMtkAbvXKg==
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.1.0"
+    "@vue/babel-preset-app" "^3.2.0"
     babel-loader "^8.0.4"
 
 "@vue/cli-plugin-eslint@^3.1.5":
