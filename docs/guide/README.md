@@ -33,12 +33,13 @@ yarn add @moefe/vue-aplayer
 ```html
 <html>
   <body>
+    <!-- prettier-ignore -->
     <div id="app">
-      <aplayer :audio="audio" :lrc-type="3" />
+      <a-player :audio="audio" :lrc-type="3"></a-player>
     </div>
   </body>
   <!-- 你必须在引入 vue-aplayer 之前引入 vue -->
-  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/@moefe/vue-aplayer"></script>
   <script>
     Vue.use(VueAPlayer, {
@@ -50,11 +51,11 @@ yarn add @moefe/vue-aplayer
       el: '#app',
       data: {
         audio: {
-          name: 'ヒビカセ',
-          artist: 'れをる',
-          url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-          cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300',
-          lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
+          name: '东西（Cover：林俊呈）',
+          artist: '纳豆',
+          url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+          cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+          lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
         },
       },
     });
@@ -152,11 +153,11 @@ import { APlayer } from '@moefe/vue-aplayer';
 @Component
 export default class App extends Vue {
   audio = {
-    name: 'ヒビカセ',
-    artist: 'れをる',
-    url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-    cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300', // prettier-ignore
-    lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
+    name: '东西（Cover：林俊呈）',
+    artist: '纳豆',
+    url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+    cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+    lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
   };
 
   render() {
@@ -199,11 +200,11 @@ import { APlayer } from '@moefe/vue-aplayer';
 @Comopnent
 export default class App extends Vue {
   private audio: APlayer.Audio | APlayer.Audio[] = {
-    name: 'ヒビカセ',
-    artist: 'れをる',
-    url: 'http://pdacsgxq7.bkt.clouddn.com/mp3/hibikase.mp3',
-    cover: 'http://p1.music.126.net/cZPx3peGTuWEI_GaZB5CDg==/8892850045794893.jpg?param=300y300', // prettier-ignore
-    lrc: 'http://pdacsgxq7.bkt.clouddn.com/lrc/hibikase.lrc',
+    name: '东西（Cover：林俊呈）',
+    artist: '纳豆',
+    url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+    cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+    lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
   };
 
   render() {

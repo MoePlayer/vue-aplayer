@@ -19,7 +19,7 @@ Most of the planned features are in place but there may still be bugs.
 
 ## Documentation
 
-Docs are available at [aplayer.netlify.com/docs/](http://aplayer.netlify.com/docs/)
+Docs are available at [aplayer.moefe.org/docs/](https://aplayer.moefe.org/docs/)
 
 ## Install
 
