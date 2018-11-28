@@ -1503,11 +1503,11 @@
     babel-loader "^8.0.4"
 
 "@vue/cli-plugin-eslint@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.1.5.tgz#9143d3e8670ad6e73a408cafda9daba76559ddef"
-  integrity sha512-ZcRJqqDeMxf5c6YkCT7nr29SGePBfyeuYfG8p3QVSND90nhS/952/G6ZAb7Ph1dNNsEONU4plQYnQAte6Caf4w==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.2.1.tgz#4dc353add93023363bf4c6b347e64472d1f2f432"
+  integrity sha512-Z/eQw18FjTypMMryNg8WCYJxEBmSAtnzukRWWNFwqNnh2zM/2J6yR4dYhsyjNtMEMUOnQsAsJnqgw45rLu8sJg==
   dependencies:
-    "@vue/cli-shared-utils" "^3.1.1"
+    "@vue/cli-shared-utils" "^3.2.0"
     babel-eslint "^10.0.1"
     eslint "^4.19.1"
     eslint-loader "^2.1.1"
@@ -1586,6 +1586,24 @@
   version "3.1.1"
   resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.1.1.tgz#ab8638c25318e5812b57877d7cfc65cd2af43740"
   integrity sha512-r+R+5LI6IHHPI5tbOSDy5DpiY5O9eTy8LPr/QCPb5RIOg+Pg03VlElW4BL69hePXEHCQZZDsOzgItSmat6mBhg==
+  dependencies:
+    chalk "^2.4.1"
+    execa "^1.0.0"
+    joi "^13.0.0"
+    launch-editor "^2.2.1"
+    lru-cache "^4.1.3"
+    node-ipc "^9.1.1"
+    opn "^5.3.0"
+    ora "^2.1.0"
+    request "^2.87.0"
+    request-promise-native "^1.0.5"
+    semver "^5.5.0"
+    string.prototype.padstart "^3.0.0"
+
+"@vue/cli-shared-utils@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.2.0.tgz#504037063c2a4a346dc35c9652bd3863da4816e7"
+  integrity sha512-FCX5ABFg5pWhomyXLpCaogJktMvjsS5d4Mn5BfvqcJxCvzOX6ze8ihFK3u//XMeM78dOFpHSjxnRSvHtkEwgsg==
   dependencies:
     chalk "^2.4.1"
     execa "^1.0.0"
