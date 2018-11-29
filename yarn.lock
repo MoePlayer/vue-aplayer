@@ -480,7 +480,7 @@
     "@babel/helper-plugin-utils" "7.0.0-beta.47"
     "@babel/plugin-syntax-decorators" "7.0.0-beta.47"
 
-"@babel/plugin-proposal-decorators@^7.0.0":
+"@babel/plugin-proposal-decorators@^7.1.0":
   version "7.1.6"
   resolved "https://registry.npmjs.org/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.1.6.tgz#460c31edbd01953efe45d491583b3ec31661d689"
   integrity sha512-U42f8KhUbtlhUDyV/wK4Rq/wWh8vWyttYABckG/v0vVnMPvayOewZC/83CbVdmyP+UhEqI368FEQ7hHMfhBpQA==
@@ -1471,13 +1471,13 @@
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-transform-vue-jsx "^4.0.1"
 
-"@vue/babel-preset-app@^3.1.0":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.1.1.tgz#1bb6395c5ddc84bc8e993ace47151b0d95d382a7"
-  integrity sha512-YLswSHTCgmYjxm0ZJYK6+HfjdiTen2WmxQ8BWkeE+ZI7kOJlEkEMM7+RLmEvEKY8Z0lQharBkjNJdRfWt8D4SQ==
+"@vue/babel-preset-app@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.2.0.tgz#a443acdbd34f66d7645db271d9ac58fbe4fe870d"
+  integrity sha512-yDPMhdeOnQ49EOsOnHXJZQ4aR+g+TZVkImUjRBN90MKv9V1C9HXxhU73Je6pWUQaJ0yugMr5jl058ns6Mx6mNA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
-    "@babel/plugin-proposal-decorators" "^7.0.0"
+    "@babel/plugin-proposal-decorators" "^7.1.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/plugin-syntax-jsx" "^7.0.0"
     "@babel/plugin-transform-runtime" "^7.0.0"
@@ -1488,56 +1488,56 @@
     babel-plugin-transform-vue-jsx "^4.0.1"
     core-js "^2.5.7"
 
-"@vue/cli-overlay@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.1.0.tgz#47db870055060c30189454919dbf9381be8695f2"
-  integrity sha512-id6FtCzfbYQ812vRP9AA5qelmQTfhYvYmU+AGm+eZmSbdk8eZqbUtiraFPa5JsqnPN8twUvpPLmvqmPHoK+VEw==
+"@vue/cli-overlay@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/cli-overlay/-/cli-overlay-3.2.0.tgz#bb5d781914bb5af97d92410babbaa3720707b728"
+  integrity sha512-RKMSfgTtRs4VOXQhmbrNZJaCCheshebji9NcPNGyXzukCMBtoAbu3cG9HxizCSUA//oFFAdPP5BGeHvv0cpu/A==
 
-"@vue/cli-plugin-babel@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.1.1.tgz#443441456ea1141b3a8070255034342dd47809e0"
-  integrity sha512-Wvaoru+9lYz+jAr2nqQrP8mX/0tq3doU4pJC41Ggtq3kUtTnnTf4MBl4SffN1qpW5eW6zFidQ0HjiAp1sfSmyg==
+"@vue/cli-plugin-babel@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-babel/-/cli-plugin-babel-3.2.0.tgz#5548e052f07512156942f50dcf18948ad29be7ec"
+  integrity sha512-HRhwsUIZ9DZYH+cVS8O0Qfk2W43vKpl5/JcvCS8YWWmRjwZjjHtRDifnfQuLC3Q0cUMTcv4bv8vnPMtkAbvXKg==
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.1.0"
+    "@vue/babel-preset-app" "^3.2.0"
     babel-loader "^8.0.4"
 
-"@vue/cli-plugin-eslint@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.1.5.tgz#9143d3e8670ad6e73a408cafda9daba76559ddef"
-  integrity sha512-ZcRJqqDeMxf5c6YkCT7nr29SGePBfyeuYfG8p3QVSND90nhS/952/G6ZAb7Ph1dNNsEONU4plQYnQAte6Caf4w==
+"@vue/cli-plugin-eslint@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-eslint/-/cli-plugin-eslint-3.2.1.tgz#4dc353add93023363bf4c6b347e64472d1f2f432"
+  integrity sha512-Z/eQw18FjTypMMryNg8WCYJxEBmSAtnzukRWWNFwqNnh2zM/2J6yR4dYhsyjNtMEMUOnQsAsJnqgw45rLu8sJg==
   dependencies:
-    "@vue/cli-shared-utils" "^3.1.1"
+    "@vue/cli-shared-utils" "^3.2.0"
     babel-eslint "^10.0.1"
     eslint "^4.19.1"
     eslint-loader "^2.1.1"
     eslint-plugin-vue "^4.7.1"
     globby "^8.0.1"
 
-"@vue/cli-plugin-typescript@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.1.1.tgz#9c3a62795dd6f7359325384b303904e7d7b76d8d"
-  integrity sha512-DJqBo6y+w6ZJZBXDK6xk/4EB0/jy9aOemX356QSYxDsTNsHx1Okg3RuCq/wN0yElVVthzi5FEnDlfGymAWzqig==
+"@vue/cli-plugin-typescript@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/cli-plugin-typescript/-/cli-plugin-typescript-3.2.0.tgz#074dd7e7e65ac79c76bcd45cd64fd9a163f5b0fd"
+  integrity sha512-zv9N92mMyidK3+0lyJhIimeMjqIv0SZg8Nkie4xDBEKyliF3KmGLwDstLft7rBm44yqppEROjLMVOxJkuwUVNw==
   dependencies:
     "@types/webpack-env" "^1.13.6"
-    "@vue/cli-shared-utils" "^3.1.1"
-    fork-ts-checker-webpack-plugin "^0.4.14"
+    "@vue/cli-shared-utils" "^3.2.0"
+    fork-ts-checker-webpack-plugin "^0.5.0"
     globby "^8.0.1"
-    ts-loader "^5.3.0"
+    ts-loader "^5.3.1"
     tslint "^5.11.0"
 
-"@vue/cli-service@^3.1.4":
-  version "3.1.4"
-  resolved "https://registry.npmjs.org/@vue/cli-service/-/cli-service-3.1.4.tgz#04c84c1bb798db03e2c0fecc414d6a5f2954d602"
-  integrity sha512-dArLh5yd2B2an/jTD+cmkRmyRxKSE+5il9408vhciyqvZGVjkajTN95YjY5VLkBMQvrv/Z+goGSn+7wtnQSOFg==
+"@vue/cli-service@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/cli-service/-/cli-service-3.2.0.tgz#96e8ee7b33a911ab71710c126ab55cd64c2a4c51"
+  integrity sha512-HTiaz1IBXV/JCfrmyhHJvDOYpPTBK0uQAekSVRTt5AddCeOV68ktdUqHbDe3VPDfrWFA5x3d3kIHlJd6WK31mA==
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
-    "@vue/cli-overlay" "^3.1.0"
-    "@vue/cli-shared-utils" "^3.1.1"
+    "@vue/cli-overlay" "^3.2.0"
+    "@vue/cli-shared-utils" "^3.2.0"
     "@vue/preload-webpack-plugin" "^1.1.0"
     "@vue/web-component-wrapper" "^1.2.0"
-    acorn "^6.0.2"
-    acorn-walk "^6.1.0"
+    acorn "^6.0.4"
+    acorn-walk "^6.1.1"
     address "^1.0.3"
     autoprefixer "^8.6.5"
     cache-loader "^1.2.5"
@@ -1552,7 +1552,7 @@
     escape-string-regexp "^1.0.5"
     file-loader "^2.0.0"
     friendly-errors-webpack-plugin "^1.7.0"
-    fs-extra "^7.0.0"
+    fs-extra "^7.0.1"
     globby "^8.0.1"
     hash-sum "^1.0.2"
     html-webpack-plugin "^3.2.0"
@@ -1560,7 +1560,7 @@
     lodash.defaultsdeep "^4.6.0"
     lodash.mapvalues "^4.6.0"
     lodash.transform "^4.6.0"
-    mini-css-extract-plugin "^0.4.4"
+    mini-css-extract-plugin "^0.4.5"
     minimist "^1.2.0"
     ora "^3.0.0"
     portfinder "^1.0.19"
@@ -1575,17 +1575,17 @@
     thread-loader "^1.2.0"
     url-loader "^1.1.2"
     vue-loader "^15.4.2"
-    webpack "^4.18.1"
+    webpack "^4.26.1"
     webpack-bundle-analyzer "^3.0.3"
     webpack-chain "^4.11.0"
     webpack-dev-server "^3.1.10"
     webpack-merge "^4.1.4"
     yorkie "^2.0.0"
 
-"@vue/cli-shared-utils@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.1.1.tgz#ab8638c25318e5812b57877d7cfc65cd2af43740"
-  integrity sha512-r+R+5LI6IHHPI5tbOSDy5DpiY5O9eTy8LPr/QCPb5RIOg+Pg03VlElW4BL69hePXEHCQZZDsOzgItSmat6mBhg==
+"@vue/cli-shared-utils@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/cli-shared-utils/-/cli-shared-utils-3.2.0.tgz#504037063c2a4a346dc35c9652bd3863da4816e7"
+  integrity sha512-FCX5ABFg5pWhomyXLpCaogJktMvjsS5d4Mn5BfvqcJxCvzOX6ze8ihFK3u//XMeM78dOFpHSjxnRSvHtkEwgsg==
   dependencies:
     chalk "^2.4.1"
     execa "^1.0.0"
@@ -1624,13 +1624,13 @@
     eslint-import-resolver-webpack "^0.10.1"
     eslint-plugin-import "^2.14.0"
 
-"@vue/eslint-config-typescript@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@vue/eslint-config-typescript/-/eslint-config-typescript-3.1.1.tgz#d5b0fc031426514e7138bf988a66db87a2086b39"
-  integrity sha512-lILZESg7Q4+BNb3cFKxxHJ/wax2k9PnOja/OuRekXj0T2+SMK8EOrUJW/uR5VY7LalzXxqBkuE+6MRHTmGWsAw==
+"@vue/eslint-config-typescript@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/@vue/eslint-config-typescript/-/eslint-config-typescript-3.2.0.tgz#cbb19f11b74149f49febb52c92167458a22ba002"
+  integrity sha512-rDcOpHpxVOyKVe5kaxV63UOQulYvIAwpX0HZO4+rEnDoxkKtS9iAw2VeaamvrYp+TCFMsguo3CsGg0leu1xWAg==
   dependencies:
-    eslint-plugin-typescript "^0.13.0"
-    typescript-eslint-parser "^20.1.1"
+    eslint-plugin-typescript "^0.14.0"
+    typescript-eslint-parser "^21.0.1"
 
 "@vue/preload-webpack-plugin@^1.1.0":
   version "1.1.0"
@@ -1849,7 +1849,7 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
-acorn-walk@^6.1.0:
+acorn-walk@^6.1.1:
   version "6.1.1"
   resolved "https://registry.npmjs.org/acorn-walk/-/acorn-walk-6.1.1.tgz#d363b66f5fac5f018ff9c3a1e7b6f8e310cc3913"
   integrity sha512-OtUw6JUTgxA2QoqqmrmQ7F2NYqiBPi/L2jqHyFtllhOUvXYQXf0Z1CYUinIfyT4bTCGmrA7gX9FvHA81uzCoVw==
@@ -1864,7 +1864,7 @@ acorn@^5.0.0, acorn@^5.5.0, acorn@^5.6.2, acorn@^5.7.3:
   resolved "https://registry.npmjs.org/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
   integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
 
-acorn@^6.0.2:
+acorn@^6.0.4:
   version "6.0.4"
   resolved "https://registry.npmjs.org/acorn/-/acorn-6.0.4.tgz#77377e7353b72ec5104550aa2d2097a2fd40b754"
   integrity sha512-VY4i5EKSKkofY2I+6QLTbTTN/UvEQPCo6eiwzzSaSWfpaDhOmStMCMod6wmuPciNq+XS0faCglFu2lHZpdHUtg==
@@ -3868,7 +3868,6 @@ defined@^1.0.0:
 
 definitelytyped-header-parser@Microsoft/definitelytyped-header-parser#production:
   version "0.0.0"
-  uid "6ff181ecd781706f200f8a780b0133a85fd0a69f"
   resolved "https://codeload.github.com/Microsoft/definitelytyped-header-parser/tar.gz/6ff181ecd781706f200f8a780b0133a85fd0a69f"
   dependencies:
     "@types/parsimmon" "^1.3.0"
@@ -4361,10 +4360,10 @@ eslint-plugin-import@^2.14.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-typescript@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-typescript/-/eslint-plugin-typescript-0.13.0.tgz#07fa9a166dee1daff14716c70fb8fb7c6583d852"
-  integrity sha512-dN8EwZfkOobYJ6VCFJ0Kd39OLSectdJlkG5L+VmA2BtMunZALQus6XLx21Gkj6vmfmUDk6uEGCB7JCszhvZoTA==
+eslint-plugin-typescript@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-typescript/-/eslint-plugin-typescript-0.14.0.tgz#068549c3f4c7f3f85d88d398c29fa96bf500884c"
+  integrity sha512-2u1WnnDF2mkWWgU1lFQ2RjypUlmRoBEvQN02y9u+IL12mjWlkKFGEBnVsjs9Y8190bfPQCvWly1c2rYYUSOxWw==
   dependencies:
     requireindex "~1.1.0"
 
@@ -4409,7 +4408,7 @@ eslint-visitor-keys@^1.0.0:
   resolved "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
   integrity sha512-qzm/XxIbxm/FHyH341ZrbnMUpe+5Bocte9xkmFMzPMjRaZMcXww+MpBptFvtU+79L362nqiLhekCxCxDPaUMBQ==
 
-eslint@4.19.1, eslint@^4.0.0, eslint@^4.19.1, eslint@^4.5.0:
+eslint@^4.0.0, eslint@^4.19.1, eslint@^4.5.0:
   version "4.19.1"
   resolved "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
   integrity sha512-bT3/1x1EbZB7phzYu7vCr1v3ONuzDtX8WjuM9c0iYxe+cq+pwcKEoQjl7zd3RpC6YOLgnSy3cTN58M2jcoPDIQ==
@@ -4967,18 +4966,16 @@ forever-agent@~0.6.1:
   resolved "https://registry.npmjs.org/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
-fork-ts-checker-webpack-plugin@^0.4.14:
-  version "0.4.15"
-  resolved "https://registry.npmjs.org/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-0.4.15.tgz#7cd9f94f3dd58cd1fe8f953f876e72090eda3f6d"
-  integrity sha512-qNYuygh2GxXehBvQZ5rI5YlQFn+7ZV6kmkyD9Sgs33dWl73NZdUOB5aCp8v0EXJn176AhPrZP8YCMT3h01fs+g==
+fork-ts-checker-webpack-plugin@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-0.5.0.tgz#39de03c2579368806478024cbce6ac7f5346d590"
+  integrity sha512-F8Xh0YBJEi1U0EGaYkTfc7IjDgQvBazGwBkoVytvcEIBeLHcqxYtwh5FkFcQdTsKZLWHGgtSJ78C3//RhpWFGw==
   dependencies:
     babel-code-frame "^6.22.0"
     chalk "^2.4.1"
     chokidar "^2.0.4"
-    lodash "^4.17.11"
     micromatch "^3.1.10"
     minimatch "^3.0.4"
-    resolve "^1.5.0"
     tapable "^1.0.0"
 
 form-data@~2.3.2:
@@ -5050,7 +5047,7 @@ fs-extra@^5.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -7326,10 +7323,10 @@ mini-css-extract-plugin@0.4.1:
     loader-utils "^1.1.0"
     webpack-sources "^1.1.0"
 
-mini-css-extract-plugin@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.4.tgz#c10410a004951bd3cedac1da69053940fccb625d"
-  integrity sha512-o+Jm+ocb0asEngdM6FsZWtZsRzA8koFUudIDwYUfl94M3PejPHG7Vopw5hN9V8WsMkSFpm3tZP3Fesz89EyrfQ==
+mini-css-extract-plugin@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.5.tgz#c99e9e78d54f3fa775633aee5933aeaa4e80719a"
+  integrity sha512-dqBanNfktnp2hwL2YguV9Jh91PFX7gu7nRLs4TGsbAfAG6WOtlynFRYzwDwmmeSb5uIwHo9nx1ta0f7vAZVp2w==
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
@@ -10836,10 +10833,10 @@ tryer@^1.0.0:
   resolved "https://registry.npmjs.org/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
-ts-loader@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.npmjs.org/ts-loader/-/ts-loader-5.3.0.tgz#4bac24e57bc5189391ab14987d9898ce53ef5cf7"
-  integrity sha512-lGSNs7szRFj/rK9T1EQuayE3QNLg6izDUxt5jpmq0RG1rU2bapAt7E7uLckLCUPeO1jwxCiet2oRaWovc53UAg==
+ts-loader@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/ts-loader/-/ts-loader-5.3.1.tgz#70614c8ec4354a9c8b89c9f97b2becb7a98a3980"
+  integrity sha512-fDDgpBH3SR8xlt2MasLdz3Yy611PQ/UY/KGyo7TgXhTRU/6sS8uGG0nJYnU1OdFBNKcoYbId1UTNaAOUn+i41g==
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"
@@ -10922,19 +10919,20 @@ typescript-eslint-parser@^16.0.0:
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-typescript-eslint-parser@^20.1.1:
-  version "20.1.1"
-  resolved "https://registry.npmjs.org/typescript-eslint-parser/-/typescript-eslint-parser-20.1.1.tgz#a09f3e2f1924dd9e0369835f496ccde31eedfb8b"
-  integrity sha512-IJhpqHK60Pz2J5pe8rJUQ10DcMcGwhQnvRFcPV79coEV3bpNfSiHkgpS+sf6zx2ANDWgBhmtZbK9ICOy+v3FKA==
+typescript-eslint-parser@^21.0.1:
+  version "21.0.1"
+  resolved "https://registry.npmjs.org/typescript-eslint-parser/-/typescript-eslint-parser-21.0.1.tgz#710ea628a72144e1ec3a1d6b9f5b2b0a5a520e04"
+  integrity sha512-rdtAzg0eTTv/+YRLBJZBAAuOHHyYiElE2HdkaOGf9kKGce811zP3JRPzDybCJQamdsxyEsMe6CyIk2JCEnw/4g==
   dependencies:
-    eslint "4.19.1"
+    eslint-scope "^4.0.0"
     eslint-visitor-keys "^1.0.0"
-    typescript-estree "2.1.0"
+    lodash "^4.17.11"
+    typescript-estree "5.0.0"
 
-typescript-estree@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/typescript-estree/-/typescript-estree-2.1.0.tgz#b2f3353494409ed53bf7055b46f78c1fbbe47661"
-  integrity sha512-t4o+7pB4OnxV36Bp41Vgtq8vXIvIUbx1vM98PSE2mL5QBY6woFaBN9hhD8pZHIrAu24IB5gzxbkEJOXj4lWNXQ==
+typescript-estree@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/typescript-estree/-/typescript-estree-5.0.0.tgz#6aaa33b96abf5edce165099630e2ccd997a95609"
+  integrity sha512-/FHoH7ECP+Y6CLS7MdRD0Hu7b3HgsD7k6ArNWgoXK3fW0eSZGj+t04Mf4aQ6EBj04WoHALkReYMfGbTzaDPKEg==
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.5.0"
@@ -11561,7 +11559,37 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.18.1, webpack@^4.8.1:
+webpack@^4.26.1:
+  version "4.26.1"
+  resolved "https://registry.npmjs.org/webpack/-/webpack-4.26.1.tgz#ff3a9283d363c07b3494dfa702d08f4f2ef6cb39"
+  integrity sha512-i2oOvEvuvLLSuSCkdVrknaxAhtUZ9g+nLSoHCWV0gDzqGX2DXaCrMmMUpbRsTSSLrUqAI56PoEiyMUZIZ1msug==
+  dependencies:
+    "@webassemblyjs/ast" "1.7.11"
+    "@webassemblyjs/helper-module-context" "1.7.11"
+    "@webassemblyjs/wasm-edit" "1.7.11"
+    "@webassemblyjs/wasm-parser" "1.7.11"
+    acorn "^5.6.2"
+    acorn-dynamic-import "^3.0.0"
+    ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
+    chrome-trace-event "^1.0.0"
+    enhanced-resolve "^4.1.0"
+    eslint-scope "^4.0.0"
+    json-parse-better-errors "^1.0.2"
+    loader-runner "^2.3.0"
+    loader-utils "^1.1.0"
+    memory-fs "~0.4.1"
+    micromatch "^3.1.8"
+    mkdirp "~0.5.0"
+    neo-async "^2.5.0"
+    node-libs-browser "^2.0.0"
+    schema-utils "^0.4.4"
+    tapable "^1.1.0"
+    terser-webpack-plugin "^1.1.0"
+    watchpack "^1.5.0"
+    webpack-sources "^1.3.0"
+
+webpack@^4.8.1:
   version "4.26.0"
   resolved "https://registry.npmjs.org/webpack/-/webpack-4.26.0.tgz#adbe80b869148c8d108b7d88965d00d72b3178de"
   integrity sha512-J/dP9SJIc5OtX2FZ/+U9ikQtd6H6Mcbqt0xeXtmPwYGDKf8nkbOQQA9KL2Y0rJOsN1Al9Pdn+/j63X58ub8gvQ==
