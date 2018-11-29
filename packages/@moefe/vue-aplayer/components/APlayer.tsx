@@ -437,6 +437,7 @@ export default class APlayer extends Vue.Component<
       await this.player.play();
     } catch (e) {
       this.showNotice(e.message);
+      this.player.pause();
     }
   }
 
