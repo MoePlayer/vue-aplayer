@@ -225,7 +225,7 @@ export default class APlayer extends Vue.Component<
   // #region 监听属性
 
   @Watch('currentList', { immediate: true, deep: true })
-  private handleChangeDataSource(
+  private async handleChangeDataSource(
     newList: APlayer.Audio[],
     oldList?: APlayer.Audio[],
   ) {
@@ -249,16 +249,17 @@ export default class APlayer extends Vue.Component<
       }
     }
 
+    // 播放列表初始化
     if (this.currentList.length > 0) {
-      if (
-        this.currentMusic.id !== undefined
-        && Number.isNaN(this.currentMusic.id)
-      ) {
+      if (!this.currentMusic.id) {
         [this.currentMusic] = this.currentList;
       } else {
         const music = this.currentList[this.currentIndex];
         Object.assign(this.currentMusic, music);
       }
+
+      await this.$nextTick();
+      this.canPlay = true;
     }
   }
 
@@ -288,7 +289,7 @@ export default class APlayer extends Vue.Component<
         || this.player.src !== newMusic.url
       ) {
         this.currentPlayed = 0;
-        if (oldMusic) {
+        if (oldMusic && oldMusic.id) {
           // 首次初始化时不要触发事件
           this.handleChangeSettings();
           this.$emit('listSwitch', newMusic);
@@ -302,9 +303,8 @@ export default class APlayer extends Vue.Component<
         this.player.onerror = (e: Event | string) => {
           this.showNotice(e.toString());
         };
+        if (this.canPlay) this.play();
       }
-      if (this.canPlay) this.play();
-      this.canPlay = true;
     }
   }
 
