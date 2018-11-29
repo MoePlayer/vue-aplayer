@@ -34,7 +34,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
   private get noLyric(): string {
     /* eslint-disable no-nested-ternary */
     const { currentMusic } = this.aplayer;
-    return currentMusic.id !== undefined && Number.isNaN(currentMusic.id)
+    return !currentMusic.id
       ? '(ಗ ‸ ಗ ) 未加载音频'
       : this.isLoading
       ? '(*ゝω・) 少女祈祷中..'
