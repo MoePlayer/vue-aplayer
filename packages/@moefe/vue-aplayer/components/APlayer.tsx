@@ -436,7 +436,7 @@ export default class APlayer extends Vue.Component<
       if (this.mutex) this.pauseOtherInstances();
       await this.player.play();
     } catch (e) {
-      if (!this.isMini) this.showNotice(e.message);
+      this.showNotice(e.message);
     }
   }
 
@@ -513,14 +513,19 @@ export default class APlayer extends Vue.Component<
     opacity: number = 0.8,
   ): Promise<void> {
     return new Promise((resolve) => {
-      this.notice = { text, time, opacity };
-      this.$emit('noticeShow');
-      if (time > 0) {
-        setTimeout(() => {
-          this.notice.opacity = 0;
-          this.$emit('noticeHide');
-          resolve();
-        }, time);
+      if (this.isMini) {
+        console.warn('aplayer notice:', text);
+        resolve();
+      } else {
+        this.notice = { text, time, opacity };
+        this.$emit('noticeShow');
+        if (time > 0) {
+          setTimeout(() => {
+            this.notice.opacity = 0;
+            this.$emit('noticeHide');
+            resolve();
+          }, time);
+        }
       }
     });
   }
