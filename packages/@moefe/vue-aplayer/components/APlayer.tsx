@@ -18,6 +18,11 @@ declare global {
 
 const instances: APlayer[] = [];
 const store = new Store();
+let channel: BroadcastChannel | null = null;
+
+if (typeof BroadcastChannel !== 'undefined') {
+  channel = new BroadcastChannel('aplayer');
+}
 
 @Component
 export default class APlayer extends Vue.Component<
@@ -457,7 +462,12 @@ export default class APlayer extends Vue.Component<
       if (paused) this.pause();
       await this.media.loaded();
       this.player.currentTime = percent * this.media.duration;
-      if (!paused) this.play();
+      if (!paused) {
+        this.play();
+        if (channel && this.mutex) {
+          channel.postMessage('mutex');
+        }
+      }
     } catch (e) {
       this.showNotice(e.message);
     } finally {
@@ -708,6 +718,18 @@ export default class APlayer extends Vue.Component<
         }
       }
     }
+
+    // 处理多页面互斥
+    if (channel) {
+      if (this.mutex) {
+        channel.addEventListener('message', ({ data }) => {
+          if (data === 'mutex') this.pause();
+        });
+      }
+    } else {
+      // 不支持 BroadcastChannel，暂不处理
+    }
+
     events.forEach((event) => {
       this.player.addEventListener(event, e => this.$emit(event, e));
     });
