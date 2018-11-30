@@ -150,7 +150,7 @@ export default class APlayer extends Vue.Component<
   private listVisible = !this.listFolded;
 
   private get listScrollTop(): number {
-    return this.currentListIndex * 33;
+    return this.currentOrderIndex * 33;
   }
 
   // 控制迷你模式下的歌词是否可见
@@ -182,11 +182,11 @@ export default class APlayer extends Vue.Component<
   // 当前播放的音乐索引
   public get currentIndex(): number {
     return this.currentOrder === 'list'
-      ? this.currentListIndex
+      ? this.currentOrderIndex
       : this.currentRandomIndex;
   }
 
-  private get currentListIndex(): number {
+  private get currentOrderIndex(): number {
     const { id, url } = this.currentMusic;
     return this.orderList.findIndex(
       item => item.id === id || item.url === url,
@@ -308,8 +308,9 @@ export default class APlayer extends Vue.Component<
         this.player.onerror = (e: Event | string) => {
           this.showNotice(e.toString());
         };
-        if (this.canPlay) this.play();
       }
+      // **请勿移动此行**，否则当歌曲结束播放时如果歌单中只有一首歌曲将无法重复播放
+      if (this.canPlay) this.play();
     }
   }
 
