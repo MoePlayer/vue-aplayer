@@ -229,8 +229,8 @@ export default class APlayer extends Vue.Component<
 
   // #region 监听属性
 
-  @Watch('currentList', { immediate: true, deep: true })
-  private async handleChangeDataSource(
+  @Watch('orderList', { immediate: true, deep: true })
+  private async handleChangePlayList(
     newList: APlayer.Audio[],
     oldList?: APlayer.Audio[],
   ) {
@@ -241,7 +241,7 @@ export default class APlayer extends Vue.Component<
         if (newLength <= 0) this.$emit('listClear');
         else if (newLength > oldLength) this.$emit('listAdd');
         else {
-          if (this.currentIndex < 0) {
+          if (this.currentOrderIndex < 0) {
             const { id, url } = this.currentMusic;
             const oldIndex = oldList.findIndex(
               item => item.id === id || item.url === url,
@@ -255,11 +255,11 @@ export default class APlayer extends Vue.Component<
     }
 
     // 播放列表初始化
-    if (this.currentList.length > 0) {
+    if (this.orderList.length > 0) {
       if (!this.currentMusic.id) {
         [this.currentMusic] = this.currentList;
       } else {
-        const music = this.currentList[this.currentIndex];
+        const music = this.orderList[this.currentOrderIndex];
         Object.assign(this.currentMusic, music);
       }
 
