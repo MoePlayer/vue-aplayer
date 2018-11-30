@@ -149,7 +149,7 @@ export default class Lyric extends Vue.Component<LyricProps> {
   }
 
   render() {
-    const { visible, style, lrc, parsed, current, noLyric } = this;
+    const { visible, style, parsed, current, noLyric } = this;
 
     return (
       <div

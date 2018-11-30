@@ -526,6 +526,7 @@ export default class APlayer extends Vue.Component<
   ): Promise<void> {
     return new Promise((resolve) => {
       if (this.isMini) {
+        // eslint-disable-next-line no-console
         console.warn('aplayer notice:', text);
         resolve();
       } else {

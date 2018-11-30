@@ -111,7 +111,6 @@ export default class Controller extends Vue.Component<{}, ControllerEvents> {
   render() {
     const { ptime, dtime, volumeIcon } = this;
     const {
-      media,
       lrcType,
       currentTheme,
       currentVolume,
