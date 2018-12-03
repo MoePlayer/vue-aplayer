@@ -7,6 +7,8 @@ Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
   productionTip: true,
 });
 
+console.log(APlayer.version);
+
 @Comopnent
 export default class App extends Vue {
   readonly $refs!: {
@@ -16,12 +18,17 @@ export default class App extends Vue {
   async created() {
     const { aplayer } = this.$refs;
     console.log(aplayer.$refs.container);
-    console.log(aplayer.currentIndex);
+    console.log(aplayer.media.currentTime);
+    console.log(aplayer.media.duration);
+    console.log(aplayer.media.paused);
+    console.log(aplayer.currentMusic);
     console.log(aplayer.currentSettings);
     await aplayer.play();
     aplayer.toggle();
     aplayer.pause();
     aplayer.seek(0);
+    aplayer.switch(0);
+    aplayer.switch('');
     aplayer.skipBack();
     aplayer.skipForward();
     aplayer.showLrc();

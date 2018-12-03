@@ -9,9 +9,11 @@ export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
     container: HTMLDivElement;
   };
 
-  readonly currentIndex: number;
+  readonly currentMusic: APlayer.Audio;
 
   readonly currentSettings: APlayer.Settings;
+
+  readonly media: APlayer.Media;
 
   play(): Promise<void>;
 
@@ -20,6 +22,8 @@ export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
   toggle(): void;
 
   seek(time: number): void;
+
+  switch(audio: number | string): void;
 
   skipBack(): void;
 

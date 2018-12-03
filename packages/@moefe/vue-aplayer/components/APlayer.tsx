@@ -451,6 +451,11 @@ export default class APlayer extends Vue.Component<
     this.player.pause();
   }
 
+  public toggle() {
+    if (this.media.paused) this.play();
+    else this.pause();
+  }
+
   private async seeking(percent: number, paused: boolean = true) {
     try {
       this.isAwaitChangeProgressBar = true;
@@ -480,9 +485,19 @@ export default class APlayer extends Vue.Component<
     this.seeking(time / this.media.duration, this.media.paused);
   }
 
-  public toggle() {
-    if (this.media.paused) this.play();
-    else this.pause();
+  public switch(audio: number | string) {
+    switch (typeof audio) {
+      case 'number':
+        this.currentMusic = this.orderList[
+          Math.min(Math.max(0, audio), this.orderList.length - 1)
+        ];
+        break;
+      // eslint-disable-next-line no-case-declarations
+      default:
+        const music = this.orderList.find(item => item.name.includes(audio));
+        if (music) this.currentMusic = music;
+        break;
+    }
   }
 
   public skipBack() {
