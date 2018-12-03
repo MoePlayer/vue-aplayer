@@ -125,7 +125,7 @@ export default class APlayer extends Vue.Component<
   private get isLoading(): boolean {
     const { preload, currentPlayed, currentLoaded } = this;
     const { src, paused, duration } = this.media;
-    const loading = (!!src && currentPlayed > currentLoaded) || !duration;
+    const loading = !!src && (currentPlayed > currentLoaded || !duration);
     return preload === 'none' ? !paused && loading : loading;
   }
 
