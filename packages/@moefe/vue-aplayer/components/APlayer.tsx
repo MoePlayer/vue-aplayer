@@ -556,7 +556,6 @@ export default class APlayer extends Vue.Component<
           const reader = new FileReader();
           reader.onload = () => {
             this.img.src = reader.result as string;
-            this.img.crossOrigin = '';
             this.img.onload = () => {
               const [r, g, b] = new ColorThief().getColor(this.img);
               const theme = `rgb(${r}, ${g}, ${b})`;
@@ -715,7 +714,7 @@ export default class APlayer extends Vue.Component<
       this.currentOrder = order;
       if (music) {
         this.currentMusic = music;
-        if (duration) {
+        if (!this.isMobile && duration) {
           this.seeking(currentTime / duration, paused);
         }
       }
