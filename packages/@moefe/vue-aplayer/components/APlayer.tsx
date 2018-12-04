@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import _Hls from 'hls.js';
 import Audio, { ReadyState, events } from '@moefe/vue-audio';
 import Store from '@moefe/vue-store';
+import Mixin from 'utils/mixin';
 import Player, { Notice } from './Player';
 import PlayList from './PlayList';
 import Lyric from './Lyric';
@@ -25,7 +26,7 @@ if (typeof BroadcastChannel !== 'undefined') {
   channel = new BroadcastChannel('aplayer');
 }
 
-@Component
+@Component({ mixins: [Mixin] })
 export default class APlayer extends Vue.Component<
   APlayer.Options,
   APlayer.Events
@@ -117,11 +118,6 @@ export default class APlayer extends Vue.Component<
     return shuffle([...this.orderList]);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private get isMobile(): boolean {
-    return /mobile/i.test(window.navigator.userAgent);
-  }
-
   // 是否正在缓冲
   private get isLoading(): boolean {
     const { preload, currentPlayed, currentLoaded } = this;
@@ -131,6 +127,8 @@ export default class APlayer extends Vue.Component<
   }
 
   private readonly options!: APlayer.InstallOptions;
+
+  private readonly isMobile!: boolean;
 
   // 是否正在拖动进度条（防止抖动）
   private isDraggingProgressBar = false;

@@ -1,6 +1,7 @@
 import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
+import Mixin from 'utils/mixin';
 
 export interface TouchProps {
   panMoveClass?: string;
@@ -12,21 +13,18 @@ export interface TouchEvents {
   onPanEnd: MouseEvent | TouchEvent;
 }
 
-@Component
+@Component({ mixins: [Mixin] })
 export default class Touch extends Vue.Component<TouchProps, TouchEvents> {
   @Prop({ type: String, required: false })
   private readonly panMoveClass!: string;
+
+  private readonly isMobile!: boolean;
 
   private isDragMove: boolean = false;
 
   private get classNames() {
     const { panMoveClass, isDragMove } = this;
     return { [panMoveClass]: isDragMove };
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  private get isMobile(): boolean {
-    return /mobile/i.test(window.navigator.userAgent);
   }
 
   private get dragStart(): 'touchstart' | 'mousedown' {
