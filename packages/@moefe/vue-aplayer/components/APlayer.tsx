@@ -4,6 +4,7 @@ import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
 import classNames from 'classnames';
+import _Hls from 'hls.js';
 import Audio, { ReadyState, events } from '@moefe/vue-audio';
 import Store from '@moefe/vue-store';
 import Player, { Notice } from './Player';
@@ -13,7 +14,7 @@ import { shuffle, HttpRequest } from '../utils';
 import '../assets/style/aplayer.scss';
 
 declare global {
-  const Hls: any;
+  const Hls: typeof _Hls;
 }
 
 const instances: APlayer[] = [];

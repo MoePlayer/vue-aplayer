@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["node"],
+    "types": ["node", "hls.js"],
     "paths": {
       "@moefe/vue-audio": ["packages/@moefe/vue-audio/index.ts"],
       "@moefe/vue-store": ["packages/@moefe/vue-store/index.ts"],
