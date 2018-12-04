@@ -12,6 +12,7 @@
     "baseUrl": ".",
     "types": ["node", "hls.js"],
     "paths": {
+      "utils/*": ["utils/*"],
       "@moefe/vue-audio": ["packages/@moefe/vue-audio/index.ts"],
       "@moefe/vue-store": ["packages/@moefe/vue-store/index.ts"],
       "@moefe/vue-touch": ["packages/@moefe/vue-touch/index.tsx"],

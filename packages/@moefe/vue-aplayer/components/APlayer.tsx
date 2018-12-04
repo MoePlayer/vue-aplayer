@@ -353,13 +353,7 @@ export default class APlayer extends Vue.Component<
       settings.volume = this.currentSettings.volume;
     }
 
-    const instanceIndex = instances.indexOf(this);
-    this.store.set(
-      this.settings[instanceIndex] !== undefined // eslint-disable-next-line max-len
-        ? this.settings.map((item, index) => (index === instanceIndex ? settings : item),
-          )
-        : [...this.settings, settings],
-    );
+    this.saveSettings(settings);
   }
 
   @Watch('media.ended')
@@ -641,6 +635,16 @@ export default class APlayer extends Vue.Component<
     instances.filter(inst => inst !== this).forEach(inst => inst.pause());
   }
 
+  private saveSettings(settings: APlayer.Settings | null) {
+    const instanceIndex = instances.indexOf(this);
+    if (settings === null) delete instances[instanceIndex];
+    this.store.set(
+      this.settings[instanceIndex] !== undefined // eslint-disable-next-line max-len
+        ? this.settings.map((item, index) => (index === instanceIndex ? settings : item)) // prettier-ignore
+        : [...this.settings, settings],
+    );
+  }
+
   // #endregion
 
   // #region 事件处理
@@ -706,10 +710,12 @@ export default class APlayer extends Vue.Component<
   // #endregion
 
   beforeMount() {
+    this.store.key = this.storageName;
+
     const emptyIndex = instances.findIndex(x => !x);
     if (emptyIndex > -1) instances[emptyIndex] = this;
     else instances.push(this);
-    this.store.key = this.storageName;
+
     if (this.currentSettings) {
       const {
         mini,
@@ -754,14 +760,8 @@ export default class APlayer extends Vue.Component<
   }
 
   beforeDestroy() {
-    const instanceIndex = instances.indexOf(this);
-    delete instances[instanceIndex];
-    this.store.set(
-      // eslint-disable-next-line max-len
-      this.settings.map((item, index) => (index === instanceIndex ? null : item),
-      ),
-    );
     this.pause();
+    this.saveSettings(null);
     this.$emit('destroy');
     this.$el.remove();
   }

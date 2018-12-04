@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { eventLoop } from 'utils';
 import events from './events';
 
 export { events };
@@ -38,25 +39,11 @@ export default class VueAudio extends Vue implements APlayer.Media {
   }
 
   public loaded() {
-    return new Promise((resolve) => {
-      const timerId = setInterval(() => {
-        if (this.readyState >= ReadyState.HAVE_FUTURE_DATA) {
-          resolve();
-          clearInterval(timerId);
-        }
-      }, 100);
-    });
+    return eventLoop(() => this.readyState >= ReadyState.HAVE_FUTURE_DATA, 0);
   }
 
   public srcLoaded() {
-    return new Promise((resolve) => {
-      const timerId = setInterval(() => {
-        if (this.src) {
-          resolve();
-          clearInterval(timerId);
-        }
-      }, 100);
-    });
+    return eventLoop(() => this.src, 0);
   }
 
   public readonly audio: HTMLAudioElement = new Audio();

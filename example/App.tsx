@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Comopnent from 'vue-class-component';
 import APlayerPlugin, { APlayer } from '@moefe/vue-aplayer';
-import { sleep } from './utils';
+import { sleep } from 'utils';
 import './App.scss';
 
 Vue.use<APlayer.InstallOptions>(APlayerPlugin, {
