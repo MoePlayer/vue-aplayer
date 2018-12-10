@@ -1,7 +1,7 @@
 {
   "name": "@moefe/vue-aplayer",
   "description": "A beautiful HTML5 music player for Vue.js",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "author": "u3u <qwq@qwq.cat>",
   "license": "MIT",
   "homepage": "https://github.com/MoePlayer/vue-aplayer#readme",
@@ -67,7 +67,7 @@
     "dtslint": "^0.4.0",
     "git-revision-webpack-plugin": "^3.0.3",
     "lint-staged": "^8.1.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.11.0",
     "prettier": "^1.15.3",
     "prettier-eslint-check": "^1.0.2",
     "prettier-eslint-cli": "^4.7.1",
