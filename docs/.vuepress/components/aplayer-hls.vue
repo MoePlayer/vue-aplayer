@@ -5,7 +5,7 @@
     :customAudioType="customAudioType"
     :lrcType="3"
   />
-  <button v-else class="button" @click="showPlayer = true;">
+  <button v-else class="button" @click="showPlayer = true">
     点击加载播放器
   </button>
 </template>

@@ -60,9 +60,11 @@
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/eslint-config-typescript": "^3.2.0",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
     "all-contributors-cli": "^5.4.1",
     "classnames": "^2.2.6",
-    "dtslint": "^0.3.0",
+    "dayjs": "^1.7.7",
+    "dtslint": "^0.4.0",
     "git-revision-webpack-plugin": "^3.0.3",
     "lint-staged": "^8.1.0",
     "node-sass": "^4.10.0",
@@ -70,13 +72,13 @@
     "prettier-eslint-check": "^1.0.2",
     "prettier-eslint-cli": "^4.7.1",
     "sass-loader": "^7.1.0",
-    "typescript": "^3.2.1",
+    "typescript": "^3.2.2",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^7.2.0",
     "vue-svg-loader": "^0.11.0",
     "vue-template-compiler": "^2.5.17",
     "vue-tsx-support": "^2.2.1",
-    "vuepress": "^0.14.8"
+    "vuepress": "^1.0.0-alpha.27"
   },
   "browserslist": [
     "> 1%",

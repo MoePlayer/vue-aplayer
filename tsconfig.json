@@ -25,6 +25,7 @@
     "example/**/*.tsx",
     "packages/**/*.ts",
     "packages/**/*.tsx",
+    "utils/**/*.ts",
     "node_modules/@types/",
     "node_modules/vue-tsx-support/enable-check.d.ts"
   ]

@@ -10,7 +10,27 @@ module.exports = {
     ['script', { src: 'https://cdn.jsdelivr.net/npm/colorthief' }], // prettier-ignore
   ],
   dest: 'demo/docs',
-  serviceWorker: true,
+  plugins: [
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: true,
+        updatePopup: {
+          message: '发现新内容可用',
+          buttonText: '刷新',
+        },
+      },
+    ],
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp) => {
+          const dayjs = require('dayjs');
+          return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
+        },
+      },
+    ],
+  ],
   themeConfig: {
     nav: [
       { text: '指南', link: '/guide/' },
@@ -37,9 +57,10 @@ module.exports = {
     docsDir: 'docs',
     docsBranch: 'dev',
     editLinks: true,
-    lastUpdated: true,
+    editLinkText: '在 GitHub 上编辑此页',
+    lastUpdated: '上次更新',
   },
-  chainWebpack: (config, isServer) => {
+  chainWebpack: (config) => {
     config.resolve.set('symlinks', false);
   },
 };

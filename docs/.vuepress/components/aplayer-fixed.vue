@@ -1,6 +1,6 @@
 <template>
   <aplayer v-if="showPlayer" :audio="audio" :lrcType="3" fixed />
-  <button v-else class="button" @click="showPlayer = true;">
+  <button v-else class="button" @click="showPlayer = true">
     点击加载播放器
   </button>
 </template>
