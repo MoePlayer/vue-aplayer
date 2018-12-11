@@ -102,8 +102,8 @@ declare namespace APlayer {
   export type AudioType = 'auto' | 'hls' | 'normal';
   export interface Audio {
     id?: number; // 音频 id
-    name: string; // 音频名称
-    artist: string; // 音频艺术家
+    name: string | VNode; // 音频名称
+    artist: string | VNode; // 音频艺术家
     url: string; // 音频播放地址
     cover: string; // 音频封面
     lrc?: string; // lrc 歌词
@@ -113,6 +113,8 @@ declare namespace APlayer {
   }
 }
 ```
+
+<aplayer-vnode />
 
 这里与 [APlayer](https://github.com/MoePlayer/APlayer) 不同的是新增了 `id` 和 `speed` 属性。  
 `id` 默认情况下由播放器自动生成，你也可以手动传一个 `id` 来覆盖它。  

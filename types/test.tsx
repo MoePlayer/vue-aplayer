@@ -57,7 +57,11 @@ export default class App extends Vue {
           preload="metadata"
           volume={0.75}
           audio={{
-            name: '光るなら',
+            name: (
+              <span data-name="光るなら">
+                <span class="aplayer-badge">[HOT]</span> 光るなら
+              </span>
+            ),
             artist: 'Goose house',
             url: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.mp3',
             cover: 'https://moeplayer.b0.upaiyun.com/aplayer/hikarunara.jpg',

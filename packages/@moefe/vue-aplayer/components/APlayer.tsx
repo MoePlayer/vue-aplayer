@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
+import { VNode } from 'vue';
 import * as Vue from 'vue-tsx-support';
 import Component from 'vue-class-component';
 import { Prop, Provide, Watch } from 'vue-property-decorator';
@@ -103,14 +104,28 @@ export default class APlayer extends Vue.Component<
     return this.currentOrder === 'list' ? this.orderList : this.randomList;
   }
 
-  // 顺序播放列表，数据源，自动生成 ID 作为播放列表项的 key
-  private get orderList(): APlayer.Audio[] {
+  // 数据源，自动生成 ID 作为播放列表项的 key
+  private get dataSource(): APlayer.Audio[] {
     return (Array.isArray(this.audio) ? this.audio : [this.audio])
       .filter(x => x)
       .map((item, index) => ({
         id: index + 1,
         ...item,
       }));
+  }
+
+  // 根据数据源生成顺序播放列表（处理 VNode）
+  private get orderList(): APlayer.Audio[] {
+    const text = (vnode: string | VNode, key: string) =>
+      typeof vnode === 'string'
+        ? vnode
+        : vnode.data && vnode.data.attrs && vnode.data.attrs[`data-${key}`];
+
+    return this.dataSource.map(({ name, artist, ...item }) => ({
+      ...item,
+      name: text(name, 'name'),
+      artist: text(artist, 'artist'),
+    }));
   }
 
   // 根据顺序播放列表生成随机播放列表
@@ -704,9 +719,9 @@ export default class APlayer extends Vue.Component<
   }
 
   // 处理播放曲目改变事件
-  private handleChangePlaylist(music: APlayer.Audio) {
+  private handleChangePlaylist(music: APlayer.Audio, index: number) {
     if (music.id === this.currentMusic.id) this.handleTogglePlay();
-    else this.currentMusic = music;
+    else this.currentMusic = this.orderList[index];
   }
   // #endregion
 
@@ -769,7 +784,7 @@ export default class APlayer extends Vue.Component<
 
   render() {
     const {
-      orderList,
+      dataSource,
       fixed,
       lrcType,
       isMini,
@@ -788,7 +803,7 @@ export default class APlayer extends Vue.Component<
         ref="container"
         class={classNames({
           aplayer: true,
-          'aplayer-withlist': orderList.length > 1,
+          'aplayer-withlist': dataSource.length > 1,
           'aplayer-withlrc': !fixed && (lrcType !== 0 && lyricVisible),
           'aplayer-narrow': isMini,
           'aplayer-fixed': fixed,
@@ -814,7 +829,7 @@ export default class APlayer extends Vue.Component<
           visible={listVisible}
           scrollTop={listScrollTop}
           currentMusic={currentMusic}
-          dataSource={orderList}
+          dataSource={dataSource}
           onChange={this.handleChangePlaylist}
         />
         {fixed && lrcType !== 0 ? <Lyric visible={lyricVisible} /> : null}

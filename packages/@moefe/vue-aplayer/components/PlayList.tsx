@@ -11,7 +11,7 @@ export interface PlayListProps {
 }
 
 export interface PlayListEvents {
-  onChange: APlayer.Audio;
+  onChange: (music: APlayer.Audio, index: number) => void;
 }
 
 @Component
@@ -69,7 +69,7 @@ export default class PlayList extends Vue.Component<
             class={classNames({
               'aplayer-list-light': item.id === currentMusic.id,
             })}
-            onClick={() => this.$emit('change', item)}
+            onClick={() => this.$emit('change', item, index)}
           >
             <span
               class="aplayer-list-cur"
