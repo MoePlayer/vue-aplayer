@@ -258,8 +258,7 @@ export default class APlayer extends Vue.Component<
       if (!this.currentMusic.id) {
         [this.currentMusic] = this.currentList;
       } else {
-        // eslint-disable-next-line max-len
-        const music = this.orderList[this.currentOrderIndex] || this.orderList[0];
+        const music = this.orderList[this.currentOrderIndex] || this.orderList[0]; // eslint-disable-line max-len
         Object.assign(this.currentMusic, music);
       }
 
@@ -488,7 +487,9 @@ export default class APlayer extends Vue.Component<
         break;
       // eslint-disable-next-line no-case-declarations
       default:
-        const music = this.orderList.find(item => item.name.includes(audio));
+        const music = this.orderList.find(
+          item => typeof item.name === 'string' && item.name.includes(audio),
+        );
         if (music) this.currentMusic = music;
         break;
     }
@@ -637,8 +638,10 @@ export default class APlayer extends Vue.Component<
     const instanceIndex = instances.indexOf(this);
     if (settings === null) delete instances[instanceIndex];
     this.store.set(
-      this.settings[instanceIndex] !== undefined // eslint-disable-next-line max-len
-        ? this.settings.map((item, index) => (index === instanceIndex ? settings : item)) // prettier-ignore
+      this.settings[instanceIndex] !== undefined
+        ? this.settings.map((item, index) =>
+            index === instanceIndex ? settings : item,
+          )
         : [...this.settings, settings],
     );
   }

@@ -6,8 +6,8 @@ export interface IconProps {
   type: string;
 }
 
-// eslint-disable-next-line
-export const icon = (type: string) => require(`../assets/svg/${type}.svg`).default;
+export const icon = (type: string) =>
+  require(`../assets/svg/${type}.svg`).default; // eslint-disable-line
 
 @Component
 export default class Icon extends Vue.Component<IconProps> {

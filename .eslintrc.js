@@ -16,6 +16,8 @@ module.exports = {
     'import/no-named-as-default-member': ['off'],
     'import/no-extraneous-dependencies': ['off'],
     'function-paren-newline': ['off'],
+    'implicit-arrow-linebreak': ['off'],
+    'no-confusing-arrow': ['off'],
     'class-methods-use-this': [
       'error',
       {
