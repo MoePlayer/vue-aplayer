@@ -10547,9 +10547,9 @@ vue-tsx-support@^2.2.1:
   integrity sha512-qnbvs/t924jtBdUzXXc8/siKrhYHu0KEQXk9mOzsbq11LQJvST0Y5AyaqP76x9YNceYksbi3fRCc8L1egClMdw==
 
 vue@^2.5.16, vue@^2.5.17:
-  version "2.5.17"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
-  integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==
+  version "2.5.21"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.21.tgz#3d33dcd03bb813912ce894a8303ab553699c4a85"
+  integrity sha512-Aejvyyfhn0zjVeLvXd70h4hrE4zZDx1wfZqia6ekkobLmUZ+vNFQer53B4fu0EjWBSiqApxPejzkO1Znt3joxQ==
 
 vuepress-html-webpack-plugin@^3.2.0:
   version "3.2.0"
