@@ -273,6 +273,7 @@ export default class APlayer extends Vue.Component<
       if (!this.currentMusic.id) {
         [this.currentMusic] = this.currentList;
       } else {
+        this.canPlay = !this.player.paused;
         const music = this.orderList[this.currentOrderIndex] || this.orderList[0]; // eslint-disable-line max-len
         Object.assign(this.currentMusic, music);
       }
