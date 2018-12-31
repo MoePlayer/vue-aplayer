@@ -1351,9 +1351,9 @@ algoliasearch@^3.24.5:
     tunnel-agent "^0.6.0"
 
 all-contributors-cli@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-5.4.1.tgz#c385cd7241f33ff381048c3ed81607eddecd2f4b"
-  integrity sha512-9kgEa/s6dF6K7ky7eZcFTDcbVJWDZP9WK0YCZTmU1IbmwIAGu81/tiDdg/woTnw3VYtpzq4SCXxPlDymLfw+Mg==
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-5.5.0.tgz#e96219a7dab53f2e7303ad0d6f0743113c4b9171"
+  integrity sha512-dN2Y6IMjRgArjPyCTTuOVw0AGei7UnSExIkcTq/TQVaPk46IcERcKH0gWal0LlyJ276Wa4g2XWMMtNh5xtd8xw==
   dependencies:
     async "^2.0.0-rc.1"
     chalk "^2.3.0"
