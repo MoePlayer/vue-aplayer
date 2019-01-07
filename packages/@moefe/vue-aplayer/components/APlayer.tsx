@@ -274,7 +274,8 @@ export default class APlayer extends Vue.Component<
         [this.currentMusic] = this.currentList;
       } else {
         this.canPlay = !this.player.paused;
-        const music = this.orderList[this.currentOrderIndex] || this.orderList[0]; // eslint-disable-line max-len
+        const music =
+          this.orderList[this.currentOrderIndex] || this.orderList[0]; // eslint-disable-line max-len
         Object.assign(this.currentMusic, music);
       }
 
@@ -305,8 +306,8 @@ export default class APlayer extends Vue.Component<
 
     if (newMusic.url) {
       if (
-        (oldMusic !== undefined && oldMusic.url) !== newMusic.url
-        || this.player.src !== newMusic.url
+        (oldMusic !== undefined && oldMusic.url) !== newMusic.url ||
+        this.player.src !== newMusic.url
       ) {
         this.currentPlayed = 0;
         if (oldMusic && oldMusic.id) {
@@ -514,11 +515,13 @@ export default class APlayer extends Vue.Component<
   public skipBack() {
     const playIndex = this.getPlayIndexByMode('skipBack');
     this.currentMusic = { ...this.currentList[playIndex] };
+    this.$emit('skipBack');
   }
 
   public skipForward() {
     const playIndex = this.getPlayIndexByMode('skipForward');
     this.currentMusic = { ...this.currentList[playIndex] };
+    this.$emit('skipForward');
   }
 
   public showLrc() {
@@ -623,8 +626,8 @@ export default class APlayer extends Vue.Component<
               hls.attachMedia(this.player as HTMLVideoElement);
               resolve();
             } else if (
-              this.player.canPlayType('application/x-mpegURL')
-              || this.player.canPlayType('application/vnd.apple.mpegURL')
+              this.player.canPlayType('application/x-mpegURL') ||
+              this.player.canPlayType('application/vnd.apple.mpegURL')
             ) {
               resolve(music.url);
             } else {
@@ -655,8 +658,8 @@ export default class APlayer extends Vue.Component<
     if (settings === null) delete instances[instanceIndex];
     this.store.set(
       this.settings[instanceIndex] !== undefined
-        ? this.settings.map((item, index) =>
-            index === instanceIndex ? settings : item,
+        ? this.settings.map(
+            (item, index) => (index === instanceIndex ? settings : item),
           )
         : [...this.settings, settings],
     );
@@ -688,11 +691,12 @@ export default class APlayer extends Vue.Component<
 
   // 处理切换循环模式
   private handleToggleLoopMode() {
-    this.currentLoop = this.currentLoop === 'all'
+    this.currentLoop =
+      this.currentLoop === 'all'
         ? 'one'
         : this.currentLoop === 'one'
-        ? 'none'
-        : 'all';
+          ? 'none'
+          : 'all';
   }
 
   // 处理切换播放/暂停事件
