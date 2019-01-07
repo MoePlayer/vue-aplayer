@@ -75,6 +75,8 @@ declare global {
       onTimeupdate: Event;
       onVolumechange: Event;
       onWaiting: Event;
+      onSkipBack: Event;
+      onSkipForward: Event;
 
       onListSwitch: Audio;
       onListShow: void;

@@ -110,6 +110,8 @@ export default {
 | onNoticeHide | 通知消息隐藏时触发     |
 | onLrcShow    | 歌词面板显示时触发     |
 | onLrcHide    | 歌词面板隐藏时触发     |
+| onSkipBack   | on trigger play of previous song  |
+| onSkipForward| on trigger play of next song      |
 
 ::: warning 注意
 由于某些选项会通过用户的操作直接修改，如果你传递了它们，会导致双向绑定的值不一致。  
@@ -146,6 +148,8 @@ export default {
     @noticeHide="handleEvent"
     @lrcShow="handleEvent"
     @lrcHide="handleEvent"
+    @skipBack="handleEvent"
+    @skipForward="handleEvent"
   />
 </template>
 

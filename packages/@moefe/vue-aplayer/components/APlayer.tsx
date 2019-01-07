@@ -29,8 +29,8 @@ if (typeof BroadcastChannel !== 'undefined') {
 
 @Component({ mixins: [Mixin] })
 export default class APlayer extends Vue.Component<
-  APlayer.Options,
-  APlayer.Events
+APlayer.Options,
+APlayer.Events
 > {
   public static readonly version: string = APLAYER_VERSION;
 
@@ -514,11 +514,13 @@ export default class APlayer extends Vue.Component<
   public skipBack() {
     const playIndex = this.getPlayIndexByMode('skipBack');
     this.currentMusic = { ...this.currentList[playIndex] };
+    this.$emit('skipBack');
   }
 
   public skipForward() {
     const playIndex = this.getPlayIndexByMode('skipForward');
     this.currentMusic = { ...this.currentList[playIndex] };
+    this.$emit('skipForward');
   }
 
   public showLrc() {
@@ -656,8 +658,8 @@ export default class APlayer extends Vue.Component<
     this.store.set(
       this.settings[instanceIndex] !== undefined
         ? this.settings.map((item, index) =>
-            index === instanceIndex ? settings : item,
-          )
+          index === instanceIndex ? settings : item,
+        )
         : [...this.settings, settings],
     );
   }
@@ -689,8 +691,8 @@ export default class APlayer extends Vue.Component<
   // 处理切换循环模式
   private handleToggleLoopMode() {
     this.currentLoop = this.currentLoop === 'all'
-        ? 'one'
-        : this.currentLoop === 'one'
+      ? 'one'
+      : this.currentLoop === 'one'
         ? 'none'
         : 'all';
   }

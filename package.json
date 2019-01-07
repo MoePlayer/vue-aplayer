@@ -39,7 +39,7 @@
     "docs:build": "yarn docs:prebuild && vuepress build docs",
     "docs:prebuild": "yarn build && yarn docs:link",
     "lint": "vue-cli-service lint packages",
-    "lint:prettier": "prettier-eslint-check \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
+    "lint:prettier": "prettier-eslint-check \"./**/*.{js,jsx,json,ts,tsx,scss,vue,md}\"",
     "format": "prettier-eslint \"**/*.{js,jsx,json,ts,tsx,scss,vue,md}\" --write",
     "test:types": "dtslint types",
     "contributors": "all-contributors"
