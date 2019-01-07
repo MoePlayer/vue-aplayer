@@ -98,20 +98,20 @@ export default {
 
 ## 播放器事件
 
-| 事件名称     | 描述                   |
-| :----------- | :--------------------- |
-| onListShow   | 播放列表显示时触发     |
-| onListHide   | 播放列表隐藏时触发     |
-| onListAdd    | 播放列表新增音频时触发 |
-| onListRemove | 播放列表删除音频时触发 |
-| onListClear  | 播放列表清空时触发     |
-| onListSwitch | 切换播放的音频时触发   |
-| onNoticeShow | 通知消息显示时触发     |
-| onNoticeHide | 通知消息隐藏时触发     |
-| onLrcShow    | 歌词面板显示时触发     |
-| onLrcHide    | 歌词面板隐藏时触发     |
-| onSkipBack   | on trigger play of previous song  |
-| onSkipForward| on trigger play of next song      |
+| 事件名称      | 描述                             |
+| :------------ | :------------------------------- |
+| onListShow    | 播放列表显示时触发               |
+| onListHide    | 播放列表隐藏时触发               |
+| onListAdd     | 播放列表新增音频时触发           |
+| onListRemove  | 播放列表删除音频时触发           |
+| onListClear   | 播放列表清空时触发               |
+| onListSwitch  | 切换播放的音频时触发             |
+| onNoticeShow  | 通知消息显示时触发               |
+| onNoticeHide  | 通知消息隐藏时触发               |
+| onLrcShow     | 歌词面板显示时触发               |
+| onLrcHide     | 歌词面板隐藏时触发               |
+| onSkipBack    | on trigger play of previous song |
+| onSkipForward | on trigger play of next song     |
 
 ::: warning 注意
 由于某些选项会通过用户的操作直接修改，如果你传递了它们，会导致双向绑定的值不一致。  
