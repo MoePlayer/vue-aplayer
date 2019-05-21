@@ -61,7 +61,7 @@
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/eslint-config-typescript": "^3.2.0",
     "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
-    "all-contributors-cli": "^5.4.1",
+    "all-contributors-cli": "^6.5.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.7.7",
     "dtslint": "^0.3.0",
