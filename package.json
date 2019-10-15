@@ -70,7 +70,7 @@
     "node-sass": "^4.11.0",
     "prettier": "^1.15.3",
     "prettier-eslint-check": "^1.0.2",
-    "prettier-eslint-cli": "^4.7.1",
+    "prettier-eslint-cli": "^5.0.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.2.2",
     "vue-class-component": "^6.3.2",
