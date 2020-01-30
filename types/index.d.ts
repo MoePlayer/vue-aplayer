@@ -2,18 +2,25 @@
 import _Vue from 'vue';
 import * as Vue from 'vue-tsx-support';
 
-export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
+import * as _APlayer from './aplayer';
+
+export * from './aplayer';
+
+// eslint-disable-next-line no-use-before-define
+export as namespace APlayer;
+
+export class APlayer extends Vue.Component<_APlayer.Options, _APlayer.Events> {
   static readonly version: string;
 
   readonly $refs: {
     container: HTMLDivElement;
   };
 
-  readonly currentMusic: APlayer.Audio;
+  readonly currentMusic: _APlayer.Audio;
 
-  readonly currentSettings: APlayer.Settings;
+  readonly currentSettings: _APlayer.Settings;
 
-  readonly media: APlayer.Media;
+  readonly media: _APlayer.Media;
 
   play(): Promise<void>;
 
@@ -46,5 +53,5 @@ export class APlayer extends Vue.Component<APlayer.Options, APlayer.Events> {
 
 export default function install(
   Vue: typeof _Vue,
-  options?: APlayer.InstallOptions
+  options?: _APlayer.InstallOptions
 ): void;
