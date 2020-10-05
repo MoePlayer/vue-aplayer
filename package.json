@@ -74,7 +74,7 @@
     "sass-loader": "^7.1.0",
     "typescript": "^3.2.2",
     "vue-class-component": "^6.3.2",
-    "vue-property-decorator": "^7.2.0",
+    "vue-property-decorator": "^9.0.2",
     "vue-svg-loader": "^0.11.0",
     "vue-template-compiler": "^2.5.17",
     "vue-tsx-support": "^2.2.1",
