@@ -712,9 +712,9 @@
     debug "^2.6.8"
 
 "@types/classnames@^2.2.6":
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.6.tgz#dbe8a666156d556ed018e15a4c65f08937c3f628"
-  integrity sha512-XHcYvVdbtAxVstjKxuULYqYaWIzHR15yr1pZj4fnGChuBVJlIAp9StJna0ZJNSgxPh4Nac2FL4JM3M11Tm6fqQ==
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
+  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
 
 "@types/hls.js@^0.10.2":
   version "0.10.2"
