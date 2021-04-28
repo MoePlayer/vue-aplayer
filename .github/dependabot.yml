@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "07:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: vuepress
+    versions:
+    - 1.8.0
+    - 1.8.1
+  - dependency-name: "@vuepress/plugin-pwa"
+    versions:
+    - 1.8.0
+    - 1.8.1
+  - dependency-name: "@vue/cli-plugin-typescript"
+    versions:
+    - 4.5.11
+  - dependency-name: lint-staged
+    versions:
+    - 10.5.3
+  - dependency-name: "@types/classnames"
+    versions:
+    - 2.2.11
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: prettier-eslint-cli
+    versions:
+    - 5.0.0
