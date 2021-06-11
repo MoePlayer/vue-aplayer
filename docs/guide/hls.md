@@ -21,7 +21,7 @@ export default {
       audio: {
         name: 'Let It Go.m3u8',
         artist: 'Idina Menzel',
-        url: 'https://cdn.moefe.org/music/hls/frozen.m3u8',
+        url: 'http://v.qdbluestar.cn:6060/live/202/hls.m3u8',
         cover: 'https://p1.music.126.net/n72JJkPg2-ENxhB-DsZ2AA==/109951163115400390.jpg?param=300y300', // prettier-ignore
         lrc: 'https://cdn.moefe.org/music/lrc/frozen.lrc',
         type: 'customHls',
