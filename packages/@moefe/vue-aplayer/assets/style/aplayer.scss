@@ -675,6 +675,10 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
         color: #666;
         margin-right: 12px;
         cursor: pointer;
+        float:left;
+      }
+      .aplayer-list-title{
+        float:left;
       }
       .aplayer-list-author {
         color: #666;
